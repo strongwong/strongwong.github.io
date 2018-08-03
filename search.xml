@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用Hexo+Github Pages搭建个人博客]]></title>
+    <url>%2F2018%2F08%2F02%2F%E4%BD%BF%E7%94%A8Hexo%2BGithub%20Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[使用Hexo+Github Pages搭建个人博客记录最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你去写。如果你不经常去写一些文字，慢慢的也就生疏了，也就忘了该怎么通过书面方式更好的表达信息。比如我们领导让大家每周写一份周报，每到周五的时候大家总是在纠结，这周报该怎么写。还有做测试的时候要有测试方案，测试结果，测试报告（分析）都是要写文档的。跟文字打交道的时候还是很多的啊！所以啊，平时还得多写写！ 我在看一些大牛的博客的时候，发现他们的博客，好像都很好看。我很羡慕，于是我也想搭建一个自己的个人博客，所以就有了本站！我在了解到建站的方法有很多，比如: Hexo + Github Pages Jekyll + Github Pages WordPress + 服务器 + 域名 DeDeCMS + 服务器 + 域名 …… 我选择了使用Hexo + Github Pages + 域名 的方法来建站。首先Hexo简约风格我很喜欢，其次利用Github Pages的免费存储空间不需要自己购买服务器，有一个Github账号就ok了，然后域名其实是一个可选项，Github会提供一个 http://xxxx.github.io/ 这种形式的域名进行访问。 下面来简单记录一下，本站的搭建过程[toc] 安装Hexo很简单，但是在安装前需要配置一些环境，需要安装Node.js和Git。因为Hexo博客系统是基于Node.js写的，需要Node.js的环境才能运行。Hexo运行之后会在本地生成网页，所以我们需要使用Git把本地网页文件上传到Github上的远程仓库里。（使用Github桌面版也可以上传） 安装Node.js在Node.js官网：https://nodejs.org/en/ 下载最新的稳定版，安装时保持默认设置，一路next就好，等待安装完成。安装好之后，按Win+R,输入cmd，运行命令提示符，输入node -v 和 nmp -v，如果出现版本号，那么就安装成功了。 安装Git去Git官网：https://git-scm.com/ 下载最新的稳定版的git安装包， 注册Github和配置安装HexoHexo基础配置本地Hexo仓库与Github关联将个人域名解析到GitHub安装Next主题及个性化结束语]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于]]></title>
     <url>%2F2018%2F07%2F28%2F%E5%85%B3%E4%BA%8E%2F</url>
     <content type="text"><![CDATA[欢迎您访问我的网站，希望我分享的东西会对您有一些帮助！祝您 Codeing 愉快！ 关于我，你什么也不需要知道，哈哈哈~~ 关于本站，我有时间就写点东西喽，嘿嘿~~，开心就好！ 关于分享什么，聊一点技术、谈一点理想、做一点实事不枉来世一遭！]]></content>

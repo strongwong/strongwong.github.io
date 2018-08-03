@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.strongwong.top/"/>
-  <updated>2018-07-31T13:59:51.021Z</updated>
+  <updated>2018-08-03T15:59:36.172Z</updated>
   <id>http://www.strongwong.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Hexo+Github Pages搭建个人博客</title>
+    <link href="http://www.strongwong.top/2018/08/02/%E4%BD%BF%E7%94%A8Hexo+Github%20Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://www.strongwong.top/2018/08/02/使用Hexo+Github Pages搭建个人博客/</id>
+    <published>2018-08-02T13:22:50.000Z</published>
+    <updated>2018-08-03T15:59:36.172Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用Hexo-Github-Pages搭建个人博客记录"><a href="#使用Hexo-Github-Pages搭建个人博客记录" class="headerlink" title="使用Hexo+Github Pages搭建个人博客记录"></a>使用Hexo+Github Pages搭建个人博客记录</h1><p>最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。<br>通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你去写。<br>如果你不经常去写一些文字，慢慢的也就生疏了，也就忘了该怎么通过书面方式更好的表达信息。比如我们领导让大家每周写一份周报，每到周五的时候大家总是在纠结，这周报该怎么写。<br>还有做测试的时候要有测试方案，测试结果，测试报告（分析）都是要写文档的。跟文字打交道的时候还是很多的啊！所以啊，平时还得多写写！</p><a id="more"></a><p>我在看一些大牛的博客的时候，发现他们的博客，好像都很好看。我很羡慕，于是我也想搭建一个自己的个人博客，所以就有了本站！<br>我在了解到建站的方法有很多，比如:</p><ul><li>Hexo + Github Pages</li><li>Jekyll + Github Pages </li><li>WordPress + 服务器 + 域名</li><li>DeDeCMS + 服务器 + 域名</li><li>……</li></ul><p>我选择了使用Hexo + Github Pages + 域名 的方法来建站。<br>首先Hexo简约风格我很喜欢，其次利用Github Pages的免费存储空间不需要自己购买服务器，<br>有一个Github账号就ok了，然后域名其实是一个可选项，Github会提供一个 <a href="http://xxxx.github.io/" target="_blank" rel="noopener">http://xxxx.github.io/</a> 这种形式的域名进行访问。</p><h3 id="下面来简单记录一下，本站的搭建过程"><a href="#下面来简单记录一下，本站的搭建过程" class="headerlink" title="下面来简单记录一下，本站的搭建过程"></a>下面来简单记录一下，本站的搭建过程</h3><p>[toc]</p><p>安装Hexo很简单，但是在安装前需要配置一些环境，需要安装Node.js和Git。因为Hexo博客系统是基于Node.js写的，需要Node.js的环境才能运行。Hexo运行之后会在本地生成网页，所以我们需要使用Git把本地网页文件上传到Github上的远程仓库里。（使用Github桌面版也可以上传）</p><h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><p>在Node.js官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 下载最新的稳定版，安装时保持默认设置，一路next就好，等待安装完成。<br>安装好之后，按<code>Win+R</code>,输入cmd，运行命令提示符，输入node -v 和 nmp -v，如果出现版本号，那么就安装成功了。</p><h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><p>去Git官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a> 下载最新的稳定版的git安装包，</p><h3 id="注册Github和配置"><a href="#注册Github和配置" class="headerlink" title="注册Github和配置"></a>注册Github和配置</h3><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><h3 id="Hexo基础配置"><a href="#Hexo基础配置" class="headerlink" title="Hexo基础配置"></a>Hexo基础配置</h3><h3 id="本地Hexo仓库与Github关联"><a href="#本地Hexo仓库与Github关联" class="headerlink" title="本地Hexo仓库与Github关联"></a>本地Hexo仓库与Github关联</h3><h3 id="将个人域名解析到GitHub"><a href="#将个人域名解析到GitHub" class="headerlink" title="将个人域名解析到GitHub"></a>将个人域名解析到GitHub</h3><h3 id="安装Next主题及个性化"><a href="#安装Next主题及个性化" class="headerlink" title="安装Next主题及个性化"></a>安装Next主题及个性化</h3><h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;使用Hexo-Github-Pages搭建个人博客记录&quot;&gt;&lt;a href=&quot;#使用Hexo-Github-Pages搭建个人博客记录&quot; class=&quot;headerlink&quot; title=&quot;使用Hexo+Github Pages搭建个人博客记录&quot;&gt;&lt;/a&gt;使用Hexo+Github Pages搭建个人博客记录&lt;/h1&gt;&lt;p&gt;最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。&lt;br&gt;通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你去写。&lt;br&gt;如果你不经常去写一些文字，慢慢的也就生疏了，也就忘了该怎么通过书面方式更好的表达信息。比如我们领导让大家每周写一份周报，每到周五的时候大家总是在纠结，这周报该怎么写。&lt;br&gt;还有做测试的时候要有测试方案，测试结果，测试报告（分析）都是要写文档的。跟文字打交道的时候还是很多的啊！所以啊，平时还得多写写！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="http://www.strongwong.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="blog" scheme="http://www.strongwong.top/tags/blog/"/>
+    
+      <category term="教程" scheme="http://www.strongwong.top/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>关于</title>
