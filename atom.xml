@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.strongwong.top/"/>
-  <updated>2018-08-06T11:20:16.295Z</updated>
+  <updated>2018-08-08T11:46:27.045Z</updated>
   <id>http://www.strongwong.top/</id>
   
   <author>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>strongwongのdiary</title>
-    <link href="http://www.strongwong.top/2018/08/06/strongwong%E3%81%AEdiary/"/>
-    <id>http://www.strongwong.top/2018/08/06/strongwongのdiary/</id>
-    <published>2018-08-06T06:58:54.000Z</published>
-    <updated>2018-08-06T11:20:16.295Z</updated>
+    <link href="http://www.strongwong.top/2028/08/08/strongwong%E3%81%AEdiary/"/>
+    <id>http://www.strongwong.top/2028/08/08/strongwongのdiary/</id>
+    <published>2028-08-08T06:58:54.000Z</published>
+    <updated>2018-08-08T11:46:27.045Z</updated>
     
-    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p>]]></content>
+    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p><h3 id="2018-8-8"><a href="#2018-8-8" class="headerlink" title="2018-8-8"></a>2018-8-8</h3><p>1.今天还是在看 Event Arbiter 的代码和文档资料。<br>2.尝试性的把 Event Arbiter 的部分代码进行了移植，但是没跑通，还要很多问题，明天继续解决。进展有点慢，测试方案还不知道怎么弄 <em>_</em><br>3.十年前的今天奥运会开幕了，我在家看奥运会；今天的我大学毕业了，在这里敲代码；十年后的我怎么样了，我会在干什么？<br>4.博客还是要坚持写，加油！</p>]]></content>
     
     <summary type="html">
     
@@ -36,6 +36,31 @@
     
     
       <category term="diary" scheme="http://www.strongwong.top/tags/diary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>读书</title>
+    <link href="http://www.strongwong.top/2018/08/08/%E8%AF%BB%E4%B9%A6/"/>
+    <id>http://www.strongwong.top/2018/08/08/读书/</id>
+    <published>2018-08-08T10:20:19.000Z</published>
+    <updated>2018-08-08T11:37:24.763Z</updated>
+    
+    <content type="html"><![CDATA[<p>前段时间，自己陆陆续续收集和整理了，好多电子书，还买了一个Kindle。也买了好些书，可是到现在也没看几本。下半年还是要多读书，多写字，多赚钱！</p><p>这里简单列一下我的书单，我兴趣爱好广泛，所以读的书也就比较杂，姑且就简单分为两类吧！技术类的和消遣的书吧。</p><a id="more"></a><h3 id="技术类："><a href="#技术类：" class="headerlink" title="技术类："></a>技术类：</h3><h4 id="已读"><a href="#已读" class="headerlink" title="已读"></a>已读</h4><ul><li style="list-style: none"><input type="checkbox" checked> OpenCV3编程入门</li><li style="list-style: none"><input type="checkbox" checked> 低功耗蓝牙开发权威指南</li><li style="list-style: none"><input type="checkbox" checked> Cortex-M3权威指南</li></ul><h4 id="在读"><a href="#在读" class="headerlink" title="在读"></a>在读</h4><ul><li style="list-style: none"><input type="checkbox"> C和指针</li><li style="list-style: none"><input type="checkbox"> C专家编程</li><li style="list-style: none"><input type="checkbox"> C陷阱与缺陷</li></ul><h4 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h4><ul><li style="list-style: none"><input type="checkbox"> C++沉思录</li><li style="list-style: none"><input type="checkbox"> 深入理解计算机系统</li><li style="list-style: none"><input type="checkbox"> 程序员的数学 1，2，3</li><li style="list-style: none"><input type="checkbox"> 信息简史</li><li style="list-style: none"><input type="checkbox"> 大话设计模式</li><li style="list-style: none"><input type="checkbox"> 计算机原理与设计：Verilog HDL版</li><li style="list-style: none"><input type="checkbox"> 经典算法大全</li><li style="list-style: none"><input type="checkbox"> 算法导论</li></ul><h3 id="消遣类："><a href="#消遣类：" class="headerlink" title="消遣类："></a>消遣类：</h3><h4 id="已读-1"><a href="#已读-1" class="headerlink" title="已读"></a>已读</h4><ul><li style="list-style: none"><input type="checkbox" checked> 他改变了中国</li><li style="list-style: none"><input type="checkbox" checked> 人类简史</li></ul><h4 id="在读-1"><a href="#在读-1" class="headerlink" title="在读"></a>在读</h4><ul><li style="list-style: none"><input type="checkbox"> 浪潮之巅</li><li style="list-style: none"><input type="checkbox"> 太阳的距离</li><li style="list-style: none"><input type="checkbox"> 数学之美</li></ul><h4 id="TODO-1"><a href="#TODO-1" class="headerlink" title="TODO"></a>TODO</h4><ul><li style="list-style: none"><input type="checkbox"> 未来简史</li><li style="list-style: none"><input type="checkbox"> 三体</li><li style="list-style: none"><input type="checkbox"> 宇宙最初三分钟</li><li style="list-style: none"><input type="checkbox"> 爱因斯坦传</li><li style="list-style: none"><input type="checkbox"> Alibaba 2017技术集锦</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前段时间，自己陆陆续续收集和整理了，好多电子书，还买了一个Kindle。也买了好些书，可是到现在也没看几本。下半年还是要多读书，多写字，多赚钱！&lt;/p&gt;
+&lt;p&gt;这里简单列一下我的书单，我兴趣爱好广泛，所以读的书也就比较杂，姑且就简单分为两类吧！技术类的和消遣的书吧。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="读书" scheme="http://www.strongwong.top/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+      <category term="读书" scheme="http://www.strongwong.top/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="学习" scheme="http://www.strongwong.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
