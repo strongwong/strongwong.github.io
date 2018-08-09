@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.strongwong.top/"/>
-  <updated>2018-08-08T11:46:27.045Z</updated>
+  <updated>2018-08-09T13:29:17.606Z</updated>
   <id>http://www.strongwong.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://www.strongwong.top/2028/08/08/strongwong%E3%81%AEdiary/"/>
     <id>http://www.strongwong.top/2028/08/08/strongwongのdiary/</id>
     <published>2028-08-08T06:58:54.000Z</published>
-    <updated>2018-08-08T11:46:27.045Z</updated>
+    <updated>2018-08-09T13:29:17.606Z</updated>
     
-    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p><h3 id="2018-8-8"><a href="#2018-8-8" class="headerlink" title="2018-8-8"></a>2018-8-8</h3><p>1.今天还是在看 Event Arbiter 的代码和文档资料。<br>2.尝试性的把 Event Arbiter 的部分代码进行了移植，但是没跑通，还要很多问题，明天继续解决。进展有点慢，测试方案还不知道怎么弄 <em>_</em><br>3.十年前的今天奥运会开幕了，我在家看奥运会；今天的我大学毕业了，在这里敲代码；十年后的我怎么样了，我会在干什么？<br>4.博客还是要坚持写，加油！</p>]]></content>
+    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p><h3 id="2018-8-8"><a href="#2018-8-8" class="headerlink" title="2018-8-8"></a>2018-8-8</h3><p>1.今天还是在看 Event Arbiter 的代码和文档资料。<br>2.尝试性的把 Event Arbiter 的部分代码进行了移植，但是没跑通，还要很多问题，明天继续解决。进展有点慢，测试方案还不知道怎么弄 <em>_</em><br>3.十年前的今天奥运会开幕了，我在家看奥运会；今天的我大学毕业了，在这里敲代码；十年后的我怎么样了，我会在干什么？<br>4.博客还是要坚持写，加油！</p><h3 id="2018-8-9"><a href="#2018-8-9" class="headerlink" title="2018-8-9"></a>2018-8-9</h3><p>1.今天还是搞 EA 这个东西，没什么进展，难受！<br>2.领导让写一个 CM3 进 sleep 的代码，写了，内存中对应的位也写入值了，但是 J-link 还是可以正常连接，有很多东西好像并没有关掉，怀疑是设计的 SOC 有问题。</p>]]></content>
     
     <summary type="html">
     
