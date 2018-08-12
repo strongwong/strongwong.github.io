@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://chuantu.biz/t6/356/1534077865x-1566688748.png">
 <meta property="og:image" content="http://chuantu.biz/t6/356/1534077915x-1404755708.png">
 <meta property="og:image" content="http://chuantu.biz/t6/356/1534077938x-1404755708.png">
-<meta property="og:updated_time" content="2018-08-12T12:54:21.072Z">
+<meta property="og:updated_time" content="2018-08-12T13:02:01.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nvidia Jetson TX2 刷机并安装JetPack3.1">
 <meta name="twitter:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
@@ -434,7 +434,7 @@
 <p>2.一台安装 Ubuntu 系统的独立主机(不建议使用虚拟机，推荐使用 Ubuntu 16.04)</p>
 <p>3.一台路由器</p>
 <p>4.两根网线，一根 micro usb 数据线</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1.首先需要从 Nvidia 的官方网站上下载 Jet Pack3.1 的安装包，使用 Ubuntu host 直接下载或者下载好拷贝到 host 上也可以。(我当时最新的是 Jet Pack3.1 ，现在已经到 3.3 了，你也可以使用最新的版本)<br>下载网址：<a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">https://developer.nvidia.com/embedded/jetpack</a></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1.首先需要从 Nvidia 的官方网站上下载 Jet Pack3.1 的安装包，使用 Ubuntu host 直接下载或者下载好拷贝到 host 上也可以。(我当时最新的是 Jet Pack3.1 ，现在已经到 3.3 了，你也可以使用最新的版本。下载的话需要 Nvidia 账号才可以)<br>下载网址：<a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">https://developer.nvidia.com/embedded/jetpack</a></p>
 <p>2.将 TX2 开发板和主机都通过网线连接到一台路由器上。准备好 TX2 开发板和 Ubuntu Host 之后就可以开始刷机了。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载好 Jet Pack3.1 安装包后，打开 Terminal 进入到安装包所在的目录，执行下面这条命令运行安装包。运行效果如下图。(如果文件没有执行权限可以使用 chmod -x file 命令来改变执行权限)</p>
 <p><code>$
