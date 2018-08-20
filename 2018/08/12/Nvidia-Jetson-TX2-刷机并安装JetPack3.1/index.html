@@ -90,14 +90,13 @@
 <meta property="og:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://files.catbox.moe/n9dnwk.png">
-<meta property="og:image" content="https://files.catbox.moe/4g4qwx.png">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b702af99dc6d6522bb72f67">
 <meta property="og:image" content="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c">
-<meta property="og:image" content="https://files.catbox.moe/qy30go.png">
 <meta property="og:image" content="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68">
 <meta property="og:image" content="https://files.catbox.moe/hvd0oi.png">
 <meta property="og:image" content="https://photo.ishield.cn/pic/5b702bda9dc6d6522bb72f6a">
 <meta property="og:image" content="https://photo.ishield.cn/pic/5b702bf19dc6d6522bb72f6b">
-<meta property="og:updated_time" content="2018-08-20T10:47:55.125Z">
+<meta property="og:updated_time" content="2018-08-20T10:50:08.893Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nvidia Jetson TX2 刷机并安装JetPack3.1">
 <meta name="twitter:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
@@ -441,8 +440,8 @@
 <p><code>$
  ./JetPack-L4T-3.1-linux-x64.run</code></p>
 <p>运行完会弹出 JetPack L4T 3.1 Installer, 一路 Next 就好，如下图：<br><img src="https://files.catbox.moe/n9dnwk.png" alt=""></p>
-<p>注意选择 Jetson TX2 开发板<br><img src="https://files.catbox.moe/4g4qwx.png" alt=""></p>
-<p>点击 Next 之后会提示输入密码，待安装完成后，就会进入 JetPack L4T Component Manager。(这里要注意，如果网络不好可能会要等很久也出不来安装包信息，所以一定要保证网络环境好，可能有一些包还需要科学上网。)<br>如果你的包加载好了，检查一下 CUDA Toolkit 和 OpenCV for Tegra 这两个包是否选择了，这两个一定要安装。选择好之后，点击 Next 。在弹出的弹框中勾选所有协议，等待各种包下载完成。<br><img src="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c" alt=""><br><img src="https://files.catbox.moe/qy30go.png" alt=""><br><img src="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68" alt=""></p>
+<p>注意选择 Jetson TX2 开发板<br><img src="https://photo.ishield.cn/pic/5b702af99dc6d6522bb72f67" alt=""></p>
+<p>点击 Next 之后会提示输入密码，待安装完成后，就会进入 JetPack L4T Component Manager。(这里要注意，如果网络不好可能会要等很久也出不来安装包信息，所以一定要保证网络环境好，可能有一些包还需要科学上网。)<br>如果你的包加载好了，检查一下 CUDA Toolkit 和 OpenCV for Tegra 这两个包是否选择了，这两个一定要安装。选择好之后，点击 Next 。在弹出的弹框中勾选所有协议，等待各种包下载完成。<br><img src="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c" alt=""><br><img src="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68" alt=""></p>
 <p>下载完成后，选择 Host 和 TX2 的连接方式，我们选择第一项，通过同一路由器连接在同一网络。网口选择保持默认就好。<br><img src="https://files.catbox.moe/hvd0oi.png" alt=""></p>
 <p>接下来就是将包移动到 TX2 开发板上。文件较大，可能要等一会。执行下一步后，会出现一个提示重启 TX2 的步骤。按照提示进行操作。</p>
 <p>第一步，将 TX2 关机， 拔下电源，使用 micro usb 数据线将 TX2 与 Host 相连。</p>
