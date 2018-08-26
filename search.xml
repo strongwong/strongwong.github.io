@@ -12,6 +12,21 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Jetson TX2 重新编译内核添加usb等驱动]]></title>
+    <url>%2F2018%2F08%2F20%2FJetson-TX2-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8%E6%B7%BB%E5%8A%A0usb%E7%AD%89%E9%A9%B1%E5%8A%A8%2F</url>
+    <content type="text"><![CDATA[Jetson TX2 重新编译内核添加usb驱动上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。本文这里就简单介绍一下，添加驱动并重新编译镜像。在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetsonhacks 的仓库里有。这里我们就使用他的脚本文件。 下载脚本首先从 GitHub 上下载编译脚本1$ git clone https://github.com/jetsonhacks/buildJetsonTX2Kernel.git 如果你是 JetPack3.2.1 版本，直接使用 git 下载的话没有问题，因为目前他更新到的最新版本是 JetPack 3.2.1 内核版本为 28.2.1 (2018-8-20)。但是我安装的是 JetPack 3.1 对应的内核版本是 28.1 所以是不能直接使用的。因此需要下载对应的内核版本的脚本才可以使用。JetPack 3.1 版本的话就需要下载这个。https://github.com/jetsonhacks/buildJetsonTX2Kernel/archive/vL4T28.1.tar.gz 解压，获取源码下载好之后，解压缩，进入解压出来的文件夹，打开 Terminal 运行 getKernelSources.sh 脚本获取内核源码。1$ ./getKernelSources.sh 添加配置下载完成之后就会打开一个 xconfig 配置界面。设置你的镜像名称。打开设置 Genral Setup-&gt;Local version - append to kernel release，双击 Local version - append to kernel release在文本框中输入名字，如我这里为 -jetsonbot-v0.1 ， 回车；如下图所示： 在 xconfig 中按 Ctrl+F ，会弹出一个搜索框，输入你想要添加的设备驱动，比如可以添加 USB ACM， CH341 和 cp210x 串口驱动等，在搜索结果中选择对应的驱动，选中框打上勾即可。我这里搜索的是 ACM 驱动，如下图所示： 设置好了之后，一定要保存你的设置， File-&gt;Save 编译新内核保存好设置，关闭 xconfig 配置窗口，准备开始编译内核，编译过程大约需要 20 分钟。运行 makeKernel.sh 脚本，开始编译新的内核。1$ ./makeKernel.sh 重启编译过程中，你可以去喝杯 coffee 放松一下，等待编译完成。编译结束后，运行 copyImage.sh 脚本，将新编译的镜像文件拷贝到 /boot 目录下。拷贝完成重启 TX2 即可。12$ ./copyImage.sh$ reboot 结束语至此，我们添加有 USB 串口相关驱动的镜像就在 TX2 上被安装好了，这样就可以愉快的使用串口了。快使用新镜像进行开发吧！]]></content>
+      <categories>
+        <category>毕业设计</category>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Jetson TX2</tag>
+        <tag>Nvidia</tag>
+        <tag>内核编译</tag>
+        <tag>驱动</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Nvidia Jetson TX2 刷机并安装JetPack3.1]]></title>
     <url>%2F2018%2F08%2F12%2FNvidia-Jetson-TX2-%E5%88%B7%E6%9C%BA%E5%B9%B6%E5%AE%89%E8%A3%85JetPack3.1%2F</url>
     <content type="text"><![CDATA[Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。 准备工具1.一块Jetson TX2 开发板 2.一台安装 Ubuntu 系统的独立主机(不建议使用虚拟机，推荐使用 Ubuntu 16.04) 3.一台路由器 4.两根网线，一根 micro usb 数据线 准备工作1.首先需要从 Nvidia 的官方网站上下载 Jet Pack3.1 的安装包，使用 Ubuntu host 直接下载或者下载好拷贝到 host 上也可以。(我当时最新的是 Jet Pack3.1 ，现在已经到 3.3 了，你也可以使用最新的版本。下载的话需要 Nvidia 账号才可以)下载网址：https://developer.nvidia.com/embedded/jetpack 2.将 TX2 开发板和主机都通过网线连接到一台路由器上。准备好 TX2 开发板和 Ubuntu Host 之后就可以开始刷机了。 安装下载好 Jet Pack3.1 安装包后，打开 Terminal 进入到安装包所在的目录，执行下面这条命令运行安装包。运行效果如下图。(如果文件没有执行权限可以使用 chmod -x file 命令来改变执行权限) $ ./JetPack-L4T-3.1-linux-x64.run 运行完会弹出 JetPack L4T 3.1 Installer, 一路 Next 就好，如下图： 注意选择 Jetson TX2 开发板 点击 Next 之后会提示输入密码，待安装完成后，就会进入 JetPack L4T Component Manager。(这里要注意，如果网络不好可能会要等很久也出不来安装包信息，所以一定要保证网络环境好，可能有一些包还需要科学上网。)如果你的包加载好了，检查一下 CUDA Toolkit 和 OpenCV for Tegra 这两个包是否选择了，这两个一定要安装。选择好之后，点击 Next 。在弹出的弹框中勾选所有协议，等待各种包下载完成。 下载完成后，选择 Host 和 TX2 的连接方式，我们选择第一项，通过同一路由器连接在同一网络。网口选择保持默认就好。 接下来就是将包移动到 TX2 开发板上。文件较大，可能要等一会。执行下一步后，会出现一个提示重启 TX2 的步骤。按照提示进行操作。 第一步，将 TX2 关机， 拔下电源，使用 micro usb 数据线将 TX2 与 Host 相连。 第二步，重新插上电源，启动 TX2 ，同时按住 rec 和 rst 两个按键两秒钟， 然后松开 rst 按键，按住 rec 按键 3 秒钟。 第三步，这时在 Host 端，重新打开一个 terminal，查看 usb 端口信息(使用命令 lsusb 就可以查看)，这时应该就可以看 ID 为 0955:7C18 的叫 Nvidia Corp 的端口，就说明 TX2 已经进入 REC 模式并和 host 连接好了，这时回到有重启步骤的窗口，按回车 Enter，就开始 TX2 固件更新了。 安装完成后 TX2 就会重新启动，然后接下来会进行 CUDA 等一些软件的安装。 至此，Nvidia TX2 的安装就基本完成了。就可以愉快的在 Jetson TX2 上进行开发啦！ 结束语在 TX2 上进行基本开发的环境就已经基本搭建好了，但是大型的开发可能 TX2 本身自带的 30 多个 G 内存可能是不够的，因此我们可能还需要一个容量较大的 SSD 来放系统。还有就是 TX2 开发板默认的镜像设置可能会有一些端口没有开放，为了跟好的开发，所以后面需要我们自己重新编译镜像。这些在后面我会继续介绍。]]></content>
