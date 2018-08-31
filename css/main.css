@@ -405,7 +405,7 @@ table {
   border-spacing: 0;
   border: 1px solid #ddd;
   font-size: 14px;
-  table-layout: fixed;
+  table-layout: auto;
   word-wrap: break-all;
 }
 table>tbody>tr:nth-of-type(odd) {
@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5c9567;
+  background: #2ed17e;
 }
 .links-of-blogroll {
   font-size: 13px;
