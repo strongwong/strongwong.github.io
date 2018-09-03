@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.strongwong.top/2018/09/03/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99/</loc>
+    
+    <lastmod>2018-09-03T09:32:49.093Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.strongwong.top/2018/08/26/%E5%9C%A8-Jetson-TX2-%E4%B8%8A%E5%AE%89%E8%A3%85-ROS-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    
+    <lastmod>2018-09-03T09:25:53.040Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.strongwong.top/2018/08/02/%E4%BD%BF%E7%94%A8Hexo-GitHub-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2018-09-03T03:28:20.272Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://www.strongwong.top/2028/08/08/strongwong%E3%81%AEdiary/</loc>
     
     <lastmod>2018-09-01T03:06:17.647Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.strongwong.top/2018/08/26/%E5%9C%A8-Jetson-TX2-%E4%B8%8A%E5%AE%89%E8%A3%85-ROS-%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
-    
-    <lastmod>2018-08-31T14:51:57.995Z</lastmod>
     
   </url>
   
