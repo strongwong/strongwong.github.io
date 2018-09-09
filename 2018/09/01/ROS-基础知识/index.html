@@ -90,7 +90,8 @@
 <meta property="og:description" content="ROS 基础知识上一篇，我们已经正确的安装好了 ROS ，但是在使用 ROS 进行机器人开发工作之前，我们先来了解一点 ROS 的基础知识，以便于后面的开发使用。当然我这里自然是没有 ROS wiki 上介绍的详细，要想学习更多的操作请先看 ROS wiki 上的入门教程这里我只简单介绍一下，在我的项目中会用到的一些操作。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fuvaso3mffj30lf0jfq3c">
-<meta property="og:updated_time" content="2018-09-03T02:47:25.154Z">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1.jpg">
+<meta property="og:updated_time" content="2018-09-09T15:17:05.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ROS 基础知识">
 <meta name="twitter:description" content="ROS 基础知识上一篇，我们已经正确的安装好了 ROS ，但是在使用 ROS 进行机器人开发工作之前，我们先来了解一点 ROS 的基础知识，以便于后面的开发使用。当然我这里自然是没有 ROS wiki 上介绍的详细，要想学习更多的操作请先看 ROS wiki 上的入门教程这里我只简单介绍一下，在我的项目中会用到的一些操作。">
@@ -424,7 +425,7 @@
       
         <h3 id="ROS-基础知识"><a href="#ROS-基础知识" class="headerlink" title="ROS 基础知识"></a>ROS 基础知识</h3><p>上一篇，我们已经正确的安装好了 ROS ，但是在使用 ROS 进行机器人开发工作之前，我们先来了解一点 ROS 的基础知识，以便于后面的开发使用。当然我这里自然是没有 ROS wiki 上介绍的详细，要想学习更多的操作请先看 ROS wiki 上的<a href="http://wiki.ros.org/cn/ROS/StartGuide" target="_blank" rel="noopener">入门教程</a><br>这里我只简单介绍一下，在我的项目中会用到的一些操作。</p>
 <a id="more"></a>
-<h3 id="创建工作空间"><a href="#创建工作空间" class="headerlink" title="创建工作空间"></a>创建工作空间</h3><p>工作空间（workspace）是一个存放工程开发相关文件的文件夹。主要目录结构如下：</p>
+<h3 id="创建工作空间"><a href="#创建工作空间" class="headerlink" title="创建工作空间"></a>创建工作空间</h3><p>ROS 使用一个名为 catkin 的 ROS 专用构建系统。为了使用它，用户需要创建并初始化 catkin 工作空间，如下所示。除非用户创建新的工作空间，否则此设置只需设置一次。工作空间（ workspace ）简单来说就是一个存放工程开发相关文件的文件夹。主要目录结构如下：</p>
 <ul>
 <li>src: 代码空间 ( source space )</li>
 <li>build: 编译空间 ( build space )</li>
@@ -433,10 +434,45 @@
 </ul>
 <p><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuvaso3mffj30lf0jfq3c" alt="catkin 编译系统下的工作空间结构"></p>
 <h4 id="创建工作空间-1"><a href="#创建工作空间-1" class="headerlink" title="创建工作空间"></a>创建工作空间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p ~/catkin_ws/src   # 创建工作空间机源码空间</span><br><span class="line">$ cd ~/catkin_ws/src</span><br><span class="line">$ catkin_init_workspace      # 初始化工作空间</span><br></pre></td></tr></table></figure>
-<h4 id="编译工作空间"><a href="#编译工作空间" class="headerlink" title="编译工作空间"></a>编译工作空间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/catkin_ws/</span><br><span class="line">$ catkin_mate</span><br></pre></td></tr></table></figure>
-<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source devel/setup.bash</span><br></pre></td></tr></table></figure>
+<h4 id="编译工作空间"><a href="#编译工作空间" class="headerlink" title="编译工作空间"></a>编译工作空间</h4><p>目前，只有 src 目录和 CMakeLists.txt 文件(运行初始化命令后就会生成)在 catkin 工作目录中，即使 src 目录中没有源代码，我们仍然可以使用 catkin_make 命令来进行构建。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/catkin_ws/</span><br><span class="line">$ catkin_make</span><br></pre></td></tr></table></figure></p>
+<p>如果构建没有问题，运行 ls 命令。除了自己创建的 src 目录之外，还出现了一个新的 build 和 devel 目录。 catkin 的构建系统的相关文件保存在 build 目录中，构建后的可执行文件保存在 devel 目录中。</p>
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source ~/catkin_ws/devel/setup.bash</span><br></pre></td></tr></table></figure>
 <h4 id="检查环境变量"><a href="#检查环境变量" class="headerlink" title="检查环境变量"></a>检查环境变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo $ROS_PACKAGE_PATH</span><br><span class="line">/home/ubuntu/catkin_ws/src:/opt/ros/kinetic/share:/opt/ros/kinetic/stacks</span><br></pre></td></tr></table></figure>
-<h3 id="创建功能包"><a href="#创建功能包" class="headerlink" title="创建功能包"></a>创建功能包</h3><p>一个功能包</p>
+<h3 id="创建功能包"><a href="#创建功能包" class="headerlink" title="创建功能包"></a>创建功能包</h3><p>一个功能包它是是构成 ROS 的基本单元。 ROS 应用程序是以功能包为单位开发的。功能包包括至少一个以上的节点或拥有用于运行其他功能包的节点的配置文件。它还包含功能包所需的所有文件，如用于运行各种进程的 ROS 依赖库、数据集和配置文件等。</p>
+<h4 id="创建功能包-1"><a href="#创建功能包-1" class="headerlink" title="创建功能包"></a>创建功能包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/catkin_ws/src</span><br><span class="line"><span class="comment"># 创建功能包命令格式如下：</span></span><br><span class="line">$ catkin_create_pkg [功能包名称] [依赖功能包 1] [依赖功能包 n]</span><br></pre></td></tr></table></figure>
+<p>「catkin_create_pkg」命令在创建用户功能包时会生成 catkin 构建系统所需的 CMakeLists.txt 和 package.xml 文件的包目录。<br><strong>注：同一个工作空间下，不允许存在同名功能包；在不同工作空间下，允许存在同名功能包。</strong></p>
+<h4 id="编译功能包"><a href="#编译功能包" class="headerlink" title="编译功能包"></a>编译功能包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/catkin_ws</span><br><span class="line">$ catkin_make</span><br></pre></td></tr></table></figure>
+<h3 id="ROS-通信"><a href="#ROS-通信" class="headerlink" title="ROS 通信"></a>ROS 通信</h3><p>为了最大化用户的可重用性，ROS 是以节点的形式开发的，而节点是根据其目的细分的可执行程序的最小单位。节点则通过消息（ message ）与其他的节点交换数据，最终成为一个大型的程序。这里的关键概念是节点之间的消息通信，它分为三种。单向消息发送/接收方式的话题（ topic ）；双向消息请求/响应方式的服务（ service ）；双向消息目标（ goal ）/结果（ result ）/反馈（ feedback ）方式的动作（ action ）。另外，节点中使用的参数可以从外部进行修改。这在大的框架中也可以被看作消息通信。如下图所示：<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">种类</th>
+<th style="text-align:center">区别</th>
+<th style="text-align:center">方向</th>
+<th style="text-align:center">响应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">话题</td>
+<td style="text-align:center">异步</td>
+<td style="text-align:center">单向</td>
+<td style="text-align:center">连续单向地发送/接收数据的情况</td>
+</tr>
+<tr>
+<td style="text-align:center">服务</td>
+<td style="text-align:center">同步</td>
+<td style="text-align:center">双向</td>
+<td style="text-align:center">需要对请求给出即时响应的情况</td>
+</tr>
+<tr>
+<td style="text-align:center">动作</td>
+<td style="text-align:center">异步</td>
+<td style="text-align:center">双向</td>
+<td style="text-align:center">请求与响应之间需要太长的时间，所以难以使用服务的情况，或需要中途反馈值的情况</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -670,7 +706,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-基础知识"><span class="nav-number">1.</span> <span class="nav-text">ROS 基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建工作空间"><span class="nav-number">2.</span> <span class="nav-text">创建工作空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建工作空间-1"><span class="nav-number">2.1.</span> <span class="nav-text">创建工作空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译工作空间"><span class="nav-number">2.2.</span> <span class="nav-text">编译工作空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置环境变量"><span class="nav-number">2.3.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查环境变量"><span class="nav-number">2.4.</span> <span class="nav-text">检查环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建功能包"><span class="nav-number">3.</span> <span class="nav-text">创建功能包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-基础知识"><span class="nav-number">1.</span> <span class="nav-text">ROS 基础知识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建工作空间"><span class="nav-number">2.</span> <span class="nav-text">创建工作空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建工作空间-1"><span class="nav-number">2.1.</span> <span class="nav-text">创建工作空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译工作空间"><span class="nav-number">2.2.</span> <span class="nav-text">编译工作空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置环境变量"><span class="nav-number">2.3.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查环境变量"><span class="nav-number">2.4.</span> <span class="nav-text">检查环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建功能包"><span class="nav-number">3.</span> <span class="nav-text">创建功能包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建功能包-1"><span class="nav-number">3.1.</span> <span class="nav-text">创建功能包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编译功能包"><span class="nav-number">3.2.</span> <span class="nav-text">编译功能包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-通信"><span class="nav-number">4.</span> <span class="nav-text">ROS 通信</span></a></li></ol></div>
             
 
           </div>
