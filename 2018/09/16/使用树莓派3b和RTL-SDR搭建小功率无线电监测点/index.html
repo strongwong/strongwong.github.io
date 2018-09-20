@@ -89,10 +89,16 @@
 <meta property="og:site_name" content="Strongwong">
 <meta property="og:description" content="最近看了两部关于无线电相关的电影（『时空接触』、『黑洞频率』），对与无线电产生了很大的兴趣。现代由于互联网的发展，玩无线电的人越来越少了，了解无线电知识的人也不多了。但是还是有很多人在学习和使用软件定义无线电( Software Defined Radio – SDR )，软件无线电可以做很多神奇事情！！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-20T15:05:26.184Z">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/rtl_test.png">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090.png">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air.png">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air2.png">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/air.jpg">
+<meta property="og:updated_time" content="2018-09-20T16:00:00.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点">
 <meta name="twitter:description" content="最近看了两部关于无线电相关的电影（『时空接触』、『黑洞频率』），对与无线电产生了很大的兴趣。现代由于互联网的发展，玩无线电的人越来越少了，了解无线电知识的人也不多了。但是还是有很多人在学习和使用软件定义无线电( Software Defined Radio – SDR )，软件无线电可以做很多神奇事情！！">
+<meta name="twitter:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/rtl_test.png">
 
 
 
@@ -447,9 +453,10 @@
 </ol>
 </li>
 </ul>
-<p>机器重启后，将电视棒插入 usb 接口，打开 Terminal 窗口，输入 <code>rtl_test -t</code> 命令，测试电视棒是否能够被正常驱动。<br><img src="" alt=""><br>不用担心 PLL 未锁定或未找到 E4000 调谐器或 R820T 而不是 R820T2 等消息。如果你看到跟上图一样的内容，那么说明你的驱动程序安装成功了，并且电视棒成功运行。 接着你就可以安装一些应用程序，来收听无线电信号。</p>
+<p>机器重启后，将电视棒插入 usb 接口，打开 Terminal 窗口，输入 <code>rtl_test -t</code> 命令，测试电视棒是否能够被正常驱动。<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/rtl_test.png" alt=""><br>不用担心 PLL 未锁定或未找到 E4000 调谐器或 R820T 而不是 R820T2 等消息。如果你看到跟上图一样的内容，那么说明你的驱动程序安装成功了，并且电视棒成功运行。 接着你就可以安装一些应用程序，来收听无线电信号。</p>
 <h2 id="安装-dump1090"><a href="#安装-dump1090" class="headerlink" title="安装 dump1090"></a>安装 dump1090</h2><p>电视棒的 rtl_sdr 驱动程序安装好了之后，我们在安装一个 dump1090 应用程序，这样我们就可以接收飞机的信号。<br>能很容易的捕获到飞机是飞机在飞行过程中要不断的报告自身的飞行状态(在 1090Mhz 频率进行广播)，这就是 ADS-B( 广播式自动相关监视系统) ，即一种航空交通监视系统，而且是使用全球性导航卫星系统、飞机的航电设备和地面基础设施， 能够在飞机和航管地面站 ( air-to-ground 即 aircraft to ATS ) 或是空对空 ( air-to-air 即 aircraft to aircraft )之间准确和迅速自动地传送飞行讯息； 其中包括有飞机的识别、位置、高度、速度和其他数据或信息。简单来说 ADS-B 是由飞机直接发出的数据包，让地面或其他飞机可以得知它的位置、高度、速度等信息。ADS-B 利用 112 个未加密的脉冲字在 978Mhz、1090Mhz 发射的信号。我们使用电视棒捕获这些信号，并通过 dump1090 将捕获到信号解析成飞机飞行的信息，生成地图。这样我们就能知道飞机的实时位置及其他信息。</p>
-<p><img src="" alt=""></p>
+<p>打开一个新的 Terminal 窗口，安装 dump1090，并开启 dump1090 服务，然后我们就可以在 Terminal 窗口和浏览器中查看到飞行信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~</span><br><span class="line">$ git <span class="built_in">clone</span> git://github.com/tedsluis/dump1090.git</span><br><span class="line">$ <span class="built_in">cd</span> dump1090</span><br><span class="line">$ make    <span class="comment"># 编译源码</span></span><br><span class="line">$ ./dump1090 --interactive --net --<span class="built_in">enable</span>-agc		<span class="comment"># run dump1090</span></span><br></pre></td></tr></table></figure></p>
+<p>收到的飞机的飞行信息如下图，dump 在启动时会开启自带的 WEB 服务器，并且 WEB 调用了谷歌地图的 API 接收到飞机的一些信息后会在页面地图上描绘出飞机的轨迹(谷歌地图目前需要科学上网)<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090.png" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air.png" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air2.png" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/air.jpg" alt=""></p>
 
       
     </div>
