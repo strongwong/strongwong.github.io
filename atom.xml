@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.strongwong.top/"/>
-  <updated>2018-10-04T12:25:55.572Z</updated>
+  <updated>2018-10-04T12:25:53.900Z</updated>
   <id>http://www.strongwong.top/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>strongwongのdiary</title>
-    <link href="http://www.strongwong.top/2028/08/08/strongwong%E3%81%AEdiary/"/>
-    <id>http://www.strongwong.top/2028/08/08/strongwongのdiary/</id>
-    <published>2028-08-08T06:58:54.000Z</published>
-    <updated>2018-10-04T12:25:55.572Z</updated>
-    
-    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。成长之路，点滴记录！</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p><h3 id="2018-8-8"><a href="#2018-8-8" class="headerlink" title="2018-8-8"></a>2018-8-8</h3><p>1.今天还是在看 Event Arbiter 的代码和文档资料。<br>2.尝试性的把 Event Arbiter 的部分代码进行了移植，但是没跑通，还要很多问题，明天继续解决。进展有点慢，测试方案还不知道怎么弄 <em>_</em><br>3.十年前的今天奥运会开幕了，我在家看奥运会；今天的我大学毕业了，在这里敲代码；十年后的我怎么样了，我会在干什么？<br>4.博客还是要坚持写，加油！</p><h3 id="2018-8-9"><a href="#2018-8-9" class="headerlink" title="2018-8-9"></a>2018-8-9</h3><p>1.今天还是搞 EA 这个东西，没什么进展，难受！<br>2.领导让写一个 CM3 进 sleep 的代码，写了，内存中对应的位也写入值了，但是 J-link 还是可以正常连接，有很多东西好像并没有关掉，怀疑是设计的 SOC 有问题。</p><h3 id="2018-8-10"><a href="#2018-8-10" class="headerlink" title="2018-8-10"></a>2018-8-10</h3><p>1.我昨天给领导写的代码应该是没问题的，只是 FPGA 上不能进行这样的调试。但是还是有一些问题，比如说中断使能没做，也没有 rtc 或者 wakeup 的功能，还需要增加。<br>2.EA 的大部分功能都已经移植好了，但是和底层相关的定时器我没有，还是有问题，不能进行正常调试。然后就是 EA 的整个测试流程怎么搞，我还不太明白，对单个函数的测好做，但是如果要测试多个事件的仲裁，测试 EA 的完整功能还不知道怎么弄。可能我需要有一个简单的任务切换，每个任务里请求一个事件，然后有 EA 来进行判断和仲裁。</p><h3 id="2018-8-13"><a href="#2018-8-13" class="headerlink" title="2018-8-13"></a>2018-8-13</h3><p>1.继续搞 EA ，底层的一些时间相关的寄存器我打算使用 Systick 和 Timer 结合起来模拟。但是还有一些问题，还需要解决。<br>2.今天戚博有给了一个另外的任务，需要我在服务器上使用 arm-none-eabi-gcc 来做开发。让我写一套 Makefile ，虽然我之前有简单使用过 Makefile 、make ，但是我还没弄过这种相对大一些的项目的编译、开发。我找了些 makefile 的文档来学习，看看 Makefile 该怎么写。</p><h3 id="2018-8-14"><a href="#2018-8-14" class="headerlink" title="2018-8-14"></a>2018-8-14</h3><p>1.学习 Linux 下面的开发，学习 Makefile 的编写。了解补充一些编译、链接相关的知识，熟悉一下 GUN 相关的工具链。<br>2.整理我之前写的代码，今天发现之前写的还是有一些问题，做了很多调整，今天主要调整了 UART 相关的代码。明天可能还需要把 timer 、 gpio 的代码做一些调整。然后往服务器上迁移。</p><h3 id="2018-8-26"><a href="#2018-8-26" class="headerlink" title="2018-8-26"></a>2018-8-26</h3><p>1.前段时间回家了一个多星期，断更了。现在回来了，接着写。<br>2.今天整理了一下关于 Jetson TX2 内核重新编译的东西，写了一篇博文。<br>3.请假之前领导让写 Makefile ，做一个使用 arm-none-eabi-gcc 在 Linux 下编译的版本。回来这几天搞完了。 在 Cygwin 下的编译 stm32 还是有点问题，还需要修改。</p><h3 id="2018-8-31"><a href="#2018-8-31" class="headerlink" title="2018-8-31"></a>2018-8-31</h3><p>1.仔细看了一些 Makefile 文件的编写规则，解决了编译问题。<br>2.当当网有购书优惠，屯了 10 本技术相关的书籍。</p><h3 id="2018-9-5"><a href="#2018-9-5" class="headerlink" title="2018-9-5"></a>2018-9-5</h3><p>今天突然发现不能上 Google 学习了，很尴尬，迅速寻找解决方案！成功切换到 v2ray 了上。哈哈，又可以愉快的学习了。</p><h3 id="2018-9-15"><a href="#2018-9-15" class="headerlink" title="2018-9-15"></a>2018-9-15</h3><p>1.又有好几天没有更新了，最近对无线电有了很大兴趣。于是前些天买了一个 RTL_SDR 鼓捣了一下软件无线电。挺好玩的~<br>2.和做基带的同学，做了一些沟通，配合他们做一下 BB 的测试。</p><h3 id="2018-9-20"><a href="#2018-9-20" class="headerlink" title="2018-9-20"></a>2018-9-20</h3><ol><li>ea 的基本测试做了一些，还没做完。</li><li>在和戚博的讨论过程中发现了我之前写的代码有一些不太合理的地方。缺乏面向对象的思想，代码没有很好的做到低耦合。需要做一些改动。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;简单记录一下我每天搞了什么。成长之路，点滴记录！&lt;/p&gt;
-&lt;h3 id=&quot;2018-8-1-8-5&quot;&gt;&lt;a href=&quot;#2018-8-1-8-5&quot; class=&quot;headerlink&quot; title=&quot;2018-8-1~8-5&quot;&gt;&lt;/a&gt;2018-8-1~8-5&lt;/h3&gt;&lt;p&gt;1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。&lt;br&gt;2.测试 UlpBench&lt;br&gt;3.移植 UlpBench 部分代码到 M3 上运行，测试功耗&lt;br&gt;4.测试单指令差异&lt;br&gt;5.整理分析测试数据&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="diary" scheme="http://www.strongwong.top/categories/diary/"/>
-    
-    
-      <category term="diary" scheme="http://www.strongwong.top/tags/diary/"/>
-    
-  </entry>
   
   <entry>
     <title>使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点</title>
@@ -288,6 +265,29 @@
       <category term="读书" scheme="http://www.strongwong.top/tags/%E8%AF%BB%E4%B9%A6/"/>
     
       <category term="学习" scheme="http://www.strongwong.top/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>strongwongのdiary</title>
+    <link href="http://www.strongwong.top/2018/08/08/strongwong%E3%81%AEdiary/"/>
+    <id>http://www.strongwong.top/2018/08/08/strongwongのdiary/</id>
+    <published>2018-08-08T06:58:54.000Z</published>
+    <updated>2018-10-04T16:04:27.443Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。成长之路，点滴记录！</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p><h3 id="2018-8-8"><a href="#2018-8-8" class="headerlink" title="2018-8-8"></a>2018-8-8</h3><p>1.今天还是在看 Event Arbiter 的代码和文档资料。<br>2.尝试性的把 Event Arbiter 的部分代码进行了移植，但是没跑通，还要很多问题，明天继续解决。进展有点慢，测试方案还不知道怎么弄 <em>_</em><br>3.十年前的今天奥运会开幕了，我在家看奥运会；今天的我大学毕业了，在这里敲代码；十年后的我怎么样了，我会在干什么？<br>4.博客还是要坚持写，加油！</p><h3 id="2018-8-9"><a href="#2018-8-9" class="headerlink" title="2018-8-9"></a>2018-8-9</h3><p>1.今天还是搞 EA 这个东西，没什么进展，难受！<br>2.领导让写一个 CM3 进 sleep 的代码，写了，内存中对应的位也写入值了，但是 J-link 还是可以正常连接，有很多东西好像并没有关掉，怀疑是设计的 SOC 有问题。</p><h3 id="2018-8-10"><a href="#2018-8-10" class="headerlink" title="2018-8-10"></a>2018-8-10</h3><p>1.我昨天给领导写的代码应该是没问题的，只是 FPGA 上不能进行这样的调试。但是还是有一些问题，比如说中断使能没做，也没有 rtc 或者 wakeup 的功能，还需要增加。<br>2.EA 的大部分功能都已经移植好了，但是和底层相关的定时器我没有，还是有问题，不能进行正常调试。然后就是 EA 的整个测试流程怎么搞，我还不太明白，对单个函数的测好做，但是如果要测试多个事件的仲裁，测试 EA 的完整功能还不知道怎么弄。可能我需要有一个简单的任务切换，每个任务里请求一个事件，然后有 EA 来进行判断和仲裁。</p><h3 id="2018-8-13"><a href="#2018-8-13" class="headerlink" title="2018-8-13"></a>2018-8-13</h3><p>1.继续搞 EA ，底层的一些时间相关的寄存器我打算使用 Systick 和 Timer 结合起来模拟。但是还有一些问题，还需要解决。<br>2.今天戚博有给了一个另外的任务，需要我在服务器上使用 arm-none-eabi-gcc 来做开发。让我写一套 Makefile ，虽然我之前有简单使用过 Makefile 、make ，但是我还没弄过这种相对大一些的项目的编译、开发。我找了些 makefile 的文档来学习，看看 Makefile 该怎么写。</p><h3 id="2018-8-14"><a href="#2018-8-14" class="headerlink" title="2018-8-14"></a>2018-8-14</h3><p>1.学习 Linux 下面的开发，学习 Makefile 的编写。了解补充一些编译、链接相关的知识，熟悉一下 GUN 相关的工具链。<br>2.整理我之前写的代码，今天发现之前写的还是有一些问题，做了很多调整，今天主要调整了 UART 相关的代码。明天可能还需要把 timer 、 gpio 的代码做一些调整。然后往服务器上迁移。</p><h3 id="2018-8-26"><a href="#2018-8-26" class="headerlink" title="2018-8-26"></a>2018-8-26</h3><p>1.前段时间回家了一个多星期，断更了。现在回来了，接着写。<br>2.今天整理了一下关于 Jetson TX2 内核重新编译的东西，写了一篇博文。<br>3.请假之前领导让写 Makefile ，做一个使用 arm-none-eabi-gcc 在 Linux 下编译的版本。回来这几天搞完了。 在 Cygwin 下的编译 stm32 还是有点问题，还需要修改。</p><h3 id="2018-8-31"><a href="#2018-8-31" class="headerlink" title="2018-8-31"></a>2018-8-31</h3><p>1.仔细看了一些 Makefile 文件的编写规则，解决了编译问题。<br>2.当当网有购书优惠，屯了 10 本技术相关的书籍。</p><h3 id="2018-9-5"><a href="#2018-9-5" class="headerlink" title="2018-9-5"></a>2018-9-5</h3><p>今天突然发现不能上 Google 学习了，很尴尬，迅速寻找解决方案！成功切换到 v2ray 了上。哈哈，又可以愉快的学习了。</p><h3 id="2018-9-15"><a href="#2018-9-15" class="headerlink" title="2018-9-15"></a>2018-9-15</h3><p>1.又有好几天没有更新了，最近对无线电有了很大兴趣。于是前些天买了一个 RTL_SDR 鼓捣了一下软件无线电。挺好玩的~<br>2.和做基带的同学，做了一些沟通，配合他们做一下 BB 的测试。</p><h3 id="2018-9-20"><a href="#2018-9-20" class="headerlink" title="2018-9-20"></a>2018-9-20</h3><ol><li>ea 的基本测试做了一些，还没做完。</li><li>在和戚博的讨论过程中发现了我之前写的代码有一些不太合理的地方。缺乏面向对象的思想，代码没有很好的做到低耦合。需要做一些改动。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单记录一下我每天搞了什么。成长之路，点滴记录！&lt;/p&gt;
+&lt;h3 id=&quot;2018-8-1-8-5&quot;&gt;&lt;a href=&quot;#2018-8-1-8-5&quot; class=&quot;headerlink&quot; title=&quot;2018-8-1~8-5&quot;&gt;&lt;/a&gt;2018-8-1~8-5&lt;/h3&gt;&lt;p&gt;1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。&lt;br&gt;2.测试 UlpBench&lt;br&gt;3.移植 UlpBench 部分代码到 M3 上运行，测试功耗&lt;br&gt;4.测试单指令差异&lt;br&gt;5.整理分析测试数据&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="diary" scheme="http://www.strongwong.top/categories/diary/"/>
+    
+    
+      <category term="diary" scheme="http://www.strongwong.top/tags/diary/"/>
     
   </entry>
   
