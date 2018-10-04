@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Strongwong</title>
   
-  <subtitle>个人小站</subtitle>
+  <subtitle>Embedded Software Engineer. Blogging about tech and life.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.strongwong.top/"/>
@@ -176,9 +176,9 @@
       <category term="学习" scheme="http://www.strongwong.top/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="ROS" scheme="http://www.strongwong.top/tags/ROS/"/>
-    
       <category term="Jetson TX2" scheme="http://www.strongwong.top/tags/Jetson-TX2/"/>
+    
+      <category term="ROS" scheme="http://www.strongwong.top/tags/ROS/"/>
     
   </entry>
   
