@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /assets
+Disallow: /js
+Disallow: /css
+Disallow: /lib
+Disallow: /uploads
+Disallow: /images
+Disallow: /photos
+Disallow: /pages
+
+Sitemap: https://blog.strongwong.top/sitemap.xml
