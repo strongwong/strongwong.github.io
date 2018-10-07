@@ -118,26 +118,20 @@
   });
 </script>
 
-  <meta name="description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
-<meta name="keywords" content="Jetson TX2,Nvidia,刷机">
+  <meta name="description" content="ROS 机器人操作系统关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基">
+<meta name="keywords" content="Jetson TX2,ROS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nvidia Jetson TX2 刷机并安装JetPack3.1">
-<meta property="og:url" content="https://blog.strongwong.top/Nvidia-Jetson-TX2-刷机并安装JetPack3.1/index.html">
+<meta property="og:title" content="在 Jetson TX2 上安装 ROS 机器人操作系统">
+<meta property="og:url" content="https://blog.strongwong.top/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
+<meta property="og:description" content="ROS 机器人操作系统关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://files.catbox.moe/n9dnwk.png">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702af99dc6d6522bb72f67">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68">
-<meta property="og:image" content="https://files.catbox.moe/hvd0oi.png">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702bda9dc6d6522bb72f6a">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702bf19dc6d6522bb72f6b">
-<meta property="og:updated_time" content="2018-08-20T10:50:08.893Z">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b89420e9dc6d659595a1950">
+<meta property="og:updated_time" content="2018-09-09T15:31:35.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nvidia Jetson TX2 刷机并安装JetPack3.1">
-<meta name="twitter:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
-<meta name="twitter:image" content="https://files.catbox.moe/n9dnwk.png">
+<meta name="twitter:title" content="在 Jetson TX2 上安装 ROS 机器人操作系统">
+<meta name="twitter:description" content="ROS 机器人操作系统关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基">
+<meta name="twitter:image" content="https://photo.ishield.cn/pic/5b89420e9dc6d659595a1950">
 
 
 
@@ -146,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/Nvidia-Jetson-TX2-刷机并安装JetPack3.1/"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html"/>
 
 
 
@@ -156,7 +150,7 @@
   };
 </script>
 
-  <title>Nvidia Jetson TX2 刷机并安装JetPack3.1 | StrongWong</title>
+  <title>在 Jetson TX2 上安装 ROS 机器人操作系统 | StrongWong</title>
   
 
 
@@ -361,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/Nvidia-Jetson-TX2-刷机并安装JetPack3.1/">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -378,7 +372,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Nvidia Jetson TX2 刷机并安装JetPack3.1
+          <h2 class="post-title" itemprop="name headline">在 Jetson TX2 上安装 ROS 机器人操作系统
               
             
           </h2>
@@ -403,7 +397,7 @@
                 
               
 
-              <time title="创建时间：2018-08-12 20:15:29" itemprop="dateCreated datePublished" datetime="2018-08-12T20:15:29+08:00">2018-08-12</time>
+              <time title="创建时间：2018-08-26 21:17:26" itemprop="dateCreated datePublished" datetime="2018-08-26T21:17:26+08:00">2018-08-26</time>
             
 
             
@@ -443,8 +437,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/Nvidia-Jetson-TX2-刷机并安装JetPack3.1/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/Nvidia-Jetson-TX2-刷机并安装JetPack3.1/" itemprop="commentCount"></span>
+                <a href="/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -452,7 +446,7 @@
 
           
           
-             <span id="/Nvidia-Jetson-TX2-刷机并安装JetPack3.1/" class="leancloud_visitors" data-flag-title="Nvidia Jetson TX2 刷机并安装JetPack3.1">
+             <span id="/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html" class="leancloud_visitors" data-flag-title="在 Jetson TX2 上安装 ROS 机器人操作系统">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -483,28 +477,76 @@
       
 
       
-        <h2 id="Nvidia-Jetson-TX2-刷机并安装-JetPack3-1"><a href="#Nvidia-Jetson-TX2-刷机并安装-JetPack3-1" class="headerlink" title="Nvidia Jetson TX2 刷机并安装 JetPack3.1"></a>Nvidia Jetson TX2 刷机并安装 JetPack3.1</h2><p>上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。<br>本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。</p>
+        <h3 id="ROS-机器人操作系统"><a href="#ROS-机器人操作系统" class="headerlink" title="ROS 机器人操作系统"></a>ROS 机器人操作系统</h3><p>关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基于硬件抽象的软件开发环境，存在提供各种服务的应用程序。<br>ROS 就是这样一个提供了类似操作系统的硬件抽象。在 ROS 维基中将 ROS 定义为 “ ROS 是一个开放源代码的机器人元操作系统。它提供了我们对操作系统期望的服务，包括硬件抽象、低级设备控制、常用功能的实现、进程之间的消息传递以及功能包管理。它还提供了用于在多台计算机之间获取、构建、编写和运行代码的工具和库。 ”<br>因此，ROS 并不是一种新的操作系统，确切的说，ROS 是一种元级操作系统。是基于现有操作系统的，利用应用程序和分布式计算资源之间的虚拟化层来运用分布式计算资源来执行调度、加载、监视、错误处理等任务的系统。同时提供一个或多个操作系统下的数据通信。</p>
 <a id="more"></a>
-<h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><p>1.一块Jetson TX2 开发板</p>
-<p>2.一台安装 Ubuntu 系统的独立主机(不建议使用虚拟机，推荐使用 Ubuntu 16.04)</p>
-<p>3.一台路由器</p>
-<p>4.两根网线，一根 micro usb 数据线</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1.首先需要从 Nvidia 的官方网站上下载 Jet Pack3.1 的安装包，使用 Ubuntu host 直接下载或者下载好拷贝到 host 上也可以。(我当时最新的是 Jet Pack3.1 ，现在已经到 3.3 了，你也可以使用最新的版本。下载的话需要 Nvidia 账号才可以)<br>下载网址：<a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">https://developer.nvidia.com/embedded/jetpack</a></p>
-<p>2.将 TX2 开发板和主机都通过网线连接到一台路由器上。准备好 TX2 开发板和 Ubuntu Host 之后就可以开始刷机了。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载好 Jet Pack3.1 安装包后，打开 Terminal 进入到安装包所在的目录，执行下面这条命令运行安装包。运行效果如下图。(如果文件没有执行权限可以使用 chmod -x file 命令来改变执行权限)</p>
-<p><code>$
- ./JetPack-L4T-3.1-linux-x64.run</code></p>
-<p>运行完会弹出 JetPack L4T 3.1 Installer, 一路 Next 就好，如下图：<br><img src="https://files.catbox.moe/n9dnwk.png" alt=""></p>
-<p>注意选择 Jetson TX2 开发板<br><img src="https://photo.ishield.cn/pic/5b702af99dc6d6522bb72f67" alt=""></p>
-<p>点击 Next 之后会提示输入密码，待安装完成后，就会进入 JetPack L4T Component Manager。(这里要注意，如果网络不好可能会要等很久也出不来安装包信息，所以一定要保证网络环境好，可能有一些包还需要科学上网。)<br>如果你的包加载好了，检查一下 CUDA Toolkit 和 OpenCV for Tegra 这两个包是否选择了，这两个一定要安装。选择好之后，点击 Next 。在弹出的弹框中勾选所有协议，等待各种包下载完成。<br><img src="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c" alt=""><br><img src="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68" alt=""></p>
-<p>下载完成后，选择 Host 和 TX2 的连接方式，我们选择第一项，通过同一路由器连接在同一网络。网口选择保持默认就好。<br><img src="https://files.catbox.moe/hvd0oi.png" alt=""></p>
-<p>接下来就是将包移动到 TX2 开发板上。文件较大，可能要等一会。执行下一步后，会出现一个提示重启 TX2 的步骤。按照提示进行操作。</p>
-<p>第一步，将 TX2 关机， 拔下电源，使用 micro usb 数据线将 TX2 与 Host 相连。</p>
-<p>第二步，重新插上电源，启动 TX2 ，同时按住 rec 和 rst 两个按键两秒钟， 然后松开 rst 按键，按住 rec 按键 3 秒钟。</p>
-<p>第三步，这时在 Host 端，重新打开一个 terminal，查看 usb 端口信息(使用命令 lsusb 就可以查看)，这时应该就可以看 ID 为 0955:7C18 的叫 Nvidia Corp 的端口，就说明 TX2 已经进入 REC 模式并和 host 连接好了，这时回到有重启步骤的窗口，按回车 Enter，就开始 TX2 固件更新了。<br><img src="https://photo.ishield.cn/pic/5b702bda9dc6d6522bb72f6a" alt=""><br><img src="https://photo.ishield.cn/pic/5b702bf19dc6d6522bb72f6b" alt=""></p>
-<p>安装完成后 TX2 就会重新启动，然后接下来会进行 CUDA 等一些软件的安装。</p>
-<p>至此，Nvidia TX2 的安装就基本完成了。就可以愉快的在 Jetson TX2 上进行开发啦！</p>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>在 TX2 上进行基本开发的环境就已经基本搭建好了，但是大型的开发可能 TX2 本身自带的 30 多个 G 内存可能是不够的，因此我们可能还需要一个容量较大的 SSD 来放系统。还有就是 TX2 开发板默认的镜像设置可能会有一些端口没有开放，为了跟好的开发，所以后面需要我们自己重新编译镜像。这些在后面我会继续介绍。</p>
+<p>对于 ROS 的安装，之前官方网站上是没有中文教程的，对于我这种塑料英语，直接看官网英文教程还是蛮有难度的。不过好在现在 ROS 官网已经有中文版的安装教程了。直接参考官网上的教程安装就好了！<br>官网安装教程：<a href="http://wiki.ros.org/cn/kinetic/Installation" target="_blank" rel="noopener">http://wiki.ros.org/cn/kinetic/Installation</a></p>
+<h3 id="ROS-版本"><a href="#ROS-版本" class="headerlink" title="ROS 版本"></a>ROS 版本</h3><p>虽然官方已经有了中文版本的安装教程，但是我这里还是简单记录一下。<br>首先，ROS 目前大家使用的主流版本还是 ROS 1.0 的版本，ROS 1.0 版本目前只支持 Linux 系统。而对 ROS 兼容性最好的就是 Ubuntu 操作系统了，恰好我们的 Jetson TX2 就是 Ubuntu 系统。</p>
+<p>这里还要说明的是，我们在 TX2 上安装 ROS 系统，并不是要直接在 TX2 上来做开发的(虽然也可以)， TX2 主要是作为部署端的。因此，还需要有一台 Ubuntu 电脑也需要安装上 ROS 来进行开发工作，安装步骤相同。</p>
+<p>其次， Ubuntu 和 ROS 都有很多版本，各版本之间是存在兼容性问题的。ROS 和 Ubuntu 之间的版本对应关系如下表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">ROS 版本</th>
+<th style="text-align:center">发布日期</th>
+<th style="text-align:center">对应的 Ubuntu 版本</th>
+<th style="text-align:center">停止支持日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ROS Melodic</td>
+<td style="text-align:center">2018.5.23</td>
+<td style="text-align:center">Ubuntu 18.04(Bionic)/Ubuntu 17.10(Artful)</td>
+<td style="text-align:center">2023.5</td>
+</tr>
+<tr>
+<td style="text-align:center">ROS Lunar</td>
+<td style="text-align:center">2017.5.23</td>
+<td style="text-align:center">Ubuntu 17.04(Zesty)/Ubuntu 16.10(Yakkety)/Ubuntu16.04(Xenial)</td>
+<td style="text-align:center">2019.5</td>
+</tr>
+<tr>
+<td style="text-align:center">ROS Kinetic(推荐)</td>
+<td style="text-align:center">2016.5.23</td>
+<td style="text-align:center">Ubuntu 16.04(Xenial)/Ubuntu 15.10(Wily)</td>
+<td style="text-align:center">2021.4</td>
+</tr>
+<tr>
+<td style="text-align:center">ROS Jade</td>
+<td style="text-align:center">2015.5.23</td>
+<td style="text-align:center">Ubuntu 15.04(Wily)/Ubuntu LTS 14.04(Trusty)</td>
+<td style="text-align:center">2017.5</td>
+</tr>
+<tr>
+<td style="text-align:center">ROS Kinetic</td>
+<td style="text-align:center">2014.7.22</td>
+<td style="text-align:center">Ubuntu LTS 14.04(Trusty)</td>
+<td style="text-align:center">2019.4</td>
+</tr>
+</tbody>
+</table>
+<p>目前主流版本还是 ROS Kinetic 且支持时间较长，今年新出的 Melodic 版资料相对较少。所以推荐安装 ROS Kinetic 版本。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="软件中心配置"><a href="#软件中心配置" class="headerlink" title="软件中心配置"></a>软件中心配置</h4><p>打开软件和更新对话框，配置你的 Ubuntu 软件仓库( repositories )以允许“restricted”，“universe”和“multiverse”这三种安装模式。如下图：<br><img src="https://photo.ishield.cn/pic/5b89420e9dc6d659595a1950" alt=""><br>配置完成关闭窗口。</p>
+<h4 id="添加source-list"><a href="#添加source-list" class="headerlink" title="添加source.list"></a>添加source.list</h4><p>设置你的电脑可以从 packages.ros.org 接收软件。<br>打开一个 Terminal ( Ctrl+Alt+T )，输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo sh -c &apos;echo “deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc)main”&gt; /etc/apt/sources.list.d/ros-latest.list&apos;</span><br></pre></td></tr></table></figure></p>
+<p>这个镜像国内会比较慢，建议更换为国内镜像源，就是把上面的命令更换一下。官方<a href="http://wiki.ros.org/ROS/Installation/UbuntuMirrors" target="_blank" rel="noopener">镜像</a></p>
+<h4 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-key adv --keyserver hkp：//ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116</span><br></pre></td></tr></table></figure>
+<p>如果你遇到连接到 keyserver 的问题，你可以在以上命令尝试替换 hkp://pgp.mit.edu:80 或 hkp://keyserver.ubuntu.com:80<br>密钥可以根据服务器的操作发生变更，如有变化，请参考<a href="http://wiki.ros.org/cn/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">官方wiki</a>页面。</p>
+<h4 id="安装-ROS"><a href="#安装-ROS" class="headerlink" title="安装 ROS"></a>安装 ROS</h4><p>首先，确保你的系统软件是最新版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br></pre></td></tr></table></figure></p>
+<p>接下来，就可以安装 ROS 了，但是 ROS Kinetic 也有好几个版本，这里我们安装全功能版本(包括ROS、rqt、RViz、机器人相关的库、仿真和导航等等。部署端一般基础版就可以了)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ros-kinetic-desktop-full</span><br></pre></td></tr></table></figure></p>
+<p>这里可能会要等待几分钟，因网速而定。如果一切顺利的话，那就安装完了。<br>安装完成后，可以使用下面的命令查看可使用的软件包(可以搜索到大约1600多个功能包)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-cache search ros-kinetic</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>如果想个别安装功能包，请使用如下命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ sudo apt-get install ros-kinetic-[功能包名称]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>现在是安装完了，但是我们还需要初始化 ROS 以及配置环境变量</p>
+<h4 id="初始化-rosdep"><a href="#初始化-rosdep" class="headerlink" title="初始化 rosdep"></a>初始化 rosdep</h4><p>在开始使用 ROS 之前还需要初始化 rosdep 。rosdep 可以方便地在需要编译某些源码的时候为其安装一些系统依赖，同时也是某些 ROS 核心功能组件所必需用到的工具。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rosdep init</span><br><span class="line">$ rosdep update</span><br></pre></td></tr></table></figure></p>
+<h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><p>如果每次打开一个新的终端时 ROS 环境变量都能够自动配置好(即添加到 bash 会话中)，那将会方便很多：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;source /opt/ros/kinetic/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">$ source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>可以使用 gedit 或者 vi 等编辑器打开 bashrc 文件查看是否配置成功。在 bashrc 文件最底部我们可以看到已经有了很多设置。不要修改以前的设置，如果你需要修改的话在最底部添加就好了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set ROS Kinetic</span></span><br><span class="line"><span class="built_in">source</span> /opt/ros/kinetic/setup.bash</span><br><span class="line"><span class="built_in">source</span> ~/catkin_ws/devel/setup.bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set ROS Network</span></span><br><span class="line"><span class="built_in">export</span> ROS_HOSTNAME=xxx.xxx.xxx.xxx</span><br><span class="line"><span class="built_in">export</span> ROS_MASTER_URI=http://<span class="variable">$&#123;ROS_HOSTNAME&#125;</span>:11311</span><br></pre></td></tr></table></figure></p>
+<h4 id="安装构建依赖"><a href="#安装构建依赖" class="headerlink" title="安装构建依赖"></a>安装构建依赖</h4><p>到目前为止，已经安装了运行核心 ROS 包所需的内容。为了创建和管理自己的 ROS 工作区，有各种各样的工具和需求分别分布。例如：rosinstall 是一个经常使用的命令行工具，它能够轻松地从一个命令下载许多 ROS 包的源树。</p>
+<p>要安装这个工具和其他构建 ROS 包的依赖项，请运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential</span><br></pre></td></tr></table></figure></p>
+<p>好！到这里，ROS 就基本安装完成了。下面就来测试一下，看看是否可以正常运行。</p>
+<h3 id="测试-ROS"><a href="#测试-ROS" class="headerlink" title="测试 ROS"></a>测试 ROS</h3><p>首先，启动 ROS 环境<br>输入 roscore 命令，测试测试结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ roscore</span><br><span class="line">... logging to /home/ubuntu/.ros/log/3e61b674-03cf-11e8-ac54-9cb70ddc3658/roslaunch-ubuntu-31481.log</span><br><span class="line">Checking log directory for disk usage. This may take awhile.</span><br><span class="line">Press Ctrl-C to interrupt</span><br><span class="line">Done checking log file disk usage. Usage is &lt;1GB.</span><br><span class="line">started roslaunch server http://ubuntu:11311/</span><br><span class="line">ros_comm version 1.12.12</span><br><span class="line">SUMMARY</span><br><span class="line">========</span><br><span class="line">PARAMETERS</span><br><span class="line"> * /rosdistro: kinetic</span><br><span class="line"> * /rosversion: 1.12.12</span><br><span class="line">NODES</span><br><span class="line">auto-starting new master</span><br><span class="line">process[master]: started with pid [31495]</span><br><span class="line">ROS_MASTER_URI=http://ubuntu:11311/</span><br><span class="line">setting /run_id to 3e61b674-03cf-11e8-ac54-9cb70ddc3658</span><br><span class="line">process[rosout-1]: started with pid [31508]</span><br><span class="line">started core service [/rosout]</span><br></pre></td></tr></table></figure></p>
+<p>如果看到 started core service [/rosout] ，那就说明安装成功了！退出按『Ctrl+c』。</p>
+<p>如果你安装过程中出现了问题，可以尝试换个网络，或者多试几次吧，有时候服务器就是连不上！*_*</p>
 
       
     </div>
@@ -556,9 +598,7 @@
           
             <a href="/tags/Jetson-TX2/" rel="tag"># Jetson TX2</a>
           
-            <a href="/tags/Nvidia/" rel="tag"># Nvidia</a>
-          
-            <a href="/tags/刷机/" rel="tag"># 刷机</a>
+            <a href="/tags/ROS/" rel="tag"># ROS</a>
           
         </div>
       
@@ -571,8 +611,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/我的毕业设计-基于ROS的移动机器人/" rel="next" title="我的毕业设计--基于ROS的移动机器人">
-                <i class="fa fa-chevron-left"></i> 我的毕业设计--基于ROS的移动机器人
+              <a href="/posts/Jetson-TX2-重新编译内核添加usb等驱动.html" rel="next" title="Jetson TX2 重新编译内核添加usb等驱动">
+                <i class="fa fa-chevron-left"></i> Jetson TX2 重新编译内核添加usb等驱动
               </a>
             
           </div>
@@ -581,8 +621,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Jetson-TX2-重新编译内核添加usb等驱动/" rel="prev" title="Jetson TX2 重新编译内核添加usb等驱动">
-                Jetson TX2 重新编译内核添加usb等驱动 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/ROS-基础知识.html" rel="prev" title="ROS 基础知识">
+                ROS 基础知识 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -813,7 +853,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nvidia-Jetson-TX2-刷机并安装-JetPack3-1"><span class="nav-number">1.</span> <span class="nav-text">Nvidia Jetson TX2 刷机并安装 JetPack3.1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工具"><span class="nav-number">1.1.</span> <span class="nav-text">准备工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">1.4.</span> <span class="nav-text">结束语</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-机器人操作系统"><span class="nav-number">1.</span> <span class="nav-text">ROS 机器人操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-版本"><span class="nav-number">2.</span> <span class="nav-text">ROS 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件中心配置"><span class="nav-number">3.1.</span> <span class="nav-text">软件中心配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加source-list"><span class="nav-number">3.2.</span> <span class="nav-text">添加source.list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加密钥"><span class="nav-number">3.3.</span> <span class="nav-text">添加密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-ROS"><span class="nav-number">3.4.</span> <span class="nav-text">安装 ROS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化-rosdep"><span class="nav-number">3.5.</span> <span class="nav-text">初始化 rosdep</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置环境"><span class="nav-number">3.6.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装构建依赖"><span class="nav-number">3.7.</span> <span class="nav-text">安装构建依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-ROS"><span class="nav-number">4.</span> <span class="nav-text">测试 ROS</span></a></li></ol></div>
             
 
           </div>

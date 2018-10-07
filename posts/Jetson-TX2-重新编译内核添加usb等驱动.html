@@ -118,18 +118,21 @@
   });
 </script>
 
-  <meta name="description" content="欢迎您访问我的网站，希望我分享的东西会对您有一些帮助！祝您 Coding 愉快！">
-<meta name="keywords" content="Testing,Another Tag">
+  <meta name="description" content="Jetson TX2 重新编译内核添加usb驱动上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。本文这里就简单介绍一下，添加驱动并重新编译镜像。在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetson">
+<meta name="keywords" content="Jetson TX2,Nvidia,内核编译,驱动">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://blog.strongwong.top/关于/index.html">
+<meta property="og:title" content="Jetson TX2 重新编译内核添加usb等驱动">
+<meta property="og:url" content="https://blog.strongwong.top/posts/Jetson-TX2-重新编译内核添加usb等驱动.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="欢迎您访问我的网站，希望我分享的东西会对您有一些帮助！祝您 Coding 愉快！">
+<meta property="og:description" content="Jetson TX2 重新编译内核添加usb驱动上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。本文这里就简单介绍一下，添加驱动并重新编译镜像。在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetson">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-14T13:06:05.284Z">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8269849dc6d6533b592669">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b826b089dc6d6533b59266f">
+<meta property="og:updated_time" content="2018-08-26T09:26:32.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="欢迎您访问我的网站，希望我分享的东西会对您有一些帮助！祝您 Coding 愉快！">
+<meta name="twitter:title" content="Jetson TX2 重新编译内核添加usb等驱动">
+<meta name="twitter:description" content="Jetson TX2 重新编译内核添加usb驱动上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。本文这里就简单介绍一下，添加驱动并重新编译镜像。在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetson">
+<meta name="twitter:image" content="https://photo.ishield.cn/pic/5b8269849dc6d6533b592669">
 
 
 
@@ -138,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/关于/"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/Jetson-TX2-重新编译内核添加usb等驱动.html"/>
 
 
 
@@ -148,7 +151,7 @@
   };
 </script>
 
-  <title>关于 | StrongWong</title>
+  <title>Jetson TX2 重新编译内核添加usb等驱动 | StrongWong</title>
   
 
 
@@ -353,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/关于/">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/Jetson-TX2-重新编译内核添加usb等驱动.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -370,7 +373,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">关于
+          <h2 class="post-title" itemprop="name headline">Jetson TX2 重新编译内核添加usb等驱动
               
             
           </h2>
@@ -395,7 +398,7 @@
                 
               
 
-              <time title="创建时间：2018-07-28 18:59:50" itemprop="dateCreated datePublished" datetime="2018-07-28T18:59:50+08:00">2018-07-28</time>
+              <time title="创建时间：2018-08-20 18:55:00" itemprop="dateCreated datePublished" datetime="2018-08-20T18:55:00+08:00">2018-08-20</time>
             
 
             
@@ -413,7 +416,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Testing/" itemprop="url" rel="index"><span itemprop="name">Testing</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/毕业设计/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/毕业设计/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
 
                 
                 
@@ -428,8 +438,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/关于/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/关于/" itemprop="commentCount"></span>
+                <a href="/posts/Jetson-TX2-重新编译内核添加usb等驱动.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/Jetson-TX2-重新编译内核添加usb等驱动.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -437,7 +447,7 @@
 
           
           
-             <span id="/关于/" class="leancloud_visitors" data-flag-title="关于">
+             <span id="/posts/Jetson-TX2-重新编译内核添加usb等驱动.html" class="leancloud_visitors" data-flag-title="Jetson TX2 重新编译内核添加usb等驱动">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -468,13 +478,17 @@
       
 
       
-        <p>欢迎您访问我的网站，希望我分享的东西会对您有一些帮助！<br>祝您 Coding 愉快！</p>
+        <h3 id="Jetson-TX2-重新编译内核添加usb驱动"><a href="#Jetson-TX2-重新编译内核添加usb驱动" class="headerlink" title="Jetson TX2 重新编译内核添加usb驱动"></a>Jetson TX2 重新编译内核添加usb驱动</h3><p>上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。<br>本文这里就简单介绍一下，添加驱动并重新编译镜像。<br>在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetsonhacks 的仓库里有。这里我们就使用他的脚本文件。</p>
 <a id="more"></a>
-<p>关于我，你什么也不需要知道，哈哈哈~~</p>
-<p>关于本站，我有时间就写点东西喽，嘿嘿~~，开心就好！</p>
-<p>关于分享什么，聊一点技术、谈一点理想、做一点实事不枉来世一遭！</p>
-<p>达则兼济天下，穷则独善其身~~</p>
-<p>做一个快乐的程序员！</p>
+<h3 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h3><p>首先从 GitHub 上下载编译脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/jetsonhacks/buildJetsonTX2Kernel.git</span><br></pre></td></tr></table></figure></p>
+<p>如果你是 JetPack3.2.1 版本，直接使用 git 下载的话没有问题，因为目前他更新到的最新版本是 JetPack 3.2.1 内核版本为 28.2.1 (2018-8-20)。但是我安装的是 JetPack 3.1 对应的内核版本是 28.1 所以是不能直接使用的。因此需要下载对应的内核版本的脚本才可以使用。<br>JetPack 3.1 版本的话就需要下载这个。<br><code>https://github.com/jetsonhacks/buildJetsonTX2Kernel/archive/vL4T28.1.tar.gz</code></p>
+<h3 id="解压，获取源码"><a href="#解压，获取源码" class="headerlink" title="解压，获取源码"></a>解压，获取源码</h3><p>下载好之后，解压缩，进入解压出来的文件夹，打开 Terminal 运行 getKernelSources.sh 脚本获取内核源码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./getKernelSources.sh</span><br></pre></td></tr></table></figure></p>
+<h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><p>下载完成之后就会打开一个 xconfig 配置界面。<br>设置你的镜像名称。打开设置 Genral Setup-&gt;Local version - append to kernel release，双击 Local version - append to kernel release<br>在文本框中输入名字，如我这里为 -jetsonbot-v0.1 ， 回车；如下图所示：<br><img src="https://photo.ishield.cn/pic/5b8269849dc6d6533b592669" alt=""></p>
+<p>在 xconfig 中按 Ctrl+F ，会弹出一个搜索框，输入你想要添加的设备驱动，比如可以添加 USB ACM， CH341 和 cp210x 串口驱动等，在搜索结果中选择对应的驱动，选中框打上勾即可。<br>我这里搜索的是 ACM 驱动，如下图所示：<br><img src="https://photo.ishield.cn/pic/5b826b089dc6d6533b59266f" alt=""></p>
+<p>设置好了之后，一定要保存你的设置， File-&gt;Save</p>
+<h3 id="编译新内核"><a href="#编译新内核" class="headerlink" title="编译新内核"></a>编译新内核</h3><p>保存好设置，关闭 xconfig 配置窗口，准备开始编译内核，编译过程大约需要 20 分钟。<br>运行 makeKernel.sh 脚本，开始编译新的内核。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./makeKernel.sh</span><br></pre></td></tr></table></figure></p>
+<h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><p>编译过程中，你可以去喝杯 coffee 放松一下，等待编译完成。<br>编译结束后，运行 copyImage.sh 脚本，将新编译的镜像文件拷贝到  /boot 目录下。拷贝完成重启 TX2 即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./copyImage.sh</span><br><span class="line">$ reboot</span><br></pre></td></tr></table></figure></p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>至此，我们添加有 USB 串口相关驱动的镜像就在 TX2 上被安装好了，这样就可以愉快的使用串口了。快使用新镜像进行开发吧！</p>
 
       
     </div>
@@ -524,9 +538,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Testing/" rel="tag"># Testing</a>
+            <a href="/tags/Jetson-TX2/" rel="tag"># Jetson TX2</a>
           
-            <a href="/tags/Another-Tag/" rel="tag"># Another Tag</a>
+            <a href="/tags/Nvidia/" rel="tag"># Nvidia</a>
+          
+            <a href="/tags/内核编译/" rel="tag"># 内核编译</a>
+          
+            <a href="/tags/驱动/" rel="tag"># 驱动</a>
           
         </div>
       
@@ -539,14 +557,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html" rel="next" title="Nvidia Jetson TX2 刷机并安装JetPack3.1">
+                <i class="fa fa-chevron-left"></i> Nvidia Jetson TX2 刷机并安装JetPack3.1
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/使用Hexo-GitHub-Pages搭建个人博客记录/" rel="prev" title="使用 Hexo+Github Pages 搭建个人博客">
-                使用 Hexo+Github Pages 搭建个人博客 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/在-Jetson-TX2-上安装-ROS-机器人操作系统.html" rel="prev" title="在 Jetson TX2 上安装 ROS 机器人操作系统">
+                在 Jetson TX2 上安装 ROS 机器人操作系统 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -597,8 +619,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -758,6 +789,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jetson-TX2-重新编译内核添加usb驱动"><span class="nav-number">1.</span> <span class="nav-text">Jetson TX2 重新编译内核添加usb驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载脚本"><span class="nav-number">2.</span> <span class="nav-text">下载脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压，获取源码"><span class="nav-number">3.</span> <span class="nav-text">解压，获取源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加配置"><span class="nav-number">4.</span> <span class="nav-text">添加配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译新内核"><span class="nav-number">5.</span> <span class="nav-text">编译新内核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启"><span class="nav-number">6.</span> <span class="nav-text">重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">7.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

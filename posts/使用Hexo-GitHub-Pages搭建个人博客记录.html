@@ -118,20 +118,31 @@
   });
 </script>
 
-  <meta name="description" content="ROS 机器人操作系统关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基">
-<meta name="keywords" content="Jetson TX2,ROS">
+  <meta name="description" content="使用 Hexo+Github Pages 搭建个人博客记录最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你">
+<meta name="keywords" content="blog,教程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在 Jetson TX2 上安装 ROS 机器人操作系统">
-<meta property="og:url" content="https://blog.strongwong.top/在-Jetson-TX2-上安装-ROS-机器人操作系统/index.html">
+<meta property="og:title" content="使用 Hexo+Github Pages 搭建个人博客">
+<meta property="og:url" content="https://blog.strongwong.top/posts/使用Hexo-GitHub-Pages搭建个人博客记录.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="ROS 机器人操作系统关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基">
+<meta property="og:description" content="使用 Hexo+Github Pages 搭建个人博客记录最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b89420e9dc6d659595a1950">
-<meta property="og:updated_time" content="2018-09-09T15:31:35.079Z">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca1e59dc6d611b60ee2bd">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca4519dc6d611b60ee2d1">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fuw5x63irrj30630a0gln">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca25b9dc6d611b60ee2c3">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca2889dc6d611b60ee2c5">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca2ae9dc6d611b60ee2c6">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fuw600gjbcj30gz0de74s">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca2f39dc6d611b60ee2c8">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca3139dc6d611b60ee2cc">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca34f9dc6d611b60ee2cf">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8ca3669dc6d611b60ee2d0">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fuw67ojfrmj31ba05pgm6">
+<meta property="og:updated_time" content="2018-09-03T03:28:20.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在 Jetson TX2 上安装 ROS 机器人操作系统">
-<meta name="twitter:description" content="ROS 机器人操作系统关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基">
-<meta name="twitter:image" content="https://photo.ishield.cn/pic/5b89420e9dc6d659595a1950">
+<meta name="twitter:title" content="使用 Hexo+Github Pages 搭建个人博客">
+<meta name="twitter:description" content="使用 Hexo+Github Pages 搭建个人博客记录最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你">
+<meta name="twitter:image" content="https://photo.ishield.cn/pic/5b8ca1e59dc6d611b60ee2bd">
 
 
 
@@ -140,7 +151,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/在-Jetson-TX2-上安装-ROS-机器人操作系统/"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/使用Hexo-GitHub-Pages搭建个人博客记录.html"/>
 
 
 
@@ -150,7 +161,7 @@
   };
 </script>
 
-  <title>在 Jetson TX2 上安装 ROS 机器人操作系统 | StrongWong</title>
+  <title>使用 Hexo+Github Pages 搭建个人博客 | StrongWong</title>
   
 
 
@@ -355,7 +366,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/在-Jetson-TX2-上安装-ROS-机器人操作系统/">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/使用Hexo-GitHub-Pages搭建个人博客记录.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -372,7 +383,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">在 Jetson TX2 上安装 ROS 机器人操作系统
+          <h2 class="post-title" itemprop="name headline">使用 Hexo+Github Pages 搭建个人博客
               
             
           </h2>
@@ -397,7 +408,7 @@
                 
               
 
-              <time title="创建时间：2018-08-26 21:17:26" itemprop="dateCreated datePublished" datetime="2018-08-26T21:17:26+08:00">2018-08-26</time>
+              <time title="创建时间：2018-08-02 21:22:50" itemprop="dateCreated datePublished" datetime="2018-08-02T21:22:50+08:00">2018-08-02</time>
             
 
             
@@ -415,14 +426,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/毕业设计/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/毕业设计/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
 
                 
                 
@@ -437,8 +441,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/在-Jetson-TX2-上安装-ROS-机器人操作系统/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/在-Jetson-TX2-上安装-ROS-机器人操作系统/" itemprop="commentCount"></span>
+                <a href="/posts/使用Hexo-GitHub-Pages搭建个人博客记录.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/使用Hexo-GitHub-Pages搭建个人博客记录.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -446,7 +450,7 @@
 
           
           
-             <span id="/在-Jetson-TX2-上安装-ROS-机器人操作系统/" class="leancloud_visitors" data-flag-title="在 Jetson TX2 上安装 ROS 机器人操作系统">
+             <span id="/posts/使用Hexo-GitHub-Pages搭建个人博客记录.html" class="leancloud_visitors" data-flag-title="使用 Hexo+Github Pages 搭建个人博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -477,76 +481,62 @@
       
 
       
-        <h3 id="ROS-机器人操作系统"><a href="#ROS-机器人操作系统" class="headerlink" title="ROS 机器人操作系统"></a>ROS 机器人操作系统</h3><p>关于 ROS ( Robot Operating System 机器人操作系统)，这里做一下简单的介绍。ROS 就是一个机器人软件平台，类似于个人电脑的操作系统( Windows、Linux、Mac OS 等)，智能手机的操作系统( Android、iOS 等)。机器人和电脑、手机一样可以通过各种硬件组合的硬件模块组成，自然就出现了用来管理这些硬件的操作系统。操作系统提供了基于硬件抽象的软件开发环境，存在提供各种服务的应用程序。<br>ROS 就是这样一个提供了类似操作系统的硬件抽象。在 ROS 维基中将 ROS 定义为 “ ROS 是一个开放源代码的机器人元操作系统。它提供了我们对操作系统期望的服务，包括硬件抽象、低级设备控制、常用功能的实现、进程之间的消息传递以及功能包管理。它还提供了用于在多台计算机之间获取、构建、编写和运行代码的工具和库。 ”<br>因此，ROS 并不是一种新的操作系统，确切的说，ROS 是一种元级操作系统。是基于现有操作系统的，利用应用程序和分布式计算资源之间的虚拟化层来运用分布式计算资源来执行调度、加载、监视、错误处理等任务的系统。同时提供一个或多个操作系统下的数据通信。</p>
+        <h2 id="使用-Hexo-Github-Pages-搭建个人博客记录"><a href="#使用-Hexo-Github-Pages-搭建个人博客记录" class="headerlink" title="使用 Hexo+Github Pages 搭建个人博客记录"></a>使用 Hexo+Github Pages 搭建个人博客记录</h2><p>最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你去写。<br>如果你不经常去写一些文字，慢慢的也就生疏了，也就忘了该怎么通过书面方式更好的表达信息。比如我们领导让大家每周写一份周报，每到周五的时候大家总是在纠结，这周报该怎么写。还有做测试的时候要有测试方案，测试结果，测试报告（分析）都是要写文档的。跟文字打交道的时候还是很多的啊！所以啊，平时还得多写写！</p>
 <a id="more"></a>
-<p>对于 ROS 的安装，之前官方网站上是没有中文教程的，对于我这种塑料英语，直接看官网英文教程还是蛮有难度的。不过好在现在 ROS 官网已经有中文版的安装教程了。直接参考官网上的教程安装就好了！<br>官网安装教程：<a href="http://wiki.ros.org/cn/kinetic/Installation" target="_blank" rel="noopener">http://wiki.ros.org/cn/kinetic/Installation</a></p>
-<h3 id="ROS-版本"><a href="#ROS-版本" class="headerlink" title="ROS 版本"></a>ROS 版本</h3><p>虽然官方已经有了中文版本的安装教程，但是我这里还是简单记录一下。<br>首先，ROS 目前大家使用的主流版本还是 ROS 1.0 的版本，ROS 1.0 版本目前只支持 Linux 系统。而对 ROS 兼容性最好的就是 Ubuntu 操作系统了，恰好我们的 Jetson TX2 就是 Ubuntu 系统。</p>
-<p>这里还要说明的是，我们在 TX2 上安装 ROS 系统，并不是要直接在 TX2 上来做开发的(虽然也可以)， TX2 主要是作为部署端的。因此，还需要有一台 Ubuntu 电脑也需要安装上 ROS 来进行开发工作，安装步骤相同。</p>
-<p>其次， Ubuntu 和 ROS 都有很多版本，各版本之间是存在兼容性问题的。ROS 和 Ubuntu 之间的版本对应关系如下表：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">ROS 版本</th>
-<th style="text-align:center">发布日期</th>
-<th style="text-align:center">对应的 Ubuntu 版本</th>
-<th style="text-align:center">停止支持日期</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">ROS Melodic</td>
-<td style="text-align:center">2018.5.23</td>
-<td style="text-align:center">Ubuntu 18.04(Bionic)/Ubuntu 17.10(Artful)</td>
-<td style="text-align:center">2023.5</td>
-</tr>
-<tr>
-<td style="text-align:center">ROS Lunar</td>
-<td style="text-align:center">2017.5.23</td>
-<td style="text-align:center">Ubuntu 17.04(Zesty)/Ubuntu 16.10(Yakkety)/Ubuntu16.04(Xenial)</td>
-<td style="text-align:center">2019.5</td>
-</tr>
-<tr>
-<td style="text-align:center">ROS Kinetic(推荐)</td>
-<td style="text-align:center">2016.5.23</td>
-<td style="text-align:center">Ubuntu 16.04(Xenial)/Ubuntu 15.10(Wily)</td>
-<td style="text-align:center">2021.4</td>
-</tr>
-<tr>
-<td style="text-align:center">ROS Jade</td>
-<td style="text-align:center">2015.5.23</td>
-<td style="text-align:center">Ubuntu 15.04(Wily)/Ubuntu LTS 14.04(Trusty)</td>
-<td style="text-align:center">2017.5</td>
-</tr>
-<tr>
-<td style="text-align:center">ROS Kinetic</td>
-<td style="text-align:center">2014.7.22</td>
-<td style="text-align:center">Ubuntu LTS 14.04(Trusty)</td>
-<td style="text-align:center">2019.4</td>
-</tr>
-</tbody>
-</table>
-<p>目前主流版本还是 ROS Kinetic 且支持时间较长，今年新出的 Melodic 版资料相对较少。所以推荐安装 ROS Kinetic 版本。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="软件中心配置"><a href="#软件中心配置" class="headerlink" title="软件中心配置"></a>软件中心配置</h4><p>打开软件和更新对话框，配置你的 Ubuntu 软件仓库( repositories )以允许“restricted”，“universe”和“multiverse”这三种安装模式。如下图：<br><img src="https://photo.ishield.cn/pic/5b89420e9dc6d659595a1950" alt=""><br>配置完成关闭窗口。</p>
-<h4 id="添加source-list"><a href="#添加source-list" class="headerlink" title="添加source.list"></a>添加source.list</h4><p>设置你的电脑可以从 packages.ros.org 接收软件。<br>打开一个 Terminal ( Ctrl+Alt+T )，输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo sh -c &apos;echo “deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc)main”&gt; /etc/apt/sources.list.d/ros-latest.list&apos;</span><br></pre></td></tr></table></figure></p>
-<p>这个镜像国内会比较慢，建议更换为国内镜像源，就是把上面的命令更换一下。官方<a href="http://wiki.ros.org/ROS/Installation/UbuntuMirrors" target="_blank" rel="noopener">镜像</a></p>
-<h4 id="添加密钥"><a href="#添加密钥" class="headerlink" title="添加密钥"></a>添加密钥</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-key adv --keyserver hkp：//ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116</span><br></pre></td></tr></table></figure>
-<p>如果你遇到连接到 keyserver 的问题，你可以在以上命令尝试替换 hkp://pgp.mit.edu:80 或 hkp://keyserver.ubuntu.com:80<br>密钥可以根据服务器的操作发生变更，如有变化，请参考<a href="http://wiki.ros.org/cn/kinetic/Installation/Ubuntu" target="_blank" rel="noopener">官方wiki</a>页面。</p>
-<h4 id="安装-ROS"><a href="#安装-ROS" class="headerlink" title="安装 ROS"></a>安装 ROS</h4><p>首先，确保你的系统软件是最新版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<p>接下来，就可以安装 ROS 了，但是 ROS Kinetic 也有好几个版本，这里我们安装全功能版本(包括ROS、rqt、RViz、机器人相关的库、仿真和导航等等。部署端一般基础版就可以了)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ros-kinetic-desktop-full</span><br></pre></td></tr></table></figure></p>
-<p>这里可能会要等待几分钟，因网速而定。如果一切顺利的话，那就安装完了。<br>安装完成后，可以使用下面的命令查看可使用的软件包(可以搜索到大约1600多个功能包)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-cache search ros-kinetic</span><br></pre></td></tr></table></figure></p>
+<p>我在看一些大牛的博客的时候，发现他们的博客，好像都很好看。我很羡慕，于是我也想搭建一个自己的个人博客，所以就有了本站！<br>我了解到建站的方法有很多，比如:</p>
+<ul>
+<li>Hexo + GitHub Pages</li>
+<li>Jekyll + GitHub Pages </li>
+<li>WordPress + 服务器 + 域名</li>
+<li>DeDeCMS + 服务器 + 域名</li>
+<li>……</li>
+</ul>
+<p>我选择了使用 Hexo + GitHub Pages + 域名 的方法来建站。<br>首先 Hexo 简约风格我很喜欢，其次利用 GitHub Pages 的免费存储空间不需要自己购买服务器，<br>有一个 GitHub 账号就 ok 了，然后域名其实是一个可选项，GitHub 会提供一个 <a href="http://xxxx.github.io/" target="_blank" rel="noopener">http://xxxx.github.io/</a> 这种形式的域名进行访问。</p>
+<h2 id="下面来简单记录一下，本站的搭建过程"><a href="#下面来简单记录一下，本站的搭建过程" class="headerlink" title="下面来简单记录一下，本站的搭建过程"></a>下面来简单记录一下，本站的搭建过程</h2><p>安装 Hexo 很简单，但是在安装前需要配置一些环境，需要安装 Node.js 和 Git 。因为 Hexo 博客系统是基于 Node.js 写的，需要 Node.js 的环境才能运行。 Hexo 运行之后会在本地生成网页，所以我们需要使用 Git 把本地网页文件上传到 GitHub 上的远程仓库里。（当然使用 GitHub 桌面版也可以上传。）</p>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>在 Node.js 官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 下载最新的稳定版，安装时保持默认设置，一路 next 就好，等待安装完成。<br>安装好之后，按<code>Win+R</code>,输入 <code>cmd</code>，运行命令提示符，输入<code>node -v</code>和 <code>nmp -v</code>，如果出现版本号，那么就安装成功了。<br><img src="https://photo.ishield.cn/pic/5b8ca1e59dc6d611b60ee2bd" alt="node -v npm -v"></p>
+<h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><p>去 Git 官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a> 下载最新的稳定版的 git 安装包，直接默认配置安装就好了，一路 next 就好。<br><img src="https://photo.ishield.cn/pic/5b8ca4519dc6d611b60ee2d1" alt="git"><br>安装完成后，在桌面右键，点击<code>Git Bush Here</code>，输入 <code>git --version</code>，如果成功出现 Git 的版本号，到这里 Git 的环境配置就完成了！（如果你对 Git 不太熟悉，不太会用 Git 来上传你的博客，你也可以考虑使用 GitHub 的桌面版。）<br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuw5x63irrj30630a0gln" alt=""></p>
+<h2 id="注册-GitHub-和配置"><a href="#注册-GitHub-和配置" class="headerlink" title="注册 GitHub 和配置"></a>注册 GitHub 和配置</h2><p>身为一个程序员，怎么能不知道 GitHub！每个程序员都应该有一个 GitHub 账号！GitHub是一个大型的代码托管平台，上面有很多技术大牛，也有很多有趣的开源项目，像Google、FaceBook、Macrosoft 等大公司也都在使用 GitHub。我们的博客就是托管在 GitHub 上的。</p>
+<p>GitHub Pages 是面向用户、组织和项目开放的公共静态页面搭建托管服务，站点可以被免费托管在 Github 上，你可以选择使用 Github Pages 默认提供的域名 github.io 或者使用自定义域名来发布站点。</p>
+<p>如果你还没有 Github 账号的话，需要先到 GitHub 官网进行注册： <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> </p>
+<p>注册完成之后，我们需要创建一个仓库来存放我们的博客。新建一个项目，如下图所示：<br><img src="https://photo.ishield.cn/pic/5b8ca25b9dc6d611b60ee2c3" alt=""><br>仓库名称一般使用用户名加 <code>.github.io</code>后缀，如下图所示：<br><img src="https://photo.ishield.cn/pic/5b8ca2889dc6d611b60ee2c5" alt=""><br>最后，创建完成后，就可以直接访问 <a href="https://yourname.github.io/" target="_blank" rel="noopener">https://yourname.github.io/</a> ,如果可以正常访问，那么 GitHub 的配置就搞完了。<br>到这里环境就基本上搭好了，下面就开始安装 Hexo 正式搭建个人博客。</p>
+<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>Hexo 是什么？<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown (或者其他渲染引擎)解析文章，在几秒内，即可利用靓丽的主题生成静态网页。并且一条指令即可部署到 GitHub Pages 或者其他网站。想更多了解 Hexo 请阅读 Hexo 官方文档: <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
+<p>首先，在你的电脑里，新建一个文件夹专门用来存放你的博客文件。比如我的都放在 D:\study\hexo 目录下。</p>
+<p>然后在该目录下，右键点击 <code>Git Bush Here</code>，打开 Git 控制台窗口，接下来的操作都在 Git 控制台进行，反正我是挺喜欢敲命令行的感觉。</p>
+<p>接下来，在该目录下，输入 <code>npm install -g hexo-cli</code>，安装 Hexo ，这里会有一个 <code>WARN</code>，不用担心这不会影响正常使用。然后在安装 Hexo 部署到 Github Pages 的 deployer。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli </span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://photo.ishield.cn/pic/5b8ca2ae9dc6d611b60ee2c6" alt=""></p>
+<p>查看 Hexo 的版本，输入 <code>hexo -v</code>，正确输入如下信息就表示 Hexo 安装成功了。<br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuw600gjbcj30gz0de74s" alt=""></p>
+<h2 id="Hexo基础配置"><a href="#Hexo基础配置" class="headerlink" title="Hexo基础配置"></a>Hexo基础配置</h2><p>Hexo 安装完成后，执行下面的命令来初始化 Hexo ，对应的用户名(文件夹名称)改成自己的。Hexo 会在指定的文件夹中新建博客系统，和安装必备组件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init strongwong.github.io</span><br><span class="line">$ <span class="built_in">cd</span> strongwong.github.io</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p><img src="https://photo.ishield.cn/pic/5b8ca2f39dc6d611b60ee2c8" alt=""></p>
+<p>新建完成后，在本地运行 Hexo 查看效果:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate	<span class="comment">#或者运行 hexo g 根据配置生成博客</span></span><br><span class="line">$ hexo server	<span class="comment">#或者运行 hexo s 在本地运行 Hexo 登录 localhost:4000 查看</span></span><br><span class="line">			<span class="comment">#按 ctrl + c 即可关闭本地服务器</span></span><br></pre></td></tr></table></figure>
+<p>这时我们到浏览器中输入 <code>localhost:4000</code> 就可以在本地端正常访问了(如下图)，这样的话就说明博客已经打起来了，但是现在只是在本地，别人还不能访问，接下来我们就要把本地博客部署到 GitHub 上，让别人也可以看到你的博客。<br><img src="https://photo.ishield.cn/pic/5b8ca3139dc6d611b60ee2cc" alt=""></p>
+<h2 id="本地-Hexo-仓库与-GitHub-关联"><a href="#本地-Hexo-仓库与-GitHub-关联" class="headerlink" title="本地 Hexo 仓库与 GitHub 关联"></a>本地 Hexo 仓库与 GitHub 关联</h2><p>配置 GitHub 的 SSH 密钥，让本地项目通过 git 命令与远程 GitHub 仓库建立联系，我们在本地做了修改之后直接通过 git 命令就可以把博客同步到 GitHub 上。</p>
+<p>1.首先，在 git 控制台中，输入如下命令，配置个人参数(你的名字，你的邮箱)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"yourname"</span></span><br><span class="line">$ git config --global user.email <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>2.接下来生成 SSH key 根据提示进行操作(其实一路回车就好了。)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure></p>
+<p>3.执行完之后就会在默认路径下生成 <code>id_rsa.pub</code>文件。默认路径是：<code>C:\Users\Administrator\.ssh\id_rsa.pub</code> 需要注意的是 .ssh 是隐藏文件夹。<br>使用记事本打开这个文件，复制文件内容，然后粘贴到 <a href="https://github.com/settings/ssh/" target="_blank" rel="noopener">https://github.com/settings/ssh/</a> 的 “new SSH key” 中。</p>
+<p>4.输入下面的命令，查看 SSH 是否配置成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
+<p>如果是下面的反馈<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p>
+<p>直接输入 yes 就好了，然后就会看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi strongwong! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
+<p>这样的话，我们 SSH key 就配置成功了。</p>
+<p>5.配置 deploy 参数<br>在博客根目录下，找到 <code>__config.yml</code> 文件，找到 deploy 关键字，进行如下配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:strongwong/strongwong.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>6.将本地博客提交到 GitHub Pages<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g			<span class="comment">#根据你的改动生成新的静态文件(即 public 文件夹)</span></span><br><span class="line">$ hexo s			<span class="comment">#启动本地预览 ctrl + c 关闭</span></span><br><span class="line">$ hexo d			<span class="comment">#部署到远程站点</span></span><br><span class="line">$ hexo clean		<span class="comment">#清除旧的静态文件(即 public 文件夹)</span></span><br></pre></td></tr></table></figure></p>
+<p>7.这时在浏览器输入 <a href="https://strongwong.github.io/" target="_blank" rel="noopener">https://strongwong.github.io/</a> ，可以正常访问就说明 hexo 搭建的博客已经成功部署到 GitHub 了，小伙伴们都可以通过这个地址访问自己的博客了。</p>
+<h2 id="将个人域名解析到-GitHub"><a href="#将个人域名解析到-GitHub" class="headerlink" title="将个人域名解析到 GitHub"></a>将个人域名解析到 GitHub</h2><p>看着这个 GitHub 下面的二级域名，总觉得让人不太爽，所以有很多小伙伴都买了自己的域名，然后将自己域名绑定到 GitHub Pages 的博客上。<br>于是我也就到阿里云上购买了一个万网域名，也不是很贵。<br>进入阿里云网站，打开阿里云域名控制台，点击管理，然后点击域名解析。<br><img src="https://photo.ishield.cn/pic/5b8ca34f9dc6d611b60ee2cf" alt=""><br><img src="https://photo.ishield.cn/pic/5b8ca3669dc6d611b60ee2d0" alt=""></p>
+<p>在下图中点击添加记录，添加解析：</p>
 <blockquote>
-<p>如果想个别安装功能包，请使用如下命令:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ sudo apt-get install ros-kinetic-[功能包名称]</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></p>
+<p>记录类型选择<code>CNAME</code><br>主机记录填 <code>www</code><br>解析线路选择 <code>默认</code><br>记录值填 <code>yourname.github.io</code><br>TTL 值为 <code>10</code> 分钟<br>再添加一个解析，记录类型 <code>A</code><br>主机记录填 <code>@</code><br>解析线路选择 <code>默认</code><br>记录值填你 GitHub 的 IP 地址 (在 cmd 中 ping：<code>ping yourname.github.io</code>)<br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuw67ojfrmj31ba05pgm6" alt=""></p>
 </blockquote>
-<p>现在是安装完了，但是我们还需要初始化 ROS 以及配置环境变量</p>
-<h4 id="初始化-rosdep"><a href="#初始化-rosdep" class="headerlink" title="初始化 rosdep"></a>初始化 rosdep</h4><p>在开始使用 ROS 之前还需要初始化 rosdep 。rosdep 可以方便地在需要编译某些源码的时候为其安装一些系统依赖，同时也是某些 ROS 核心功能组件所必需用到的工具。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rosdep init</span><br><span class="line">$ rosdep update</span><br></pre></td></tr></table></figure></p>
-<h4 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h4><p>如果每次打开一个新的终端时 ROS 环境变量都能够自动配置好(即添加到 bash 会话中)，那将会方便很多：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo &quot;source /opt/ros/kinetic/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">$ source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<p>可以使用 gedit 或者 vi 等编辑器打开 bashrc 文件查看是否配置成功。在 bashrc 文件最底部我们可以看到已经有了很多设置。不要修改以前的设置，如果你需要修改的话在最底部添加就好了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set ROS Kinetic</span></span><br><span class="line"><span class="built_in">source</span> /opt/ros/kinetic/setup.bash</span><br><span class="line"><span class="built_in">source</span> ~/catkin_ws/devel/setup.bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set ROS Network</span></span><br><span class="line"><span class="built_in">export</span> ROS_HOSTNAME=xxx.xxx.xxx.xxx</span><br><span class="line"><span class="built_in">export</span> ROS_MASTER_URI=http://<span class="variable">$&#123;ROS_HOSTNAME&#125;</span>:11311</span><br></pre></td></tr></table></figure></p>
-<h4 id="安装构建依赖"><a href="#安装构建依赖" class="headerlink" title="安装构建依赖"></a>安装构建依赖</h4><p>到目前为止，已经安装了运行核心 ROS 包所需的内容。为了创建和管理自己的 ROS 工作区，有各种各样的工具和需求分别分布。例如：rosinstall 是一个经常使用的命令行工具，它能够轻松地从一个命令下载许多 ROS 包的源树。</p>
-<p>要安装这个工具和其他构建 ROS 包的依赖项，请运行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential</span><br></pre></td></tr></table></figure></p>
-<p>好！到这里，ROS 就基本安装完成了。下面就来测试一下，看看是否可以正常运行。</p>
-<h3 id="测试-ROS"><a href="#测试-ROS" class="headerlink" title="测试 ROS"></a>测试 ROS</h3><p>首先，启动 ROS 环境<br>输入 roscore 命令，测试测试结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ roscore</span><br><span class="line">... logging to /home/ubuntu/.ros/log/3e61b674-03cf-11e8-ac54-9cb70ddc3658/roslaunch-ubuntu-31481.log</span><br><span class="line">Checking log directory for disk usage. This may take awhile.</span><br><span class="line">Press Ctrl-C to interrupt</span><br><span class="line">Done checking log file disk usage. Usage is &lt;1GB.</span><br><span class="line">started roslaunch server http://ubuntu:11311/</span><br><span class="line">ros_comm version 1.12.12</span><br><span class="line">SUMMARY</span><br><span class="line">========</span><br><span class="line">PARAMETERS</span><br><span class="line"> * /rosdistro: kinetic</span><br><span class="line"> * /rosversion: 1.12.12</span><br><span class="line">NODES</span><br><span class="line">auto-starting new master</span><br><span class="line">process[master]: started with pid [31495]</span><br><span class="line">ROS_MASTER_URI=http://ubuntu:11311/</span><br><span class="line">setting /run_id to 3e61b674-03cf-11e8-ac54-9cb70ddc3658</span><br><span class="line">process[rosout-1]: started with pid [31508]</span><br><span class="line">started core service [/rosout]</span><br></pre></td></tr></table></figure></p>
-<p>如果看到 started core service [/rosout] ，那就说明安装成功了！退出按『Ctrl+c』。</p>
-<p>如果你安装过程中出现了问题，可以尝试换个网络，或者多试几次吧，有时候服务器就是连不上！*_*</p>
+<p>在本地博客的 source 目录下新建一个 CNAME 文件(没有扩展名)，用记事本打开填入购买的域名地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.strongwong.top</span><br></pre></td></tr></table></figure></p>
+<p>将博客重新发布一次：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d	<span class="comment">#generate 和 deploy 的组合命令</span></span><br></pre></td></tr></table></figure></p>
+<p>此时，在浏览器中输入你的个人域名(<a href="https://www.strongwong.top/" target="_blank" rel="noopener">www.strongwong.top</a>)，如果正常访问你的博客就说明，域名绑定成功，域名解析成功啦！！在这伟大的互联网时代，终于拥有了自己的网站啦！</p>
+<h3 id="发表一篇文章"><a href="#发表一篇文章" class="headerlink" title="发表一篇文章"></a>发表一篇文章</h3><p>运行下面的命令，就会创建一个文章文件，在本地博客的 source_posts 文件夹下就会有一个新建的 markdown 文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"文章标题"</span>   <span class="comment"># hexo n "文章标题" 这种简写也可以</span></span><br></pre></td></tr></table></figure></p>
+<p>文章编辑好之后，推送到 GitHub 上我们在站点上就可以看到新的文章了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g  <span class="comment">#生成 </span></span><br><span class="line">$ hexo d  <span class="comment">#部署</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="安装-Next-主题及个性化"><a href="#安装-Next-主题及个性化" class="headerlink" title="安装 Next 主题及个性化"></a>安装 Next 主题及个性化</h2><p>Hexo 有非常多的主题可以选择，可以到官方主题库进行选择： <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a><br>我这里选择了资料相对详细、丰富的 Next 主题，前往 Next 主题发布页面下载：<a href="https://github.com/iisnan/hexo-theme-next/releases/" target="_blank" rel="noopener">https://github.com/iisnan/hexo-theme-next/releases/</a><br>下载最新版本的 Next 主题包，解压缩，将文件名称改为 next，放置到博客根目录的 themes 目录下。<br>打开站点配置文件 <code>_config.yml</code>，找到 themes 字段，修改为 next。<br>到此，next 主题安装完成。</p>
+<p>关于 next 主题的一些配置请查阅 next 主题官方文档：<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">https://theme-next.iissnan.com/</a></p>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>花了两天时间把博客搭起来，还是挺开心的。博客使用 Hexo 搭建，主题使用 Next，评论系统使用 Valine ，文章浏览统计使用 LeanCloud ，网站访客数量使用不蒜子，另外还使用了 Google 统计，方便自己查看数据。<br>我会坚持在工作之余，写点技术分享，记录一下我的学习历程。我也不知道我会分享哪些东西，但是我想可能还是嵌入式软件方面可能会比较多一些吧，其他方面也可能会分享一些学习、工作、生活中的经历和经验吧！祝我未来，越来越好！</p>
+<p>strongwong</p>
+<p>2018.8.2</p>
 
       
     </div>
@@ -596,9 +586,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Jetson-TX2/" rel="tag"># Jetson TX2</a>
+            <a href="/tags/blog/" rel="tag"># blog</a>
           
-            <a href="/tags/ROS/" rel="tag"># ROS</a>
+            <a href="/tags/教程/" rel="tag"># 教程</a>
           
         </div>
       
@@ -611,8 +601,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Jetson-TX2-重新编译内核添加usb等驱动/" rel="next" title="Jetson TX2 重新编译内核添加usb等驱动">
-                <i class="fa fa-chevron-left"></i> Jetson TX2 重新编译内核添加usb等驱动
+              <a href="/posts/关于.html" rel="next" title="关于">
+                <i class="fa fa-chevron-left"></i> 关于
               </a>
             
           </div>
@@ -621,8 +611,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/ROS-基础知识/" rel="prev" title="ROS 基础知识">
-                ROS 基础知识 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/strongwongのdiary.html" rel="prev" title="strongwongのdiary">
+                strongwongのdiary <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -853,7 +843,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-机器人操作系统"><span class="nav-number">1.</span> <span class="nav-text">ROS 机器人操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROS-版本"><span class="nav-number">2.</span> <span class="nav-text">ROS 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软件中心配置"><span class="nav-number">3.1.</span> <span class="nav-text">软件中心配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加source-list"><span class="nav-number">3.2.</span> <span class="nav-text">添加source.list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加密钥"><span class="nav-number">3.3.</span> <span class="nav-text">添加密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-ROS"><span class="nav-number">3.4.</span> <span class="nav-text">安装 ROS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化-rosdep"><span class="nav-number">3.5.</span> <span class="nav-text">初始化 rosdep</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置环境"><span class="nav-number">3.6.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装构建依赖"><span class="nav-number">3.7.</span> <span class="nav-text">安装构建依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-ROS"><span class="nav-number">4.</span> <span class="nav-text">测试 ROS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Hexo-Github-Pages-搭建个人博客记录"><span class="nav-number">1.</span> <span class="nav-text">使用 Hexo+Github Pages 搭建个人博客记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面来简单记录一下，本站的搭建过程"><span class="nav-number">2.</span> <span class="nav-text">下面来简单记录一下，本站的搭建过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Node-js"><span class="nav-number">3.</span> <span class="nav-text">安装 Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Git"><span class="nav-number">4.</span> <span class="nav-text">安装 Git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-GitHub-和配置"><span class="nav-number">5.</span> <span class="nav-text">注册 GitHub 和配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Hexo"><span class="nav-number">6.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo基础配置"><span class="nav-number">7.</span> <span class="nav-text">Hexo基础配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地-Hexo-仓库与-GitHub-关联"><span class="nav-number">8.</span> <span class="nav-text">本地 Hexo 仓库与 GitHub 关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将个人域名解析到-GitHub"><span class="nav-number">9.</span> <span class="nav-text">将个人域名解析到 GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发表一篇文章"><span class="nav-number">9.1.</span> <span class="nav-text">发表一篇文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Next-主题及个性化"><span class="nav-number">10.</span> <span class="nav-text">安装 Next 主题及个性化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结束语"><span class="nav-number">11.</span> <span class="nav-text">结束语</span></a></li></ol></div>
             
 
           </div>
