@@ -130,7 +130,7 @@
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/amba.png">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/hclk_pclk.jpg">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/ambaclk.png">
-<meta property="og:updated_time" content="2018-11-12T07:06:37.094Z">
+<meta property="og:updated_time" content="2018-11-12T07:08:56.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="总线- SoC 内部的主干道">
 <meta name="twitter:description" content="总线—— SoC 内部的主干道开坑！从今天开始来聊一点数字 IC 的一些知识！首先来看一看总线平日里我们都在讲总线总线，连接各模块的公共线，那它在 ARM 芯片中起到了啥木作用，来胡乱绉一通。">
@@ -509,7 +509,7 @@
 <li>传送控制信号</li>
 </ul>
 </blockquote>
-<h2 id="USB-总线"><a href="#USB-总线" class="headerlink" title="USB 总线"></a>USB 总线</h2><p>以平日里最常见的 USB 为例，USB 其实也是一种总线如下图所示，通常我们计算机连接到 USB 后，USB 提供的总线可以拓展连接到我们的外设，例如 U 盘、键盘、鼠标等……但是设备本身不会与 CPU 进行通信，它们只与 USB HOST 进行通信，USB HOST 会给它们分配相应的中断。一旦 USB 设备插入 USB 接口引起物理上的电平变化便会有中断，此刻的中断并非 CPU 的中断，此时的中断是 USB HOST 的中断，此中断经一定的处理后发送至 CPU 后，CPU监测到是 USB HOST 中断，便将中断交付 USB HOST 进行处理。再来看地址的问题，CPU 是无法直接访问到你的设备的，红色方框内可以看做是一个“家族”，CPU 只能访问到其“家长” USB HOST，USB HOST 访问具体设备才用到地址访问。例如此时 U 盘的地址是 0x0007H，若此地址直接由 CPU 访问的话 CPU 最终只会访问到内存的 0x0007H，而非我们的 U 盘，因此将此地址交付 USB HOST 进行访问才能实现。这里就能看出不仅仅内存有地址，引入总线后，各个外设也有了对应的地址。</p>
+<h2 id="USB-总线"><a href="#USB-总线" class="headerlink" title="USB 总线"></a>USB 总线</h2><p>以平日里最常见的 USB 为例，USB 其实也是一种总线如下图所示，通常我们计算机连接到 USB 后，USB 提供的总线可以拓展连接到我们的外设，例如 U 盘、键盘、鼠标等……但是设备本身不会与 CPU 进行通信，它们只与 USB HOST 进行通信，USB HOST 会给它们分配相应的中断。一旦 USB 设备插入 USB 接口引起物理上的电平变化便会有中断，此刻的中断并非 CPU 的中断，此时的中断是 USB HOST 的中断，此中断经一定的处理后发送至 CPU 后，CPU监测到是 USB HOST 中断，便将中断交付 USB HOST 进行处理。再来看地址的问题，CPU 是无法直接访问到你的设备的，红色方框内可以看做是一个“<code>家族</code>”，CPU 只能访问到其“<code>家长</code>” USB HOST，USB HOST 访问具体设备才用到地址访问。例如此时 U 盘的地址是 0x0007H，若此地址直接由 CPU 访问的话 CPU 最终只会访问到内存的 0x0007H，而非我们的 U 盘，因此将此地址交付 USB HOST 进行访问才能实现。这里就能看出不仅仅内存有地址，引入总线后，各个外设也有了对应的地址。</p>
 <p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/USB.png" alt="usb"></p>
 <h2 id="AMBA-总线"><a href="#AMBA-总线" class="headerlink" title="AMBA 总线"></a>AMBA 总线</h2><p>回到 ARM 上来，ARM 的总线遵循 AMBA（ARM 爸——安谋爸爸）的总线规范，ARM 为了让大家能尽可能地接外设变作了个 AMBA 总线规范，通常 AMBA 规范下常见的总线分别是 AHB（高速总线），APB（外设总线），ASB（AHB 备胎）如图所示。</p>
 <p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/amba.png" alt="amba"></p>
