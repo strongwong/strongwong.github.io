@@ -102,3 +102,13 @@ $(document).ready(function() {
       : NexT.utils.displaySidebar();
   }
 });
+
+//2018/11/24 代码折叠
+$(document).ready(function(){
+  $(document).on('click', '.fold_hider', function(){
+      $('>.fold', this.parentNode).slideToggle();
+      $('>:first', this).toggleClass('open');
+  });
+  //默认情况下折叠
+  $("div.fold").css("display","none");
+});
