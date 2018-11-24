@@ -2070,7 +2070,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #12ffaa;
+  background: #331fd1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2927,4 +2927,14 @@ embed {
   -webkit-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   -moz-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.hider_title {
+  font-family: "Microsoft Yahei";
+  cursor: pointer;
+}
+.close:after {
+  content: "▼";
+}
+.open:after {
+  content: "▲";
 }
