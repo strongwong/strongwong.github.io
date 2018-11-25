@@ -118,22 +118,22 @@
   });
 </script>
 
-  <meta name="description" content="计数器设计之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就“简单”的东西简单看。">
+  <meta name="description" content="计数器设计之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就『简单』的东西简单看。">
 <meta name="keywords" content="计数器,数字前端,IC Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从计数器开始，看数字 IC 设计">
 <meta property="og:url" content="https://blog.strongwong.top/posts/从计数器开始，看数字-IC-设计.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="计数器设计之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就“简单”的东西简单看。">
+<meta property="og:description" content="计数器设计之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就『简单』的东西简单看。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E5%8D%A1%E8%AF%BA%E5%9B%BE.png">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E5%8D%81%E8%BF%9B%E5%88%B6D%E8%A7%A6%E5%8F%91%E5%99%A8.png">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E5%8D%81%E8%BF%9B%E5%88%B6.png">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/CMP.png">
-<meta property="og:updated_time" content="2018-11-24T09:25:55.479Z">
+<meta property="og:updated_time" content="2018-11-24T17:24:03.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从计数器开始，看数字 IC 设计">
-<meta name="twitter:description" content="计数器设计之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就“简单”的东西简单看。">
+<meta name="twitter:description" content="计数器设计之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就『简单』的东西简单看。">
 <meta name="twitter:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E5%8D%A1%E8%AF%BA%E5%9B%BE.png">
 
 
@@ -497,7 +497,7 @@
       
 
       
-        <h2 id="计数器设计"><a href="#计数器设计" class="headerlink" title="计数器设计"></a>计数器设计</h2><p>之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就“简单”的东西简单看。</p>
+        <h2 id="计数器设计"><a href="#计数器设计" class="headerlink" title="计数器设计"></a>计数器设计</h2><p>之前有实验室的学长去参加海思、中芯国际、瑞芯微、…… 数字 IC 前端方向的面试，几乎都问到了同一系列问题——设计一个计数器及相关问题。这里很多朋友就会觉得很有意思了，为什么一个简单的计数器能有这么多东西，那我们就『简单』的东西简单看。</p>
 <a id="more"></a>
 <h2 id="0x00-请你设计一个-10-进制的异步复位无限循环计数器（0-9）"><a href="#0x00-请你设计一个-10-进制的异步复位无限循环计数器（0-9）" class="headerlink" title="0x00 请你设计一个 10 进制的异步复位无限循环计数器（0-9）"></a>0x00 请你设计一个 10 进制的异步复位无限循环计数器（0-9）</h2><p>首先，第一个问题，<strong>请你设计一个 10 进制的异步复位无限循环计数器（0-9）</strong>，你会怎么做？</p>
 <p>相信到这很多朋友就开始洋洋洒洒地写道：</p>
@@ -889,6 +889,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://blog.asicfans.com" title="Kismet" target="_blank">Kismet</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://feifeiyep.github.io" title="四牌楼下花生树" target="_blank">四牌楼下花生树</a>
                   </li>
                 
               </ul>

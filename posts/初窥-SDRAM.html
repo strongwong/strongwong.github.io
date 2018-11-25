@@ -136,7 +136,7 @@
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/Mode_reg_config.jpg">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/sdram%E4%BB%BF%E7%9C%9F%E6%95%B0%E6%8D%AE.jpg">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/sdram%E4%BB%BF%E7%9C%9F%E6%B3%A2%E5%BD%A2.jpg">
-<meta property="og:updated_time" content="2018-11-24T17:01:36.313Z">
+<meta property="og:updated_time" content="2018-11-24T17:24:53.331Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初窥 SDRAM">
 <meta name="twitter:description" content="前言上次挖的坑现在来填，在我们把 SDRAM 控制器接进 AHB 总线之前，我们先来设计一个 SDRAM 控制器。">
@@ -581,7 +581,7 @@
 </table>
 <p>在了解到命令描述后我们还需要注意时间的间隔，在时序图中只告知了我们 T = 100us，而其余的 tRP，tRC，tMRD 均未告诉我们，这是因为通常一个芯片手册中有多种型号的芯片，因此我们需要去查看 AC characteristic 表格，根据芯片型号去确定时间。我们的板载芯片型号为 IS42S16320D-7TL，因此我们选择 <code>-7</code> 对应的时间，则 tRP = 15ns，tRC = 60ns，tMRD = 14ns</p>
 <p>接下来我们就要进入到模式配置，模式配置的配置说明如下图所示：<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/Mode_reg_config.jpg" alt=""></p>
-<p>A0-A2 为突发长度控制，即表示单次读或者写的时候的数据“长度”，本次突发长度参数我们设为 010。A3 突发模式通常设为 0。A4-A6 为潜伏期控制，专门针对读命令时，当给出读命令后，若有设置 CAS latency 则会延迟相应的周期数后给出数据，本次潜伏期参数我们设为 011，A9 突发模式通常设为 0。则最终我们初始化设置参数为 13’b0_0000_0011_0010</p>
+<p>A0-A2 为突发长度控制，即表示单次读或者写的时候的数据『长度』，本次突发长度参数我们设为 010。A3 突发模式通常设为 0。A4-A6 为潜伏期控制，专门针对读命令时，当给出读命令后，若有设置 CAS latency 则会延迟相应的周期数后给出数据，本次潜伏期参数我们设为 011，A9 突发模式通常设为 0。则最终我们初始化设置参数为 13’b0_0000_0011_0010</p>
 <p>至此，我们便可以开始着手设计我们的初始化模块了，首先时序图上 T = 100us Min，则我们取 200us = 200,000ns 在不经过 PLL 的前提下，DE10LITE 开发板默认提供的时钟频率为 50MHz，则一个周期为 20ns，因此 T 延时可以取 10,000clk。延时后我们执行 precharge 命令。之后执行 tRP = 15ns Min，我们的 tRP 延迟就可以取 1clk（至少满足 15ns 的最低要求），然后执行 auto refresh 命令，tRC = 60ns Min 则延迟可取为 4clk，然后再次执行 auto refresh 命令，在这期间一共 9 个 clk。具体的设计可以首先设计一个 200us 的不自清零的计数器；设计一个对应的 200us 计数器标志位；针对 tRP 和 tRC 设计一个计数器，分别实现监测计数到对应的周期发出对应的命令；命令寄存器用来存放对应的命令；最后完成初始化操作后给一个初始化完成的标志位信号。</p>
 <p>下面是具体实现的描述语言：</p>
 <font color="#FF4500"> <div><div class="fold_hider"><div class="close hider_title">sdram_init.v</div></div><div class="fold">
@@ -906,6 +906,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://blog.asicfans.com" title="Kismet" target="_blank">Kismet</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://feifeiyep.github.io" title="四牌楼下花生树" target="_blank">四牌楼下花生树</a>
                   </li>
                 
               </ul>
