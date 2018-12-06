@@ -118,26 +118,24 @@
   });
 </script>
 
-  <meta name="description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
-<meta name="keywords" content="Jetson TX2,Nvidia,刷机">
+  <meta name="description" content="人不能两次踏进同一条河，但 SDRAM 可以——SDRAM的刷新  前言上周去了趟深圳，所以摸鱼拖更了，在那边发现真的是机遇越大的地方努力的脚步就越匆忙，某企业的 boss 是位国家科学技术奖的获得者，公司已经上市了，却依然吃 13 元的小店套餐，而且饭几乎是倒进嘴里的，5 分钟左右吃完马上就又去和合作对象谈判去了！……所以我们更要加油了，不然只会被大佬们越拉越远 …… 加油吧！">
+<meta name="keywords" content="SDRAM,IC Design">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nvidia Jetson TX2 刷机并安装JetPack3.1">
-<meta property="og:url" content="https://blog.strongwong.top/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html">
+<meta property="og:title" content="SDRAM 两次踏进同一条河">
+<meta property="og:url" content="https://blog.strongwong.top/posts/SDRAM-两次踏进同一条河.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
+<meta property="og:description" content="人不能两次踏进同一条河，但 SDRAM 可以——SDRAM的刷新  前言上周去了趟深圳，所以摸鱼拖更了，在那边发现真的是机遇越大的地方努力的脚步就越匆忙，某企业的 boss 是位国家科学技术奖的获得者，公司已经上市了，却依然吃 13 元的小店套餐，而且饭几乎是倒进嘴里的，5 分钟左右吃完马上就又去和合作对象谈判去了！……所以我们更要加油了，不然只会被大佬们越拉越远 …… 加油吧！">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://files.catbox.moe/n9dnwk.png">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702af99dc6d6522bb72f67">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68">
-<meta property="og:image" content="https://files.catbox.moe/hvd0oi.png">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702bda9dc6d6522bb72f6a">
-<meta property="og:image" content="https://photo.ishield.cn/pic/5b702bf19dc6d6522bb72f6b">
-<meta property="og:updated_time" content="2018-11-24T02:24:46.160Z">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/sdram_64ms.jpg">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/auto-refresh.jpg">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/vsimrun.jpg">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/refresh-wave.jpg">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/refresh-wave1.jpg">
+<meta property="og:updated_time" content="2018-12-06T14:09:40.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nvidia Jetson TX2 刷机并安装JetPack3.1">
-<meta name="twitter:description" content="Nvidia Jetson TX2 刷机并安装 JetPack3.1上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。">
-<meta name="twitter:image" content="https://files.catbox.moe/n9dnwk.png">
+<meta name="twitter:title" content="SDRAM 两次踏进同一条河">
+<meta name="twitter:description" content="人不能两次踏进同一条河，但 SDRAM 可以——SDRAM的刷新  前言上周去了趟深圳，所以摸鱼拖更了，在那边发现真的是机遇越大的地方努力的脚步就越匆忙，某企业的 boss 是位国家科学技术奖的获得者，公司已经上市了，却依然吃 13 元的小店套餐，而且饭几乎是倒进嘴里的，5 分钟左右吃完马上就又去和合作对象谈判去了！……所以我们更要加油了，不然只会被大佬们越拉越远 …… 加油吧！">
+<meta name="twitter:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/sdram_64ms.jpg">
 
 
 
@@ -146,7 +144,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/SDRAM-两次踏进同一条河.html"/>
 
 
 
@@ -156,7 +154,7 @@
   };
 </script>
 
-  <title>Nvidia Jetson TX2 刷机并安装JetPack3.1 | StrongWong</title>
+  <title>SDRAM 两次踏进同一条河 | StrongWong</title>
   
 
 
@@ -385,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/SDRAM-两次踏进同一条河.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -402,7 +400,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Nvidia Jetson TX2 刷机并安装JetPack3.1
+          <h2 class="post-title" itemprop="name headline">SDRAM 两次踏进同一条河
               
             
           </h2>
@@ -427,7 +425,7 @@
                 
               
 
-              <time title="创建时间：2018-08-12 20:15:29" itemprop="dateCreated datePublished" datetime="2018-08-12T20:15:29+08:00">2018-08-12</time>
+              <time title="创建时间：2018-12-06 20:48:31" itemprop="dateCreated datePublished" datetime="2018-12-06T20:48:31+08:00">2018-12-06</time>
             
 
             
@@ -445,14 +443,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/" itemprop="url" rel="index"><span itemprop="name">IC Design</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/毕业设计/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/SDRAM/" itemprop="url" rel="index"><span itemprop="name">SDRAM</span></a></span>
 
                 
                 
@@ -467,8 +465,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html" itemprop="commentCount"></span>
+                <a href="/posts/SDRAM-两次踏进同一条河.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/SDRAM-两次踏进同一条河.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -476,7 +474,7 @@
 
           
           
-             <span id="/posts/Nvidia-Jetson-TX2-刷机并安装JetPack3.1.html" class="leancloud_visitors" data-flag-title="Nvidia Jetson TX2 刷机并安装JetPack3.1">
+             <span id="/posts/SDRAM-两次踏进同一条河.html" class="leancloud_visitors" data-flag-title="SDRAM 两次踏进同一条河">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -507,28 +505,70 @@
       
 
       
-        <h2 id="Nvidia-Jetson-TX2-刷机并安装-JetPack3-1"><a href="#Nvidia-Jetson-TX2-刷机并安装-JetPack3-1" class="headerlink" title="Nvidia Jetson TX2 刷机并安装 JetPack3.1"></a>Nvidia Jetson TX2 刷机并安装 JetPack3.1</h2><p>上篇，我已经简单介绍了一下我的整个小车的物理框架和软件架构。下面我可能会分成几次推文，介绍一下搭建小车的具体过程。<br>本次主要记录一下给 Nvidia Jetson TX2 开发板刷机的过程。</p>
+        <blockquote>
+<p><em>人不能两次踏进同一条河，但 SDRAM 可以</em><br><em>——SDRAM的刷新</em></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上周去了趟深圳，所以摸鱼拖更了，在那边发现真的是机遇越大的地方努力的脚步就越匆忙，某企业的 boss 是位国家科学技术奖的获得者，公司已经上市了，却依然吃 13 元的小店套餐，而且饭几乎是倒进嘴里的，5 分钟左右吃完马上就又去和合作对象谈判去了！<br>……<br>所以我们更要加油了，不然只会被大佬们越拉越远 …… 加油吧！</p>
 <a id="more"></a>
-<h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><p>1.一块Jetson TX2 开发板</p>
-<p>2.一台安装 Ubuntu 系统的独立主机(不建议使用虚拟机，推荐使用 Ubuntu 16.04)</p>
-<p>3.一台路由器</p>
-<p>4.两根网线，一根 micro usb 数据线</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1.首先需要从 Nvidia 的官方网站上下载 Jet Pack3.1 的安装包，使用 Ubuntu host 直接下载或者下载好拷贝到 host 上也可以。(我当时最新的是 Jet Pack3.1 ，现在已经到 3.3 了，你也可以使用最新的版本。下载的话需要 Nvidia 账号才可以)<br>下载网址：<a href="https://developer.nvidia.com/embedded/jetpack" target="_blank" rel="noopener">https://developer.nvidia.com/embedded/jetpack</a></p>
-<p>2.将 TX2 开发板和主机都通过网线连接到一台路由器上。准备好 TX2 开发板和 Ubuntu Host 之后就可以开始刷机了。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>下载好 Jet Pack3.1 安装包后，打开 Terminal 进入到安装包所在的目录，执行下面这条命令运行安装包。运行效果如下图。(如果文件没有执行权限可以使用 chmod -x file 命令来改变执行权限)</p>
-<p><code>$
- ./JetPack-L4T-3.1-linux-x64.run</code></p>
-<p>运行完会弹出 JetPack L4T 3.1 Installer, 一路 Next 就好，如下图：<br><img src="https://files.catbox.moe/n9dnwk.png" alt=""></p>
-<p>注意选择 Jetson TX2 开发板<br><img src="https://photo.ishield.cn/pic/5b702af99dc6d6522bb72f67" alt=""></p>
-<p>点击 Next 之后会提示输入密码，待安装完成后，就会进入 JetPack L4T Component Manager。(这里要注意，如果网络不好可能会要等很久也出不来安装包信息，所以一定要保证网络环境好，可能有一些包还需要科学上网。)<br>如果你的包加载好了，检查一下 CUDA Toolkit 和 OpenCV for Tegra 这两个包是否选择了，这两个一定要安装。选择好之后，点击 Next 。在弹出的弹框中勾选所有协议，等待各种包下载完成。<br><img src="https://photo.ishield.cn/pic/5b702c3e9dc6d6522bb72f6c" alt=""><br><img src="https://photo.ishield.cn/pic/5b702b289dc6d6522bb72f68" alt=""></p>
-<p>下载完成后，选择 Host 和 TX2 的连接方式，我们选择第一项，通过同一路由器连接在同一网络。网口选择保持默认就好。<br><img src="https://files.catbox.moe/hvd0oi.png" alt=""></p>
-<p>接下来就是将包移动到 TX2 开发板上。文件较大，可能要等一会。执行下一步后，会出现一个提示重启 TX2 的步骤。按照提示进行操作。</p>
-<p>第一步，将 TX2 关机， 拔下电源，使用 micro usb 数据线将 TX2 与 Host 相连。</p>
-<p>第二步，重新插上电源，启动 TX2 ，同时按住 rec 和 rst 两个按键两秒钟， 然后松开 rst 按键，按住 rec 按键 3 秒钟。</p>
-<p>第三步，这时在 Host 端，重新打开一个 terminal，查看 usb 端口信息(使用命令 lsusb 就可以查看)，这时应该就可以看 ID 为 0955:7C18 的叫 Nvidia Corp 的端口，就说明 TX2 已经进入 REC 模式并和 host 连接好了，这时回到有重启步骤的窗口，按回车 Enter，就开始 TX2 固件更新了。<br><img src="https://photo.ishield.cn/pic/5b702bda9dc6d6522bb72f6a" alt=""><br><img src="https://photo.ishield.cn/pic/5b702bf19dc6d6522bb72f6b" alt=""></p>
-<p>安装完成后 TX2 就会重新启动，然后接下来会进行 CUDA 等一些软件的安装。</p>
-<p>至此，Nvidia TX2 的安装就基本完成了。就可以愉快的在 Jetson TX2 上进行开发啦！</p>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>在 TX2 上进行基本开发的环境就已经基本搭建好了，但是大型的开发可能 TX2 本身自带的 30 多个 G 内存可能是不够的，因此我们可能还需要一个容量较大的 SSD 来放系统。还有就是 TX2 开发板默认的镜像设置可能会有一些端口没有开放，为了跟好的开发，所以后面需要我们自己重新编译镜像。这些在后面我会继续介绍。</p>
+<p>在初窥 sdram 中我们留了一个坑——首先我们在第一页就可以看到它的刷新周期是 64ms（这个重要参数将在后面进行具体介绍）<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/sdram_64ms.jpg" alt=""></p>
+<p>今天我们就来填这个坑……</p>
+<p>「人不能两次踏进同一条河流」是古希腊哲学家赫拉克利特说的。阐述「变」的哲学在米利都学派和毕达戈拉斯学派之后，爱菲斯的赫拉克利特创立了一种变的哲学。他的哲学充满了辩证法思想，对后来辩证法的发展产生过重大影响。</p>
+<p>他形象地表达了他关于变的思想，说：「太阳每天都是新的。」他把存在的东西比作一条河，声称人不能两次踏进同一条河。因为当人第二次进入这条河时，是新的水流而不是原来的水流在流淌。SDRAM 不断地刷新，但却能保证刷新后的数据与刷新前一致，人踏进河是为什么我不知道，但是 SDRAM 正是为了保证内部电容的电量最终实现数据的不丢失才会不断地刷新。我们人做不到的事，就用 RTL 让 SDRAM 帮我们做了吧。</p>
+<h2 id="参数分析"><a href="#参数分析" class="headerlink" title="参数分析"></a>参数分析</h2><p>首先我们来看 SDRAM 参数：8K Refresh Cycles/64 ms，意味着：</p>
+<ul>
+<li>刷新速率 = 64ms / 8192 行 =&gt; 7us；</li>
+<li>刷新时钟周期 = 7us * CPU 运行频率；</li>
+</ul>
+<p>例：CPU 运行频率 50MHz 时钟周期 = 7.81us * 50MHz = 390.5；64ms 为刷新周期最大值，为保证可靠运行，实际刷新实间要稍小于 64ms；例：时钟周期 = 390.5 ≈ 380</p>
+<p>这就意味着每 380 个时钟周期，我们便需要对我们的 SDRAM 进行一次刷新，那么进行刷新的时候需要进行哪些操作呢？我们还是回到我们的数据手册中。<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/auto-refresh.jpg" alt=""></p>
+<p>如图示，我们可以看到首先是要进行一次预充电操作(precharge)（同时选中所有的 bank），在经过 tRP 延时后进行一次自刷新操作(auto refresh)，再经过一次 tRC 后又进行一次自刷新操作(auto refresh)【注：实际使用中可以只进行一次自刷新操作】，最后进入到我们下一步 ……</p>
+<p>那么根据第一篇《初窥 SDRAM》后我们知道以上的几个操作对应的指令码分别为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">CMD</th>
+<th style="text-align:center">CS</th>
+<th style="text-align:center">RAS</th>
+<th style="text-align:center">CAS</th>
+<th style="text-align:center">WE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Precharge</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">Auto-Refresh</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">Nop</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>延时 tRP，tRC 则分别对应 15ns（至少 1 个周期，实际操作中取 1 个周期），60ns （至少 3 个周期，实际操作中取 4 个周期）。</p>
+<p>那么我们的设计即可为：一个 8us 的定时器，控制刷新的周期，作为刷新的开始信号；一个命令计数器，用于记录对应的延时节点（tRP，tRC）；最后即为达到对应节点输出对应指令即可。</p>
+<p>由此踏进的河流变和 8us 前的河流是同一条河流的 ……</p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><p>具体实现代码如下:<br>上代码！</p>
+<font color="#FF4500"> <div><div class="fold_hider"><div class="close hider_title">sdram_autoref.v</div></div><div class="fold">
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">File name: sdram_autoref</span></span><br><span class="line"><span class="comment">Function: Auto refresh for IS42S16320D-7TL SDRAM</span></span><br><span class="line"><span class="comment">Module name: sdram_autoref</span></span><br><span class="line"><span class="comment">Author: Ricky</span></span><br><span class="line"><span class="comment">Time: 20181130</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> sdram_autoref(</span><br><span class="line">	<span class="comment">//system signals</span></span><br><span class="line">	<span class="keyword">input</span>                   sys_clk    ,</span><br><span class="line">	<span class="keyword">input</span>                   sys_rst_n  ,</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//others</span></span><br><span class="line">	<span class="keyword">input</span>                   init_flag  ,</span><br><span class="line">	<span class="keyword">input</span>                   ref_en     ,</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span>              ref_req    ,</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">wire</span>             ref_flag   ,</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">reg</span>   [<span class="number">3</span>:<span class="number">0</span>]      cmd_reg    ,</span><br><span class="line">	<span class="keyword">output</span> <span class="keyword">wire</span>  [<span class="number">12</span>:<span class="number">0</span>] 	sdram_addr  	</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*============================================================================== </span></span><br><span class="line"><span class="comment">**********************Define Parameter and inside Signals***********************</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Note: sys_clk=50MHz</span></span><br><span class="line"><span class="comment">      tRP|min=15ns &gt;&gt;&gt; 20ns &gt;&gt;&gt; 1sys_clk &gt;&gt;&gt; [4:0] cnt_cmd</span></span><br><span class="line"><span class="comment">      tRC|min=60ns &gt;&gt;&gt; 80ns &gt;&gt;&gt; 4sys_clk &gt;&gt;&gt; [4:0] cnt_cmd</span></span><br><span class="line"><span class="comment">      8K refresh cycles every 64ms &gt;&gt;&gt; 8us &gt;&gt;&gt; 380sys_clk</span></span><br><span class="line"><span class="comment">===============================================================================*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">reg</span> [<span class="number">4</span>:<span class="number">0</span>]     cnt_cmd      ;</span><br><span class="line"><span class="keyword">reg</span> [<span class="number">8</span>:<span class="number">0</span>]     cnt_ref      ;</span><br><span class="line"><span class="keyword">reg</span>   	      flag_ref     ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">localparam</span> delay_8us = <span class="number">380</span> ;</span><br><span class="line"></span><br><span class="line"><span class="comment">//define sdram autorefresh cmd</span></span><br><span class="line"><span class="keyword">localparam</span>  precharge    = <span class="number">4'b0010</span>;</span><br><span class="line"><span class="keyword">localparam</span>  auto_refresh = <span class="number">4'b0001</span>;</span><br><span class="line"><span class="keyword">localparam</span>  nop          = <span class="number">4'b0111</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*============================================================================== </span></span><br><span class="line"><span class="comment">**********************************Main Logic************************************</span></span><br><span class="line"><span class="comment">==============================================================================*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//auto_refresh counter</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> sys_clk <span class="keyword">or</span> <span class="keyword">negedge</span> sys_rst_n) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(~sys_rst_n)</span><br><span class="line">        cnt_ref &lt;= <span class="number">9'b0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(cnt_ref &gt;= delay_8us)</span><br><span class="line">            cnt_ref &lt;= <span class="number">9'b0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(init_flag == <span class="number">1'b1</span>)</span><br><span class="line">            cnt_ref &lt;= cnt_ref + <span class="number">1'b1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ref flag signal</span></span><br><span class="line"><span class="keyword">always</span>  @(<span class="keyword">posedge</span> sys_clk <span class="keyword">or</span> <span class="keyword">negedge</span> sys_rst_n) <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span>(sys_rst_n == <span class="number">1'b0</span>)</span><br><span class="line">                flag_ref        &lt;=      <span class="number">1'b0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ref_flag == <span class="number">1'b1</span>)</span><br><span class="line">                flag_ref        &lt;=      <span class="number">1'b0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ref_en == <span class="number">1'b1</span>)</span><br><span class="line">                flag_ref        &lt;=      <span class="number">1'b1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//cmd counter</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> sys_clk <span class="keyword">or</span> <span class="keyword">negedge</span> sys_rst_n) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(~sys_rst_n) </span><br><span class="line">        cnt_cmd &lt;= <span class="number">4'd0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (flag_ref == <span class="number">1'b1</span>)</span><br><span class="line">             cnt_cmd &lt;= cnt_cmd + <span class="number">1'b1</span>; </span><br><span class="line">    <span class="keyword">else</span>     cnt_cmd &lt;= <span class="number">4'b0</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//cmd</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> sys_clk <span class="keyword">or</span> <span class="keyword">negedge</span> sys_rst_n) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(~sys_rst_n) </span><br><span class="line">        cmd_reg &lt;= nop;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">case</span>(cnt_cmd)</span><br><span class="line">            <span class="number">1</span>:       cmd_reg &lt;= precharge;</span><br><span class="line">            <span class="number">2</span>:       cmd_reg &lt;= auto_refresh;</span><br><span class="line">            <span class="number">6</span>:       cmd_reg &lt;= auto_refresh;</span><br><span class="line">            <span class="keyword">default</span>  cmd_reg &lt;= nop;</span><br><span class="line">        <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//request signal(8K refresh cycles every 64ms &gt;&gt;&gt; 8us &gt;&gt;&gt; 380sys_clk)</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> sys_clk <span class="keyword">or</span> <span class="keyword">negedge</span> sys_rst_n)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(~sys_rst_n)</span><br><span class="line">        ref_req &lt;= <span class="number">1'b0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(ref_en)</span><br><span class="line">        ref_req &lt;= <span class="number">1'b0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(cnt_ref &gt;= delay_8us)</span><br><span class="line">        ref_req &lt;= <span class="number">1'b1</span>;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">assign</span> sdram_addr = <span class="number">13'b0010000000000</span>;</span><br><span class="line"><span class="keyword">assign</span> ref_flag   = (cnt_cmd &gt;= <span class="number">9</span>)? <span class="number">1'b1</span> : <span class="number">1'b0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+</div></div><br></font>
+
+<p>实现后我们可以看到毎 8us 完成一次所有 bank 的刷新</p>
+<p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/vsimrun.jpg" alt=""></p>
+<h2 id="仿真波形"><a href="#仿真波形" class="headerlink" title="仿真波形"></a>仿真波形</h2><p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/refresh-wave.jpg" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sdram/refresh-wave1.jpg" alt=""></p>
 
       
     </div>
@@ -579,13 +619,10 @@
         <div class="post-tags">
           
             
-            <a href="/tags/Jetson-TX2/" rel="tag"><i class="fa fa-fw fa-tag"></i> Jetson TX2&nbsp;</a>
+            <a href="/tags/SDRAM/" rel="tag"><i class="fa fa-fw fa-tag"></i> SDRAM&nbsp;</a>
           
             
-            <a href="/tags/Nvidia/" rel="tag"><i class="fa fa-fw fa-tag"></i> Nvidia&nbsp;</a>
-          
-            
-            <a href="/tags/刷机/" rel="tag"><i class="fa fa-fw fa-tag"></i> 刷机&nbsp;</a>
+            <a href="/tags/IC-Design/" rel="tag"><i class="fa fa-fw fa-tag"></i> IC Design&nbsp;</a>
           
         </div>
       
@@ -598,8 +635,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/我的毕业设计-基于ROS的移动机器人.html" rel="next" title="我的毕业设计--基于ROS的移动机器人">
-                <i class="fa fa-chevron-left"></i> 我的毕业设计--基于ROS的移动机器人
+              <a href="/posts/初窥-SDRAM.html" rel="next" title="初窥 SDRAM">
+                <i class="fa fa-chevron-left"></i> 初窥 SDRAM
               </a>
             
           </div>
@@ -607,10 +644,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/Jetson-TX2-重新编译内核添加usb等驱动.html" rel="prev" title="Jetson TX2 重新编译内核添加usb等驱动">
-                Jetson TX2 重新编译内核添加usb等驱动 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -864,7 +897,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nvidia-Jetson-TX2-刷机并安装-JetPack3-1"><span class="nav-number">1.</span> <span class="nav-text">Nvidia Jetson TX2 刷机并安装 JetPack3.1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工具"><span class="nav-number">1.1.</span> <span class="nav-text">准备工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">1.4.</span> <span class="nav-text">结束语</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数分析"><span class="nav-number">2.</span> <span class="nav-text">参数分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现代码"><span class="nav-number">3.</span> <span class="nav-text">实现代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仿真波形"><span class="nav-number">4.</span> <span class="nav-text">仿真波形</span></a></li></ol></div>
             
 
           </div>
