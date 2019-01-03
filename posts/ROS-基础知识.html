@@ -129,7 +129,7 @@
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fuvaso3mffj30lf0jfq3c">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1.jpg">
 <meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E8%AF%9D%E9%A2%98%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B.jpg">
-<meta property="og:updated_time" content="2018-11-24T02:17:37.686Z">
+<meta property="og:updated_time" content="2018-12-17T07:36:52.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ROS 基础知识">
 <meta name="twitter:description" content="ROS 基础知识上一篇，我们已经正确的安装好了 ROS ，但是在使用 ROS 进行机器人开发工作之前，我们先来了解一点 ROS 的基础知识，以便于后面的开发使用。当然我这里自然是没有 ROS wiki 上介绍的详细，要想学习更多的操作请先看 ROS wiki 上的入门教程这里我只简单介绍一下，在我的项目中会用到的一些操作。">
@@ -564,7 +564,7 @@
 <h4 id="订阅者节点的连接请求"><a href="#订阅者节点的连接请求" class="headerlink" title="订阅者节点的连接请求"></a>订阅者节点的连接请求</h4><p>订阅者节点根据从主节点接收的发布者信息，向发布者节点请求直接连接。在这种情况下，要发送的信息包括订阅者节点名称、话题名称和消息类型。发布者节点和订阅者节点使用 XMLRPC 进行通信。</p>
 <h4 id="发布者节点的连接响应"><a href="#发布者节点的连接响应" class="headerlink" title="发布者节点的连接响应"></a>发布者节点的连接响应</h4><p>发布者节点将 TCP 服务器的 URI 地址和端口作为连接响应发送给订阅者节点。发布者节点和订阅者节点使用 XMLRPC 进行通信。</p>
 <h4 id="TCPROS-连接"><a href="#TCPROS-连接" class="headerlink" title="TCPROS 连接"></a>TCPROS 连接</h4><p>订阅者节点使用 TCPROS 创建一个与发布者节点对应的客户端，并直接与发布者节点连接。节点间通信使用一种称为 TCPROS 的 TCP/IP 方式。</p>
-<h4 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h4><p>发布者节点向订阅者节点发送消息。节点间通信使用一种称为 TCPROS 的 TCP/IP 方式。<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E8%AF%9D%E9%A2%98%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B.jpg" alt=""><br>服务消息，服务服务器和客户端之间的连接与上述发布者和订阅者之间的 TCPROS 连接相同，但是与话题不同，服务只连接一次，在执行请求和响应之后彼此断开连接。如果有必要，需要重新连接。<br>动作消息，动作（ action ）在执行的方式上好像是在服务（ service ）的请求（ goal ）和响应( result ）之间仅仅多了中途反馈环节，但实际的运作方式与话题相同。事实上，如果使用 rostopic 命令来查阅话题，那么可以看到该动作的 goal、status、cancel、result 和 feedback 等五个话题。动作服务器和客户端之间的连接与上述发布者和订阅中的 TCPROS 连接相同，但某些用法略有不同。例如，动作客户端发送取消命令或服务器发送结果值会中断连接，等。</p>
+<h4 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h4><p>发布者节点向订阅者节点发送消息。节点间通信使用一种称为 TCPROS 的 TCP/IP 方式。<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E8%AF%9D%E9%A2%98%E6%B6%88%E6%81%AF%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B.jpg" alt=""><br>服务消息，服务服务器和客户端之间的连接与上述发布者和订阅者之间的 TCPROS 连接相同，但是与话题不同，服务只连接一次，在执行请求和响应之后彼此断开连接。如果有必要，需要重新连接。<br>动作消息，动作（ action ）在执行的方式上好像是在服务（ service ）的请求（ goal ）和响应( result ）之间仅仅多了中途反馈环节，但实际的运作方式与话题相同。事实上，如果使用 rostopic 命令来查阅话题，那么可以看到该动作的 goal、status、cancel、result 和 feedback 等五个话题。动作服务器和客户端之间的连接与上述发布者和订阅中的 TCPROS 连接相同，但某些用法略有不同。例如，动作客户端发送取消命令或服务器发送结果值会中断连接等。</p>
 
       
     </div>
@@ -914,7 +914,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
