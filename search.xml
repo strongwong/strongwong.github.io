@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用汇编实现 pc 和 sp 的保存及恢复操作]]></title>
+    <url>%2F%2Fposts%2F%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html</url>
+    <content type="text"><![CDATA[前言在 ARM Cortex 系列的芯片中本来就有一套保护现场的机制，例如当产生了一个中断时，会自动将当前寄存器的值入栈，并在 lr（r14） 寄存器中保存将要返回的 pc 值，在中断服务程序执行完成后将 pc 恢复到之前的位置。如果在执行中断服务程序的时候又发生了优先级更高的中断，也就是说发生了中断嵌套，这是将再次进行现场保护，同时 lr 值会被压栈（上一次的 pc ），新的 lr 生成。 但是在一些场景下，这样的机制就不太好用了，比如说要进入 sleep 模式 cpu 掉电了，想要恢复到掉电前的状态。这样的话就需要我们自己实现保护现场了，下面就来简单介绍一下我的实现。 硬件及 IDE 环境 硬件: Cortex-M3 FPGA 开发板 IDE: IAR 8.22.1 在进行 FPGA 验证之前，还跑了 RTL 的仿真，从仿真波形的结果来看也是正确的。 c 文件现场保护主要就是保存当前的运行状态，在从 sleep 模式唤醒后将保存的状态恢复，使 cpu 回到到 sleep 之前的状态。在我们这里最主要的是保存 pc 和 sp 的值，cpu 唤醒之后恢复 pc 和 sp 就好，所以我们需要将进入 sleep 之前的 pc 和 sp 保存即可。 在进入 sleep 模式中，虽然 cpu 掉电了，但是 SRAM 还是维持着的，所以我们可以使用一个全局变量（存储在 SRAM 中）来保存 pc 和 sp 的值。 “xxx.c” 文件中部分代码： 123456789101112131415// 函数及变量的声明和引用extern void Save_PC_SP(void)extern void Restore_PC_SP(void)extern u32 pc_save;extern u32 sp_save;//······// 在执行 sleep 指令（WFI/WFE）之前保存 pc、spSave_PC_SP(); // 保存 pc 和 sp__WFI(); // 睡眠__NOP();__NOP();__NOP();//······ s 汇编文件“xxx.s”文件中的部分代码： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950;函数及变量的声明和引用PUBLIC Save_PC_SPPUBLIC Restore_PC_SPIMPORT pc_saveIMPORT sp_save;唤醒后判断的代码 THUMB PUBWEAK Reset_Handler SECTION .text:CODE:REORDER:NOROOT(2)Reset_Handler LDR R0, =0x4001f000 LDR R1, [R0] CMP R1, #1 BEQ __iar_program_start B Restore_PC_SP;Save pc sp 的代码 SECTION .text:CODE:NOROOTSave_PC_SP LDR R0, =0x4001f000 MOV R1, #1 STR R1, [R0] LDR R0, =sp_save LDR R2, =pc_save MOV R1, R13 STR R1, [R0] MOV R1, LR STR R1, [R2] BX LR;Restore pc sp 的代码 SECTION .text:CODE:NOROOTRestore_PC_SP LDR R0, =sp_save LDR R1, [R0] MOV R13, R1 LDR R0, =pc_save LDR R1, [R0] ADD R1, R1, #0x8 MOV PC, R1 NOP NOP NOP 在汇编文件中主要实现的是 save 和 restore 的操作，以及恢复过程的判断。因为我们的设计是从睡眠唤醒是从 Reset 起来的，这就导致第一次 cpu 的正常启动会和 restore 发生冲突，所以我这里选择了一个不会掉电的寄存器来作为是否进行 restore 的判断。 还有就是加 NOP 指令是因为 Cortex-M3 是三级流水线，为了防止 cpu 因为 pc 的预取而发生错误。]]></content>
+      <categories>
+        <category>学习</category>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>ARM</tag>
+        <tag>CM3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数字 IC 设计流程]]></title>
+    <url>%2F%2Fposts%2F%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html</url>
+    <content type="text"><![CDATA[0x00最近即将开始要带着学弟们入门数字 IC 的设计，但很多学弟对于接下来要做什么是迷茫的，很多练就了各式各样的基本功却不知道如何施展，因此这里简单介绍一下数字 IC 设计的全过程及相关的设计工具及涉及到的相关职位，如果有写的不合适或者不正确的地方还请各位提出~ 详见下图: 0x01看了上图之后很多学弟就又问了，那平时我们都是 vivado，quartus，FPGA …… 为啥感觉和上面的都不沾边呢，这里说一点个人的看法，如果不是做硬件并行加速或者 FPGA 的嵌入式开发，那么平日 FPGA 的最大作用就是 —— 功能验证性工具。因为流片的价格非常昂贵，很少有实验室或者学校会让你不断地流片来实现你的设计，另外的，一个实验室如果没有同时具备设计，验证，版图 ……（全栈）技能同学的话要想能流片（同时具备以上技能）其实也很难的。那么这时 FPGA 就可以验证你的设计是否在一定程度上是正确的。 0x02我们最后再来看一下数字前端的设计流程，如下图所示~ 之前的 sdram 设计剩余部分,我们将尽快更新~ By Ricky]]></content>
+      <categories>
+        <category>IC Design</category>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>IC Design</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SDRAM 两次踏进同一条河]]></title>
     <url>%2F%2Fposts%2FSDRAM-%E4%B8%A4%E6%AC%A1%E8%B8%8F%E8%BF%9B%E5%90%8C%E4%B8%80%E6%9D%A1%E6%B2%B3.html</url>
     <content type="text"><![CDATA[人不能两次踏进同一条河，但 SDRAM 可以——SDRAM的刷新 前言上周去了趟深圳，所以摸鱼拖更了，在那边发现真的是机遇越大的地方努力的脚步就越匆忙，某企业的 boss 是位国家科学技术奖的获得者，公司已经上市了，却依然吃 13 元的小店套餐，而且饭几乎是倒进嘴里的，5 分钟左右吃完马上就又去和合作对象谈判去了！……所以我们更要加油了，不然只会被大佬们越拉越远 …… 加油吧！ 在初窥 sdram 中我们留了一个坑——首先我们在第一页就可以看到它的刷新周期是 64ms（这个重要参数将在后面进行具体介绍） 今天我们就来填这个坑…… 「人不能两次踏进同一条河流」是古希腊哲学家赫拉克利特说的。阐述「变」的哲学在米利都学派和毕达戈拉斯学派之后，爱菲斯的赫拉克利特创立了一种变的哲学。他的哲学充满了辩证法思想，对后来辩证法的发展产生过重大影响。 他形象地表达了他关于变的思想，说：「太阳每天都是新的。」他把存在的东西比作一条河，声称人不能两次踏进同一条河。因为当人第二次进入这条河时，是新的水流而不是原来的水流在流淌。SDRAM 不断地刷新，但却能保证刷新后的数据与刷新前一致，人踏进河是为什么我不知道，但是 SDRAM 正是为了保证内部电容的电量最终实现数据的不丢失才会不断地刷新。我们人做不到的事，就用 RTL 让 SDRAM 帮我们做了吧。 参数分析首先我们来看 SDRAM 参数：8K Refresh Cycles/64 ms，意味着： 刷新速率 = 64ms / 8192 行 =&gt; 7us； 刷新时钟周期 = 7us * CPU 运行频率； 例：CPU 运行频率 50MHz 时钟周期 = 7.81us * 50MHz = 390.5；64ms 为刷新周期最大值，为保证可靠运行，实际刷新实间要稍小于 64ms；例：时钟周期 = 390.5 ≈ 380 这就意味着每 380 个时钟周期，我们便需要对我们的 SDRAM 进行一次刷新，那么进行刷新的时候需要进行哪些操作呢？我们还是回到我们的数据手册中。 如图示，我们可以看到首先是要进行一次预充电操作(precharge)（同时选中所有的 bank），在经过 tRP 延时后进行一次自刷新操作(auto refresh)，再经过一次 tRC 后又进行一次自刷新操作(auto refresh)【注：实际使用中可以只进行一次自刷新操作】，最后进入到我们下一步 …… 那么根据第一篇《初窥 SDRAM》后我们知道以上的几个操作对应的指令码分别为： CMD CS RAS CAS WE Precharge 0 0 1 0 Auto-Refresh 0 0 0 1 Nop 0 1 1 1 延时 tRP，tRC 则分别对应 15ns（至少 1 个周期，实际操作中取 1 个周期），60ns （至少 3 个周期，实际操作中取 4 个周期）。 那么我们的设计即可为：一个 8us 的定时器，控制刷新的周期，作为刷新的开始信号；一个命令计数器，用于记录对应的延时节点（tRP，tRC）；最后即为达到对应节点输出对应指令即可。 由此踏进的河流变和 8us 前的河流是同一条河流的 …… 实现代码具体实现代码如下:上代码！ sdram_autoref.v 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103/*File name: sdram_autorefFunction: Auto refresh for IS42S16320D-7TL SDRAMModule name: sdram_autorefAuthor: RickyTime: 20181130*/module sdram_autoref( //system signals input sys_clk , input sys_rst_n , //others input init_flag , input ref_en , output reg ref_req , output wire ref_flag , output reg [3:0] cmd_reg , output wire [12:0] sdram_addr );/*============================================================================== **********************Define Parameter and inside Signals***********************Note: sys_clk=50MHz tRP|min=15ns &gt;&gt;&gt; 20ns &gt;&gt;&gt; 1sys_clk &gt;&gt;&gt; [4:0] cnt_cmd tRC|min=60ns &gt;&gt;&gt; 80ns &gt;&gt;&gt; 4sys_clk &gt;&gt;&gt; [4:0] cnt_cmd 8K refresh cycles every 64ms &gt;&gt;&gt; 8us &gt;&gt;&gt; 380sys_clk===============================================================================*/reg [4:0] cnt_cmd ;reg [8:0] cnt_ref ;reg flag_ref ;localparam delay_8us = 380 ;//define sdram autorefresh cmdlocalparam precharge = 4'b0010;localparam auto_refresh = 4'b0001;localparam nop = 4'b0111;/*============================================================================== **********************************Main Logic************************************==============================================================================*///auto_refresh counteralways @(posedge sys_clk or negedge sys_rst_n) begin if(~sys_rst_n) cnt_ref &lt;= 9'b0; else if(cnt_ref &gt;= delay_8us) cnt_ref &lt;= 9'b0; else if(init_flag == 1'b1) cnt_ref &lt;= cnt_ref + 1'b1;end//ref flag signalalways @(posedge sys_clk or negedge sys_rst_n) begin if(sys_rst_n == 1'b0) flag_ref &lt;= 1'b0; else if(ref_flag == 1'b1) flag_ref &lt;= 1'b0; else if(ref_en == 1'b1) flag_ref &lt;= 1'b1;end//cmd counteralways @(posedge sys_clk or negedge sys_rst_n) begin if(~sys_rst_n) cnt_cmd &lt;= 4'd0; else if (flag_ref == 1'b1) cnt_cmd &lt;= cnt_cmd + 1'b1; else cnt_cmd &lt;= 4'b0;end//cmdalways @(posedge sys_clk or negedge sys_rst_n) begin if(~sys_rst_n) cmd_reg &lt;= nop; else case(cnt_cmd) 1: cmd_reg &lt;= precharge; 2: cmd_reg &lt;= auto_refresh; 6: cmd_reg &lt;= auto_refresh; default cmd_reg &lt;= nop; endcaseend//request signal(8K refresh cycles every 64ms &gt;&gt;&gt; 8us &gt;&gt;&gt; 380sys_clk)always @(posedge sys_clk or negedge sys_rst_n)begin if(~sys_rst_n) ref_req &lt;= 1'b0; else if(ref_en) ref_req &lt;= 1'b0; else if(cnt_ref &gt;= delay_8us) ref_req &lt;= 1'b1;endassign sdram_addr = 13'b0010000000000;assign ref_flag = (cnt_cmd &gt;= 9)? 1'b1 : 1'b0;endmodule 实现后我们可以看到毎 8us 完成一次所有 bank 的刷新 仿真波形 By Ricky]]></content>
@@ -9,8 +34,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>SDRAM</tag>
         <tag>IC Design</tag>
+        <tag>SDRAM</tag>
       </tags>
   </entry>
   <entry>
@@ -22,8 +47,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>SDRAM</tag>
         <tag>IC Design</tag>
+        <tag>SDRAM</tag>
       </tags>
   </entry>
   <entry>
@@ -35,9 +60,9 @@
         <category>其他</category>
       </categories>
       <tags>
-        <tag>IC Design</tag>
         <tag>计数器</tag>
         <tag>数字前端</tag>
+        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>

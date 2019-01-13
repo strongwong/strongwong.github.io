@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.strongwong.top/"/>
-  <updated>2018-12-06T14:23:34.379Z</updated>
+  <updated>2019-01-13T13:53:18.104Z</updated>
   <id>https://blog.strongwong.top/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用汇编实现 pc 和 sp 的保存及恢复操作</title>
+    <link href="https://blog.strongwong.top//posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html"/>
+    <id>https://blog.strongwong.top//posts/使用汇编实现-pc-和-sp-的保存及恢复操作.html</id>
+    <published>2019-01-13T11:32:27.000Z</published>
+    <updated>2019-01-13T13:53:18.104Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 ARM Cortex 系列的芯片中本来就有一套保护现场的机制，例如当产生了一个中断时，会自动将当前寄存器的值入栈，并在 lr（r14） 寄存器中保存将要返回的 pc 值，在中断服务程序执行完成后将 pc 恢复到之前的位置。如果在执行中断服务程序的时候又发生了优先级更高的中断，也就是说发生了中断嵌套，这是将再次进行现场保护，同时 lr 值会被压栈（上一次的 pc ），新的 lr 生成。</p><p>但是在一些场景下，这样的机制就不太好用了，比如说要进入 sleep 模式 cpu 掉电了，想要恢复到掉电前的状态。这样的话就需要我们自己实现保护现场了，下面就来简单介绍一下我的实现。</p><a id="more"></a><h2 id="硬件及-IDE-环境"><a href="#硬件及-IDE-环境" class="headerlink" title="硬件及 IDE 环境"></a>硬件及 IDE 环境</h2><ul><li>硬件: Cortex-M3 FPGA 开发板</li><li>IDE: IAR 8.22.1</li></ul><p>在进行 FPGA 验证之前，还跑了 RTL 的仿真，从仿真波形的结果来看也是正确的。</p><h2 id="c-文件"><a href="#c-文件" class="headerlink" title="c 文件"></a>c 文件</h2><p>现场保护主要就是保存当前的运行状态，在从 sleep 模式唤醒后将保存的状态恢复，使 cpu 回到到 sleep 之前的状态。在我们这里最主要的是保存 pc 和 sp 的值，cpu 唤醒之后恢复 pc 和 sp 就好，所以我们需要将进入 sleep 之前的 pc 和 sp 保存即可。</p><p>在进入 sleep 模式中，虽然 cpu 掉电了，但是 SRAM 还是维持着的，所以我们可以使用一个全局变量（存储在 SRAM 中）来保存 pc 和 sp 的值。</p><p>“xxx.c” 文件中部分代码：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数及变量的声明和引用</span></span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">Save_PC_SP</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">Restore_PC_SP</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"><span class="keyword">extern</span> u32 pc_save</span>;</span><br><span class="line"><span class="keyword">extern</span> u32 sp_save;</span><br><span class="line"></span><br><span class="line"><span class="comment">//······</span></span><br><span class="line"><span class="comment">// 在执行 sleep 指令（WFI/WFE）之前保存 pc、sp</span></span><br><span class="line">Save_PC_SP();    <span class="comment">// 保存 pc 和 sp</span></span><br><span class="line">__WFI();         <span class="comment">// 睡眠</span></span><br><span class="line">__NOP();</span><br><span class="line">__NOP();</span><br><span class="line">__NOP();</span><br><span class="line"></span><br><span class="line"><span class="comment">//······</span></span><br></pre></td></tr></table></figure><h2 id="s-汇编文件"><a href="#s-汇编文件" class="headerlink" title="s 汇编文件"></a>s 汇编文件</h2><p>“xxx.s”文件中的部分代码：</p><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">;函数及变量的声明和引用</span></span><br><span class="line"><span class="symbol">PUBLIC</span>  Save_PC_SP</span><br><span class="line"><span class="symbol">PUBLIC</span>  Restore_PC_SP</span><br><span class="line"></span><br><span class="line"><span class="symbol">IMPORT</span>  pc_save</span><br><span class="line"><span class="symbol">IMPORT</span>  sp_save</span><br><span class="line"></span><br><span class="line"><span class="comment">;唤醒后判断的代码</span></span><br><span class="line">    <span class="meta">THUMB</span></span><br><span class="line"></span><br><span class="line">    PUBWEAK Reset_Handler</span><br><span class="line">    SECTION <span class="meta">.text</span>:<span class="meta">CODE</span>:REORDER:NOROOT(<span class="number">2</span>)</span><br><span class="line"><span class="symbol">Reset_Handler</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R0</span>, <span class="number">=0x4001f000</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R1</span>, [<span class="built_in">R0</span>]</span><br><span class="line">    <span class="keyword">CMP </span><span class="built_in">R1</span>, <span class="number">#1</span></span><br><span class="line">    <span class="keyword">BEQ </span>__iar_program_start</span><br><span class="line">    <span class="keyword">B </span>  Restore_PC_SP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;Save pc sp 的代码</span></span><br><span class="line"></span><br><span class="line">    SECTION <span class="meta">.text</span>:<span class="meta">CODE</span>:NOROOT</span><br><span class="line"><span class="symbol">Save_PC_SP</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R0</span>, <span class="number">=0x4001f000</span></span><br><span class="line">    <span class="keyword">MOV </span><span class="built_in">R1</span>, <span class="number">#1</span></span><br><span class="line">    <span class="keyword">STR </span><span class="built_in">R1</span>, [<span class="built_in">R0</span>]</span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R0</span>, <span class="symbol">=sp_save</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R2</span>, <span class="symbol">=pc_save</span></span><br><span class="line">    <span class="keyword">MOV </span><span class="built_in">R1</span>, <span class="built_in">R13</span></span><br><span class="line">    <span class="keyword">STR </span><span class="built_in">R1</span>, [<span class="built_in">R0</span>]</span><br><span class="line">    <span class="keyword">MOV </span><span class="built_in">R1</span>, <span class="built_in">LR</span></span><br><span class="line">    <span class="keyword">STR </span><span class="built_in">R1</span>, [<span class="built_in">R2</span>]</span><br><span class="line">    <span class="keyword">BX </span> <span class="built_in">LR</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">;Restore pc sp 的代码</span></span><br><span class="line">    </span><br><span class="line">    SECTION <span class="meta">.text</span>:<span class="meta">CODE</span>:NOROOT</span><br><span class="line"><span class="symbol">Restore_PC_SP</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R0</span>,  <span class="symbol">=sp_save</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R1</span>,  [<span class="built_in">R0</span>]</span><br><span class="line">    <span class="keyword">MOV </span><span class="built_in">R13</span>, <span class="built_in">R1</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R0</span>,  <span class="symbol">=pc_save</span></span><br><span class="line">    <span class="keyword">LDR </span><span class="built_in">R1</span>,  [<span class="built_in">R0</span>]</span><br><span class="line">    <span class="keyword">ADD </span><span class="built_in">R1</span>,  <span class="built_in">R1</span>, <span class="number">#0x8</span></span><br><span class="line">    <span class="keyword">MOV </span><span class="built_in">PC</span>,  <span class="built_in">R1</span></span><br><span class="line">    <span class="keyword">NOP</span></span><br><span class="line"><span class="keyword"> </span>   <span class="keyword">NOP</span></span><br><span class="line"><span class="keyword"> </span>   <span class="keyword">NOP</span></span><br></pre></td></tr></table></figure><p>在汇编文件中主要实现的是 save 和 restore 的操作，以及恢复过程的判断。因为我们的设计是从睡眠唤醒是从 Reset 起来的，这就导致第一次 cpu 的正常启动会和 restore 发生冲突，所以我这里选择了一个不会掉电的寄存器来作为是否进行 restore 的判断。</p><p>还有就是加 NOP 指令是因为 Cortex-M3 是三级流水线，为了防止 cpu 因为 pc 的预取而发生错误。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在 ARM Cortex 系列的芯片中本来就有一套保护现场的机制，例如当产生了一个中断时，会自动将当前寄存器的值入栈，并在 lr（r14） 寄存器中保存将要返回的 pc 值，在中断服务程序执行完成后将 pc 恢复到之前的位置。如果在执行中断服务程序的时候又发生了优先级更高的中断，也就是说发生了中断嵌套，这是将再次进行现场保护，同时 lr 值会被压栈（上一次的 pc ），新的 lr 生成。&lt;/p&gt;
+&lt;p&gt;但是在一些场景下，这样的机制就不太好用了，比如说要进入 sleep 模式 cpu 掉电了，想要恢复到掉电前的状态。这样的话就需要我们自己实现保护现场了，下面就来简单介绍一下我的实现。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="学习" scheme="https://blog.strongwong.top/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="嵌入式" scheme="https://blog.strongwong.top/categories/%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
+    
+      <category term="ARM" scheme="https://blog.strongwong.top/tags/ARM/"/>
+    
+      <category term="CM3" scheme="https://blog.strongwong.top/tags/CM3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数字 IC 设计流程</title>
+    <link href="https://blog.strongwong.top//posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html"/>
+    <id>https://blog.strongwong.top//posts/数字-IC-设计流程.html</id>
+    <published>2019-01-13T10:41:35.000Z</published>
+    <updated>2019-01-13T13:47:31.975Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>最近即将开始要带着学弟们入门数字 IC 的设计，但很多学弟对于接下来要做什么是迷茫的，很多练就了各式各样的基本功却不知道如何施展，因此这里简单介绍一下数字 IC 设计的全过程及相关的设计工具及涉及到的相关职位，如果有写的不合适或者不正确的地方还请各位提出~</p><a id="more"></a><p>详见下图:</p><p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E6%95%B0%E5%AD%97IC%E8%AE%BE%E8%AE%A1%E5%85%A8%E8%BF%87%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7.png" alt=""></p><h2 id="0x01"><a href="#0x01" class="headerlink" title="0x01"></a>0x01</h2><p>看了上图之后很多学弟就又问了，那平时我们都是 vivado，quartus，FPGA …… 为啥感觉和上面的都不沾边呢，这里说一点个人的看法，如果不是做硬件并行加速或者 FPGA 的嵌入式开发，那么平日 FPGA 的最大作用就是 —— 功能验证性工具。因为流片的价格非常昂贵，很少有实验室或者学校会让你不断地流片来实现你的设计，另外的，一个实验室如果没有同时具备设计，验证，版图 ……（全栈）技能同学的话要想能流片（同时具备以上技能）其实也很难的。那么这时 FPGA 就可以验证你的设计是否在一定程度上是正确的。</p><h2 id="0x02"><a href="#0x02" class="headerlink" title="0x02"></a>0x02</h2><p>我们最后再来看一下数字前端的设计流程，如下图所示~</p><p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E6%95%B0%E5%AD%97%E5%89%8D%E7%AB%AF%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt=""></p><p>之前的 sdram 设计剩余部分,我们将尽快更新~</p><p><strong>By Ricky</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x00&quot;&gt;&lt;a href=&quot;#0x00&quot; class=&quot;headerlink&quot; title=&quot;0x00&quot;&gt;&lt;/a&gt;0x00&lt;/h2&gt;&lt;p&gt;最近即将开始要带着学弟们入门数字 IC 的设计，但很多学弟对于接下来要做什么是迷茫的，很多练就了各式各样的基本功却不知道如何施展，因此这里简单介绍一下数字 IC 设计的全过程及相关的设计工具及涉及到的相关职位，如果有写的不合适或者不正确的地方还请各位提出~&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/categories/IC-Design/"/>
+    
+      <category term="其他" scheme="https://blog.strongwong.top/categories/IC-Design/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
+    
+  </entry>
   
   <entry>
     <title>SDRAM 两次踏进同一条河</title>
@@ -39,9 +90,9 @@
       <category term="SDRAM" scheme="https://blog.strongwong.top/categories/IC-Design/SDRAM/"/>
     
     
-      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
-    
       <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
+    
+      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
     
   </entry>
   
@@ -66,9 +117,9 @@
       <category term="SDRAM" scheme="https://blog.strongwong.top/categories/IC-Design/SDRAM/"/>
     
     
-      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
-    
       <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
+    
+      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
     
   </entry>
   
@@ -92,11 +143,11 @@
       <category term="其他" scheme="https://blog.strongwong.top/categories/IC-Design/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
-    
       <category term="计数器" scheme="https://blog.strongwong.top/tags/%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
     
       <category term="数字前端" scheme="https://blog.strongwong.top/tags/%E6%95%B0%E5%AD%97%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
     
   </entry>
   
