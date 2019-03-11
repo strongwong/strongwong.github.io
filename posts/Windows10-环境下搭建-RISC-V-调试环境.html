@@ -118,24 +118,33 @@
   });
 </script>
 
-  <meta name="description" content="最近看了两部关于无线电相关的电影（『时空接触』、『黑洞频率』），对与无线电产生了很大的兴趣。现代由于互联网的发展，玩无线电的人越来越少了，了解无线电知识的人也不多了。但是还是有很多人在学习和使用软件定义无线电( Software Defined Radio – SDR )，软件无线电可以做很多神奇事情！！">
-<meta name="keywords" content="SDR,树莓派">
+  <meta name="description" content="环境要求软件环境 IDE: GNU MCU Eclipse IDE for C/C++ Developers IDE 插件: GNU MCU Eclipse plug-ins GCC/GDB 工具: GNU MCU Eclipse RISC-V Embedded GCC 调试工具: GNU MCU Eclipse OpenOCD make 工具: GNU MCU Eclipse Windows B">
+<meta name="keywords" content="RISC-V">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点">
-<meta property="og:url" content="https://blog.strongwong.top/posts/使用树莓派3b和RTL-SDR搭建小功率无线电监测点.html">
+<meta property="og:title" content="Windows10 环境下搭建 RISC-V 调试环境">
+<meta property="og:url" content="https://blog.strongwong.top/posts/Windows10-环境下搭建-RISC-V-调试环境.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="最近看了两部关于无线电相关的电影（『时空接触』、『黑洞频率』），对与无线电产生了很大的兴趣。现代由于互联网的发展，玩无线电的人越来越少了，了解无线电知识的人也不多了。但是还是有很多人在学习和使用软件定义无线电( Software Defined Radio – SDR )，软件无线电可以做很多神奇事情！！">
+<meta property="og:description" content="环境要求软件环境 IDE: GNU MCU Eclipse IDE for C/C++ Developers IDE 插件: GNU MCU Eclipse plug-ins GCC/GDB 工具: GNU MCU Eclipse RISC-V Embedded GCC 调试工具: GNU MCU Eclipse OpenOCD make 工具: GNU MCU Eclipse Windows B">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/rtl_test.png">
-<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090.png">
-<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air.png">
-<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air2.png">
-<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/air.jpg">
-<meta property="og:updated_time" content="2018-10-13T05:25:50.723Z">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7540a7474bf.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754155033e4.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7542f86b719.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7543a17226b.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7544fd07eb8.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c75487c1f6cf.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7548ff7b8fb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7549557f2eb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7549be00c12.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754a785cc2d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754ad5a9b74.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754b533251d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754c158df6a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754c158df6a.png">
+<meta property="og:updated_time" content="2019-03-11T03:18:43.166Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点">
-<meta name="twitter:description" content="最近看了两部关于无线电相关的电影（『时空接触』、『黑洞频率』），对与无线电产生了很大的兴趣。现代由于互联网的发展，玩无线电的人越来越少了，了解无线电知识的人也不多了。但是还是有很多人在学习和使用软件定义无线电( Software Defined Radio – SDR )，软件无线电可以做很多神奇事情！！">
-<meta name="twitter:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/rtl_test.png">
+<meta name="twitter:title" content="Windows10 环境下搭建 RISC-V 调试环境">
+<meta name="twitter:description" content="环境要求软件环境 IDE: GNU MCU Eclipse IDE for C/C++ Developers IDE 插件: GNU MCU Eclipse plug-ins GCC/GDB 工具: GNU MCU Eclipse RISC-V Embedded GCC 调试工具: GNU MCU Eclipse OpenOCD make 工具: GNU MCU Eclipse Windows B">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/26/5c7540a7474bf.png">
 
 
 
@@ -144,7 +153,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/posts/使用树莓派3b和RTL-SDR搭建小功率无线电监测点.html"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/Windows10-环境下搭建-RISC-V-调试环境.html"/>
 
 
 
@@ -154,7 +163,7 @@
   };
 </script>
 
-  <title>使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点 | StrongWong</title>
+  <title>Windows10 环境下搭建 RISC-V 调试环境 | StrongWong</title>
   
 
 
@@ -383,7 +392,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/使用树莓派3b和RTL-SDR搭建小功率无线电监测点.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/Windows10-环境下搭建-RISC-V-调试环境.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -400,7 +409,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点
+          <h2 class="post-title" itemprop="name headline">Windows10 环境下搭建 RISC-V 调试环境
               
             
           </h2>
@@ -425,7 +434,7 @@
                 
               
 
-              <time title="创建时间：2018-09-16 20:03:40" itemprop="dateCreated datePublished" datetime="2018-09-16T20:03:40+08:00">2018-09-16</time>
+              <time title="创建时间：2019-03-11 10:32:02" itemprop="dateCreated datePublished" datetime="2019-03-11T10:32:02+08:00">2019-03-11</time>
             
 
             
@@ -443,7 +452,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/无线电/" itemprop="url" rel="index"><span itemprop="name">无线电</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习/嵌入式/" itemprop="url" rel="index"><span itemprop="name">嵌入式</span></a></span>
 
                 
                 
@@ -458,8 +474,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/使用树莓派3b和RTL-SDR搭建小功率无线电监测点.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/使用树莓派3b和RTL-SDR搭建小功率无线电监测点.html" itemprop="commentCount"></span>
+                <a href="/posts/Windows10-环境下搭建-RISC-V-调试环境.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/Windows10-环境下搭建-RISC-V-调试环境.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -467,7 +483,7 @@
 
           
           
-             <span id="/posts/使用树莓派3b和RTL-SDR搭建小功率无线电监测点.html" class="leancloud_visitors" data-flag-title="使用树莓派 3b 和 RTL_SDR 搭建小功率无线电监测点">
+             <span id="/posts/Windows10-环境下搭建-RISC-V-调试环境.html" class="leancloud_visitors" data-flag-title="Windows10 环境下搭建 RISC-V 调试环境">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -498,42 +514,52 @@
       
 
       
-        <p>最近看了两部关于无线电相关的电影（『时空接触』、『黑洞频率』），对与无线电产生了很大的兴趣。现代由于互联网的发展，玩无线电的人越来越少了，了解无线电知识的人也不多了。但是还是有很多人在学习和使用软件定义无线电( Software Defined Radio – SDR )，软件无线电可以做很多神奇事情！！</p>
-<a id="more"></a>
-<h2 id="SDR-是个什么东西？"><a href="#SDR-是个什么东西？" class="headerlink" title="SDR 是个什么东西？"></a>SDR 是个什么东西？</h2><blockquote>
-<p>“软件无线电”( Software Defined Radio – SDR )。实际上软件无线电技术的研究和开发已经有几十年的历史了，其中传统上以硬件实现的组件（例如混频器，滤波器，放大器，调制器\解调器，检测器等），通过个人计算机或嵌入式系统上的软件实现。最初源于美军的多制式电台项目，应用在军事领域。<br>在 21 世纪初，由于众多公司的努力，使得它已从军事领域转向民用领域，成为经济的、应用广泛的、全球第三代移动通信系统的战略基础。<br>到今天我们日常使用的移动通信系统中就在大量使用软件无线电技术， 比如基站中的信号处理大量的使用可编程的 FPGA 和 DSP 完成，比如手机当中的基带处理器也越来越多的采用软解调的方法(少数运算量特别大实时性要求特别高的模块除外，比如 turbo 解码器、扩频相关器等，这些模块往往在基带处理器中嵌入一些高度定制化”硬”核来实现)。</p>
-</blockquote>
-<p>所以我们想要监听周围的无线电信号，自然是需要一个硬件的。</p>
-<h2 id="需要的硬件"><a href="#需要的硬件" class="headerlink" title="需要的硬件"></a>需要的硬件</h2><ul>
-<li>RTL-SDR (或者 HackRF等)</li>
-<li>Raspberry Pi 3 (或者 Linux 系统的电脑)</li>
-<li>有网络</li>
-<li>高频天线</li>
+        <h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><ul>
+<li>IDE: <a href="https://github.com/gnu-mcu-eclipse/org.eclipse.epp.packages/releases" target="_blank" rel="noopener">GNU MCU Eclipse IDE for C/C++ Developers</a></li>
+<li>IDE 插件: <a href="https://github.com/gnu-mcu-eclipse/eclipse-plugins/releases" target="_blank" rel="noopener">GNU MCU Eclipse plug-ins</a></li>
+<li>GCC/GDB 工具: <a href="https://github.com/gnu-mcu-eclipse/riscv-none-gcc/releases" target="_blank" rel="noopener">GNU MCU Eclipse RISC-V Embedded GCC</a></li>
+<li>调试工具: <a href="https://github.com/gnu-mcu-eclipse/openocd/releases" target="_blank" rel="noopener">GNU MCU Eclipse OpenOCD</a></li>
+<li>make 工具: <a href="https://github.com/gnu-mcu-eclipse/windows-build-tools/releases" target="_blank" rel="noopener">GNU MCU Eclipse Windows Build Tools</a></li>
+<li>Zadig 工具: <a href="https://zadig.akeo.ie/" target="_blank" rel="noopener">Zadig</a></li>
 </ul>
-<p>我选择的是一根支持 rtl-sdr 的电视棒，就是采用 RTL2832u (频率范围为 64-1700mh )解调芯片的。这是瑞晟( Realtek )的一个芯片型号，原本是做电视棒芯片的。后来被人发现这个芯片具有非常广的频率接收范围，然后就被用来做 sdr 应用了。十分廉价！</p>
-<h2 id="安装-RTL-SDR-驱动程序"><a href="#安装-RTL-SDR-驱动程序" class="headerlink" title="安装 RTL_SDR 驱动程序"></a>安装 RTL_SDR 驱动程序</h2><p>硬件已经有了，接下来就是安装相关的软件驱动，才可以使用</p>
-<p>打开一个 Terminal 窗口，进入到你的 home 目录下。先更新一下系统的软件，然后开始安装需要的软件依赖。具体操作如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install git</span><br><span class="line">$ sudo apt-get install cmake</span><br><span class="line">$ sudo apt-get install build-essential</span><br><span class="line">$ sudo apt-get install libusb-1.0-0-dev</span><br></pre></td></tr></table></figure></p>
-<p>相关的依赖软件安装完成后，接下来下载 RTL2832u Osmocom 的驱动源代码，进行编译安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> git://git.osmocom.org/rtl-sdr.git</span><br><span class="line">$ <span class="built_in">cd</span> rtl-sdr</span><br><span class="line">$ mkdir -p build</span><br><span class="line">$ <span class="built_in">cd</span> build</span><br><span class="line">$ cmake ../ -DINSTALL_UDEV_RULES=ON</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br><span class="line">$ sudo ldconfig</span><br><span class="line">$ sudo cp ../rtl-sdr.rules /etc/udev/rules.d</span><br></pre></td></tr></table></figure></p>
-<p>将使用电视棒作为电视设备自动加载的默认驱动程序列入黑名单，因为它不能让电视棒作为 SDR 使用，并且将会与我们刚刚安装的新 Osmocom 驱动程序发生冲突</p>
-<ul>
-<li><ol>
-<li>以 administrator 权限打开 <code>/etc/modprobe.d</code> 文件夹</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>在该目录下创建一个叫 <code>blacklist-rtl.conf</code> 的新文件，打开文件，在文件中加入 <code>blacklist dvb_usb_rtl28xxu</code> 这条指令</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>保存文件，并重启</li>
-</ol>
-</li>
+<h3 id="硬件要求"><a href="#硬件要求" class="headerlink" title="硬件要求"></a>硬件要求</h3><ul>
+<li>目标 RISC-V 芯片</li>
+<li>调试器： Jlink，FT2232 或其他含有标准 JTAG 接口的调试器</li>
 </ul>
-<p>机器重启后，将电视棒插入 usb 接口，打开 Terminal 窗口，输入 <code>rtl_test -t</code> 命令，测试电视棒是否能够被正常驱动。<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/rtl_test.png" alt=""><br>不用担心 PLL 未锁定或未找到 E4000 调谐器或 R820T 而不是 R820T2 等消息。如果你看到跟上图一样的内容，那么说明你的驱动程序安装成功了，并且电视棒成功运行。 接着你就可以安装一些应用程序，来收听无线电信号。</p>
-<h2 id="安装-dump1090"><a href="#安装-dump1090" class="headerlink" title="安装 dump1090"></a>安装 dump1090</h2><p>电视棒的 rtl_sdr 驱动程序安装好了之后，我们在安装一个 dump1090 应用程序，这样我们就可以接收飞机的信号。<br>能很容易的捕获到飞机是飞机在飞行过程中要不断的报告自身的飞行状态(在 1090Mhz 频率进行广播)，这就是 ADS-B( 广播式自动相关监视系统) ，即一种航空交通监视系统，而且是使用全球性导航卫星系统、飞机xo的航电设备和地面基础设施， 能够在飞机和航管地面站 ( air-to-ground 即 aircraft to ATS ) 或是空对空 ( air-to-air 即 aircraft to aircraft )之间准确和迅速自动地传送飞行讯息； 其中包括有飞机的识别、位置、高度、速度和其他数据或信息。简单来说 ADS-B 是由飞机直接发出的数据包，让地面或其他飞机可以得知它的位置、高度、速度等信息。ADS-B 利用 112 个未加密的脉冲字在 978Mhz、1090Mhz 发射的信号。我们使用电视棒捕获这些信号，并通过 dump1090 将捕获到信号解析成飞机飞行的信息，生成地图。这样我们就能知道飞机的实时位置及其他信息。</p>
-<p>打开一个新的 Terminal 窗口，安装 dump1090，并开启 dump1090 服务，然后我们就可以在 Terminal 窗口和浏览器中查看到飞行信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~</span><br><span class="line">$ git <span class="built_in">clone</span> git://github.com/tedsluis/dump1090.git</span><br><span class="line">$ <span class="built_in">cd</span> dump1090</span><br><span class="line">$ make    <span class="comment"># 编译源码</span></span><br><span class="line">$ ./dump1090 --interactive --net --<span class="built_in">enable</span>-agc		<span class="comment"># run dump1090</span></span><br></pre></td></tr></table></figure></p>
-<p>收到的飞机的飞行信息如下图，dump 在启动时会开启自带的 WEB 服务器，并且 WEB 调用了谷歌地图的 API 接收到飞机的一些信息后会在页面地图上描绘出飞机的轨迹(谷歌地图目前需要科学上网)<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090.png" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air.png" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/dump1090air2.png" alt=""><br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/air.jpg" alt=""></p>
-<h2 id="安装-GQRX-收听各频率的广播"><a href="#安装-GQRX-收听各频率的广播" class="headerlink" title="安装 GQRX 收听各频率的广播"></a>安装 GQRX 收听各频率的广播</h2><p>我们可以收听广播或者火腿(无线电爱好者)的呼叫。但是这里我在树莓派上没有安装成功。因为 GUN Radio 安装不成功的问题。<br>不过我在 windows 上听到了广播。</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>以下内容来自 ChenRQ 同学！</p>
+<p>启动 IDE: GNU MCU Eclipse IDE for C/C++ Developers，Eclipse 基于 Java 开发，运行时需要 Java 的运行环境(JRE)，如没有请自行安装。</p>
+<h2 id="新建一个工程"><a href="#新建一个工程" class="headerlink" title="新建一个工程"></a>新建一个工程</h2><p><img src="https://i.loli.net/2019/02/26/5c7540a7474bf.png" alt="新建工程"></p>
+<p>工程类型选择 Hello World RISC-V C Project，工具链选择 RISC-V Cross GCC 如下所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c754155033e4.png" alt="项目类型设置"></p>
+<p>使用默认配置 next 至 GNU 工具链选择， 文件路径应指向为您的 RISC-V Embedded GCC 目录下的 bin 文件夹，如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c7542f86b719.png" alt="工具链路径设置"></p>
+<p>完成后点击 Finish 由此完成工程项目的创建。创建完成后，我们可以看到还有一个报错， 如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c7543a17226b.png" alt="工程创建完成界面"></p>
+<p>因此我们还需要继续对项目进行配置。</p>
+<h2 id="工程相关配置"><a href="#工程相关配置" class="headerlink" title="工程相关配置"></a>工程相关配置</h2><p>对工程右键选择 “properties”，在 MCU 选栏中配置 Build Tools Path，该路径应指向您的 Build Tools 目录下的 bin 文件夹，如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c7544fd07eb8.png" alt="Build Tools 路径配置"></p>
+<p>继续配置 OpenOCD Path，路径为 OpenOCD 目录下的 bin 文件夹，如下图所示，并点击apply</p>
+<p><img src="https://i.loli.net/2019/02/26/5c75487c1f6cf.png" alt="OpenOCD 路径配置"></p>
+<p>再配置 RISC-V Toolchain Path（若新建项目时已配置过工具链路径，可以跳过此步骤），配置路径与工程建立时选择的工具链路径相同。</p>
+<h2 id="配置编译和链接选项"><a href="#配置编译和链接选项" class="headerlink" title="配置编译和链接选项"></a>配置编译和链接选项</h2><p>继续在 “properties” 窗口中，选择 C/C++ Build 中的 settings，在 Tool Settings 中 Target Processor 进行配置，由于是 RISC-V，因此架构 (architecture) 选择 RV32I 并勾选乘法指令拓展(RVM)，原子指令拓展(RVA)及压缩指令拓展(RVC)，ABI 调用选择 ILP32(表明为 32 位架构无浮点型，PS: ilp32f 和 ilp32d 则分别表示单精度浮点和双精度浮点)，Code Model 选择 Medium Low，勾选整数除法指令(-mdiv)，如下图所示，并点击 apply</p>
+<p><img src="https://i.loli.net/2019/02/26/5c7548ff7b8fb.png" alt="Target Processor 配置"></p>
+<p>继续配置 Optimization，Level 选择 -O2，如下图所示，并点击 apply</p>
+<p><img src="https://i.loli.net/2019/02/26/5c7549557f2eb.png" alt="Optimization 配置"></p>
+<p>继续配置 Debugging，Level 选择 -g，如下图所示，并点击 apply</p>
+<p><img src="https://i.loli.net/2019/02/26/5c7549be00c12.png" alt="Debugging 配置"></p>
+<p>在 Tool Settings 中选择 GNU RISC-V Cross C Linker 的 General，点击右上角+号，弹窗中选择 Workspace 选择路径您芯片对应的 lds 文件，用于对地址区间进行约束，如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c754a785cc2d.png" alt="链接脚本配置"></p>
+<p>勾选对应选项后，点击 apply,如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c754ad5a9b74.png" alt="链接选项配置"></p>
+<p>在 Tool Settings 中选择 GNU RISC-V Cross C Linker 的 Miscellaneous 进行勾选，如下图所示，并点击 apply</p>
+<p><img src="https://i.loli.net/2019/02/26/5c754b533251d.png" alt="链接杂项配置"></p>
+<p>添加您的工程汇编类型的头文件路径，方法如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c754c158df6a.png" alt="添加工程汇编头文件目录"></p>
+<p>添加您的工程 C/C++ 类型的头文件路径，方法如下图所示</p>
+<p><img src="https://i.loli.net/2019/02/26/5c754c158df6a.png" alt=" 添加工程 C/C++ 头文件目录"></p>
+<p>待续… </p>
+<p>后续测试进行中…</p>
+<p>转载自 Kismet 的 Blog: <a href="https://blog.asicfans.com/2019/01/25/windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-risc-v-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/" target="_blank" rel="noopener">https://blog.asicfans.com/2019/01/25/windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-risc-v-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</a></p>
 
       
     </div>
@@ -584,10 +610,7 @@
         <div class="post-tags">
           
             
-            <a href="/tags/SDR/" rel="tag"><i class="fa fa-fw fa-tag"></i> SDR&nbsp;</a>
-          
-            
-            <a href="/tags/树莓派/" rel="tag"><i class="fa fa-fw fa-tag"></i> 树莓派&nbsp;</a>
+            <a href="/tags/RISC-V/" rel="tag"><i class="fa fa-fw fa-tag"></i> RISC-V&nbsp;</a>
           
         </div>
       
@@ -600,8 +623,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/关于-ARM-Cortex-M3-的启动文件分析及分散加载.html" rel="next" title="关于 ARM Cortex-M3 的启动文件分析及分散加载">
-                <i class="fa fa-chevron-left"></i> 关于 ARM Cortex-M3 的启动文件分析及分散加载
+              <a href="/posts/使用汇编实现-pc-和-sp-的保存及恢复操作.html" rel="next" title="使用汇编实现 pc 和 sp 的保存及恢复操作">
+                <i class="fa fa-chevron-left"></i> 使用汇编实现 pc 和 sp 的保存及恢复操作
               </a>
             
           </div>
@@ -609,10 +632,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/总线-SoC-内部的主干道.html" rel="prev" title="总线- SoC 内部的主干道">
-                总线- SoC 内部的主干道 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -872,7 +891,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SDR-是个什么东西？"><span class="nav-number">1.</span> <span class="nav-text">SDR 是个什么东西？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要的硬件"><span class="nav-number">2.</span> <span class="nav-text">需要的硬件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-RTL-SDR-驱动程序"><span class="nav-number">3.</span> <span class="nav-text">安装 RTL_SDR 驱动程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-dump1090"><span class="nav-number">4.</span> <span class="nav-text">安装 dump1090</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-GQRX-收听各频率的广播"><span class="nav-number">5.</span> <span class="nav-text">安装 GQRX 收听各频率的广播</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境要求"><span class="nav-number">1.</span> <span class="nav-text">环境要求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件环境"><span class="nav-number">1.1.</span> <span class="nav-text">软件环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件要求"><span class="nav-number">1.2.</span> <span class="nav-text">硬件要求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置环境"><span class="nav-number">2.</span> <span class="nav-text">配置环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建一个工程"><span class="nav-number">3.</span> <span class="nav-text">新建一个工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工程相关配置"><span class="nav-number">4.</span> <span class="nav-text">工程相关配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置编译和链接选项"><span class="nav-number">5.</span> <span class="nav-text">配置编译和链接选项</span></a></li></ol></div>
             
 
           </div>
