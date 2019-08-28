@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[拆解某宝上热销的一款蓝牙耳机]]></title>
+    <url>%2F%2Fposts%2F%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html</url>
+    <content type="text"><![CDATA[前些天在某宝上购买了一个蓝牙耳机，想着跑步的时候可以听听音乐。我对耳机的要求也不高，听个响就行。于是，就下单了这个在某宝上热销的(10w+)超便宜的蓝牙耳机，只要 ￥19.9 还包邮！ 用了几天，这个耳机对于只是听个响的我来说绝对 ok！也是对的起它这个价位了。但是没用几天，因为我的疏忽，没有将耳机从口袋拿出来，所以就跟着衣服一起在洗衣机里搅了 40 分钟…… 当我将它拿出来，晾干后，还能开机，正常连接手机。哈哈哈，没坏！我大喜过望，于是我赶忙播放音乐试试，结果发现就在连接上的一瞬间会有音乐。哎！乐极生悲了。它还是坏了，那就在扔掉之前看看它里面都有些什么吧……. 我想按键控制区貌似比较好拆一些，先拆这个吧。结果，没办法还是不好拆，那就暴力点吧！ 拆开后我们可以看到，蓝牙耳机的主要器件都分布在主板的正面。包括 一颗蓝牙 SoC 芯片，一个麦克风，三个贴了防水的按键，两个 LED 灯，一颗 26MHz 有源晶振以及 PCB 板载天线和一些阻容元器件。从主板正面看到有电感，因此可以推断芯片内部应该是集成了 BUCK 的，以降低芯片内部工作电压，降低功耗，从而提高待机时间，达到长时间使用的目的。 关于这个耳机的蓝牙主控芯片，貌似是支持蓝牙 5.0 的，但是我的手机不是所以也就不得而知了。我想根据这个丝印信息，找到关于这颗 SoC 芯片的一些信息，但是在网上我是怎么也没有找到对应的生产公司。这颗 SoC 上丝印的信息是 DCFB14D7B，找了半天好像也就这个公司的 logo 和芯片上的比较符合，一个叫欧标的公司。神奇的是这个公司貌似是做对讲机、中继台等无线通讯整机产品的公司。在官网上没有找到任何一个地方提到过他们有设计过蓝牙 SoC，但是由于他们也是做无线通讯相关产品的公司，所以我觉得很大概率上是这个公司的芯片。 我在搜索的过程中，还发现了一位智利的老哥拆解过一个，在全球速卖通上购买的 TWS 蓝牙耳机，也是使用的这颗蓝牙芯片（他的拆解）。照这样看，我觉得这个公司的蓝牙芯片应该是占据了中低端蓝牙耳机的大部分份额，神奇的是竟然还不为人所熟知！哦，对了这也是一个深圳南山区的公司，深圳南山区卧虎藏龙啊！哈哈哈！ 主板的背面到没有什么东西了，主要就是一个 Micro USB 充电口，三个测试点以及连接两个听筒和电池的连接线。整个板的大小也就 42mm * 5mm ，集成度还是很高的。从 PCB 的生产日期（20190612）看，这批耳机貌似还是比较新的。 然后我们拆开电池仓看看，这是一块标称 3.7v/200mAH 的锂电池，接了两根从 PCB 拉过来的电源线。在电池的电源端我们还看到一块很小的 PCB，上面有两颗芯片。一颗是 DW01A，这是一颗锂电池保护 IC。主要是为了防止因为过充、过放、大电流等因素导致锂电池寿命缩短或者损坏的锂电池专用 IC。另外一颗是 8205，这是一颗双 MOS 开关芯片，主要是用来配合 DW01A 来共同构成锂电池保护电路。一路 MOS 用来控制防止过充，另一路 MOS 用来控制防止过放。 好了，到这里我们的拆解就基本完成了~ 总结一下： 这个耳机虽然便宜，但是做工基本 Ok，对得起它这个价位了。 耳机内部虽然简单，但也是五章俱全了，该有的都有。 一个神奇的蓝牙芯片公司，做了低功耗设计，工作和待机时间都还可以。 Have fun ~]]></content>
+      <categories>
+        <category>拆机</category>
+      </categories>
+      <tags>
+        <tag>拆解</tag>
+        <tag>蓝牙</tag>
+        <tag>耳机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows10 环境下搭建 RISC-V 调试环境]]></title>
     <url>%2F%2Fposts%2FWindows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-RISC-V-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html</url>
     <content type="text"><![CDATA[环境要求软件环境 IDE: GNU MCU Eclipse IDE for C/C++ Developers IDE 插件: GNU MCU Eclipse plug-ins GCC/GDB 工具: GNU MCU Eclipse RISC-V Embedded GCC 调试工具: GNU MCU Eclipse OpenOCD make 工具: GNU MCU Eclipse Windows Build Tools Zadig 工具: Zadig 硬件要求 目标 RISC-V 芯片 调试器： J-Link，FT2232 或其他含有标准 JTAG 接口的调试器 配置环境以下内容来自 ChenRQ 同学！ 启动 IDE: GNU MCU Eclipse IDE for C/C++ Developers，Eclipse 基于 Java 开发，运行时需要 Java 的运行环境(JRE)，如没有请自行安装。 新建一个工程 工程类型选择 Hello World RISC-V C Project，工具链选择 RISC-V Cross GCC 如下所示 使用默认配置 next 至 GNU 工具链选择， 文件路径应指向为您的 RISC-V Embedded GCC 目录下的 bin 文件夹，如下图所示 完成后点击 Finish 由此完成工程项目的创建。创建完成后，我们可以看到还有一个报错， 如下图所示 因此我们还需要继续对项目进行配置。 工程相关配置对工程右键选择 “properties”，在 MCU 选栏中配置 Build Tools Path，该路径应指向您的 Build Tools 目录下的 bin 文件夹，如下图所示 继续配置 OpenOCD Path，路径为 OpenOCD 目录下的 bin 文件夹，如下图所示，并点击apply 再配置 RISC-V Toolchain Path（若新建项目时已配置过工具链路径，可以跳过此步骤），配置路径与工程建立时选择的工具链路径相同。 配置编译和链接选项继续在 “properties” 窗口中，选择 C/C++ Build 中的 settings，在 Tool Settings 中 Target Processor 进行配置，由于是 RISC-V，因此架构 (architecture) 选择 RV32I 并勾选乘法指令拓展(RVM)，原子指令拓展(RVA)及压缩指令拓展(RVC)，ABI 调用选择 ILP32(表明为 32 位架构无浮点型，PS: ilp32f 和 ilp32d 则分别表示单精度浮点和双精度浮点)，Code Model 选择 Medium Low，勾选整数除法指令(-mdiv)，如下图所示，并点击 apply 继续配置 Optimization，Level 选择 -O2，如下图所示，并点击 apply 继续配置 Debugging，Level 选择 -g，如下图所示，并点击 apply 在 Tool Settings 中选择 GNU RISC-V Cross C Linker 的 General，点击右上角+号，弹窗中选择 Workspace 选择路径您芯片对应的 lds 文件，用于对地址区间进行约束，如下图所示 勾选对应选项后，点击 apply,如下图所示 在 Tool Settings 中选择 GNU RISC-V Cross C Linker 的 Miscellaneous 进行勾选，如下图所示，并点击 apply 添加您的工程汇编类型的头文件路径，方法如下图所示 添加您的工程 C/C++ 类型的头文件路径，方法如下图所示 待续… 后续测试进行中… 转载自 Kismet 的 Blog:https://blog.asicfans.com/2019/01/25/windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-risc-v-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/]]></content>
@@ -46,8 +59,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>SDRAM</tag>
         <tag>IC Design</tag>
+        <tag>SDRAM</tag>
       </tags>
   </entry>
   <entry>
@@ -59,8 +72,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>SDRAM</tag>
         <tag>IC Design</tag>
+        <tag>SDRAM</tag>
       </tags>
   </entry>
   <entry>
@@ -72,9 +85,9 @@
         <category>其他</category>
       </categories>
       <tags>
-        <tag>IC Design</tag>
         <tag>计数器</tag>
         <tag>数字前端</tag>
+        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>

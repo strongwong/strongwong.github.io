@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.strongwong.top/"/>
-  <updated>2019-03-11T06:22:24.810Z</updated>
+  <updated>2019-08-28T16:35:08.083Z</updated>
   <id>https://blog.strongwong.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拆解某宝上热销的一款蓝牙耳机</title>
+    <link href="https://blog.strongwong.top//posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html"/>
+    <id>https://blog.strongwong.top//posts/拆解某宝上热销的一款蓝牙耳机.html</id>
+    <published>2019-08-28T13:52:27.000Z</published>
+    <updated>2019-08-28T16:35:08.083Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.ax1x.com/2019/08/28/mHGnqP.png" alt="mHGnqP.png"></p><p>前些天在某宝上购买了一个蓝牙耳机，想着跑步的时候可以听听音乐。我对耳机的要求也不高，听个响就行。于是，就下单了这个在某宝上热销的(10w+)超便宜的蓝牙耳机，只要 <code>￥19.9</code> 还包邮！</p><p>用了几天，这个耳机对于只是听个响的我来说绝对 ok！也是对的起它这个价位了。但是没用几天，因为我的疏忽，没有将耳机从口袋拿出来，所以就跟着衣服一起在洗衣机里搅了 40 分钟……</p><a id="more"></a><p>当我将它拿出来，晾干后，还能开机，正常连接手机。哈哈哈，没坏！我大喜过望，于是我赶忙播放音乐试试，结果发现就在连接上的一瞬间会有音乐。哎！乐极生悲了。它还是坏了，那就在扔掉之前看看它里面都有些什么吧…….</p><p>我想按键控制区貌似比较好拆一些，先拆这个吧。结果，没办法还是不好拆，那就暴力点吧！</p><p><img src="https://s2.ax1x.com/2019/08/28/mHUruj.jpg" alt="mHUruj.jpg"></p><p>拆开后我们可以看到，蓝牙耳机的主要器件都分布在主板的正面。包括 一颗蓝牙 SoC 芯片，一个麦克风，三个贴了防水的按键，两个 LED 灯，一颗 26MHz 有源晶振以及 PCB 板载天线和一些阻容元器件。从主板正面看到有电感，因此可以推断芯片内部应该是集成了 BUCK 的，以降低芯片内部工作电压，降低功耗，从而提高待机时间，达到长时间使用的目的。</p><p><img src="https://s2.ax1x.com/2019/08/28/mHs0nU.jpg" alt="mHs0nU.jpg"></p><p>关于这个耳机的蓝牙主控芯片，貌似是支持蓝牙 5.0 的，但是我的手机不是所以也就不得而知了。我想根据这个丝印信息，找到关于这颗 SoC 芯片的一些信息，但是在网上我是怎么也没有找到对应的生产公司。这颗 SoC 上丝印的信息是 <code>DCFB14D7B</code>，找了半天好像也就这个公司的 logo 和芯片上的比较符合，一个叫<a href="http://www.abell.net.cn/" target="_blank" rel="noopener"><strong>欧标</strong></a>的公司。神奇的是这个公司貌似是做对讲机、中继台等无线通讯整机产品的公司。在官网上没有找到任何一个地方提到过他们有设计过蓝牙 SoC，但是由于他们也是做无线通讯相关产品的公司，所以我觉得很大概率上是这个公司的芯片。</p><p><img src="https://s2.ax1x.com/2019/08/28/mHfAJg.jpg" alt="mHfAJg.jpg"><br><img src="https://s2.ax1x.com/2019/08/28/mH5myd.jpg" alt="mH5myd.jpg"></p><p>我在搜索的过程中，还发现了一位智利的老哥拆解过一个，在全球速卖通上购买的 TWS 蓝牙耳机，也是使用的这颗蓝牙芯片（<a href="http://blog.victroniko.cl/blog/post/teardown-bluetooth-tws-t012-es" target="_blank" rel="noopener">他的拆解</a>）。照这样看，我觉得这个公司的蓝牙芯片应该是占据了中低端蓝牙耳机的大部分份额，神奇的是竟然还不为人所熟知！哦，对了这也是一个深圳南山区的公司，深圳南山区卧虎藏龙啊！哈哈哈！</p><p>主板的背面到没有什么东西了，主要就是一个 Micro USB 充电口，三个测试点以及连接两个听筒和电池的连接线。整个板的大小也就 <code>42mm * 5mm</code> ，集成度还是很高的。从 PCB 的生产日期（<code>20190612</code>）看，这批耳机貌似还是比较新的。</p><p><img src="https://s2.ax1x.com/2019/08/28/mHdq1O.jpg" alt="mHdq1O.jpg"></p><p>然后我们拆开电池仓看看，这是一块标称 <code>3.7v/200mAH</code> 的锂电池，接了两根从 PCB 拉过来的电源线。在电池的电源端我们还看到一块很小的 PCB，上面有两颗芯片。一颗是 <code>DW01A</code>，这是一颗锂电池保护 IC。主要是为了防止因为过充、过放、大电流等因素导致锂电池寿命缩短或者损坏的锂电池专用 IC。另外一颗是 <code>8205</code>，这是一颗双 MOS 开关芯片，主要是用来配合 DW01A 来共同构成锂电池保护电路。一路 MOS 用来控制防止过充，另一路 MOS 用来控制防止过放。</p><p><img src="https://s2.ax1x.com/2019/08/29/mHTPwn.jpg" alt="mHTPwn.jpg"><br><img src="https://s2.ax1x.com/2019/08/29/mHTCes.jpg" alt="mHTCes.jpg"></p><p>好了，到这里我们的拆解就基本完成了~ </p><p>总结一下：</p><blockquote><ul><li>这个耳机虽然便宜，但是做工基本 Ok，对得起它这个价位了。</li><li>耳机内部虽然简单，但也是五章俱全了，该有的都有。</li><li>一个神奇的蓝牙芯片公司，做了低功耗设计，工作和待机时间都还可以。</li></ul></blockquote><p>Have fun ~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/08/28/mHGnqP.png&quot; alt=&quot;mHGnqP.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;前些天在某宝上购买了一个蓝牙耳机，想着跑步的时候可以听听音乐。我对耳机的要求也不高，听个响就行。于是，就下单了这个在某宝上热销的(10w+)超便宜的蓝牙耳机，只要 &lt;code&gt;￥19.9&lt;/code&gt; 还包邮！&lt;/p&gt;
+&lt;p&gt;用了几天，这个耳机对于只是听个响的我来说绝对 ok！也是对的起它这个价位了。但是没用几天，因为我的疏忽，没有将耳机从口袋拿出来，所以就跟着衣服一起在洗衣机里搅了 40 分钟……&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="拆机" scheme="https://blog.strongwong.top/categories/%E6%8B%86%E6%9C%BA/"/>
+    
+    
+      <category term="拆解" scheme="https://blog.strongwong.top/tags/%E6%8B%86%E8%A7%A3/"/>
+    
+      <category term="蓝牙" scheme="https://blog.strongwong.top/tags/%E8%93%9D%E7%89%99/"/>
+    
+      <category term="耳机" scheme="https://blog.strongwong.top/tags/%E8%80%B3%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows10 环境下搭建 RISC-V 调试环境</title>
@@ -125,9 +153,9 @@
       <category term="SDRAM" scheme="https://blog.strongwong.top/categories/IC-Design/SDRAM/"/>
     
     
-      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
-    
       <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
+    
+      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
     
   </entry>
   
@@ -152,9 +180,9 @@
       <category term="SDRAM" scheme="https://blog.strongwong.top/categories/IC-Design/SDRAM/"/>
     
     
-      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
-    
       <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
+    
+      <category term="SDRAM" scheme="https://blog.strongwong.top/tags/SDRAM/"/>
     
   </entry>
   
@@ -178,11 +206,11 @@
       <category term="其他" scheme="https://blog.strongwong.top/categories/IC-Design/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
-    
       <category term="计数器" scheme="https://blog.strongwong.top/tags/%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
     
       <category term="数字前端" scheme="https://blog.strongwong.top/tags/%E6%95%B0%E5%AD%97%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
     
   </entry>
   
@@ -543,30 +571,6 @@
     
     
       <category term="diary" scheme="https://blog.strongwong.top/tags/diary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Hexo+Github Pages 搭建个人博客</title>
-    <link href="https://blog.strongwong.top//posts/%E4%BD%BF%E7%94%A8Hexo-GitHub-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95.html"/>
-    <id>https://blog.strongwong.top//posts/使用Hexo-GitHub-Pages搭建个人博客记录.html</id>
-    <published>2018-08-02T13:22:50.000Z</published>
-    <updated>2018-10-13T05:25:50.721Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="使用-Hexo-Github-Pages-搭建个人博客记录"><a href="#使用-Hexo-Github-Pages-搭建个人博客记录" class="headerlink" title="使用 Hexo+Github Pages 搭建个人博客记录"></a>使用 Hexo+Github Pages 搭建个人博客记录</h2><p>最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你去写。<br>如果你不经常去写一些文字，慢慢的也就生疏了，也就忘了该怎么通过书面方式更好的表达信息。比如我们领导让大家每周写一份周报，每到周五的时候大家总是在纠结，这周报该怎么写。还有做测试的时候要有测试方案，测试结果，测试报告（分析）都是要写文档的。跟文字打交道的时候还是很多的啊！所以啊，平时还得多写写！</p><a id="more"></a><p>我在看一些大牛的博客的时候，发现他们的博客，好像都很好看。我很羡慕，于是我也想搭建一个自己的个人博客，所以就有了本站！<br>我了解到建站的方法有很多，比如:</p><ul><li>Hexo + GitHub Pages</li><li>Jekyll + GitHub Pages </li><li>WordPress + 服务器 + 域名</li><li>DeDeCMS + 服务器 + 域名</li><li>……</li></ul><p>我选择了使用 Hexo + GitHub Pages + 域名 的方法来建站。<br>首先 Hexo 简约风格我很喜欢，其次利用 GitHub Pages 的免费存储空间不需要自己购买服务器，<br>有一个 GitHub 账号就 ok 了，然后域名其实是一个可选项，GitHub 会提供一个 <a href="http://xxxx.github.io/" target="_blank" rel="noopener">http://xxxx.github.io/</a> 这种形式的域名进行访问。</p><h2 id="下面来简单记录一下，本站的搭建过程"><a href="#下面来简单记录一下，本站的搭建过程" class="headerlink" title="下面来简单记录一下，本站的搭建过程"></a>下面来简单记录一下，本站的搭建过程</h2><p>安装 Hexo 很简单，但是在安装前需要配置一些环境，需要安装 Node.js 和 Git 。因为 Hexo 博客系统是基于 Node.js 写的，需要 Node.js 的环境才能运行。 Hexo 运行之后会在本地生成网页，所以我们需要使用 Git 把本地网页文件上传到 GitHub 上的远程仓库里。（当然使用 GitHub 桌面版也可以上传。）</p><h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>在 Node.js 官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a> 下载最新的稳定版，安装时保持默认设置，一路 next 就好，等待安装完成。<br>安装好之后，按<code>Win+R</code>,输入 <code>cmd</code>，运行命令提示符，输入<code>node -v</code>和 <code>nmp -v</code>，如果出现版本号，那么就安装成功了。<br><img src="https://photo.ishield.cn/pic/5b8ca1e59dc6d611b60ee2bd" alt="node -v npm -v"></p><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><p>去 Git 官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a> 下载最新的稳定版的 git 安装包，直接默认配置安装就好了，一路 next 就好。<br><img src="https://photo.ishield.cn/pic/5b8ca4519dc6d611b60ee2d1" alt="git"><br>安装完成后，在桌面右键，点击<code>Git Bush Here</code>，输入 <code>git --version</code>，如果成功出现 Git 的版本号，到这里 Git 的环境配置就完成了！（如果你对 Git 不太熟悉，不太会用 Git 来上传你的博客，你也可以考虑使用 GitHub 的桌面版。）<br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuw5x63irrj30630a0gln" alt=""></p><h2 id="注册-GitHub-和配置"><a href="#注册-GitHub-和配置" class="headerlink" title="注册 GitHub 和配置"></a>注册 GitHub 和配置</h2><p>身为一个程序员，怎么能不知道 GitHub！每个程序员都应该有一个 GitHub 账号！GitHub是一个大型的代码托管平台，上面有很多技术大牛，也有很多有趣的开源项目，像Google、FaceBook、Macrosoft 等大公司也都在使用 GitHub。我们的博客就是托管在 GitHub 上的。</p><p>GitHub Pages 是面向用户、组织和项目开放的公共静态页面搭建托管服务，站点可以被免费托管在 Github 上，你可以选择使用 Github Pages 默认提供的域名 github.io 或者使用自定义域名来发布站点。</p><p>如果你还没有 Github 账号的话，需要先到 GitHub 官网进行注册： <a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a> </p><p>注册完成之后，我们需要创建一个仓库来存放我们的博客。新建一个项目，如下图所示：<br><img src="https://photo.ishield.cn/pic/5b8ca25b9dc6d611b60ee2c3" alt=""><br>仓库名称一般使用用户名加 <code>.github.io</code>后缀，如下图所示：<br><img src="https://photo.ishield.cn/pic/5b8ca2889dc6d611b60ee2c5" alt=""><br>最后，创建完成后，就可以直接访问 <a href="https://yourname.github.io/" target="_blank" rel="noopener">https://yourname.github.io/</a> ,如果可以正常访问，那么 GitHub 的配置就搞完了。<br>到这里环境就基本上搭好了，下面就开始安装 Hexo 正式搭建个人博客。</p><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>Hexo 是什么？<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown (或者其他渲染引擎)解析文章，在几秒内，即可利用靓丽的主题生成静态网页。并且一条指令即可部署到 GitHub Pages 或者其他网站。想更多了解 Hexo 请阅读 Hexo 官方文档: <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p><p>首先，在你的电脑里，新建一个文件夹专门用来存放你的博客文件。比如我的都放在 D:\study\hexo 目录下。</p><p>然后在该目录下，右键点击 <code>Git Bush Here</code>，打开 Git 控制台窗口，接下来的操作都在 Git 控制台进行，反正我是挺喜欢敲命令行的感觉。</p><p>接下来，在该目录下，输入 <code>npm install -g hexo-cli</code>，安装 Hexo ，这里会有一个 <code>WARN</code>，不用担心这不会影响正常使用。然后在安装 Hexo 部署到 Github Pages 的 deployer。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli </span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p><p><img src="https://photo.ishield.cn/pic/5b8ca2ae9dc6d611b60ee2c6" alt=""></p><p>查看 Hexo 的版本，输入 <code>hexo -v</code>，正确输入如下信息就表示 Hexo 安装成功了。<br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuw600gjbcj30gz0de74s" alt=""></p><h2 id="Hexo基础配置"><a href="#Hexo基础配置" class="headerlink" title="Hexo基础配置"></a>Hexo基础配置</h2><p>Hexo 安装完成后，执行下面的命令来初始化 Hexo ，对应的用户名(文件夹名称)改成自己的。Hexo 会在指定的文件夹中新建博客系统，和安装必备组件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init strongwong.github.io</span><br><span class="line">$ <span class="built_in">cd</span> strongwong.github.io</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure><p><img src="https://photo.ishield.cn/pic/5b8ca2f39dc6d611b60ee2c8" alt=""></p><p>新建完成后，在本地运行 Hexo 查看效果:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate<span class="comment">#或者运行 hexo g 根据配置生成博客</span></span><br><span class="line">$ hexo server<span class="comment">#或者运行 hexo s 在本地运行 Hexo 登录 localhost:4000 查看</span></span><br><span class="line"><span class="comment">#按 ctrl + c 即可关闭本地服务器</span></span><br></pre></td></tr></table></figure><p>这时我们到浏览器中输入 <code>localhost:4000</code> 就可以在本地端正常访问了(如下图)，这样的话就说明博客已经打起来了，但是现在只是在本地，别人还不能访问，接下来我们就要把本地博客部署到 GitHub 上，让别人也可以看到你的博客。<br><img src="https://photo.ishield.cn/pic/5b8ca3139dc6d611b60ee2cc" alt=""></p><h2 id="本地-Hexo-仓库与-GitHub-关联"><a href="#本地-Hexo-仓库与-GitHub-关联" class="headerlink" title="本地 Hexo 仓库与 GitHub 关联"></a>本地 Hexo 仓库与 GitHub 关联</h2><p>配置 GitHub 的 SSH 密钥，让本地项目通过 git 命令与远程 GitHub 仓库建立联系，我们在本地做了修改之后直接通过 git 命令就可以把博客同步到 GitHub 上。</p><p>1.首先，在 git 控制台中，输入如下命令，配置个人参数(你的名字，你的邮箱)。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"yourname"</span></span><br><span class="line">$ git config --global user.email <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure></p><p>2.接下来生成 SSH key 根据提示进行操作(其实一路回车就好了。)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></span><br></pre></td></tr></table></figure></p><p>3.执行完之后就会在默认路径下生成 <code>id_rsa.pub</code>文件。默认路径是：<code>C:\Users\Administrator\.ssh\id_rsa.pub</code> 需要注意的是 .ssh 是隐藏文件夹。<br>使用记事本打开这个文件，复制文件内容，然后粘贴到 <a href="https://github.com/settings/ssh/" target="_blank" rel="noopener">https://github.com/settings/ssh/</a> 的 “new SSH key” 中。</p><p>4.输入下面的命令，查看 SSH 是否配置成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure></p><p>如果是下面的反馈<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure></p><p>直接输入 yes 就好了，然后就会看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi strongwong! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p><p>这样的话，我们 SSH key 就配置成功了。</p><p>5.配置 deploy 参数<br>在博客根目录下，找到 <code>__config.yml</code> 文件，找到 deploy 关键字，进行如下配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:strongwong/strongwong.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p><p>6.将本地博客提交到 GitHub Pages<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g<span class="comment">#根据你的改动生成新的静态文件(即 public 文件夹)</span></span><br><span class="line">$ hexo s<span class="comment">#启动本地预览 ctrl + c 关闭</span></span><br><span class="line">$ hexo d<span class="comment">#部署到远程站点</span></span><br><span class="line">$ hexo clean<span class="comment">#清除旧的静态文件(即 public 文件夹)</span></span><br></pre></td></tr></table></figure></p><p>7.这时在浏览器输入 <a href="https://strongwong.github.io/" target="_blank" rel="noopener">https://strongwong.github.io/</a> ，可以正常访问就说明 hexo 搭建的博客已经成功部署到 GitHub 了，小伙伴们都可以通过这个地址访问自己的博客了。</p><h2 id="将个人域名解析到-GitHub"><a href="#将个人域名解析到-GitHub" class="headerlink" title="将个人域名解析到 GitHub"></a>将个人域名解析到 GitHub</h2><p>看着这个 GitHub 下面的二级域名，总觉得让人不太爽，所以有很多小伙伴都买了自己的域名，然后将自己域名绑定到 GitHub Pages 的博客上。<br>于是我也就到阿里云上购买了一个万网域名，也不是很贵。<br>进入阿里云网站，打开阿里云域名控制台，点击管理，然后点击域名解析。<br><img src="https://photo.ishield.cn/pic/5b8ca34f9dc6d611b60ee2cf" alt=""><br><img src="https://photo.ishield.cn/pic/5b8ca3669dc6d611b60ee2d0" alt=""></p><p>在下图中点击添加记录，添加解析：</p><blockquote><p>记录类型选择<code>CNAME</code><br>主机记录填 <code>www</code><br>解析线路选择 <code>默认</code><br>记录值填 <code>yourname.github.io</code><br>TTL 值为 <code>10</code> 分钟<br>再添加一个解析，记录类型 <code>A</code><br>主机记录填 <code>@</code><br>解析线路选择 <code>默认</code><br>记录值填你 GitHub 的 IP 地址 (在 cmd 中 ping：<code>ping yourname.github.io</code>)<br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fuw67ojfrmj31ba05pgm6" alt=""></p></blockquote><p>在本地博客的 source 目录下新建一个 CNAME 文件(没有扩展名)，用记事本打开填入购买的域名地址:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">www.strongwong.top</span><br></pre></td></tr></table></figure></p><p>将博客重新发布一次：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d<span class="comment">#generate 和 deploy 的组合命令</span></span><br></pre></td></tr></table></figure></p><p>此时，在浏览器中输入你的个人域名(<a href="https://www.strongwong.top/" target="_blank" rel="noopener">www.strongwong.top</a>)，如果正常访问你的博客就说明，域名绑定成功，域名解析成功啦！！在这伟大的互联网时代，终于拥有了自己的网站啦！</p><h3 id="发表一篇文章"><a href="#发表一篇文章" class="headerlink" title="发表一篇文章"></a>发表一篇文章</h3><p>运行下面的命令，就会创建一个文章文件，在本地博客的 source_posts 文件夹下就会有一个新建的 markdown 文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"文章标题"</span>   <span class="comment"># hexo n "文章标题" 这种简写也可以</span></span><br></pre></td></tr></table></figure></p><p>文章编辑好之后，推送到 GitHub 上我们在站点上就可以看到新的文章了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g  <span class="comment">#生成 </span></span><br><span class="line">$ hexo d  <span class="comment">#部署</span></span><br></pre></td></tr></table></figure></p><h2 id="安装-Next-主题及个性化"><a href="#安装-Next-主题及个性化" class="headerlink" title="安装 Next 主题及个性化"></a>安装 Next 主题及个性化</h2><p>Hexo 有非常多的主题可以选择，可以到官方主题库进行选择： <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a><br>我这里选择了资料相对详细、丰富的 Next 主题，前往 Next 主题发布页面下载：<a href="https://github.com/iisnan/hexo-theme-next/releases/" target="_blank" rel="noopener">https://github.com/iisnan/hexo-theme-next/releases/</a><br>下载最新版本的 Next 主题包，解压缩，将文件名称改为 next，放置到博客根目录的 themes 目录下。<br>打开站点配置文件 <code>_config.yml</code>，找到 themes 字段，修改为 next。<br>到此，next 主题安装完成。</p><p>关于 next 主题的一些配置请查阅 next 主题官方文档：<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">https://theme-next.iissnan.com/</a></p><h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>花了两天时间把博客搭起来，还是挺开心的。博客使用 Hexo 搭建，主题使用 Next，评论系统使用 Valine ，文章浏览统计使用 LeanCloud ，网站访客数量使用不蒜子，另外还使用了 Google 统计，方便自己查看数据。<br>我会坚持在工作之余，写点技术分享，记录一下我的学习历程。我也不知道我会分享哪些东西，但是我想可能还是嵌入式软件方面可能会比较多一些吧，其他方面也可能会分享一些学习、工作、生活中的经历和经验吧！祝我未来，越来越好！</p><p>strongwong</p><p>2018.8.2</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;使用-Hexo-Github-Pages-搭建个人博客记录&quot;&gt;&lt;a href=&quot;#使用-Hexo-Github-Pages-搭建个人博客记录&quot; class=&quot;headerlink&quot; title=&quot;使用 Hexo+Github Pages 搭建个人博客记录&quot;&gt;&lt;/a&gt;使用 Hexo+Github Pages 搭建个人博客记录&lt;/h2&gt;&lt;p&gt;最近在学习的时候发现很多人都推荐说，要学会写作。很多大牛都会有自己的博客，或者微信公众号。不仅要学会学习，更要学会表达，而写作就是一个很好的方式。通过把自己学到的东西再次输出出来，才有价值，写作是一个人吸收知识，并增强记忆转化成自己东西的过程。很多人认为学校里出来了之后应该会很少写文字了，其实不然，在工作中经常会有各种各样的汇报和报告需要你去写。&lt;br&gt;如果你不经常去写一些文字，慢慢的也就生疏了，也就忘了该怎么通过书面方式更好的表达信息。比如我们领导让大家每周写一份周报，每到周五的时候大家总是在纠结，这周报该怎么写。还有做测试的时候要有测试方案，测试结果，测试报告（分析）都是要写文档的。跟文字打交道的时候还是很多的啊！所以啊，平时还得多写写！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="学习" scheme="https://blog.strongwong.top/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="blog" scheme="https://blog.strongwong.top/tags/blog/"/>
-    
-      <category term="教程" scheme="https://blog.strongwong.top/tags/%E6%95%99%E7%A8%8B/"/>
     
   </entry>
   
