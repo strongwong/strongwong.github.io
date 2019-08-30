@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.strongwong.top/"/>
-  <updated>2019-08-29T05:15:05.528Z</updated>
+  <updated>2019-08-30T16:32:06.762Z</updated>
   <id>https://blog.strongwong.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拆解一个很有意思的开关</title>
+    <link href="https://blog.strongwong.top//posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html"/>
+    <id>https://blog.strongwong.top//posts/拆解一个很有意思的开关.html</id>
+    <published>2019-08-30T12:54:54.000Z</published>
+    <updated>2019-08-30T16:32:06.762Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://s2.ax1x.com/2019/08/30/mjONAf.jpg" alt="mjONAf.jpg"></p><p>最近公司买了一个很有意思的开关，说是叫无源无线开关。无线嘛，就是没有电线连接，是无线的，好像是 433 无线模块通讯的。所谓无源就是没有电池或者其他直接的电源供电了，是一个自发电的开关。就是上图这个东东，我很是好奇，很想知道他这个自发电的开关内部是个什么样子，那我们拆开看看吧~ 嘿嘿~~</p><a id="more"></a><p>趁着下班了，大家都不在，我一个人开始在公司开拆！</p><p><img src="https://s2.ax1x.com/2019/08/30/mjXWZt.jpg" alt="mjXWZt.jpg"></p><p>这个无源无线开关和其他普通开关从外观上来看都差不多。它的塑料外壳和普通开关一样，轻轻撬开即可。打开外壳我们可以看到一根铜线，这应该就是用于无线通讯的天线了。卸下按键壳，下面就是整个开关的主体模块了。开关的主体很牢固的卡在底座上，只能硬撬下来了。</p><p><img src="https://s2.ax1x.com/2019/08/30/mjzJFx.jpg" alt="mjzJFx.jpg"></p><p>开关主体拿下来还是可以正常使用的，当我把主板上的壳子拆下来后，开关就不可以自发电了。主板的正面有 5 个电容按键，具体功能不得而知，可能是备用、兼容或者是为调试预留的？</p><p>拿下电容按键，看到主板背面线圈的一瞬间，相信中学物理还可以的朋友应该都能反应过来，这个开关的自发电原理应该就是咱们学过的电磁感应原理啊！通过线圈切割磁感线然后产生电能供应给其他电路使用。我迫不及待地卸下主板，想一探究竟，看看是不是我想的这样。但是主板和底座之间有一些机械机构互相钳制，费了好大力气才将主板卸下。</p><p><img src="https://s2.ax1x.com/2019/08/30/mvCbVJ.jpg" alt="mvCbVJ.jpg"><br><img src="https://s2.ax1x.com/2019/08/30/mvCqa9.jpg" alt="mvCqa9.jpg"></p><p>卸下主板后，我们看到底座上确实有一个由三个铆钉固定的磁铁。哈哈，果然是这样。在主体的壳子上有一个弹簧，怼着底座上的拨动机构，在开关按下的时候，拨动机构带动簧片拨动磁铁，磁铁的移动在线圈那端是有限位的，磁铁在一瞬间移动就相当于线圈切割了一次磁感线，从而产生电能给到其他负载。</p><blockquote><ul><li>拨杆机构细节图，挺有意思的一个结构。<br><img src="https://s2.ax1x.com/2019/08/30/mvCL5R.jpg" alt="mvCL5R.jpg"></li></ul></blockquote><p>然后来详细看一下主板：</p><p><img src="https://s2.ax1x.com/2019/08/30/mvCXP1.jpg" alt="mvCXP1.jpg"></p><p>在主板上主要有一颗 TI 的 <a href="http://www.ti.com.cn/product/cn/CC115L" target="_blank" rel="noopener"><code>CC115L</code></a> 超值射频发射芯片、一颗 ST 的 <a href="https://www.st.com/content/st_com/en/products/microcontrollers-microprocessors/stm8-8-bit-mcus/stm8s-series/stm8s-value-line/stm8s003f3.html" target="_blank" rel="noopener"><code>stm8s003f3p6</code></a> 8 位单片机、一个线圈以及电能采集储能电路。 <code>stm8s003</code>+<code>CC115L/CC113L</code> 的搭配在无线智能家居等场景好像应用很多。具体的芯片资料大家直接看厂商的 datasheet 吧，这里就不多做介绍了。</p><p>我仔细研究一下这个磁感线圈电能采集存储电路，主要有 5 个肖特基二极管，一个稳压二极管，一个 PMOS和一个 NMOS 丝印分别是 <code>1GM 、2GM</code> ，以及一个丝印为 <code>A18F</code>的未知芯片，没有找到直接对应的芯片型号，但根据电感来判断应该是一个 DC-DC 转换器，至于应该是降压还是升压就不太清楚了，因为拆开后就没有办法拨动开关产生电能，来测试对应点的电位了。我个人觉得这个线圈应该生产不了多大的电压，所以这里可能是一个升压的。简单理解了这部分的电路后，我简单绘制了一下这部分的原理图，不一定完全正确，但大体上应该是对的。有兴趣的朋友可以帮我看看，如果有什么错误的地方欢迎给我留言指正。</p><p><img src="https://s2.ax1x.com/2019/08/30/mvPfdH.png" alt="mvPfdH.png"></p><p>好了！这一次的拆解就到这里啦~，我要赶快装回去了，不能让大家发现！（逃~~）</p><p>简单总结一下吧！</p><blockquote><ul><li>这个无源无线开关还是很 nice 的，不用布线，不用电池，自发电，节能环保！发电线圈的设计也不失为一种新的低功耗方案，在一些更小体积的应用场景可能不太合适吧。</li><li>神奇的事情背后都有基本的科学知识，中学的物理知识就这样实际运用在我们的日常生活中啦！</li><li>还有拆东西是一件很爽的事情！哈哈哈！</li></ul></blockquote><p>Have fun~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2019/08/30/mjONAf.jpg&quot; alt=&quot;mjONAf.jpg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最近公司买了一个很有意思的开关，说是叫无源无线开关。无线嘛，就是没有电线连接，是无线的，好像是 433 无线模块通讯的。所谓无源就是没有电池或者其他直接的电源供电了，是一个自发电的开关。就是上图这个东东，我很是好奇，很想知道他这个自发电的开关内部是个什么样子，那我们拆开看看吧~ 嘿嘿~~&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="拆机" scheme="https://blog.strongwong.top/categories/%E6%8B%86%E6%9C%BA/"/>
+    
+    
+      <category term="拆解" scheme="https://blog.strongwong.top/tags/%E6%8B%86%E8%A7%A3/"/>
+    
+      <category term="无线" scheme="https://blog.strongwong.top/tags/%E6%97%A0%E7%BA%BF/"/>
+    
+      <category term="自发电开关" scheme="https://blog.strongwong.top/tags/%E8%87%AA%E5%8F%91%E7%94%B5%E5%BC%80%E5%85%B3/"/>
+    
+  </entry>
   
   <entry>
     <title>拆解某宝上热销的一款蓝牙耳机</title>
@@ -548,29 +575,6 @@
       <category term="读书" scheme="https://blog.strongwong.top/tags/%E8%AF%BB%E4%B9%A6/"/>
     
       <category term="学习" scheme="https://blog.strongwong.top/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>strongwongのdiary</title>
-    <link href="https://blog.strongwong.top//posts/strongwong%E3%81%AEdiary.html"/>
-    <id>https://blog.strongwong.top//posts/strongwongのdiary.html</id>
-    <published>2018-08-08T06:58:54.000Z</published>
-    <updated>2018-10-13T05:25:50.719Z</updated>
-    
-    <content type="html"><![CDATA[<p>简单记录一下我每天搞了什么。成长之路，点滴记录！</p><h3 id="2018-8-1-8-5"><a href="#2018-8-1-8-5" class="headerlink" title="2018-8-1~8-5"></a>2018-8-1~8-5</h3><p>1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。<br>2.测试 UlpBench<br>3.移植 UlpBench 部分代码到 M3 上运行，测试功耗<br>4.测试单指令差异<br>5.整理分析测试数据</p><a id="more"></a><h3 id="2018-8-6"><a href="#2018-8-6" class="headerlink" title="2018-8-6"></a>2018-8-6</h3><p>1.阅读整理 Event Arbiter 代码，分析链路层和事件仲裁器之间的关系<br>2.看了很多大佬的博客，调整了博客的一些设置</p><h3 id="2018-8-8"><a href="#2018-8-8" class="headerlink" title="2018-8-8"></a>2018-8-8</h3><p>1.今天还是在看 Event Arbiter 的代码和文档资料。<br>2.尝试性的把 Event Arbiter 的部分代码进行了移植，但是没跑通，还要很多问题，明天继续解决。进展有点慢，测试方案还不知道怎么弄 <em>_</em><br>3.十年前的今天奥运会开幕了，我在家看奥运会；今天的我大学毕业了，在这里敲代码；十年后的我怎么样了，我会在干什么？<br>4.博客还是要坚持写，加油！</p><h3 id="2018-8-9"><a href="#2018-8-9" class="headerlink" title="2018-8-9"></a>2018-8-9</h3><p>1.今天还是搞 EA 这个东西，没什么进展，难受！<br>2.领导让写一个 CM3 进 sleep 的代码，写了，内存中对应的位也写入值了，但是 J-link 还是可以正常连接，有很多东西好像并没有关掉，怀疑是设计的 SOC 有问题。</p><h3 id="2018-8-10"><a href="#2018-8-10" class="headerlink" title="2018-8-10"></a>2018-8-10</h3><p>1.我昨天给领导写的代码应该是没问题的，只是 FPGA 上不能进行这样的调试。但是还是有一些问题，比如说中断使能没做，也没有 rtc 或者 wakeup 的功能，还需要增加。<br>2.EA 的大部分功能都已经移植好了，但是和底层相关的定时器我没有，还是有问题，不能进行正常调试。然后就是 EA 的整个测试流程怎么搞，我还不太明白，对单个函数的测好做，但是如果要测试多个事件的仲裁，测试 EA 的完整功能还不知道怎么弄。可能我需要有一个简单的任务切换，每个任务里请求一个事件，然后有 EA 来进行判断和仲裁。</p><h3 id="2018-8-13"><a href="#2018-8-13" class="headerlink" title="2018-8-13"></a>2018-8-13</h3><p>1.继续搞 EA ，底层的一些时间相关的寄存器我打算使用 Systick 和 Timer 结合起来模拟。但是还有一些问题，还需要解决。<br>2.今天戚博有给了一个另外的任务，需要我在服务器上使用 arm-none-eabi-gcc 来做开发。让我写一套 Makefile ，虽然我之前有简单使用过 Makefile 、make ，但是我还没弄过这种相对大一些的项目的编译、开发。我找了些 makefile 的文档来学习，看看 Makefile 该怎么写。</p><h3 id="2018-8-14"><a href="#2018-8-14" class="headerlink" title="2018-8-14"></a>2018-8-14</h3><p>1.学习 Linux 下面的开发，学习 Makefile 的编写。了解补充一些编译、链接相关的知识，熟悉一下 GUN 相关的工具链。<br>2.整理我之前写的代码，今天发现之前写的还是有一些问题，做了很多调整，今天主要调整了 UART 相关的代码。明天可能还需要把 timer 、 gpio 的代码做一些调整。然后往服务器上迁移。</p><h3 id="2018-8-26"><a href="#2018-8-26" class="headerlink" title="2018-8-26"></a>2018-8-26</h3><p>1.前段时间回家了一个多星期，断更了。现在回来了，接着写。<br>2.今天整理了一下关于 Jetson TX2 内核重新编译的东西，写了一篇博文。<br>3.请假之前领导让写 Makefile ，做一个使用 arm-none-eabi-gcc 在 Linux 下编译的版本。回来这几天搞完了。 在 Cygwin 下的编译 stm32 还是有点问题，还需要修改。</p><h3 id="2018-8-31"><a href="#2018-8-31" class="headerlink" title="2018-8-31"></a>2018-8-31</h3><p>1.仔细看了一些 Makefile 文件的编写规则，解决了编译问题。<br>2.当当网有购书优惠，屯了 10 本技术相关的书籍。</p><h3 id="2018-9-5"><a href="#2018-9-5" class="headerlink" title="2018-9-5"></a>2018-9-5</h3><p>今天突然发现不能上 Google 学习了，很尴尬，迅速寻找解决方案！成功切换到 v2ray 了上。哈哈，又可以愉快的学习了。</p><h3 id="2018-9-15"><a href="#2018-9-15" class="headerlink" title="2018-9-15"></a>2018-9-15</h3><p>1.又有好几天没有更新了，最近对无线电有了很大兴趣。于是前些天买了一个 RTL_SDR 鼓捣了一下软件无线电。挺好玩的~<br>2.和做基带的同学，做了一些沟通，配合他们做一下 BB 的测试。</p><h3 id="2018-9-20"><a href="#2018-9-20" class="headerlink" title="2018-9-20"></a>2018-9-20</h3><ol><li>ea 的基本测试做了一些，还没做完。</li><li>在和戚博的讨论过程中发现了我之前写的代码有一些不太合理的地方。缺乏面向对象的思想，代码没有很好的做到低耦合。需要做一些改动。</li></ol><h3 id="2018-10-6"><a href="#2018-10-6" class="headerlink" title="2018-10-6"></a>2018-10-6</h3><p>给博客增加了 Google Adsense ，文章下面会有 Google 广告，点击广告就会有一定的收益！来访问的小伙伴，看到广告记得帮我点一点啊~~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;简单记录一下我每天搞了什么。成长之路，点滴记录！&lt;/p&gt;
-&lt;h3 id=&quot;2018-8-1-8-5&quot;&gt;&lt;a href=&quot;#2018-8-1-8-5&quot; class=&quot;headerlink&quot; title=&quot;2018-8-1~8-5&quot;&gt;&lt;/a&gt;2018-8-1~8-5&lt;/h3&gt;&lt;p&gt;1.搭建了博客，学习了 MarkDown 语法规则，学习用 MarkDown 来写作。&lt;br&gt;2.测试 UlpBench&lt;br&gt;3.移植 UlpBench 部分代码到 M3 上运行，测试功耗&lt;br&gt;4.测试单指令差异&lt;br&gt;5.整理分析测试数据&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="diary" scheme="https://blog.strongwong.top/categories/diary/"/>
-    
-    
-      <category term="diary" scheme="https://blog.strongwong.top/tags/diary/"/>
     
   </entry>
   
