@@ -118,17 +118,25 @@
   });
 </script>
 
-  <meta name="description" content="悟已往之不谏，知来者之可追！">
-<meta name="keywords" content="Strong Wong, Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="StrongWong">
-<meta property="og:url" content="https://blog.strongwong.top/tags/IC-Design/index.html">
+  <meta name="description" content="前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
+<meta name="keywords" content="数字图像处理,FPGA仿真,Verilog,IC Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FPGA 数字图像处理联合仿真平台的搭建及使用举例">
+<meta property="og:url" content="https://blog.strongwong.top/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="悟已往之不谏，知来者之可追！">
+<meta property="og:description" content="前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/nidDTs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/niwnNn.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/ni04iR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/ni0Xod.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/niB6fI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/09/02/niwkjS.png">
+<meta property="og:updated_time" content="2019-09-02T14:34:33.046Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StrongWong">
-<meta name="twitter:description" content="悟已往之不谏，知来者之可追！">
+<meta name="twitter:title" content="FPGA 数字图像处理联合仿真平台的搭建及使用举例">
+<meta name="twitter:description" content="前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/09/02/nidDTs.png">
 
 
 
@@ -137,7 +145,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/tags/IC-Design/">
+  <link rel="canonical" href="https://blog.strongwong.top/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html">
 
 
 
@@ -147,7 +155,7 @@
   };
 </script>
 
-  <title>标签: IC Design | StrongWong</title>
+  <title>FPGA 数字图像处理联合仿真平台的搭建及使用举例 | StrongWong</title>
   
 
 
@@ -203,7 +211,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -252,7 +260,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
   </li>
@@ -313,34 +321,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -386,212 +366,279 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>IC Design<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="strongwong">
+      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
+      <meta itemprop="image" content="/uploads/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StrongWong">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html" itemprop="url">
-              
-                <span itemprop="name">FPGA 数字图像处理联合仿真平台的搭建及使用举例</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">FPGA 数字图像处理联合仿真平台的搭建及使用举例
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-02T21:25:33+08:00" content="2019-09-02">
-          09-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-02 21:25:33" itemprop="dateCreated datePublished" datetime="2019-09-02T21:25:33+08:00">2019-09-02</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/" itemprop="url" rel="index"><span itemprop="name">IC Design</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/其他/" itemprop="url" rel="index"><span itemprop="name">其他</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html" class="leancloud_visitors" data-flag-title="FPGA 数字图像处理联合仿真平台的搭建及使用举例">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/posts/数字-IC-设计流程.html" itemprop="url">
-              
-                <span itemprop="name">数字 IC 设计流程</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-13T18:41:35+08:00" content="2019-01-13">
-          01-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/posts/SDRAM-两次踏进同一条河.html" itemprop="url">
-              
-                <span itemprop="name">SDRAM 两次踏进同一条河</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-06T20:48:31+08:00" content="2018-12-06">
-          12-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/posts/初窥-SDRAM.html" itemprop="url">
-              
-                <span itemprop="name">初窥 SDRAM</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-24T17:21:08+08:00" content="2018-11-24">
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/posts/从计数器开始，看数字-IC-设计.html" itemprop="url">
-              
-                <span itemprop="name">从计数器开始，看数字 IC 设计</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-24T10:41:29+08:00" content="2018-11-24">
-          11-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/posts/提升数字-IC-设计效率从-Vim-开始.html" itemprop="url">
-              
-                <span itemprop="name">提升数字 IC 设计效率从 Vim 开始</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-12T16:10:29+08:00" content="2018-11-12">
-          11-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/posts/总线-SoC-内部的主干道.html" itemprop="url">
-              
-                <span itemprop="name">总线- SoC 内部的主干道</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-12T11:35:18+08:00" content="2018-11-12">
-          11-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）</p>
+<a id="more"></a>
+<p>当前 FPGA 发展火热，众多开发者使用 FPGA 来完成部分图像处理的部分功能，但众所周知纯 FPGA 开发（或者数字 IC 设计）与常见的 ARM A 系列（with OS）或者桌面端 PC 在图像处理开发过程中最大的差别在于过程的可视化。开发过程中的可视化多少会影响到开发者对于图像处理的判断与取舍，简而言之，如果开发者都不知道经过了这一步处理后图像变成了什么样，那还如何继续接下来的步骤。因此分享交流一下在本次车牌识别设计中我们所用到的数字图像处理的联合仿真平台（<em>注：本文仅仅介绍平台使用方式，不介绍过程中涉及到的数字图像处理原理</em>），如果有更好的方式，希望大家可以留言给予建议~</p>
+<h2 id="首先是我们所需要的软件工具："><a href="#首先是我们所需要的软件工具：" class="headerlink" title="首先是我们所需要的软件工具："></a>首先是我们所需要的软件工具：</h2><p>本次我们的开发环境为 Win10 所用到的软件工具分别为：<code>Modelsim(10.5B)</code>, <code>MATLAB(R2019a)</code></p>
+<p>然后简述一下我们的操作过程（以图片 RGB 色域转换 YCbCr 色域处理为例），整体过程可简述如下：通过 MATLAB 将图片文件转换为 <code>.txt</code> 格式文件，使用 Verilog 读取相应文件后完成相应图像处理操作后输出为 <code>.txt</code> 文件，再次使用 MATLAB 将输出的 <code>.txt</code> 格式文件转换为图片文件并查看。以上步骤的意义在于不仅可以实现数字图像处理的单步可视化，还可以同原始的 MATLAB 对应的处理效果进行对比。(后期我们也会更新，直接使用 Verilog 完成图像读取并输出结果查看的方法)</p>
+<p>首先我们通过以下程序(亦可查看附带工程中的 <code>IMG2TXT.m</code> 文件)在 MATLAB 端将图片生成 R,G,B 色域对应的 <code>.txt</code> 格式文件。并同时通过 MATLAB 生成 YCbCr 色域下三个分量的图像予以显示。<br>其关键代码如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">clear all</span><br><span class="line">close all</span><br><span class="line">clc</span><br><span class="line">img = imread(<span class="string">'test.jpg'</span>);</span><br><span class="line">[a,b,c]= <span class="built_in">size</span>(img);</span><br><span class="line">R1=img(:,:,<span class="number">1</span>);</span><br><span class="line">G1=img(:,:,<span class="number">2</span>);</span><br><span class="line">B1=img(:,:,<span class="number">3</span>);</span><br><span class="line"> </span><br><span class="line">fidR1= fopen(<span class="string">'testR.txt'</span>,<span class="string">'w'</span>);</span><br><span class="line">fidG1= fopen(<span class="string">'testG.txt'</span>,<span class="string">'w'</span>);</span><br><span class="line">fidB1= fopen(<span class="string">'testB.txt'</span>,<span class="string">'w'</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:a</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">j</span>= <span class="number">1</span>:b</span><br><span class="line">      fprintf(fidR1,<span class="string">'%d\n'</span>,R1(<span class="built_in">i</span>,<span class="built_in">j</span>)); <span class="comment">%frame1</span></span><br><span class="line">      fprintf(fidG1,<span class="string">'%d\n'</span>,G1(<span class="built_in">i</span>,<span class="built_in">j</span>));</span><br><span class="line">      fprintf(fidB1,<span class="string">'%d\n'</span>,B1(<span class="built_in">i</span>,<span class="built_in">j</span>));</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">fclose(fidR1);</span><br><span class="line">fclose(fidG1);</span><br><span class="line">fclose(fidB1);</span><br></pre></td></tr></table></figure>
+<h2 id="RGB-色域图"><a href="#RGB-色域图" class="headerlink" title="RGB 色域图"></a>RGB 色域图</h2><p>生成对应 RGB 色域 <code>.txt</code> 格式文件如下图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/09/02/nidDTs.png" alt="RGB.txt"></p>
+<p>生成 YCbCr 色域对应分量图片(详见工程文件 <code>YCbCr.m</code> )，如下图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/09/02/niwnNn.png" alt="YCbCr"></p>
+<h2 id="Verilog-处理"><a href="#Verilog-处理" class="headerlink" title="Verilog 处理"></a>Verilog 处理</h2><p>然后在我们的 Modelsim 工程中对 <code>.txt</code> 格式文件进行读取(亦可查看工程中附带的 imread.v 文件)，进一步的完成图像处理对应的操作后，输出对应 <code>.txt</code> 格式文件（亦可查看工程中附带 imwrite.v 文件）。<br>其 txt 读取关键代码如下：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">  fR = <span class="built_in">$fopen</span>(<span class="string">"testR.txt"</span>,<span class="string">"r"</span>);   <span class="comment">// read in testR.txt</span></span><br><span class="line">  fG = <span class="built_in">$fopen</span>(<span class="string">"testG.txt"</span>,<span class="string">"r"</span>);</span><br><span class="line">  fB = <span class="built_in">$fopen</span>(<span class="string">"testB.txt"</span>,<span class="string">"r"</span>);</span><br><span class="line">  <span class="keyword">if</span>(fR == <span class="meta">`NULL || fG == `NULL || fB == `NULL) begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"data_file handle was NULL"</span>);</span><br><span class="line">	<span class="built_in">$finish</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$fscanf</span>(fR,<span class="string">"%d;\n"</span>,R);</span><br><span class="line">	<span class="built_in">$fscanf</span>(fG,<span class="string">"%d;\n"</span>,G);</span><br><span class="line">	<span class="built_in">$fscanf</span>(fB,<span class="string">"%d;\n"</span>,B);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span>	</span><br><span class="line"></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> pixel_clk <span class="keyword">or</span> <span class="keyword">negedge</span> reset_n) <span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span>(reset_n == <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">    R = <span class="number">8'd0</span>;</span><br><span class="line">	G = <span class="number">8'd0</span>;</span><br><span class="line">	B = <span class="number">8'd0</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(de) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(fR != <span class="number">0</span> &amp;&amp; fG != <span class="number">0</span> &amp;&amp; fB != <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">	 <span class="built_in">$fscanf</span>(fR,<span class="string">"%d;\n"</span>,R);</span><br><span class="line">	 <span class="built_in">$fscanf</span>(fG,<span class="string">"%d;\n"</span>,G);</span><br><span class="line">	 <span class="built_in">$fscanf</span>(fB,<span class="string">"%d;\n"</span>,B);</span><br><span class="line">	 <span class="built_in">$display</span>(<span class="string">"time=[%d],%d,%d,%d"</span>,<span class="built_in">$realtime</span>,R,G,B);</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>完成处理后生成 txt 关键代码如下：</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">  fR = <span class="built_in">$fopen</span>(<span class="string">"R.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">  fG = <span class="built_in">$fopen</span>(<span class="string">"G.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">  fB = <span class="built_in">$fopen</span>(<span class="string">"B.txt"</span>,<span class="string">"w"</span>);</span><br><span class="line">  <span class="keyword">if</span>(fR == <span class="meta">`NULL || fG == `NULL || fB == `NULL) begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"can not open R.txt or G.txt or B.txt"</span>);</span><br><span class="line">	<span class="built_in">$finish</span>;</span><br><span class="line">  <span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span>  </span><br><span class="line"></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> pixel_clk <span class="keyword">or</span> <span class="keyword">negedge</span> reset_n) <span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span>(de) <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"////////////////////////////////////"</span>);</span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">"time=[%d],%d,%d,%d"</span>,<span class="built_in">$realtime</span>,R,G,B);</span><br><span class="line">    <span class="built_in">$fwrite</span>(fR,<span class="string">"%d\n"</span>,R);</span><br><span class="line">	<span class="built_in">$fwrite</span>(fG,<span class="string">"%d\n"</span>,G);</span><br><span class="line">	<span class="built_in">$fwrite</span>(fB,<span class="string">"%d\n"</span>,B);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="处理结果"><a href="#处理结果" class="headerlink" title="处理结果"></a>处理结果</h2><p>终在 MATLAB 端将仿真生成输出的 <code>.txt</code> 文件转换还原为图片（亦可查看工程中附带的 TXT2IMG.M 文件）。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">clear all</span><br><span class="line">close all</span><br><span class="line">clc</span><br><span class="line"> </span><br><span class="line">imgori = imread(<span class="string">'test.jpg'</span>);</span><br><span class="line">[a,b,c]= <span class="built_in">size</span>(imgori);</span><br><span class="line"> </span><br><span class="line">img1R = uint8(textread(<span class="string">'R.txt'</span>,<span class="string">'%u'</span>));</span><br><span class="line">img1G = uint8(textread(<span class="string">'G.txt'</span>,<span class="string">'%u'</span>));</span><br><span class="line">img1B = uint8(textread(<span class="string">'B.txt'</span>,<span class="string">'%u'</span>));</span><br><span class="line"> </span><br><span class="line">img1(:,:,<span class="number">1</span>) = <span class="built_in">reshape</span>(img1R,[b,a]);</span><br><span class="line">img1(:,:,<span class="number">2</span>) = <span class="built_in">reshape</span>(img1G,[b,a]);</span><br><span class="line">img1(:,:,<span class="number">3</span>) = <span class="built_in">reshape</span>(img1B,[b,a]);</span><br><span class="line"> </span><br><span class="line">img=<span class="built_in">flipdim</span>(img1,<span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line">figure,</span><br><span class="line">subplot(<span class="number">221</span>),imshow(imrotate(img,<span class="number">-90</span>)),title(<span class="string">'YCbCr'</span>);</span><br><span class="line">subplot(<span class="number">222</span>),imshow(imrotate(img(:,:,<span class="number">1</span>),<span class="number">-90</span>)),title(<span class="string">'Y'</span>);</span><br><span class="line">subplot(<span class="number">223</span>),imshow(imrotate(img(:,:,<span class="number">2</span>),<span class="number">-90</span>)),title(<span class="string">'Cb'</span>);</span><br><span class="line">subplot(<span class="number">224</span>),imshow(imrotate(img(:,:,<span class="number">3</span>),<span class="number">-90</span>)),title(<span class="string">'Cr'</span>);</span><br></pre></td></tr></table></figure>
+<p>由于常见的 FPGA 数字图像处理为了减少数据读取对于缓存资源的消耗，通常其处理步骤在视频流完成，因此本次工程中我们在 VGA 模拟时序中完成相应操作。完成仿真如波形下图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/09/02/ni04iR.png" alt="Waveform"></p>
+<p>生成结果 <code>.txt</code> 文件如下图所示:<br><img src="https://s2.ax1x.com/2019/09/02/ni0Xod.png" alt="Outfile"></p>
+<p>将生成结果 <code>.txt</code> 文件放回 MATLAB 工程路径下最终实现效果如下图所示：</p>
+<p><img src="https://s2.ax1x.com/2019/09/02/niB6fI.png" alt="Outfile of FPGA"></p>
+<h2 id="MATLAB-vs-FPGA-结果对比"><a href="#MATLAB-vs-FPGA-结果对比" class="headerlink" title="MATLAB vs FPGA 结果对比"></a>MATLAB vs FPGA 结果对比</h2><p>将图像放大后，可以明显发现通过数字思想处理得到的图片结果相较于 MATLAB 直接转换得到的结果存在一定的差距，Cr 分量下表现的最为明显，具体原因在此不具体展开分析。其对比如下图（<em>注：左侧为 MATLAB 处理结果右侧为 verilog 处理结果</em>）</p>
+<p><img src="https://s2.ax1x.com/2019/09/02/niwkjS.png" alt="Matlab vs FPGA"></p>
+<p>之后我们将逐步介绍本次我们 ARM 杯车牌识别系统的每个实现过程~</p>
+<p>举例部分全部代码详见 GitHub 仓库：<a href="https://github.com/strongwong/FPGA-DIP" target="_blank" rel="noopener">https://github.com/strongwong/FPGA-DIP</a></p>
+<p><strong>By Ricky</strong></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div><p style="font-size:14px; color:#34495e; margin:0 0 5px 0;">赞赏一下吧～ 还可以关注公众号订阅最新内容啊</p></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span><i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i></span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_reward.jpg" alt="strongwong 微信赞赏">
+        <p>微信赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_qrcode.jpg" alt="strongwong 微信公众号">
+        <p>微信公众号</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tags/数字图像处理/" rel="tag"><i class="fa fa-fw fa-tag"></i> 数字图像处理&nbsp;</a>
+          
+            
+            <a href="/tags/FPGA仿真/" rel="tag"><i class="fa fa-fw fa-tag"></i> FPGA仿真&nbsp;</a>
+          
+            
+            <a href="/tags/Verilog/" rel="tag"><i class="fa fa-fw fa-tag"></i> Verilog&nbsp;</a>
+          
+            
+            <a href="/tags/IC-Design/" rel="tag"><i class="fa fa-fw fa-tag"></i> IC Design&nbsp;</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/拆解一个很有意思的开关.html" rel="next" title="拆解一个很有意思的开关">
+                <i class="fa fa-chevron-left"></i> 拆解一个很有意思的开关
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -614,8 +661,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -822,6 +878,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是我们所需要的软件工具："><span class="nav-number">2.</span> <span class="nav-text">首先是我们所需要的软件工具：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RGB-色域图"><span class="nav-number">3.</span> <span class="nav-text">RGB 色域图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verilog-处理"><span class="nav-number">4.</span> <span class="nav-text">Verilog 处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理结果"><span class="nav-number">5.</span> <span class="nav-text">处理结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MATLAB-vs-FPGA-结果对比"><span class="nav-number">6.</span> <span class="nav-text">MATLAB vs FPGA 结果对比</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -973,6 +1045,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1352,43 +1428,40 @@
   
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
+    function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
         .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
           }
         })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
     }
     
 
@@ -1408,9 +1481,7 @@
             });
           };
           
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
+          addCount(Counter);
           
         })
     });

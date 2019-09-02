@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[FPGA 数字图像处理联合仿真平台的搭建及使用举例]]></title>
+    <url>%2F%2Fposts%2FFPGA-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B.html</url>
+    <content type="text"><![CDATA[前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白） 当前 FPGA 发展火热，众多开发者使用 FPGA 来完成部分图像处理的部分功能，但众所周知纯 FPGA 开发（或者数字 IC 设计）与常见的 ARM A 系列（with OS）或者桌面端 PC 在图像处理开发过程中最大的差别在于过程的可视化。开发过程中的可视化多少会影响到开发者对于图像处理的判断与取舍，简而言之，如果开发者都不知道经过了这一步处理后图像变成了什么样，那还如何继续接下来的步骤。因此分享交流一下在本次车牌识别设计中我们所用到的数字图像处理的联合仿真平台（注：本文仅仅介绍平台使用方式，不介绍过程中涉及到的数字图像处理原理），如果有更好的方式，希望大家可以留言给予建议~ 首先是我们所需要的软件工具：本次我们的开发环境为 Win10 所用到的软件工具分别为：Modelsim(10.5B), MATLAB(R2019a) 然后简述一下我们的操作过程（以图片 RGB 色域转换 YCbCr 色域处理为例），整体过程可简述如下：通过 MATLAB 将图片文件转换为 .txt 格式文件，使用 Verilog 读取相应文件后完成相应图像处理操作后输出为 .txt 文件，再次使用 MATLAB 将输出的 .txt 格式文件转换为图片文件并查看。以上步骤的意义在于不仅可以实现数字图像处理的单步可视化，还可以同原始的 MATLAB 对应的处理效果进行对比。(后期我们也会更新，直接使用 Verilog 完成图像读取并输出结果查看的方法) 首先我们通过以下程序(亦可查看附带工程中的 IMG2TXT.m 文件)在 MATLAB 端将图片生成 R,G,B 色域对应的 .txt 格式文件。并同时通过 MATLAB 生成 YCbCr 色域下三个分量的图像予以显示。其关键代码如下： 12345678910111213141516171819202122clear allclose allclcimg = imread('test.jpg');[a,b,c]= size(img);R1=img(:,:,1);G1=img(:,:,2);B1=img(:,:,3); fidR1= fopen('testR.txt','w');fidG1= fopen('testG.txt','w');fidB1= fopen('testB.txt','w');for i=1:a for j= 1:b fprintf(fidR1,'%d\n',R1(i,j)); %frame1 fprintf(fidG1,'%d\n',G1(i,j)); fprintf(fidB1,'%d\n',B1(i,j)); endendfclose(fidR1);fclose(fidG1);fclose(fidB1); RGB 色域图生成对应 RGB 色域 .txt 格式文件如下图所示： 生成 YCbCr 色域对应分量图片(详见工程文件 YCbCr.m )，如下图所示： Verilog 处理然后在我们的 Modelsim 工程中对 .txt 格式文件进行读取(亦可查看工程中附带的 imread.v 文件)，进一步的完成图像处理对应的操作后，输出对应 .txt 格式文件（亦可查看工程中附带 imwrite.v 文件）。其 txt 读取关键代码如下： 12345678910111213141516171819202122232425262728293031initial begin fR = $fopen("testR.txt","r"); // read in testR.txt fG = $fopen("testG.txt","r"); fB = $fopen("testB.txt","r"); if(fR == `NULL || fG == `NULL || fB == `NULL) begin $display("data_file handle was NULL"); $finish; end else begin $fscanf(fR,"%d;\n",R); $fscanf(fG,"%d;\n",G); $fscanf(fB,"%d;\n",B); endend always @(posedge pixel_clk or negedge reset_n) begin if(reset_n == 0) begin R = 8'd0; G = 8'd0; B = 8'd0; end else if(de) begin if(fR != 0 &amp;&amp; fG != 0 &amp;&amp; fB != 0) begin $fscanf(fR,"%d;\n",R); $fscanf(fG,"%d;\n",G); $fscanf(fB,"%d;\n",B); $display("time=[%d],%d,%d,%d",$realtime,R,G,B); end end end 完成处理后生成 txt 关键代码如下： 12345678910111213141516171819initial begin fR = $fopen("R.txt","w"); fG = $fopen("G.txt","w"); fB = $fopen("B.txt","w"); if(fR == `NULL || fG == `NULL || fB == `NULL) begin $display("can not open R.txt or G.txt or B.txt"); $finish; end end always @(posedge pixel_clk or negedge reset_n) begin if(de) begin $display("////////////////////////////////////"); $display("time=[%d],%d,%d,%d",$realtime,R,G,B); $fwrite(fR,"%d\n",R); $fwrite(fG,"%d\n",G); $fwrite(fB,"%d\n",B); endend 处理结果终在 MATLAB 端将仿真生成输出的 .txt 文件转换还原为图片（亦可查看工程中附带的 TXT2IMG.M 文件）。 12345678910111213141516171819202122clear allclose allclc imgori = imread('test.jpg');[a,b,c]= size(imgori); img1R = uint8(textread('R.txt','%u'));img1G = uint8(textread('G.txt','%u'));img1B = uint8(textread('B.txt','%u')); img1(:,:,1) = reshape(img1R,[b,a]);img1(:,:,2) = reshape(img1G,[b,a]);img1(:,:,3) = reshape(img1B,[b,a]); img=flipdim(img1,1); figure,subplot(221),imshow(imrotate(img,-90)),title('YCbCr');subplot(222),imshow(imrotate(img(:,:,1),-90)),title('Y');subplot(223),imshow(imrotate(img(:,:,2),-90)),title('Cb');subplot(224),imshow(imrotate(img(:,:,3),-90)),title('Cr'); 由于常见的 FPGA 数字图像处理为了减少数据读取对于缓存资源的消耗，通常其处理步骤在视频流完成，因此本次工程中我们在 VGA 模拟时序中完成相应操作。完成仿真如波形下图所示： 生成结果 .txt 文件如下图所示: 将生成结果 .txt 文件放回 MATLAB 工程路径下最终实现效果如下图所示： MATLAB vs FPGA 结果对比将图像放大后，可以明显发现通过数字思想处理得到的图片结果相较于 MATLAB 直接转换得到的结果存在一定的差距，Cr 分量下表现的最为明显，具体原因在此不具体展开分析。其对比如下图（注：左侧为 MATLAB 处理结果右侧为 verilog 处理结果） 之后我们将逐步介绍本次我们 ARM 杯车牌识别系统的每个实现过程~ 举例部分全部代码详见 GitHub 仓库：https://github.com/strongwong/FPGA-DIP By Ricky]]></content>
+      <categories>
+        <category>IC Design</category>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>数字图像处理</tag>
+        <tag>FPGA仿真</tag>
+        <tag>Verilog</tag>
+        <tag>IC Design</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[拆解一个很有意思的开关]]></title>
     <url>%2F%2Fposts%2F%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html</url>
     <content type="text"><![CDATA[最近公司买了一个很有意思的开关，说是叫无源无线开关。无线嘛，就是没有电线连接，是无线的，好像是 433 无线模块通讯的。所谓无源就是没有电池或者其他直接的电源供电了，是一个自发电的开关。就是上图这个东东，我很是好奇，很想知道他这个自发电的开关内部是个什么样子，那我们拆开看看吧~ 嘿嘿~~ 趁着下班了，大家都不在，我一个人开始在公司开拆！ 这个无源无线开关和其他普通开关从外观上来看都差不多。它的塑料外壳和普通开关一样，轻轻撬开即可。打开外壳我们可以看到一根铜线，这应该就是用于无线通讯的天线了。卸下按键壳，下面就是整个开关的主体模块了。开关的主体很牢固的卡在底座上，只能硬撬下来了。 开关主体拿下来还是可以正常使用的，当我把主板上的壳子拆下来后，开关就不可以自发电了。主板的正面有 5 个电容按键，具体功能不得而知，可能是备用、兼容或者是为调试预留的？ 拿下电容按键，看到主板背面线圈的一瞬间，相信中学物理还可以的朋友应该都能反应过来，这个开关的自发电原理应该就是咱们学过的电磁感应原理啊！通过线圈切割磁感线然后产生电能供应给其他电路使用。我迫不及待地卸下主板，想一探究竟，看看是不是我想的这样。但是主板和底座之间有一些机械机构互相钳制，费了好大力气才将主板卸下。 卸下主板后，我们看到底座上确实有一个由三个铆钉固定的磁铁。哈哈，果然是这样。在主体的壳子上有一个弹簧，怼着底座上的拨动机构，在开关按下的时候，拨动机构带动簧片拨动磁铁，磁铁的移动在线圈那端是有限位的，磁铁在一瞬间移动就相当于线圈切割了一次磁感线，从而产生电能给到其他负载。 拨杆机构细节图，挺有意思的一个结构。 然后来详细看一下主板： 在主板上主要有一颗 TI 的 CC115L 超值射频发射芯片、一颗 ST 的 stm8s003f3p6 8 位单片机、一个线圈以及电能采集储能电路。 stm8s003+CC115L/CC113L 的搭配在无线智能家居等场景好像应用很多。具体的芯片资料大家直接看厂商的 datasheet 吧，这里就不多做介绍了。 我仔细研究一下这个磁感线圈电能采集存储电路，主要有 5 个肖特基二极管，一个稳压二极管，一个 PMOS和一个 NMOS 丝印分别是 1GM 、2GM ，以及一个丝印为 A18F的未知芯片，没有找到直接对应的芯片型号，但根据电感来判断应该是一个 DC-DC 转换器，至于应该是降压还是升压就不太清楚了，因为拆开后就没有办法拨动开关产生电能，来测试对应点的电位了。我个人觉得这个线圈应该生产不了多大的电压，所以这里可能是一个升压的。通过按压，电磁线圈产生电能后，通过前级的电路采集后，到电感这里短暂存储，供控制器和射频芯片短暂地工作几十毫秒把控制信号发射出去，这样就可以控制接收端的各种设备了。简单理解了这部分的电路后，我简单绘制了一下这部分的原理图，不一定完全正确，但大体上应该是对的。有兴趣的朋友可以帮我看看，如果有什么错误的地方欢迎给我留言指正。 好了！这一次的拆解就到这里啦~，我要赶快装回去了，不能让大家发现！（逃~~） 简单总结一下吧！ 这个无源无线开关还是很 nice 的，不用布线，不用电池，自发电，节能环保！发电线圈的设计也不失为一种新的低功耗方案，在一些更小体积的应用场景可能不太合适吧。 神奇的事情背后都有基本的科学知识，中学的物理知识就这样实际运用在我们的日常生活中啦！ 还有拆东西是一件很爽的事情！哈哈哈！ Have fun~]]></content>
@@ -72,8 +87,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>SDRAM</tag>
         <tag>IC Design</tag>
+        <tag>SDRAM</tag>
       </tags>
   </entry>
   <entry>
@@ -85,8 +100,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>SDRAM</tag>
         <tag>IC Design</tag>
+        <tag>SDRAM</tag>
       </tags>
   </entry>
   <entry>
