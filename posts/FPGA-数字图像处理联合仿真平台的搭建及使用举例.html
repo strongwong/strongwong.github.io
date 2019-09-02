@@ -118,13 +118,13 @@
   });
 </script>
 
-  <meta name="description" content="前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
+  <meta name="description" content="前言随着物联网技术的不断发展，对边缘计算的性能要求愈发苛刻，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
 <meta name="keywords" content="数字图像处理,FPGA仿真,Verilog,IC Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FPGA 数字图像处理联合仿真平台的搭建及使用举例">
 <meta property="og:url" content="https://blog.strongwong.top/posts/FPGA-数字图像处理联合仿真平台的搭建及使用举例.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
+<meta property="og:description" content="前言随着物联网技术的不断发展，对边缘计算的性能要求愈发苛刻，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/nidDTs.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/niwnNn.png">
@@ -132,10 +132,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/ni0Xod.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/niB6fI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/09/02/niwkjS.png">
-<meta property="og:updated_time" content="2019-09-02T14:34:33.046Z">
+<meta property="og:updated_time" content="2019-09-02T15:04:42.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FPGA 数字图像处理联合仿真平台的搭建及使用举例">
-<meta name="twitter:description" content="前言随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
+<meta name="twitter:description" content="前言随着物联网技术的不断发展，对边缘计算的性能要求愈发苛刻，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/09/02/nidDTs.png">
 
 
@@ -504,7 +504,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着边缘计算的不断发展，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着物联网技术的不断发展，对边缘计算的性能要求愈发苛刻，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）</p>
 <a id="more"></a>
 <p>当前 FPGA 发展火热，众多开发者使用 FPGA 来完成部分图像处理的部分功能，但众所周知纯 FPGA 开发（或者数字 IC 设计）与常见的 ARM A 系列（with OS）或者桌面端 PC 在图像处理开发过程中最大的差别在于过程的可视化。开发过程中的可视化多少会影响到开发者对于图像处理的判断与取舍，简而言之，如果开发者都不知道经过了这一步处理后图像变成了什么样，那还如何继续接下来的步骤。因此分享交流一下在本次车牌识别设计中我们所用到的数字图像处理的联合仿真平台（<em>注：本文仅仅介绍平台使用方式，不介绍过程中涉及到的数字图像处理原理</em>），如果有更好的方式，希望大家可以留言给予建议~</p>
 <h2 id="首先是我们所需要的软件工具："><a href="#首先是我们所需要的软件工具：" class="headerlink" title="首先是我们所需要的软件工具："></a>首先是我们所需要的软件工具：</h2><p>本次我们的开发环境为 Win10 所用到的软件工具分别为：<code>Modelsim(10.5B)</code>, <code>MATLAB(R2019a)</code></p>
@@ -526,9 +526,11 @@
 <p>生成结果 <code>.txt</code> 文件如下图所示:<br><img src="https://s2.ax1x.com/2019/09/02/ni0Xod.png" alt="Outfile"></p>
 <p>将生成结果 <code>.txt</code> 文件放回 MATLAB 工程路径下最终实现效果如下图所示：</p>
 <p><img src="https://s2.ax1x.com/2019/09/02/niB6fI.png" alt="Outfile of FPGA"></p>
-<h2 id="MATLAB-vs-FPGA-结果对比"><a href="#MATLAB-vs-FPGA-结果对比" class="headerlink" title="MATLAB vs FPGA 结果对比"></a>MATLAB vs FPGA 结果对比</h2><p>将图像放大后，可以明显发现通过数字思想处理得到的图片结果相较于 MATLAB 直接转换得到的结果存在一定的差距，Cr 分量下表现的最为明显，具体原因在此不具体展开分析。其对比如下图（<em>注：左侧为 MATLAB 处理结果右侧为 verilog 处理结果</em>）</p>
-<p><img src="https://s2.ax1x.com/2019/09/02/niwkjS.png" alt="Matlab vs FPGA"></p>
+<h2 id="MATLAB-vs-HDL数字图像处理-结果对比"><a href="#MATLAB-vs-HDL数字图像处理-结果对比" class="headerlink" title="MATLAB vs HDL数字图像处理 结果对比"></a>MATLAB vs HDL数字图像处理 结果对比</h2><p>将图像放大后，可以明显发现通过数字思想处理得到的图片结果相较于 MATLAB 直接转换得到的结果存在一定的差距，Cr 分量下表现的最为明显，具体原因在此不具体展开分析。其对比如下图（<em>注：左侧为 MATLAB 处理结果右侧为 verilog 处理结果</em>）</p>
+<p><img src="https://s2.ax1x.com/2019/09/02/niwkjS.png" alt="Matlab vs HDL"></p>
 <p>之后我们将逐步介绍本次我们 ARM 杯车牌识别系统的每个实现过程~</p>
+ <font color="#FF0000" size="6">  并公开全套设计源码！！！ </font>
+
 <p>举例部分全部代码详见 GitHub 仓库：<a href="https://github.com/strongwong/FPGA-DIP" target="_blank" rel="noopener">https://github.com/strongwong/FPGA-DIP</a></p>
 <p><strong>By Ricky</strong></p>
 
@@ -887,7 +889,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是我们所需要的软件工具："><span class="nav-number">2.</span> <span class="nav-text">首先是我们所需要的软件工具：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RGB-色域图"><span class="nav-number">3.</span> <span class="nav-text">RGB 色域图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verilog-处理"><span class="nav-number">4.</span> <span class="nav-text">Verilog 处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理结果"><span class="nav-number">5.</span> <span class="nav-text">处理结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MATLAB-vs-FPGA-结果对比"><span class="nav-number">6.</span> <span class="nav-text">MATLAB vs FPGA 结果对比</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首先是我们所需要的软件工具："><span class="nav-number">2.</span> <span class="nav-text">首先是我们所需要的软件工具：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RGB-色域图"><span class="nav-number">3.</span> <span class="nav-text">RGB 色域图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verilog-处理"><span class="nav-number">4.</span> <span class="nav-text">Verilog 处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理结果"><span class="nav-number">5.</span> <span class="nav-text">处理结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MATLAB-vs-HDL数字图像处理-结果对比"><span class="nav-number">6.</span> <span class="nav-text">MATLAB vs HDL数字图像处理 结果对比</span></a></li></ol></div>
             
 
           </div>
