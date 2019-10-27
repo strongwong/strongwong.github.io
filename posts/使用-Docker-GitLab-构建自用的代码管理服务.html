@@ -15,10 +15,10 @@
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
@@ -32,8 +32,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -56,9 +56,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
@@ -76,7 +76,7 @@
   <link rel="manifest" href="/images/manifest.json">
 
 
-  <meta name="msapplication-config" content="/images/browserconfig.xml">
+  <meta name="msapplication-config" content="/images/browserconfig.xml" />
 
 
 
@@ -122,29 +122,27 @@
 <meta name="keywords" content="Docker,GitLab,frp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Docker + GitLab 构建自用的代码管理服务">
-<meta property="og:url" content="https://blog.strongwong.top/posts/使用-Docker-GitLab-构建自用的代码管理服务.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;%E4%BD%BF%E7%94%A8-Docker-GitLab-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1.html">
 <meta property="og:site_name" content="StrongWong">
 <meta property="og:description" content="准备工作系统要求 一台 Ubuntu 系统的电脑作为服务器（我这里是一台 Ubuntu Xenial 16.04 的电脑），其他版本和系统也可以，只要 Docker CE 支持即可，详情请访问 Docker 官网。 GitLab CE 要求内存 2G 以上  Docker 安装及配置Docker 是什么Docker 使用 Google 公司推出的 Go 语言进行开发实现，基于 Linux 内核的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img.mukewang.com/5a73280a0001efc904500304.png">
-<meta property="og:image" content="https://img.mukewang.com/5a7327360001cdff03400477.png">
-<meta property="og:image" content="https://img.mukewang.com/5a7327620001bc7f05460400.png">
-<meta property="og:image" content="https://img.mukewang.com/5a73277b0001982f07080200.png">
-<meta property="og:image" content="https://img.mukewang.com/5a73278e0001303620200994.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img.mukewang.com&#x2F;5a73280a0001efc904500304.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img.mukewang.com&#x2F;5a7327360001cdff03400477.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img.mukewang.com&#x2F;5a7327620001bc7f05460400.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img.mukewang.com&#x2F;5a73277b0001982f07080200.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;img.mukewang.com&#x2F;5a73278e0001303620200994.png">
 <meta property="og:updated_time" content="2018-11-13T14:46:23.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Docker + GitLab 构建自用的代码管理服务">
-<meta name="twitter:description" content="准备工作系统要求 一台 Ubuntu 系统的电脑作为服务器（我这里是一台 Ubuntu Xenial 16.04 的电脑），其他版本和系统也可以，只要 Docker CE 支持即可，详情请访问 Docker 官网。 GitLab CE 要求内存 2G 以上  Docker 安装及配置Docker 是什么Docker 使用 Google 公司推出的 Go 语言进行开发实现，基于 Linux 内核的">
-<meta name="twitter:image" content="https://img.mukewang.com/5a73280a0001efc904500304.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img.mukewang.com&#x2F;5a73280a0001efc904500304.png">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="StrongWong" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="StrongWong" type="application/atom+xml" />
 
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/posts/使用-Docker-GitLab-构建自用的代码管理服务.html">
+  <link rel="canonical" href="https://blog.strongwong.top/posts/使用-Docker-GitLab-构建自用的代码管理服务.html"/>
 
 
 
@@ -203,7 +201,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -213,7 +211,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -253,7 +251,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
         
         
@@ -261,7 +259,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
         
         
@@ -269,7 +267,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
         
         
@@ -277,7 +275,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
         
         
@@ -285,7 +283,7 @@
           
           <li class="menu-item menu-item-books">
     <a href="/books" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-book"></i> <br>读书</a>
+      <i class="menu-item-icon fa fa-fw fa-book"></i> <br />读书</a>
   </li>
         
         
@@ -293,7 +291,7 @@
           
           <li class="menu-item menu-item-movies">
     <a href="/movies" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-film"></i> <br>观影</a>
+      <i class="menu-item-icon fa fa-fw fa-film"></i> <br />观影</a>
   </li>
         
         
@@ -301,17 +299,17 @@
           
           <li class="menu-item menu-item-tools">
     <a href="/tools" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br>工具</a>
+      <i class="menu-item-icon fa fa-fw fa-cogs"></i> <br />工具</a>
   </li>
 
       
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="popup-trigger">
+            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
         </li>
       
     </ul>
@@ -334,7 +332,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -376,20 +376,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/使用-Docker-GitLab-构建自用的代码管理服务.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E4%BD%BF%E7%94%A8-Docker-GitLab-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1.html">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
       <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
       <meta itemprop="image" content="/uploads/toux.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="StrongWong">
     </span>
 
@@ -430,7 +430,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -441,7 +441,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
 
                 
                 
@@ -456,8 +456,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/使用-Docker-GitLab-构建自用的代码管理服务.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/使用-Docker-GitLab-构建自用的代码管理服务.html" itemprop="commentCount"></span>
+                <a href="/posts/%E4%BD%BF%E7%94%A8-Docker-GitLab-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E4%BD%BF%E7%94%A8-Docker-GitLab-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -465,7 +465,7 @@
 
           
           
-             <span id="/posts/使用-Docker-GitLab-构建自用的代码管理服务.html" class="leancloud_visitors" data-flag-title="使用 Docker + GitLab 构建自用的代码管理服务">
+             <span id="/posts/%E4%BD%BF%E7%94%A8-Docker-GitLab-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1.html" class="leancloud_visitors" data-flag-title="使用 Docker + GitLab 构建自用的代码管理服务">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -502,38 +502,59 @@
 </ul>
 <h2 id="Docker-安装及配置"><a href="#Docker-安装及配置" class="headerlink" title="Docker 安装及配置"></a>Docker 安装及配置</h2><h3 id="Docker-是什么"><a href="#Docker-是什么" class="headerlink" title="Docker 是什么"></a>Docker 是什么</h3><p>Docker 使用 Google 公司推出的 Go 语言进行开发实现，基于 Linux 内核的 cgroup，namespace，以及 AUFS 类的 Union FS 等技术，对进程进行封装隔离，属于 <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank" rel="noopener">操作系统层面的虚拟化技术</a>。由于隔离的进程独立于宿主和其它的隔离的进程，因此也称其为容器。</p>
 <a id="more"></a>
+
 <p>Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。</p>
 <p>传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程；而容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核，而且也没有进行硬件虚拟。因此容器要比传统虚拟机更为轻便。</p>
 <p>它是目前最流行的 Linux 容器解决方案！</p>
-<h3 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h3><p>旧版本的 Docker 称为 <code>docker</code> 或者 <code>docker-engine</code>，使用以下命令卸载旧版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br></pre></td></tr></table></figure></p>
+<h3 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h3><p>旧版本的 Docker 称为 <code>docker</code> 或者 <code>docker-engine</code>，使用以下命令卸载旧版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br></pre></td></tr></table></figure>
+
 <h3 id="使用-APT-安装"><a href="#使用-APT-安装" class="headerlink" title="使用 APT 安装"></a>使用 APT 安装</h3><p>由于 <code>apt</code> 源使用 HTTPS 以确保软件下载过程中不被篡改。因此，我们首先需要添加使用 HTTPS 传输的软件包以及 CA 证书。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br></pre></td></tr></table></figure>
-<p>鉴于国内网络的问题，建议使用国内源，官方源在注释中查看。<br>为了确认所下载软件包的合法性，需要添加软件源的 <code>GPG</code> 密钥。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line"><span class="comment"># $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span></span><br></pre></td></tr></table></figure></p>
+
+<p>鉴于国内网络的问题，建议使用国内源，官方源在注释中查看。<br>为了确认所下载软件包的合法性，需要添加软件源的 <code>GPG</code> 密钥。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line"><span class="comment"># $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span></span><br></pre></td></tr></table></figure>
+
 <p>然后，向 <code>source.list</code> 中添加 Docker 软件源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo add-apt-repository \</span><br><span class="line">    <span class="string">"deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \</span></span><br><span class="line"><span class="string">    <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">    stable"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line"><span class="comment"># $ sudo add-apt-repository \</span></span><br><span class="line"><span class="comment">#    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span></span><br><span class="line"><span class="comment">#    $(lsb_release -cs) \</span></span><br><span class="line"><span class="comment">#    stable"</span></span><br></pre></td></tr></table></figure>
-<h3 id="安装-Docker-CE"><a href="#安装-Docker-CE" class="headerlink" title="安装 Docker CE"></a>安装 Docker CE</h3><p>更新 apt 软件包缓存，并安装 <code>docker-ce</code>：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure></p>
+
+<h3 id="安装-Docker-CE"><a href="#安装-Docker-CE" class="headerlink" title="安装 Docker CE"></a>安装 Docker CE</h3><p>更新 apt 软件包缓存，并安装 <code>docker-ce</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
+
 <h3 id="启动-Docker-CE"><a href="#启动-Docker-CE" class="headerlink" title="启动 Docker CE"></a>启动 Docker CE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line"></span><br><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
 <h3 id="建立-Docker-用户组"><a href="#建立-Docker-用户组" class="headerlink" title="建立 Docker 用户组"></a>建立 Docker 用户组</h3><p>默认情况下，<code>docker</code> 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 <code>root</code> 用户和 <code>docker</code> 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 <code>root</code> 用户。因此，更好地做法是将需要使用 <code>docker</code> 的用户加入 <code>docker</code> 用户组。</p>
-<p>建立 <code>docker</code> 用户组：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo groupadd docker      <span class="comment">#新建 docker 用户组</span></span><br><span class="line"></span><br><span class="line">$ sudo usermod -aG docker <span class="variable">$USER</span>     <span class="comment">#将当前用户加入 docker 组</span></span><br></pre></td></tr></table></figure></p>
+<p>建立 <code>docker</code> 用户组：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo groupadd docker      <span class="comment">#新建 docker 用户组</span></span><br><span class="line"></span><br><span class="line">$ sudo usermod -aG docker <span class="variable">$USER</span>     <span class="comment">#将当前用户加入 docker 组</span></span><br></pre></td></tr></table></figure>
+
 <p>退出当前终端并重新登录，进行如下测试。</p>
 <h3 id="测试-Docker-是否正确安装"><a href="#测试-Docker-是否正确安装" class="headerlink" title="测试 Docker 是否正确安装"></a>测试 Docker 是否正确安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ docker run hello-world</span><br><span class="line"></span><br><span class="line">Unable to find image <span class="string">'hello-world:latest'</span> locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">d1725b59e92d: Pull complete</span><br><span class="line">Digest: sha256:0add3ace90ecb4adbf7777e9aacf18357296e799f81cabc9fde470971e499788</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line"></span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the <span class="string">"hello-world"</span> image from the Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> 3. The Docker daemon created a new container from that image <span class="built_in">which</span> runs the</span><br><span class="line">    executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, <span class="built_in">which</span> sent it</span><br><span class="line">    to your terminal.</span><br><span class="line"></span><br><span class="line">To try something more ambitious, you can run an Ubuntu container with:</span><br><span class="line"> $ docker run -it ubuntu bash</span><br><span class="line"></span><br><span class="line">Share images, automate workflows, and more with a free Docker ID:</span><br><span class="line"> https://hub.docker.com/</span><br><span class="line"></span><br><span class="line">For more examples and ideas, visit:</span><br><span class="line"> https://docs.docker.com/get-started/</span><br></pre></td></tr></table></figure>
 <p>若能正常输出以上信息，则说明安装成功。</p>
-<h3 id="配置镜像加速"><a href="#配置镜像加速" class="headerlink" title="配置镜像加速"></a>配置镜像加速</h3><p>因为国内网络的原因，后续拉取 Docker 镜像会十分缓慢，建议安装好 Docker 后配置一下国内镜像加速。<br>Ubuntu 16.04 的配置方法如下（参考：<a href="https://www.docker-cn.com" target="_blank" rel="noopener">Docker 中国</a>）：<br>修改 <code>/etc/docker/daemon.json</code> 文件并写入如下内容（如果文件不存在请新建该文件）：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"registry-mirrors"</span>: [</span><br><span class="line">      <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置镜像加速"><a href="#配置镜像加速" class="headerlink" title="配置镜像加速"></a>配置镜像加速</h3><p>因为国内网络的原因，后续拉取 Docker 镜像会十分缓慢，建议安装好 Docker 后配置一下国内镜像加速。<br>Ubuntu 16.04 的配置方法如下（参考：<a href="https://www.docker-cn.com" target="_blank" rel="noopener">Docker 中国</a>）：<br>修改 <code>/etc/docker/daemon.json</code> 文件并写入如下内容（如果文件不存在请新建该文件）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"registry-mirrors"</span>: [</span><br><span class="line">      <span class="string">"https://registry.docker-cn.com"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意，一定要保证该文件符合 json 规范，否则 Docker 将不能启动。</p>
 </blockquote>
-<p>之后重新启动服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line">$ sudo systemctl restart docker</span><br></pre></td></tr></table></figure></p>
+<p>之后重新启动服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl daemon-reload</span><br><span class="line"></span><br><span class="line">$ sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
 <p>到此为止，Docker 就配置好了，接下来安装 GitLab CE 就十分简单了。</p>
 <h2 id="GitLab-安装及配置"><a href="#GitLab-安装及配置" class="headerlink" title="GitLab 安装及配置"></a>GitLab 安装及配置</h2><h3 id="GitLab-是什么"><a href="#GitLab-是什么" class="headerlink" title="GitLab 是什么"></a>GitLab 是什么</h3><p>GitLab 是一个类似与 GitHub 的开源源码托管服务，它提供了一个基于 Git 的全功能软件开发平台，可以通过 Web 界面访问公有或私有的项目，还具备很多与软件开发协作相关的其他功能。利用 GitLab 提供的这些功能，可以实践一些项目管理和协作流程。这套流程借鉴于很多成功的开源项目，非常适合在小型团队里使用。</p>
-<h3 id="拉取-GitLab-镜像"><a href="#拉取-GitLab-镜像" class="headerlink" title="拉取 GitLab 镜像"></a>拉取 GitLab 镜像</h3><p>安装最新版 GitLab 镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure></p>
-<h3 id="启动-GitLab"><a href="#启动-GitLab" class="headerlink" title="启动 GitLab"></a>启动 GitLab</h3><p>使用 Docker 命令运行容器，命令如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d \</span><br><span class="line">    --hostname gitlab.asicfans.com \</span><br><span class="line">    -p 8443:443 -p 8080:80 -p 2222:22 \</span><br><span class="line">    --name gitlab \</span><br><span class="line">    --restart always \</span><br><span class="line">    -v /srv/gitlab/config:/etc/gitlab \</span><br><span class="line">    -v /srv/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">    -v /srv/gitlab/data:/var/opt/gitlab \</span><br><span class="line">    gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure></p>
+<h3 id="拉取-GitLab-镜像"><a href="#拉取-GitLab-镜像" class="headerlink" title="拉取 GitLab 镜像"></a>拉取 GitLab 镜像</h3><p>安装最新版 GitLab 镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker pull gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动-GitLab"><a href="#启动-GitLab" class="headerlink" title="启动 GitLab"></a>启动 GitLab</h3><p>使用 Docker 命令运行容器，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d \</span><br><span class="line">    --hostname gitlab.asicfans.com \</span><br><span class="line">    -p 8443:443 -p 8080:80 -p 2222:22 \</span><br><span class="line">    --name gitlab \</span><br><span class="line">    --restart always \</span><br><span class="line">    -v /srv/gitlab/config:/etc/gitlab \</span><br><span class="line">    -v /srv/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">    -v /srv/gitlab/data:/var/opt/gitlab \</span><br><span class="line">    gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注意修改 hostname 为自己的域名或者 ip 地址。<br><code>-v</code> 命令表示将原有的挂载目录重新映射到自己的目录，这三个参数将 GitLab 的配置、数据和日志持久化到文件系统上，这样就可以保证后面升级 GitLab 时数据不会丢失。<br><code>-p</code> 命令表示将原有的端口映射一下，避免常用端口被占用。我这里使用的都是安全端口。如果大家的环境没有限制或不冲突可以使用与容器同端口，如：-p 443:443 -p 80:80 -p 22:22<br>上面的命令太长，也可以写成 shell 脚本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; start.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">HOST_NAME=gitlab.asicfans.com</span><br><span class="line">docker stop gitlab</span><br><span class="line">docker rm gitlab</span><br><span class="line">sudo docker run -d \\</span><br><span class="line">    --hostname \<span class="variable">$&#123;HOST_NAME&#125;</span> \\</span><br><span class="line">    -p 8443:443 -p 8080:80 -p 2222:22 \\</span><br><span class="line">    --name gitlab \\</span><br><span class="line">    --restart always \\</span><br><span class="line">    -v /srv/gitlab/config:/etc/gitlab \\</span><br><span class="line">    -v /srv/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \\</span><br><span class="line">    -v /srv/gitlab/data:/var/opt/gitlab \\</span><br><span class="line">    gitlab/gitlab-ce:latest</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></p>
+<p>注意修改 hostname 为自己的域名或者 ip 地址。<br><code>-v</code> 命令表示将原有的挂载目录重新映射到自己的目录，这三个参数将 GitLab 的配置、数据和日志持久化到文件系统上，这样就可以保证后面升级 GitLab 时数据不会丢失。<br><code>-p</code> 命令表示将原有的端口映射一下，避免常用端口被占用。我这里使用的都是安全端口。如果大家的环境没有限制或不冲突可以使用与容器同端口，如：-p 443:443 -p 80:80 -p 22:22<br>上面的命令太长，也可以写成 shell 脚本</p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF &gt; start.sh</span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">HOST_NAME=gitlab.asicfans.com</span><br><span class="line">docker stop gitlab</span><br><span class="line">docker rm gitlab</span><br><span class="line">sudo docker run -d \\</span><br><span class="line">    --hostname \<span class="variable">$&#123;HOST_NAME&#125;</span> \\</span><br><span class="line">    -p 8443:443 -p 8080:80 -p 2222:22 \\</span><br><span class="line">    --name gitlab \\</span><br><span class="line">    --restart always \\</span><br><span class="line">    -v /srv/gitlab/config:/etc/gitlab \\</span><br><span class="line">    -v /srv/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \\</span><br><span class="line">    -v /srv/gitlab/data:/var/opt/gitlab \\</span><br><span class="line">    gitlab/gitlab-ce:latest</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>脚本编辑好之后运行脚本就可以了，就再也不用输入这么长的命令了！<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh start.sh</span><br></pre></td></tr></table></figure></p>
+<p>脚本编辑好之后运行脚本就可以了，就再也不用输入这么长的命令了！</p>
 </blockquote>
-<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>修改 /etc/hosts 文件，使在本地端可以使用域名访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 gitlab.asicfans.com</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sh start.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>修改 /etc/hosts 文件，使在本地端可以使用域名访问</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 gitlab.asicfans.com</span><br></pre></td></tr></table></figure>
 <p>这样就可以使用 <code>http://gitlab.asicfans.com:8080</code> 域名在本地从浏览器访问 GitLab 了（GitLab 初次启动会比较慢，等待大约一分钟）。</p>
 <h3 id="试用-GitLab"><a href="#试用-GitLab" class="headerlink" title="试用 GitLab"></a>试用 GitLab</h3><p>首先根据提示输入管理员密码，这个密码是管理员用户的密码。对应的用户名是 root，用于以管理员身份登录 GitLab。</p>
 <p><img src="https://img.mukewang.com/5a73280a0001efc904500304.png" alt=""></p>
@@ -545,29 +566,32 @@
 <p><img src="https://img.mukewang.com/5a73277b0001982f07080200.png" alt=""></p>
 <p>首先去到添加 ssh key 的页面</p>
 <p><img src="https://img.mukewang.com/5a73278e0001303620200994.png" alt=""></p>
-<p>然后拿到我们的 ssh key 贴到框框里就行了<br>获取 ssh key：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先看看是不是已经有了，如果有内容就直接 copy 贴过去就行啦</span></span><br><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果上一步没有这个文件 我们就创建一个，运行下面命令（邮箱改成自己的），一路回车就好了</span></span><br><span class="line">$ ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
-<p>点开我们刚创建的项目，复制项目 ssh 的地址。<br>添加个文件，测试一下（我的项目叫 test）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> ssh://git@gitlab.asicfans.com:2222/wangqq/test.git</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> <span class="built_in">test</span> &amp;&amp; <span class="built_in">echo</span> <span class="built_in">test</span> &gt; README.md  <span class="comment"># 添加文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#push 上去</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"test"</span></span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure></p>
+<p>然后拿到我们的 ssh key 贴到框框里就行了<br>获取 ssh key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先看看是不是已经有了，如果有内容就直接 copy 贴过去就行啦</span></span><br><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果上一步没有这个文件 我们就创建一个，运行下面命令（邮箱改成自己的），一路回车就好了</span></span><br><span class="line">$ ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>点开我们刚创建的项目，复制项目 ssh 的地址。<br>添加个文件，测试一下（我的项目叫 test）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> ssh://git@gitlab.asicfans.com:2222/wangqq/test.git</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> <span class="built_in">test</span> &amp;&amp; <span class="built_in">echo</span> <span class="built_in">test</span> &gt; README.md  <span class="comment"># 添加文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#push 上去</span></span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"test"</span></span><br><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+
 <p>这样我们就可以在 GitLab 上看到我们刚才提交的结果了。到这 GitLab 的本地端使用就已经没问题了，但是要想不在家，或者在其他地方也可以访问，那我们就需要进行一下，内网穿透！</p>
 <h2 id="frp-配置"><a href="#frp-配置" class="headerlink" title="frp 配置"></a>frp 配置</h2><p>配置 frp 你需要有一个有公网 ip 的云服务器和自己的域名，然后在云服务器和本地端分别下载安装 frp 并进行配置。</p>
 <p>下载与系统对应的 frp 文件，frp 支持多种系统架构，详情请访问 <a href="https://github.com/fatedier/frp/" target="_blank" rel="noopener"><strong>frp</strong></a> 查看</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a      <span class="comment"># 首先使用 uname 命令查看一下你的系统</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 我这里是 Ubuntu x86_x64 所以下载 Linux_amd64 的软件包</span></span><br><span class="line">$ wget https://github.com/fatedier/frp/releases/download/v0.21.0/frp_0.21.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压安装包</span></span><br><span class="line">$ tar -zxvf frp_0.21.0_linux_amd64.tar.gz</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> frp_0.21.0_linux_amd64</span><br></pre></td></tr></table></figure>
+
 <p>然后分别配置服务器端的 <code>frps.ini</code> 文件和本地端的 <code>frpc.ini</code> 文件。</p>
 <ul>
 <li><p>1.修改 frps.ini 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.ini</span></span><br><span class="line">[common]    </span><br><span class="line">bind_port = 7000        <span class="comment"># 穿透使用的端口</span></span><br><span class="line">vhost_http_post = 80    <span class="comment"># 从外网访问的端口</span></span><br><span class="line">subdomain_host = asicfans.com   <span class="comment"># 主域名</span></span><br><span class="line">token = xxxx            <span class="comment"># 服务器与本地的校验信息，校验信息错误无法穿透，自行设置</span></span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frps.ini</span></span><br><span class="line">[common]    </span><br><span class="line">bind_port = 7000        <span class="comment"># 穿透使用的端口</span></span><br><span class="line">vhost_http_post = 80    <span class="comment"># 从外网访问的端口</span></span><br><span class="line">subdomain_host = asicfans.com   <span class="comment"># 主域名</span></span><br><span class="line">token = xxxx            <span class="comment"># 服务器与本地的校验信息，校验信息错误无法穿透，自行设置</span></span><br></pre></td></tr></table></figure></li>
 <li><p>2.启动 frps</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./frps -c ./frps.ini</span><br></pre></td></tr></table></figure></li>
 <li><p>3.修改 frpc.ini 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frpc.ini</span></span><br><span class="line">[common]</span><br><span class="line">server_addr = x.x.x.x   <span class="comment"># 你的服务器 ip 地址</span></span><br><span class="line">server_port = 7000      <span class="comment"># 开放的穿透端口</span></span><br><span class="line">token = xxxx            <span class="comment"># 需要与服务器端一致</span></span><br><span class="line"></span><br><span class="line">[gitlab]</span><br><span class="line"><span class="built_in">type</span> = http</span><br><span class="line">local_port = 8080</span><br><span class="line">subdomain = gitlab</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frpc.ini</span></span><br><span class="line">[common]</span><br><span class="line">server_addr = x.x.x.x   <span class="comment"># 你的服务器 ip 地址</span></span><br><span class="line">server_port = 7000      <span class="comment"># 开放的穿透端口</span></span><br><span class="line">token = xxxx            <span class="comment"># 需要与服务器端一致</span></span><br><span class="line"></span><br><span class="line">[gitlab]</span><br><span class="line"><span class="built_in">type</span> = http</span><br><span class="line">local_port = 8080</span><br><span class="line">subdomain = gitlab</span><br></pre></td></tr></table></figure></li>
 <li><p>4.启动 frpc</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./frpc -c ./frpc.ini</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>5.将 gitlab.asicfans.com 的域名 A 记录解析到 ip <code>x.x.x.x</code>， 如果服务器已经有了对应的域名，也可以将 CNAME 记录解析到服务器原先的域名。</p>
 </li>
-<li>6.通过浏览器访问 <a href="http://gitlab.asicfans.com" target="_blank" rel="noopener">http://gitlab.asicfans.com</a> 即可访问到处于内网的 gitlab 服务了。<br>这样就不用使用 ssh key 的方式 clone/pull/push 代码仓库了，就可以直接使用 http 的方式进行操作了！ 十分方便！</li>
+<li><p>6.通过浏览器访问 <a href="http://gitlab.asicfans.com" target="_blank" rel="noopener">http://gitlab.asicfans.com</a> 即可访问到处于内网的 gitlab 服务了。<br>这样就不用使用 ssh key 的方式 clone/pull/push 代码仓库了，就可以直接使用 http 的方式进行操作了！ 十分方便！</p>
+</li>
 </ul>
 <p>自此，我们就可以让自己和小伙伴们一起愉快的在 GitLab 上玩耍啦！！</p>
 
@@ -593,14 +617,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_reward.jpg" alt="strongwong 微信赞赏">
+        <img id="wechat_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_reward.jpg" alt="strongwong 微信赞赏"/>
         <p>微信赞赏</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_qrcode.jpg" alt="strongwong 微信公众号">
+        <img id="alipay_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_qrcode.jpg" alt="strongwong 微信公众号"/>
         <p>微信公众号</p>
       </div>
     
@@ -639,7 +663,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/提升数字-IC-设计效率从-Vim-开始.html" rel="next" title="提升数字 IC 设计效率从 Vim 开始">
+              <a href="/posts/%E6%8F%90%E5%8D%87%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%95%88%E7%8E%87%E4%BB%8E-Vim-%E5%BC%80%E5%A7%8B.html" rel="next" title="提升数字 IC 设计效率从 Vim 开始">
                 <i class="fa fa-chevron-left"></i> 提升数字 IC 设计效率从 Vim 开始
               </a>
             
@@ -649,7 +673,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/从计数器开始，看数字-IC-设计.html" rel="prev" title="从计数器开始，看数字 IC 设计">
+              <a href="/posts/%E4%BB%8E%E8%AE%A1%E6%95%B0%E5%99%A8%E5%BC%80%E5%A7%8B%EF%BC%8C%E7%9C%8B%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1.html" rel="prev" title="从计数器开始，看数字 IC 设计">
                 从计数器开始，看数字 IC 设计 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -713,9 +737,11 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/uploads/toux.jpg" alt="strongwong">
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/toux.jpg"
+                alt="strongwong" />
             
               <p class="site-author-name" itemprop="name">strongwong</p>
               <p class="site-description motion-element" itemprop="description">悟已往之不谏，知来者之可追！</p>
@@ -726,7 +752,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">日志</span>
@@ -899,10 +925,6 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://feifeiyep.github.io" title="四牌楼下花生树" target="_blank">四牌楼下花生树</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://lanzhiquan.tk/" title="Fuck You Tomorrow" target="_blank">Fuck You Tomorrow</a>
                   </li>
                 
               </ul>
