@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100</title>
+    <url>//posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上个月，在第六届互联网大会上，阿里的平头哥，对，就是那个人狠话不多的公司！他们宣布开源了 <code>wujian100</code> 这个芯片设计平台。搭载基于 RISC-V 架构的玄铁 902 处理器。<br>基础硬件代码和配套软件代码发布在了 GitHub 上了，使用的是 MIT 许可证。大家也都可以去下载学习。<br>GitHub 链接：<a href="https://github.com/T-head-Semi/wujian100_open" target="_blank" rel="noopener">https://github.com/T-head-Semi/wujian100_open</a></p>
+<a id="more"></a>
+
+<h2 id="搭建仿真环境"><a href="#搭建仿真环境" class="headerlink" title="搭建仿真环境"></a>搭建仿真环境</h2><h3 id="安装-Linux-环境"><a href="#安装-Linux-环境" class="headerlink" title="安装 Linux 环境"></a>安装 Linux 环境</h3><p>我们要去学习 wujian100 这个代码，首先要去搭建一下运行仿真的环境。跑无剑这个仿真是需要 Linux 环境的，所以我就安装了 WSL（ Windows subsystem of Linux），我这里呢安装了 Ubuntu 18.04 的版本。要安装 WSL ，首先要去 <code>控制面板</code>-&gt;<code>程序</code>-&gt;<code>启用或关闭 Windows 功能</code> 勾选开启 <code>适用于 Linux 的 Windows 子系统</code> 这个选项，这样你就可以去微软应用商店正常安装 Linux 子系统了。</p>
+<p>安装好子系统之后，我们直接进入到子系统下面进行操作就可以了。</p>
+<h3 id="新建目录-Clone-官方代码"><a href="#新建目录-Clone-官方代码" class="headerlink" title="新建目录 Clone 官方代码"></a>新建目录 Clone 官方代码</h3><p>首先我们按照官方在 GitHub 上的教程新建一个项目目录，然后进入到目录， clone 官方发布的代码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ mkdir test_prj</span><br><span class="line">$ <span class="built_in">cd</span> test_prj</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/T-head-Semi/wujian100_open.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-RISC-V-工具链"><a href="#安装-RISC-V-工具链" class="headerlink" title="安装 RISC-V 工具链"></a>安装 RISC-V 工具链</h3><p>接下来，新建工具链目录，去官方给定的地址下载编译代码需要的 risc-v 工具链，解开压缩包，找到 <code>riscv64-elf-x86_64-20190731.tar.gz</code> 这个工具链，拷贝到工具链目录，解压安装工具链即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ mkdir riscv_toolchain</span><br><span class="line">$ <span class="built_in">cd</span> riscv_toolchain</span><br><span class="line"><span class="comment"># 下面这条命令不一定跟我一样，工具链下载后的具体路径根据你自己的系统确定</span></span><br><span class="line">$ cp /mnt/d/download/T-Head\ Tools\ package/T-Head\ RISC-V\ Toolchain-V1.2.2/riscv64-elf-x86_64-20190731.tar.gz ./  </span><br><span class="line"></span><br><span class="line">$ tar -zxvf riscv64-elf-x86_64-20190731.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装仿真工具"><a href="#安装仿真工具" class="headerlink" title="安装仿真工具"></a>安装仿真工具</h3><p>仿真工具可以选择官方推荐的 VCS 仿真，但是我这里呢使用 iverilog 进行仿真， gtkwave 来查看波形文件，verilator 是编辑软件。然后由于我这边安装的 ubuntu18.04 默认没有安装 make 工具，所以也一起安装了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt install iverilog gtkwave verilator </span><br><span class="line">$ sudo apt install make</span><br></pre></td></tr></table></figure>
+
+<h3 id="编辑-setup-脚本，配置环境变量"><a href="#编辑-setup-脚本，配置环境变量" class="headerlink" title="编辑 setup 脚本，配置环境变量"></a>编辑 setup 脚本，配置环境变量</h3><p>工具安装完成之后，编辑 setup 脚本并通过执行它，来设置 EDA 环境变量。<br>由于原本的脚本是 csh 在 bash 环境下有一些不兼容的地方，所以我这里做了一些修改，修改内容如下：</p>
+<p>setup.sh 脚本内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Copyright (c) 2019 Alibaba Group Holding Limited</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#set VCS path</span></span><br><span class="line"><span class="comment">#setenv VCS_HOME </span></span><br><span class="line"><span class="comment">#set path=($VCS_HOME/linux/bin $path)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#set VCS license</span></span><br><span class="line"><span class="comment">#setenv SNPSLMD_LICENSE_FILE </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#set iverilog path</span></span><br><span class="line"><span class="built_in">export</span> iverilog_path=(/usr/bin)</span><br><span class="line"><span class="built_in">export</span> gtkwave_path=(/usr/bin)</span><br><span class="line"><span class="built_in">export</span> path=(<span class="variable">$iverilog_path</span>:<span class="variable">$path</span>)</span><br><span class="line"><span class="built_in">export</span> path=(<span class="variable">$gtkwave_path</span>:<span class="variable">$path</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#set tools path</span></span><br><span class="line"><span class="built_in">export</span> TOOL_PATH=<span class="string">'../../riscv_toolchain'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> wujian100_open_PATH=<span class="string">'`pwd | perl -pe "s/wujian100_open.*/wujian100_open\//"`'</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ../wujian100_open/tools </span><br><span class="line">$ vim setup.sh</span><br><span class="line">$ chmod +x setup.sh</span><br><span class="line">$ <span class="built_in">source</span> setup.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行仿真"><a href="#运行仿真" class="headerlink" title="运行仿真"></a>运行仿真</h3><p>接下来，进入到 workdir 目录下运行仿真，然后通过 gtkwave 打开仿真波形。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ../workdir</span><br><span class="line">$ ../tools/run_case -sim_tool iverilog ../<span class="keyword">case</span>/timer/timer_test.c</span><br></pre></td></tr></table></figure>
+
+<p>当你看到 Hello Friend！ 就表明你的仿真就跑起来了。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">VCD info: dumpfile test.vcd opened <span class="keyword">for</span> output.</span><br><span class="line">        ******START TO LOAD PROGRAM******</span><br><span class="line"></span><br><span class="line">Hello Friend!</span><br><span class="line"></span><br><span class="line">timer <span class="built_in">test</span> successfully</span><br><span class="line">***************************************</span><br><span class="line"></span><br><span class="line">*              Test Pass              *</span><br><span class="line"></span><br><span class="line">***************************************</span><br><span class="line"></span><br><span class="line">Step4 (Run simulation) is finished</span><br></pre></td></tr></table></figure>
+
+<p>用 gtkwave 打开 workdir 目录下的 test.vcd 波形文件，查看仿真波形，（打开波形文件需要图形化界面，我这里还安装了 VcXsrv，具体安装方法请自行搜索一下）波形图如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ gtkwave test.vcd</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/11/24/MOr25R.png" alt="wujian100_test_wave"></p>
+<p>好了，到这里你的仿真就跑起来了，然后接下来就是进行综合生成 bit 流文件了，下一篇文章在来更新 vivado 综合的步骤。</p>
+]]></content>
+      <categories>
+        <category>IC Design</category>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>RISC-V</tag>
+        <tag>平头哥</tag>
+        <tag>Verilog</tag>
+        <tag>IC Design</tag>
+        <tag>wujian100</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FPGA 数字图像处理联合仿真平台的搭建及使用举例</title>
     <url>//posts/FPGA-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B.html</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着物联网技术的不断发展，对边缘计算的性能要求愈发苛刻，传统的 IoT 级别的 SoC 或者 MCU 难以应对诸如图像识别的场景需求，因此 FPGA + MCU 或 FPGA + SoC 的异构架构愈来愈多地应用于上述场景中，以满足相关需求。（以上这段话毫无意义，只是为了凑字数，另外为了纪念第三次憾负的开场白）</p>
@@ -42,10 +89,10 @@
         <category>其他</category>
       </categories>
       <tags>
-        <tag>数字图像处理</tag>
-        <tag>FPGA仿真</tag>
         <tag>Verilog</tag>
         <tag>IC Design</tag>
+        <tag>数字图像处理</tag>
+        <tag>FPGA仿真</tag>
       </tags>
   </entry>
   <entry>

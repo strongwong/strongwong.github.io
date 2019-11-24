@@ -118,22 +118,18 @@
   });
 </script>
 
-  <meta name="description" content="Vim这篇文章主要分享给在 Windows 下进行数字 IC 开发的盆友们，如果早已 linux，请大神自行忽略，另外建议在 Windows 下的盆友早日脚踏两只船。相信大家都有过为了追一个信号而不断地缩放 RTL 图的经历，有没有一种办法能一键式一条龙服务呢？有！用 Vim！ Vim，一种类似于 notepad 的文本编辑器，其拥有你喜欢的一切功能（护眼模式，关键词高亮 …… 废话没有这些还叫代">
-<meta name="keywords" content="IC Design,Vim">
+  <meta name="description" content="前言上个月，在第六届互联网大会上，阿里的平头哥，对，就是那个人狠话不多的公司！他们宣布开源了 wujian100 这个芯片设计平台。搭载基于 RISC-V 架构的玄铁 902 处理器。基础硬件代码和配套软件代码发布在了 GitHub 上了，使用的是 MIT 许可证。大家也都可以去下载学习。GitHub 链接：https:&#x2F;&#x2F;github.com&#x2F;T-head-Semi&#x2F;wujian100_open">
+<meta name="keywords" content="RISC-V,平头哥,Verilog,IC Design,wujian100">
 <meta property="og:type" content="article">
-<meta property="og:title" content="提升数字 IC 设计效率从 Vim 开始">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;%E6%8F%90%E5%8D%87%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%95%88%E7%8E%87%E4%BB%8E-Vim-%E5%BC%80%E5%A7%8B.html">
+<meta property="og:title" content="Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="Vim这篇文章主要分享给在 Windows 下进行数字 IC 开发的盆友们，如果早已 linux，请大神自行忽略，另外建议在 Windows 下的盆友早日脚踏两只船。相信大家都有过为了追一个信号而不断地缩放 RTL 图的经历，有没有一种办法能一键式一条龙服务呢？有！用 Vim！ Vim，一种类似于 notepad 的文本编辑器，其拥有你喜欢的一切功能（护眼模式，关键词高亮 …… 废话没有这些还叫代">
+<meta property="og:description" content="前言上个月，在第六届互联网大会上，阿里的平头哥，对，就是那个人狠话不多的公司！他们宣布开源了 wujian100 这个芯片设计平台。搭载基于 RISC-V 架构的玄铁 902 处理器。基础硬件代码和配套软件代码发布在了 GitHub 上了，使用的是 MIT 许可证。大家也都可以去下载学习。GitHub 链接：https:&#x2F;&#x2F;github.com&#x2F;T-head-Semi&#x2F;wujian100_open">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;top_vim.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;cmd_vim.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;cygwin_setup.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;vim_v.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;vim_tag.jpg">
-<meta property="og:updated_time" content="2019-11-21T14:06:56.945Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;11&#x2F;24&#x2F;MOr25R.png">
+<meta property="og:updated_time" content="2019-11-24T10:21:54.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;top_vim.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;11&#x2F;24&#x2F;MOr25R.png">
 
 
 
@@ -142,7 +138,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/posts/提升数字-IC-设计效率从-Vim-开始.html"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/Windows-下学习阿里平头哥-RISC-V-芯片开发平台-wujian100.html"/>
 
 
 
@@ -152,7 +148,7 @@
   };
 </script>
 
-  <title>提升数字 IC 设计效率从 Vim 开始 | StrongWong</title>
+  <title>Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100 | StrongWong</title>
   
 
 
@@ -381,7 +377,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%8F%90%E5%8D%87%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%95%88%E7%8E%87%E4%BB%8E-Vim-%E5%BC%80%E5%A7%8B.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -398,7 +394,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">提升数字 IC 设计效率从 Vim 开始
+          <h2 class="post-title" itemprop="name headline">Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100
               
             
           </h2>
@@ -423,7 +419,7 @@
                 
               
 
-              <time title="创建时间：2018-11-12 16:10:29" itemprop="dateCreated datePublished" datetime="2018-11-12T16:10:29+08:00">2018-11-12</time>
+              <time title="创建时间：2019-11-09 14:59:55" itemprop="dateCreated datePublished" datetime="2019-11-09T14:59:55+08:00">2019-11-09</time>
             
 
             
@@ -463,8 +459,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/%E6%8F%90%E5%8D%87%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%95%88%E7%8E%87%E4%BB%8E-Vim-%E5%BC%80%E5%A7%8B.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E6%8F%90%E5%8D%87%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%95%88%E7%8E%87%E4%BB%8E-Vim-%E5%BC%80%E5%A7%8B.html" itemprop="commentCount"></span>
+                <a href="/posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -472,7 +468,7 @@
 
           
           
-             <span id="/posts/%E6%8F%90%E5%8D%87%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%95%88%E7%8E%87%E4%BB%8E-Vim-%E5%BC%80%E5%A7%8B.html" class="leancloud_visitors" data-flag-title="提升数字 IC 设计效率从 Vim 开始">
+             <span id="/posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html" class="leancloud_visitors" data-flag-title="Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -503,58 +499,37 @@
       
 
       
-        <h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><p>这篇文章主要分享给在 Windows 下进行数字 IC 开发的盆友们，如果早已 linux，请大神自行忽略，另外建议在 Windows 下的盆友早日脚踏两只船。<br>相信大家都有过为了追一个信号而不断地缩放 RTL 图的经历，有没有一种办法能一键式一条龙服务呢？有！用 Vim！</p>
-<p>Vim，一种类似于 notepad 的文本编辑器，其拥有你喜欢的一切功能（护眼模式，关键词高亮 …… 废话没有这些还叫代码文本编辑器），其针对 Verilog 的项目维护是真的善良，黑暗中的阳光。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上个月，在第六届互联网大会上，阿里的平头哥，对，就是那个人狠话不多的公司！他们宣布开源了 <code>wujian100</code> 这个芯片设计平台。搭载基于 RISC-V 架构的玄铁 902 处理器。<br>基础硬件代码和配套软件代码发布在了 GitHub 上了，使用的是 MIT 许可证。大家也都可以去下载学习。<br>GitHub 链接：<a href="https://github.com/T-head-Semi/wujian100_open" target="_blank" rel="noopener">https://github.com/T-head-Semi/wujian100_open</a></p>
 <a id="more"></a>
 
-<p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/top_vim.jpg" alt=""></p>
-<p>但这阳光大多数情况下照亮于 Linux 或者 Unix 系统下，那我们试试怎么让光照进 Windows。<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/cmd_vim.jpg" alt=""></p>
-<h2 id="安装-Cygwin"><a href="#安装-Cygwin" class="headerlink" title="安装 Cygwin"></a>安装 Cygwin</h2><blockquote>
-<p>Cygwin 是一个在 Windows 平台上运行的 Unix 模拟环境，是 Cygnus solutions 公司开发的自由软件（该公司开发了很多好东西，著名的还有 eCos，不过现已被 Redhat 收购）。它对于学习 Unix/Linux 操作环境，或者从 Unix 到 Windows 的应用程序移植，或者进行某些特殊的开发工作，尤其是使用 gnu 工具集在 Windows 上进行嵌入式系统开发，非常有用。随着嵌入式系统开发在国内日渐流行，越来越多的开发者对 Cygwin 产生了兴趣。</p>
-</blockquote>
-<p>下载好 Cygwin 后选择好安装路径，然后选择镜像网址，建议选择国内的镜像地址速度会快一些。可以使用网易的镜像地址：<code>http://mirrors.163.com</code> ,在 URL 栏自行输入镜像地址点击 <code>add</code> 添加后使用。</p>
-<p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/cygwin_setup.jpg" alt=""></p>
-<p>然后就进入选择安装包，初次进入建议都选择，高手可以有需要的时候可以再进来这个安装页面选择安装。<br>安装完成之后，把 Cygwin 添加到右键菜单，打开便是当前的路径下，这才是 Windows 该有的体验不是吗？而完成这一切只需简单地修改一下注册表。（以下步骤参考网络资源）：</p>
-<blockquote>
-<ul>
-<li>使用<code>Win + R</code>打开运行窗口, 输入 regedit, 回车, 启动注册表编辑程序，找到 HKEY_CLASSES_ROOT\Directory\Background\shell 表项;</li>
-<li>右键点击<code>shell</code>，选择<code>新建</code>-&gt;<code>项</code>，命名为<code>Cygwin</code>，或者其他，你右键时看到的就是<code>Cygwin</code>,或者是你自定义的名称;</li>
-<li>右键点击刚才创建的<code>Cygwin</code>，选择<code>新建</code>-&gt;<code>项</code>,命名为<code>command</code>，表示点击该菜单项时要执行的命令;</li>
-<li>双击<code>command</code>下<code>(默认)</code>数据项，在<code>数值数据(V)</code>下输入如下内容：<br><code>&quot;D:\Coding\Cygwin\bin\mintty.exe&quot;-i/Cygwin-Terminal.ico /bin/env _T=%V /bin/bash -l&quot;</code><br>（你的 Cygwin 安装路径）</li>
-</ul>
-</blockquote>
-<p>这样就可以直接在对应的文件夹通过右击菜单打开命令行窗口。<br>Cygwin 配置好后，接下来我们继续配置一下 Vim 。</p>
-<h2 id="Vim-配置"><a href="#Vim-配置" class="headerlink" title="Vim 配置"></a>Vim 配置</h2><ol>
-<li><p>让<code>bash</code>命令行支持中文输入，打开 Cygwin 终端，在终端中输入如下命令 <code>vim ~/.inputrc</code>，打开inputrc 文件，将下面几行的注释去掉（去掉#），保存并退出。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> meta-flag on</span><br><span class="line"><span class="built_in">set</span> convert-meta off</span><br><span class="line"><span class="built_in">set</span> input-meta on</span><br><span class="line"><span class="built_in">set</span> output-meta on</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>让 <code>ls</code> 命令支持中文显示，在终端中输入命令 <code>vim ~/.bashrc</code> ，打开 <code>bashrc</code> 文件修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> ls=<span class="string">'ls -hF –-show-control-chars –-color=tty'</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置一个个人喜好的 Vim，打开 Cygwin 终端，输入<code>vim ~/.vimrc</code>，编辑如下设置</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> fenc=utf-<span class="number">8</span> <span class="comment">"设定默认解码 </span></span><br><span class="line"><span class="keyword">set</span> fencs=utf-<span class="number">8</span>,usc-bom,gb18030,gbk,gb2312,cp936,euc-jp</span><br><span class="line"><span class="keyword">set</span> nocp <span class="comment">"或者 set nocompatible 用于关闭 VI 的兼容模式 </span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">number</span> <span class="comment">"显示行号 </span></span><br><span class="line"><span class="keyword">set</span> ai <span class="comment">"或者 set autoindent vim 使用自动对齐，也就是把当前行的对齐格式应用到下一行 </span></span><br><span class="line"><span class="keyword">set</span> si <span class="comment">"或者 set smartindent 依据上面的对齐格式，智能的选择对齐方式</span></span><br><span class="line"><span class="keyword">set</span> tabstop=<span class="number">4</span> <span class="comment">"设置 tab 键为4个空格</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">sw</span>=<span class="number">4</span> <span class="comment">"或者 set shiftwidth 设置当行之间交错时使用4个空格</span></span><br><span class="line"><span class="keyword">set</span> ruler <span class="comment">"设置在编辑过程中,于右下角显示光标位置的状态行 </span></span><br><span class="line"><span class="keyword">set</span> incsearch <span class="comment">"设置增量搜索,这样的查询比较smart </span></span><br><span class="line"><span class="keyword">set</span> showmatch <span class="comment">"高亮显示匹配的括号 </span></span><br><span class="line"><span class="keyword">set</span> matchtime=<span class="number">5</span> <span class="comment">"匹配括号高亮时间(单位为 1/10 s) </span></span><br><span class="line"><span class="keyword">set</span> ignorecase <span class="comment">"在搜索的时候忽略大小写 </span></span><br><span class="line"><span class="keyword">syntax</span> <span class="keyword">on</span> <span class="comment">"高亮语法</span></span><br></pre></td></tr></table></figure>
+<h2 id="搭建仿真环境"><a href="#搭建仿真环境" class="headerlink" title="搭建仿真环境"></a>搭建仿真环境</h2><h3 id="安装-Linux-环境"><a href="#安装-Linux-环境" class="headerlink" title="安装 Linux 环境"></a>安装 Linux 环境</h3><p>我们要去学习 wujian100 这个代码，首先要去搭建一下运行仿真的环境。跑无剑这个仿真是需要 Linux 环境的，所以我就安装了 WSL（ Windows subsystem of Linux），我这里呢安装了 Ubuntu 18.04 的版本。要安装 WSL ，首先要去 <code>控制面板</code>-&gt;<code>程序</code>-&gt;<code>启用或关闭 Windows 功能</code> 勾选开启 <code>适用于 Linux 的 Windows 子系统</code> 这个选项，这样你就可以去微软应用商店正常安装 Linux 子系统了。</p>
+<p>安装好子系统之后，我们直接进入到子系统下面进行操作就可以了。</p>
+<h3 id="新建目录-Clone-官方代码"><a href="#新建目录-Clone-官方代码" class="headerlink" title="新建目录 Clone 官方代码"></a>新建目录 Clone 官方代码</h3><p>首先我们按照官方在 GitHub 上的教程新建一个项目目录，然后进入到目录， clone 官方发布的代码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir test_prj</span><br><span class="line">$ <span class="built_in">cd</span> test_prj</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/T-head-Semi/wujian100_open.git</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>成功后界面如下图所示</p>
-<p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/vim_v.jpg" alt=""></p>
-<h2 id="使用-Vim-提升开发效率"><a href="#使用-Vim-提升开发效率" class="headerlink" title="使用 Vim 提升开发效率"></a>使用 Vim 提升开发效率</h2><p>首先，你需要进入项目工程的顶层目录，假设你整个项目最顶层的目录名叫 Vimtest，那么你就先进入这个目录，然后调用 ctags 工具生成整个工程目录的标签列表。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> Vimtest  <span class="comment"># youproject name</span></span><br><span class="line">$ ctags -R *</span><br></pre></td></tr></table></figure>
+<h3 id="安装-RISC-V-工具链"><a href="#安装-RISC-V-工具链" class="headerlink" title="安装 RISC-V 工具链"></a>安装 RISC-V 工具链</h3><p>接下来，新建工具链目录，去官方给定的地址下载编译代码需要的 risc-v 工具链，解开压缩包，找到 <code>riscv64-elf-x86_64-20190731.tar.gz</code> 这个工具链，拷贝到工具链目录，解压安装工具链即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir riscv_toolchain</span><br><span class="line">$ <span class="built_in">cd</span> riscv_toolchain</span><br><span class="line"><span class="comment"># 下面这条命令不一定跟我一样，工具链下载后的具体路径根据你自己的系统确定</span></span><br><span class="line">$ cp /mnt/d/download/T-Head\ Tools\ package/T-Head\ RISC-V\ Toolchain-V1.2.2/riscv64-elf-x86_64-20190731.tar.gz ./  </span><br><span class="line"></span><br><span class="line">$ tar -zxvf riscv64-elf-x86_64-20190731.tar.gz</span><br></pre></td></tr></table></figure>
 
-<p>顺利的话，你将会看到在 Vimtest 下新创建了一个叫 tags 的文件，在这个文件里将会以“<code>定义名称 文件位置：行数</code>”的格式将你所有项目中的模块，信号，参数定义全部列出，而此处参数<code>-R</code>的含义是递归执行，也就是从顶层目录向下自动遍历全部子目录进行文件检索和定义收录。在默认配置下，ctags 可以自动识别<code>.v</code>和<code>.vhdl</code>后缀文件的语法，如果你同时希望收录测试平台中的<code>.sv</code>文件的话，可能你需要额外增加一个 System Verilog 的语法说明文件。<br>有了这个标签列表之后应该如何使用呢？总不能每次都打开这个 tags 文件然后挨个查询吧？当然不是，接下来我们需要把这个 tags 文件和 Vim 结合起来。首先我们需要再次打开<code>.vimrc</code> 文件<br>打开 cygwin 终端，输入 <code>vim ~/.vimrc</code>， 打开文件后输入一下内容:</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set tags=tags;</span><br><span class="line"><span class="keyword">set</span> autochdir</span><br><span class="line"><span class="keyword">nnoremap</span> t :<span class="keyword">tag</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装仿真工具"><a href="#安装仿真工具" class="headerlink" title="安装仿真工具"></a>安装仿真工具</h3><p>仿真工具可以选择官方推荐的 VCS 仿真，但是我这里呢使用 iverilog 进行仿真， gtkwave 来查看波形文件，verilator 是编辑软件。然后由于我这边安装的 ubuntu18.04 默认没有安装 make 工具，所以也一起安装了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install iverilog gtkwave verilator </span><br><span class="line">$ sudo apt install make</span><br></pre></td></tr></table></figure>
 
-<p>第一行命令的含义是指定标签列表名称为 tags，命令最末的<code>;</code>号不可省略，其含义是告知 Vim 首先在当前目录下寻找 tags 文件，如果找不到则自动向更上一级目录查找，现在你明白为什么我们一开始要把 tags 文件生成在项目的顶层目录了吧。第二行命令不是必须的，其含义是每次打开新的文件时，自动将终端切换到该文件的所在目录下。</p>
-<p>下面就是见证奇迹的时刻了。你可以进入项目目录下的任何一个子目录，然后 vim top.v（我的工程顶层文件名，你可以叫别的名字）。如果你的<code>vimrc</code>配置跟我上文写的一模一样，那么你就按一下<code>t</code>，如果你的<code>vimrc</code>里没有<code>nnoremap t:tag</code>这一句的话，请手工输入<code>:tag</code>（此处有空格）。然后接着输入任何项目中存在的模块名称，信号名称或者参数名称。比如项目中有一个模块名叫<code>uart</code>，那么完整的命令应该是<code>:tag uart</code>。注意，如果你并不记得模块的完整名称也没关系，随时按下 tab 键都可以自动补全，即使你连开头都不记得了，还可以用<code>/keyword</code>的办法进行搜索。输入完毕后按下回车，如果 Vim 在标签列表中只找到唯一匹配定义的话，就会立刻跳转到对应文件的对应行；如果找到的匹配结果不止一个，就会把所有结果列出来让你用数字序号选择跳转目标。</p>
-<p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/vim_tag.jpg" alt=""></p>
-<p>很多老手看到这里可能觉得不够过瘾，就只是这样而已，我也早就会了，只不过嫌太麻烦而已，还不是要不停输入模块名称吗，能快到哪里去？呵呵，最会偷懒的我怎么可能只是做到这样的程度而已呢？<br>大家觉得，平时在修改代码设计的时候，最需要进行频繁文件跳转的是什么时候？是不是当你找到了一个关键的寄存器，想顺着信号的传播路径一直跟踪下去的时候？当你跟着这个信号来到一个模块例化面前，是不是恨不能立刻跟着信号钻进这个模块的代码里去？其实，这非常简单。</p>
-<p>根据我们前面的介绍，你肯定已经想到了，可以通过<code>:tag module_name</code>跳转到这个模块的设计文件，但是这样太麻烦了，万一模块名字老长还带有大小写，写一遍就得费老半天功夫。有一个相对简单的办法，把光标移动到模块名称上，按下<code>ctrl+]</code>，你会发现自己立刻飞到了该模块的设计文件中！但是！！等等！！我刚才要跟踪的信号是什么名字来着？忘记了对不对？这个方法还是不够方便。<br>有没有更简单的办法？这个办法最好能从我们决定要进入这个模块的那一刻起，只用一个按键操作就能立刻进入这个模块的设计文件，同时光标最好还能直接定位到我们要追踪的信号位置，这个信号的名字最好还能被高亮显示！当！然！没！问！题！</p>
-<p>在 vimrc 文件中加入</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">nnoremap</span> []</span><br></pre></td></tr></table></figure>
+<h3 id="编辑-setup-脚本，配置环境变量"><a href="#编辑-setup-脚本，配置环境变量" class="headerlink" title="编辑 setup 脚本，配置环境变量"></a>编辑 setup 脚本，配置环境变量</h3><p>工具安装完成之后，编辑 setup 脚本并通过执行它，来设置 EDA 环境变量。<br>由于原本的脚本是 csh 在 bash 环境下有一些不兼容的地方，所以我这里做了一些修改，修改内容如下：</p>
+<p>setup.sh 脚本内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Copyright (c) 2019 Alibaba Group Holding Limited</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#set VCS path</span></span><br><span class="line"><span class="comment">#setenv VCS_HOME </span></span><br><span class="line"><span class="comment">#set path=($VCS_HOME/linux/bin $path)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#set VCS license</span></span><br><span class="line"><span class="comment">#setenv SNPSLMD_LICENSE_FILE </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#set iverilog path</span></span><br><span class="line"><span class="built_in">export</span> iverilog_path=(/usr/bin)</span><br><span class="line"><span class="built_in">export</span> gtkwave_path=(/usr/bin)</span><br><span class="line"><span class="built_in">export</span> path=(<span class="variable">$iverilog_path</span>:<span class="variable">$path</span>)</span><br><span class="line"><span class="built_in">export</span> path=(<span class="variable">$gtkwave_path</span>:<span class="variable">$path</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#set tools path</span></span><br><span class="line"><span class="built_in">export</span> TOOL_PATH=<span class="string">'../../riscv_toolchain'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> wujian100_open_PATH=<span class="string">'`pwd | perl -pe "s/wujian100_open.*/wujian100_open\//"`'</span></span><br></pre></td></tr></table></figure>
 
-<p>重新打开任何 Vim 文件，假装自己跟踪到了某个模块例化的某个信号上，类似<code>.clk</code>，通常你跟踪到这里的时候，光标应该是放在 clk上面，这时你在键盘上快速按下<code>[</code>和<code>]</code>这两个键，发生了什么？？！！！我是谁？？！我在哪里？！！！恭喜你！成功进入了该模块！！！并且光标飞到了之前 clk 所连接的 module 上！！好了我们可以和过去为了追信号而需要不断 zoom in zoom out 的 RTL 图说再见了~</p>
-<p><strong>By Ricky</strong></p>
-<p>参考源:<br><a href="https://www.jianshu.com/p/fac45920628d" target="_blank" rel="noopener">https://www.jianshu.com/p/fac45920628d</a><br><a href="https://blog.csdn.net/samxx8/article/details/38777189" target="_blank" rel="noopener">https://blog.csdn.net/samxx8/article/details/38777189</a><br><a href="https://blog.csdn.net/hao508506/article/details/52440220" target="_blank" rel="noopener">https://blog.csdn.net/hao508506/article/details/52440220</a><br><a href="http://kellen.wang/zh/useful-skills-of-vim-while-coding-verilog/" target="_blank" rel="noopener">http://kellen.wang/zh/useful-skills-of-vim-while-coding-verilog/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ../wujian100_open/tools </span><br><span class="line">$ vim setup.sh</span><br><span class="line">$ chmod +x setup.sh</span><br><span class="line">$ <span class="built_in">source</span> setup.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行仿真"><a href="#运行仿真" class="headerlink" title="运行仿真"></a>运行仿真</h3><p>接下来，进入到 workdir 目录下运行仿真，然后通过 gtkwave 打开仿真波形。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ../workdir</span><br><span class="line">$ ../tools/run_case -sim_tool iverilog ../<span class="keyword">case</span>/timer/timer_test.c</span><br></pre></td></tr></table></figure>
+
+<p>当你看到 Hello Friend！ 就表明你的仿真就跑起来了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">VCD info: dumpfile test.vcd opened <span class="keyword">for</span> output.</span><br><span class="line">        ******START TO LOAD PROGRAM******</span><br><span class="line"></span><br><span class="line">Hello Friend!</span><br><span class="line"></span><br><span class="line">timer <span class="built_in">test</span> successfully</span><br><span class="line">***************************************</span><br><span class="line"></span><br><span class="line">*              Test Pass              *</span><br><span class="line"></span><br><span class="line">***************************************</span><br><span class="line"></span><br><span class="line">Step4 (Run simulation) is finished</span><br></pre></td></tr></table></figure>
+
+<p>用 gtkwave 打开 workdir 目录下的 test.vcd 波形文件，查看仿真波形，（打开波形文件需要图形化界面，我这里还安装了 VcXsrv，具体安装方法请自行搜索一下）波形图如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gtkwave test.vcd</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/11/24/MOr25R.png" alt="wujian100_test_wave"></p>
+<p>好了，到这里你的仿真就跑起来了，然后接下来就是进行综合生成 bit 流文件了，下一篇文章在来更新 vivado 综合的步骤。</p>
 
       
     </div>
@@ -605,10 +580,19 @@
         <div class="post-tags">
           
             
+            <a href="/tags/RISC-V/" rel="tag"><i class="fa fa-fw fa-tag"></i> RISC-V&nbsp;</a>
+          
+            
+            <a href="/tags/%E5%B9%B3%E5%A4%B4%E5%93%A5/" rel="tag"><i class="fa fa-fw fa-tag"></i> 平头哥&nbsp;</a>
+          
+            
+            <a href="/tags/Verilog/" rel="tag"><i class="fa fa-fw fa-tag"></i> Verilog&nbsp;</a>
+          
+            
             <a href="/tags/IC-Design/" rel="tag"><i class="fa fa-fw fa-tag"></i> IC Design&nbsp;</a>
           
             
-            <a href="/tags/Vim/" rel="tag"><i class="fa fa-fw fa-tag"></i> Vim&nbsp;</a>
+            <a href="/tags/wujian100/" rel="tag"><i class="fa fa-fw fa-tag"></i> wujian100&nbsp;</a>
           
         </div>
       
@@ -621,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/%E6%80%BB%E7%BA%BF-SoC-%E5%86%85%E9%83%A8%E7%9A%84%E4%B8%BB%E5%B9%B2%E9%81%93.html" rel="next" title="总线- SoC 内部的主干道">
-                <i class="fa fa-chevron-left"></i> 总线- SoC 内部的主干道
+              <a href="/posts/FPGA-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B.html" rel="next" title="FPGA 数字图像处理联合仿真平台的搭建及使用举例">
+                <i class="fa fa-chevron-left"></i> FPGA 数字图像处理联合仿真平台的搭建及使用举例
               </a>
             
           </div>
@@ -630,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/%E4%BD%BF%E7%94%A8-Docker-GitLab-%E6%9E%84%E5%BB%BA%E8%87%AA%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1.html" rel="prev" title="使用 Docker + GitLab 构建自用的代码管理服务">
-                使用 Docker + GitLab 构建自用的代码管理服务 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -911,7 +891,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim"><span class="nav-number">1.</span> <span class="nav-text">Vim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Cygwin"><span class="nav-number">2.</span> <span class="nav-text">安装 Cygwin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-配置"><span class="nav-number">3.</span> <span class="nav-text">Vim 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Vim-提升开发效率"><span class="nav-number">4.</span> <span class="nav-text">使用 Vim 提升开发效率</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建仿真环境"><span class="nav-number">2.</span> <span class="nav-text">搭建仿真环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Linux-环境"><span class="nav-number">2.1.</span> <span class="nav-text">安装 Linux 环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建目录-Clone-官方代码"><span class="nav-number">2.2.</span> <span class="nav-text">新建目录 Clone 官方代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-RISC-V-工具链"><span class="nav-number">2.3.</span> <span class="nav-text">安装 RISC-V 工具链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装仿真工具"><span class="nav-number">2.4.</span> <span class="nav-text">安装仿真工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑-setup-脚本，配置环境变量"><span class="nav-number">2.5.</span> <span class="nav-text">编辑 setup 脚本，配置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行仿真"><span class="nav-number">2.6.</span> <span class="nav-text">运行仿真</span></a></li></ol></li></ol></div>
             
 
           </div>
