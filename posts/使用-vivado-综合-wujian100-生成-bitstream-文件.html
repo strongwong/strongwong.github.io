@@ -118,15 +118,23 @@
   });
 </script>
 
-  <meta name="description" content="悟已往之不谏，知来者之可追！">
-<meta name="keywords" content="Strong Wong, Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="StrongWong">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;tags&#x2F;FPGA%E4%BB%BF%E7%9C%9F&#x2F;index.html">
+  <meta name="description" content="综合环境上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。 首先，说明一下我的综合环境，我是在 WSL 下安装的 vivado 2018.3 版本，然后是完全 vivado 环境下综合生成 bitstream 文件，因为没有安装 synplify，所以就没有使用官方推荐的 s">
+<meta name="keywords" content="Verilog,IC Design,RISC-V,平头哥,wujian100">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 vivado 综合 wujian100 生成 bitstream 文件">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="悟已往之不谏，知来者之可追！">
+<meta property="og:description" content="综合环境上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。 首先，说明一下我的综合环境，我是在 WSL 下安装的 vivado 2018.3 版本，然后是完全 vivado 环境下综合生成 bitstream 文件，因为没有安装 synplify，所以就没有使用官方推荐的 s">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QeXyMn.md.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QejBTK.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QexDRe.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QexvJU.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QmFW80.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QmM4H0.png">
+<meta property="og:updated_time" content="2019-12-01T13:21:47.995Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;12&#x2F;01&#x2F;QeXyMn.md.png">
 
 
 
@@ -135,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/tags/FPGA仿真/"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/使用-vivado-综合-wujian100-生成-bitstream-文件.html"/>
 
 
 
@@ -145,7 +153,7 @@
   };
 </script>
 
-  <title>标签: FPGA仿真 | StrongWong</title>
+  <title>使用 vivado 综合 wujian100 生成 bitstream 文件 | StrongWong</title>
   
 
 
@@ -201,7 +209,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -250,7 +258,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
@@ -311,34 +319,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -386,58 +366,281 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>FPGA仿真<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="strongwong">
+      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
+      <meta itemprop="image" content="/uploads/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StrongWong">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/FPGA-%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA%E5%8F%8A%E4%BD%BF%E7%94%A8%E4%B8%BE%E4%BE%8B.html" itemprop="url">
-              
-                <span itemprop="name">FPGA 数字图像处理联合仿真平台的搭建及使用举例</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">使用 vivado 综合 wujian100 生成 bitstream 文件
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-02T21:25:33+08:00"
-              content="2019-09-02" >
-          09-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-24 18:49:52" itemprop="dateCreated datePublished" datetime="2019-11-24T18:49:52+08:00">2019-11-24</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/" itemprop="url" rel="index"><span itemprop="name">IC Design</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/RISC-V/" itemprop="url" rel="index"><span itemprop="name">RISC-V</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html" class="leancloud_visitors" data-flag-title="使用 vivado 综合 wujian100 生成 bitstream 文件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="综合环境"><a href="#综合环境" class="headerlink" title="综合环境"></a>综合环境</h2><p>上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。</p>
+<p>首先，说明一下我的综合环境，我是在 WSL 下安装的 vivado 2018.3 版本，然后是完全 vivado 环境下综合生成 bitstream 文件，因为没有安装 synplify，所以就没有使用官方推荐的 synplify 进行综合。</p>
+<blockquote>
+<p>系统：Windows 10 ， WSL Ubuntu 18.04<br>软件: vivado 2018.3</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="安装-vivado"><a href="#安装-vivado" class="headerlink" title="安装 vivado"></a>安装 vivado</h2><p>首先，你如果没有安装 vivado 就先安装一下 vivado，在命令行下自己运行 <code>./xsetup</code> 即可，安装完成后记得设置一下环境变量，具体的安装方法，我这里就不做详细介绍了，请自行搜索。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./xsetup</span><br></pre></td></tr></table></figure>
+
+<h2 id="打开-vivado-新建工程"><a href="#打开-vivado-新建工程" class="headerlink" title="打开 vivado 新建工程"></a>打开 vivado 新建工程</h2><p>接下来，我们进入到 wujian100_open 的 fpga-&gt;vivado 目录下，在命令行下输入 <code>vivado</code> ，启动 vivado。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vivado</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.ax1x.com/2019/12/01/QeXyMn.md.png" alt="start_vivado.png"></p>
+<p>vivado 启动完成之后，我们来创建应该新工程，点击 <code>Create project</code> ，Next-&gt;填写工程名称，Next-&gt; 选择 RTL Project，Next-&gt; 选择 wujian100 这个开发板对应的 FPGA 型号 <code>xc7a200tfbg484-1</code>，最后 Finish 即可，工程创建结束。</p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QejBTK.png" alt="QejBTK.png"><br><img src="https://s2.ax1x.com/2019/12/01/QexDRe.png" alt="QexDRe.png"><br><img src="https://s2.ax1x.com/2019/12/01/QexvJU.png" alt="QexvJU.png"></p>
+<h2 id="添加源码综合"><a href="#添加源码综合" class="headerlink" title="添加源码综合"></a>添加源码综合</h2><p>工程创建完了之后我们添加 wujian100 的源码来进行综合。这里需要注意的是源码中有两个 top 文件，我们这里添加 wujian100_open_fpga_top.v 文件。然后添加 <code>soc</code>目录下的源码，都添加完成之后，vivado 会自动分析，这时我们会看到有错误，这是因为这四个文件是头文件，我们需要手动更改一下文件格式。</p>
+<p><img src="https://s2.ax1x.com/2019/12/01/QmFW80.png" alt="QmFW80.png"></p>
+<p>接下来我们继续添加约束文件，这里的管脚约束文件，我们就是所以官方提供的这个即可，时序约束文件这里使用一位群友提供的即可。把这个时序约束文件和官方的 xdc 放在一个目录下就可以了，添加完成之后，我们进行综合即可。但是在综合之前我们需要更改一下官方的 xdc，有一个地方在 vivado 下进行综合会报错，就是第 33 行这句， 把 <code>_c</code> 去掉即可。还有一个地方需要注意的是把 wujian100_open_fpga_top.v 的优先级调一下。</p>
+<p>时序约束文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">create_clock -name &#123;EHS&#125; [get_ports PIN_EHS] -period 50 -waveform &#123;0 25&#125;</span><br><span class="line">create_clock  -name &#123;JTAG_CLK&#125; [get_ports PAD_JTAG_TCLK] -period 1000 -waveform &#123;0 500&#125;</span><br><span class="line"></span><br><span class="line">set_clock_groups -asynchronous -name &#123;clkgroup_1&#125; -group [get_clocks &#123;EHS JTAG_CLK&#125;]</span><br><span class="line"></span><br><span class="line">set_false_path -through [get_ports PIN_EHS]</span><br><span class="line"></span><br><span class="line"><span class="comment">#set_clock_groups -name &#123;Inferred_clkgroup_0&#125; -asynchronous -group [get_clocks &#123;wujian100_open_top|PAD_JTAG_TCLK&#125;]</span></span><br><span class="line"></span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/pclk_load_sync2_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/rtc_load_sync2_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/pclk_load_sync1_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/rtc_load_sync1_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A74/A10b_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A74/A18597_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A1862d/A10b_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A1862d/A18597_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A75/A10b_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A75/A18597_reg&#125;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets PAD_JTAG_TCLK_c]</span></span><br><span class="line"><span class="comment"># 改成下面的</span></span><br><span class="line">set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets PAD_JTAG_TCLK]</span><br></pre></td></tr></table></figure>
+
+<h2 id="综合完成生成-bit-文件"><a href="#综合完成生成-bit-文件" class="headerlink" title="综合完成生成 bit 文件"></a>综合完成生成 bit 文件</h2><p><img src="https://s2.ax1x.com/2019/12/01/QmM4H0.png" alt="QmM4H0.png"></p>
+<p>综合完成之后呢，我们可以看到啊，这个时序约束都是符合要求的，接下来，我们就可以输出比特流文件上 FPGA 做实验了。</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div><p style="font-size:14px; color:#34495e; margin:0 0 5px 0;">赞赏一下吧～ 还可以关注公众号订阅最新内容啊</p></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span><i class="fa fa-qrcode fa-2x" style="line-height:35px;"></i></span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_reward.jpg" alt="strongwong 微信赞赏"/>
+        <p>微信赞赏</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/reward_img/wechat_qrcode.jpg" alt="strongwong 微信公众号"/>
+        <p>微信公众号</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tags/Verilog/" rel="tag"><i class="fa fa-fw fa-tag"></i> Verilog&nbsp;</a>
+          
+            
+            <a href="/tags/IC-Design/" rel="tag"><i class="fa fa-fw fa-tag"></i> IC Design&nbsp;</a>
+          
+            
+            <a href="/tags/RISC-V/" rel="tag"><i class="fa fa-fw fa-tag"></i> RISC-V&nbsp;</a>
+          
+            
+            <a href="/tags/%E5%B9%B3%E5%A4%B4%E5%93%A5/" rel="tag"><i class="fa fa-fw fa-tag"></i> 平头哥&nbsp;</a>
+          
+            
+            <a href="/tags/wujian100/" rel="tag"><i class="fa fa-fw fa-tag"></i> wujian100&nbsp;</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html" rel="next" title="Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100">
+                <i class="fa fa-chevron-left"></i> Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -460,8 +663,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -672,6 +884,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#综合环境"><span class="nav-number">1.</span> <span class="nav-text">综合环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-vivado"><span class="nav-number">2.</span> <span class="nav-text">安装 vivado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-vivado-新建工程"><span class="nav-number">3.</span> <span class="nav-text">打开 vivado 新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加源码综合"><span class="nav-number">4.</span> <span class="nav-text">添加源码综合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合完成生成-bit-文件"><span class="nav-number">5.</span> <span class="nav-text">综合完成生成 bit 文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -823,6 +1051,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -1202,43 +1434,40 @@
   
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
+    function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
         .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
           }
         })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
     }
     
 
@@ -1258,9 +1487,7 @@
             });
           };
           
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
+          addCount(Counter);
           
         })
     });
