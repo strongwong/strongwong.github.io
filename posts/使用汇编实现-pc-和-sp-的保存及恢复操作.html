@@ -110,13 +110,7 @@
   
 
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9698221161173876",
-    enable_page_level_ads: true
-  });
-</script>
+
 
   <meta name="description" content="前言在 ARM Cortex 系列的芯片中本来就有一套保护现场的机制，例如当产生了一个中断时，会自动将当前寄存器的值入栈，并在 lr（r14） 寄存器中保存将要返回的 pc 值，在中断服务程序执行完成后将 pc 恢复到之前的位置。如果在执行中断服务程序的时候又发生了优先级更高的中断，也就是说发生了中断嵌套，这是将再次进行现场保护，同时 lr 值会被压栈（上一次的 pc ），新的 lr 生成。 但是">
 <meta name="keywords" content="ARM,CM3">

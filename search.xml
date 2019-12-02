@@ -1348,8 +1348,8 @@
         <category>毕业设计</category>
       </categories>
       <tags>
-        <tag>Jetson TX2</tag>
         <tag>ROS</tag>
+        <tag>Jetson TX2</tag>
       </tags>
   </entry>
   <entry>
@@ -1517,6 +1517,7 @@
 <li>在和戚博的讨论过程中发现了我之前写的代码有一些不太合理的地方。缺乏面向对象的思想，代码没有很好的做到低耦合。需要做一些改动。</li>
 </ol>
 <h3 id="2018-10-6"><a href="#2018-10-6" class="headerlink" title="2018-10-6"></a>2018-10-6</h3><p>给博客增加了 Google Adsense ，文章下面会有 Google 广告，点击广告就会有一定的收益！来访问的小伙伴，看到广告记得帮我点一点啊~~</p>
+<h3 id="2019-12-02"><a href="#2019-12-02" class="headerlink" title="2019-12-02"></a>2019-12-02</h3><p>Google Adsense 广告移除了，影响阅读体验~~</p>
 ]]></content>
       <categories>
         <category>diary</category>
