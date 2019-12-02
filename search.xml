@@ -35,11 +35,11 @@
         <category>RISC-V</category>
       </categories>
       <tags>
-        <tag>Verilog</tag>
         <tag>IC Design</tag>
         <tag>RISC-V</tag>
         <tag>平头哥</tag>
         <tag>wujian100</tag>
+        <tag>Verilog</tag>
       </tags>
   </entry>
   <entry>
@@ -82,11 +82,11 @@
         <category>RISC-V</category>
       </categories>
       <tags>
-        <tag>Verilog</tag>
         <tag>IC Design</tag>
         <tag>RISC-V</tag>
         <tag>平头哥</tag>
         <tag>wujian100</tag>
+        <tag>Verilog</tag>
       </tags>
   </entry>
   <entry>
@@ -131,10 +131,10 @@
         <category>其他</category>
       </categories>
       <tags>
+        <tag>IC Design</tag>
+        <tag>Verilog</tag>
         <tag>数字图像处理</tag>
         <tag>FPGA仿真</tag>
-        <tag>Verilog</tag>
-        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>
@@ -274,7 +274,6 @@
 <p><img src="https://i.loli.net/2019/02/26/5c754c158df6a.png" alt=" 添加工程 C/C++ 头文件目录"></p>
 <p>待续… </p>
 <p>后续测试进行中…</p>
-<p>转载自 Kismet 的 Blog:<br><a href="https://blog.asicfans.com/2019/01/25/windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-risc-v-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/" target="_blank" rel="noopener">https://blog.asicfans.com/2019/01/25/windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-risc-v-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</a></p>
 ]]></content>
       <categories>
         <category>学习</category>
@@ -408,8 +407,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>IC Design</tag>
         <tag>SDRAM</tag>
+        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>
@@ -518,8 +517,8 @@
         <category>SDRAM</category>
       </categories>
       <tags>
-        <tag>IC Design</tag>
         <tag>SDRAM</tag>
+        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>
