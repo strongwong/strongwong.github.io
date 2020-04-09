@@ -1,6 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于 RISC-V 架构下 RTOS 的一些知识</title>
+    <url>//posts/%E5%85%B3%E4%BA%8E-RISC-V-%E6%9E%B6%E6%9E%84%E4%B8%8B-RTOS-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86.html</url>
+    <content><![CDATA[<h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>之前的 blog 有介绍了一些，wujian100 的一些知识，包括综合、测试等。最近就想在 wujian100 上看看能不能移植一下比较常见的一些 <strong><code>RTOS</code></strong> (<strong>Real Time Operating System,实时操作系统</strong>)上去试试，比如 Free RTOS、RT-Thread等。结果发现这里还是有一些坑的。虽然 FreeRTOS 和 RTT 都支持 RISC-V 的芯片了，但是 wujian100 这个是 RISC-V “E” 基础架构，也就是 <strong><code>RV32E</code></strong> 就是 <strong><code>标准嵌入式扩展</code></strong> 指令集（这个版本降低了核心的开销，CPU 寄存器裁剪了一半，为 16 个）。但是 FreeRTOS 和 RTT 目前支持的版本都是 32 个寄存器的，对于任务或者说线程的上下文切换时对栈帧的操作还是有一些差异。然后呢也想对比一下 ARM 架构和 RISC-V 架构下嵌入式实时操作系统处理的一些区别，这里呢就想做一些的简单记录。</p>
+<a id="more"></a>
+
+<h2 id="ARM-和-RISC-V-架构的区别"><a href="#ARM-和-RISC-V-架构的区别" class="headerlink" title="ARM 和 RISC-V 架构的区别"></a>ARM 和 RISC-V 架构的区别</h2><p>由于我是先学的 ARM 也相对了解一些，所以做什么总是想拿来和 ARM 对比一下，看看能不能套在 ARM 上，这也对自己理解也有一些帮助。缺点就是会产生一些先入为主的观念。</p>
+<p>一个最简单的 RTOS 应该至少要实现一个多任务管理的功能，所以 RTOS 也可以叫实时多任务操作系统。那么一个简单的 RTOS 的核心就是怎么处理多任务或者说多线程之间的切换，这里我们也叫做上下文切换，所以上下文切换机制的实现就非常重要，这就要牵扯到不同架构的 CPU 会有不同的处理方式。</p>
+<h3 id="ARM-架构下-RTOS-的一般处理过程"><a href="#ARM-架构下-RTOS-的一般处理过程" class="headerlink" title="ARM 架构下 RTOS 的一般处理过程"></a>ARM 架构下 RTOS 的一般处理过程</h3><p>这里以 Cortex-M3 为例，在 ARM 架构中有一组 <strong><code>特殊功能寄存器组</code></strong>，很多时候就是专门留给 OS 使用的。其中由 <kbd><strong>CONTROL[0:1]</strong></kbd> 寄存器来定义 CPU 的特权等级。这里就要提到在 ARM 架构中的双堆栈机制，在 CM3 内核中支持两个堆栈，一个是 MSP（主堆栈指针）指向的主堆栈和 PSP（线程堆栈指针）指向的线程堆栈。通过配置 CONTROL 寄存器的两个位来选择特权级别和使用不同的堆栈指针（还有一个骚操作就是从异常返回时修改 LR 的 <code>bit1</code> 和 <code>bit2</code> 也可以切换模式和堆栈，我们可以在很多开源的 RTOS 中见到）。这样通过这两个寄存器的配置就可以分开对待用户程序和系统程序，避免因用户级程序的问题对系统造成危害。同时在出入异常处理时这两个堆栈指针是通过硬件自动切换的，对于现场的保存就不需要软件来处理了。而且在 Handler 或者说异常中只能使用 MSP（主堆栈指针）。</p>
+<table>
+<thead>
+<tr>
+<th align="center">CONTROL[0]</th>
+<th align="center">CONTROL[1]</th>
+<th align="center">组合</th>
+<th align="center">模式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">特权选择</td>
+<td align="center">堆栈指针选择</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">特权级+MSP</td>
+<td align="center">Handler 模式和 Kernel(OS)</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">特权级+PSP</td>
+<td align="center">线程模式</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">用户级+MSP</td>
+<td align="center">错误用法</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">用户级+PSP</td>
+<td align="center">线程模式</td>
+</tr>
+</tbody></table>
+<p>由于有了这样的机制，在 RTOS 中对于任务切换就带来了很多便利，通常情况下都是通过 <strong>SVCall(即 SVC，System service Call,系统服务调用)</strong>和 <strong>PendSV(Pendable request for system serivce,可挂起系统调用)</strong>这两个异常来完成系统特权和任务上下文的切换。当然也可以先不考虑特权模式和用户模式，那么就可以仅通过 PendSV 异常来完成任务上下文切换即可。这里可以参考一下 FreeRTOS 的处理代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SVCHandler 进行任务切换</span></span><br><span class="line">__<span class="function"><span class="keyword">asm</span> <span class="keyword">void</span> <span class="title">vPortSVCHandler</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">extern</span> pxCurrentTCB;    <span class="comment">// 外部参数，当前任务控制块指针</span></span><br><span class="line">    </span><br><span class="line">    PRESERVE8</span><br><span class="line">    </span><br><span class="line">    ldr r3, = pxCurrentTCB  <span class="comment">// 加载 pxCurrentTCB 的地址到 r3</span></span><br><span class="line">    ldr r1, [r3]            <span class="comment">// 加载 pxCurrentTCB 到 r1</span></span><br><span class="line">    ldr r0, [r1]            <span class="comment">// 加载 pxCurrentTCB 指向的值到 r0, 即当前第一个任务的任务栈栈顶指针</span></span><br><span class="line">    ldmia r0!, &#123;r4-r11&#125;     <span class="comment">// 以 r0 为基地址，将栈里面的内容加载到 r4-r11 寄存器，同时 r0 会递增</span></span><br><span class="line">    msr psp, r0             <span class="comment">// 将 r0 的值，即任务栈指针更新到 psp</span></span><br><span class="line">    isb</span><br><span class="line">    mov r0, #<span class="number">0</span>              <span class="comment">// 将 r0 的值，设置为 0</span></span><br><span class="line">    msr basepri, r0         <span class="comment">// 将 basepri 寄存器设置为0，即所有的中断都没有被屏蔽</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//骚操作</span></span><br><span class="line">    orr r14, #<span class="number">0x0d</span>          <span class="comment">// 当从 SVC 中断服务退出前，通过向 R14 最后4位按位或上0x0d,</span></span><br><span class="line">                            <span class="comment">// 使得硬件在退出时，使用进程堆栈指针 PSP 完成出栈操作并返回后进入线程模式、返回 Thumb 状态</span></span><br><span class="line">                            <span class="comment">//  r14 的 bit1 : 0 PSP 1 MSP；bit2: 0 特权模式  1 用户模式</span></span><br><span class="line">    </span><br><span class="line">    bx r14                  <span class="comment">// 异常返回，这个时候栈中的剩下内容将会自动加载到 CPU 寄存器</span></span><br><span class="line">                            <span class="comment">// xPSR,PC(任务入口地址),R14,R12,R3,R2,R1,R0(任务形参) 同时 PSP 的值也将更新，即指向任务栈的栈顶</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">__<span class="function"><span class="keyword">asm</span> <span class="keyword">void</span> <span class="title">xPortPendSVHandler</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">extern</span> pxCurrentTCB;        <span class="comment">// 外部参数，当前任务控制块指针</span></span><br><span class="line">    <span class="keyword">extern</span> vTaskSwitchContext;  <span class="comment">// 外部函数，当前任务切换函数</span></span><br><span class="line">    </span><br><span class="line">    PRESERVE8</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 当进入 PendSVC Handler 时，上一个任务运行环境，即：</span></span><br><span class="line">    <span class="comment">// xPSR,PC(任务入口地址),R14,R12,R3,R2,R1,R0(任务形参),这些将自动保存到任务栈中，剩下的r4-r11需要手动保存</span></span><br><span class="line">    <span class="comment">// 获取任务栈指针到 r0</span></span><br><span class="line">    mrs r0, psp</span><br><span class="line">    isb</span><br><span class="line">    </span><br><span class="line">    ldr r3, =pxCurrentTCB   <span class="comment">// 加载 pxCurrentTCB 的地址到 r3</span></span><br><span class="line">    ldr r2, [r3]            <span class="comment">// 加载 pxCurrentTCB 到 r2</span></span><br><span class="line">    </span><br><span class="line">    stmdb r0!, &#123;r4-r11&#125;     <span class="comment">// 将 CPU 寄存器 r4-r11 的值存储到 r0 指向的地址</span></span><br><span class="line">    str r0, [r2]            <span class="comment">// 将任务栈的新的栈顶指针存储到当前任务TCB的第一个成员，即栈顶指针</span></span><br><span class="line">    </span><br><span class="line">    stmdb sp!,&#123;r3,r14&#125;      <span class="comment">// 将 r3 和 r14 临时压入堆栈，因为即将调用函数 </span></span><br><span class="line">                            <span class="comment">// 调用函数时，返回地址自动保存到 r14 中，导致 r14 的值会被覆盖，所以 r14 的值需要入栈保护</span></span><br><span class="line">                            <span class="comment">// r3 保存的当前激活的任务 TCB 指针( pxCurrentTCB ),函数调用后会用到，因此也需要入栈保护</span></span><br><span class="line">    </span><br><span class="line">    mov r0, #configMAX_SYSCALL_INTERRUPT_PRIORITY    <span class="comment">// 进入临界段</span></span><br><span class="line">    msr basepri, r0         <span class="comment">// 屏蔽所有中断</span></span><br><span class="line">    dsb</span><br><span class="line">    isb</span><br><span class="line">    bl vTaskSwitchContext   <span class="comment">// 调用函数 vTaskSwitchContext，寻找新的任务运行，通过使变量 pxCurrentTCB 指向新的任务来实现任务切换</span></span><br><span class="line">    mov r0, #<span class="number">0</span>              <span class="comment">// 退出临界段</span></span><br><span class="line">    msr basepri, r0</span><br><span class="line">    ldmia sp!, &#123;r3,r14&#125;     <span class="comment">// 恢复 r3, r14</span></span><br><span class="line">    </span><br><span class="line">    ldr r1, [r3]            </span><br><span class="line">    ldr r0, [r1]            <span class="comment">// 当前激活的任务 TCB 第一项保存了任务堆栈的栈顶指针，现在栈顶值存入了 r0</span></span><br><span class="line">    ldmia r0!,&#123;r4-r11&#125;      <span class="comment">// 出栈</span></span><br><span class="line">    msr psp, r0</span><br><span class="line">    isb</span><br><span class="line">    bx r14                  <span class="comment">// 异常发生时，R14 中保存异常返回标志，包括返回后进入线程模式还是处理器模式</span></span><br><span class="line">                            <span class="comment">// 使用 psp 堆栈指针还是 msp 堆栈指针，当调用 bx r14 指令后，硬件会知道要从硬件返回</span></span><br><span class="line">                            <span class="comment">// 然后出栈，这个时候堆栈指针 psp 硬件指向了 新任务堆栈的正确位置</span></span><br><span class="line">                            <span class="comment">// 当新任务的运行地址被出栈到 pc 寄存器后，新的任务也会被执行</span></span><br><span class="line">    nop    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这两个汇编函数就完成了 ARM 架构下的任务切换机制。其实对于任务上下文切换就是任务现场的保存和恢复，这个现场就是当前的 CPU 运行状态，也就是 CPU 各个寄存器的状态的保存与恢复。这其中也包括很重要的栈帧切换。当然仅仅靠这两个函数也是不完全可靠的，还有一些临界段的处理函数来共同保证任务的安全切换。</p>
+<h3 id="RISC-V-架构下的-RTOS-一般处理过程"><a href="#RISC-V-架构下的-RTOS-一般处理过程" class="headerlink" title="RISC-V 架构下的 RTOS 一般处理过程"></a>RISC-V 架构下的 RTOS 一般处理过程</h3><p>在 RISC-V 架构中，也有不同的特权级别，目前主要定义了三种特权级别，分别是<strong>机器模式（Machine Mode，M-mode）、监管模式（Supervisor Mode,S-mode）和用户模式（User Mode,U-Mode）</strong>， 通过 <strong>CSRs(control and status registers,控制状态寄存器)</strong> 的 <code>bit11</code>、<code>bit12</code>(即 MPP 位)两个位的不同编码来实现不同特权模式的切换，在不同特权模式下都有单独的 CSRs。这里需要说明的是我这个 MPP 指的是 Machine-Level CSRs 中 mstatus 寄存器（即 M-mode status register）的控制位。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Level</th>
+<th align="center">MPP[12:11]</th>
+<th align="center">模式</th>
+<th align="center">简写</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0 0</td>
+<td align="center">User/Application</td>
+<td align="center">U</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0 1</td>
+<td align="center">Supervisor</td>
+<td align="center">S</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">1 0</td>
+<td align="center">Reserved（Hypervisor）</td>
+<td align="center">（保留）</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">1 1</td>
+<td align="center">Machine</td>
+<td align="center">M</td>
+</tr>
+</tbody></table>
+<p>但是一个 RISC-V 处理器的实现并不要求同时支持这三种特权级，接受以下的一些实现组合，降低实现成本：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Number of levels</th>
+<th align="left">Supported Modes</th>
+<th align="center">Intended Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left">M</td>
+<td align="center">Simple embedded systems</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left">M,U</td>
+<td align="center">Secure embedded systems</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left">M,S,U</td>
+<td align="center">Systems running Unix-like operating systems</td>
+</tr>
+</tbody></table>
+<p>上图中可以看出，这三种模式只有 M-mode 是必须要实现的，其它两种模式是可选的。M-mode 是 RISC-V 中 <strong>hart（hardware thread，硬件线程）</strong>可以执行的最高权限模式。在 M 模式下运行的 hart 对内存，I/O 和一些对于启动和配置系统来说必要的底层功能有着完全的使用权。因此它是唯一所有标准 RISC-V 处理器都必须实现的权限模式。实际上简单的 RISC-V 微控制器仅支持 M 模式。</p>
+<p>好了，上面说的是特权模式和 ARM 的区别，下面就是堆栈指针的区别。上文已经提到 ARM 中有 MSP 和 PSP 之分，且在 handler 中只能使用 MSP，也就意味着 OS 和线程模式使用不同的栈。并且出入异常的栈帧切换由硬件完成。</p>
+<p>而在 RISC-V 架构处理器中，没有区分异常、中断和线程模式使用的栈帧，在进入和退出中断处理模式时没有硬件自动保存和恢复上下文（通用寄存器）的操作，因此需要软件明确地使用（汇编语言编写的）指令进行上下文的保存和恢复。并且还要区分 ecall（environment call for U/S/M-mode，不同特权模式下的环境调用异常）。</p>
+<p>所以 RISC-V 这一块的处理要复杂一些，有大量的 RISC-V 汇编，具体的代码我就不贴了，有兴趣的可以去看一下 FreeRTOS 的源码。链接：<strong><a href="https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/master/portable/GCC/RISC-V/portASM.s" target="_blank" rel="noopener">https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/master/portable/GCC/RISC-V/portASM.s</a></strong></p>
+<p>下表是 RISC-V  RV32I 基础指令集寄存器结构，但 RV32E 基础指令集只有 <code>x0</code>-<code>x15</code>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">Register</th>
+<th align="center">ABI Name</th>
+<th align="center">Description</th>
+<th align="center">Saver</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">x0</td>
+<td align="center">zero</td>
+<td align="center">Hard-wired zero</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">x1</td>
+<td align="center">ra</td>
+<td align="center">Return address</td>
+<td align="center">Caller</td>
+</tr>
+<tr>
+<td align="center">x2</td>
+<td align="center">sp</td>
+<td align="center">Stack pointer</td>
+<td align="center">Callee</td>
+</tr>
+<tr>
+<td align="center">x3</td>
+<td align="center">gp</td>
+<td align="center">Global pointer</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">x4</td>
+<td align="center">tp</td>
+<td align="center">Thread pointer</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">x5-7</td>
+<td align="center">t0-2</td>
+<td align="center">Temporaries</td>
+<td align="center">Caller</td>
+</tr>
+<tr>
+<td align="center">x8</td>
+<td align="center">s0/fp</td>
+<td align="center">Saved register/Frame pointer</td>
+<td align="center">Callee</td>
+</tr>
+<tr>
+<td align="center">x9</td>
+<td align="center">s1</td>
+<td align="center">Saved register</td>
+<td align="center">Callee</td>
+</tr>
+<tr>
+<td align="center">x10-11</td>
+<td align="center">a0-1</td>
+<td align="center">Function Arguments/return values</td>
+<td align="center">Caller</td>
+</tr>
+<tr>
+<td align="center">x12-17</td>
+<td align="center">a2-7</td>
+<td align="center">Function arguments</td>
+<td align="center">Caller</td>
+</tr>
+<tr>
+<td align="center">x18-27</td>
+<td align="center">s2-11</td>
+<td align="center">Saved registers</td>
+<td align="center">Callee</td>
+</tr>
+<tr>
+<td align="center">x28-31</td>
+<td align="center">t3-6</td>
+<td align="center">Temporaries</td>
+<td align="center">Caller</td>
+</tr>
+</tbody></table>
+<p>上表中虽然对各个寄存器有了一些描述，在 RISC-V 指令集中并没有指定专用的堆栈指针或子程序返回地址链接寄存器等，事实上指令编码允许将任何 x 寄存器用于这些目的。 但是，标准软件调用约定使用寄存器 x1 来保存呼叫的返回地址，而寄存器 x5 可用作备用链接寄存器。 标准调用约定使用寄存器 x2 作为堆栈指针。硬件可能会选择加速使用 x1 或 x5 的函数调用和返回。（不知道这段 Google 翻译的描述是否准确，大家可以去阅读《riscv-spec-20191213》的 2.1 节原文参考）</p>
+<h2 id="在-wujian100-RISC-V-开源平台上实现简单的任务调度系统"><a href="#在-wujian100-RISC-V-开源平台上实现简单的任务调度系统" class="headerlink" title="在 wujian100 RISC-V 开源平台上实现简单的任务调度系统"></a>在 wujian100 RISC-V 开源平台上实现简单的任务调度系统</h2><p>在了解了上面的一些区别后，我准备尝试移植 FreeRTOS 或者 RT-Thread 到 wujian100 上试试，但是我发现它们大多是只支持了以 RV32I 为基础指令集的处理器。而 wujian100 是 E902，是 RV32E 基础指令集，在底层汇编的处理上有一些不同，可能还要做一些修改。所以我就想试着把我之前学习 FreeRTOS 时，实现的仅有任务调度功能的极简版 FreeRTOS 放上去试试，因为代码量比较少。</p>
+<p>接下来，我就尝试在 wujian100 开源的 SDK 中移花接木，把我自己这个极简的小操作系统移植上去。在仔细翻阅了 wujian 开源的代码后发现他们这里提供了一个 AliOS 的内核，叫 rhino 内核。在他们这个内核的底层是有实现一些上下文切换的代码的，于是我就基于这个底层把我的上层接上去。当然这过程中还要修改很多东西，这里就不一一详述，直接看这段汇编代码是怎么处理的，这里我已经做了一些修改，我的两个小任务也转起来了。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MSTATUS_PRV1 0x1880</span></span><br><span class="line"></span><br><span class="line">.global cpu_intrpt_save</span><br><span class="line">.type cpu_intrpt_save, %function</span><br><span class="line">cpu_intrpt_save:</span><br><span class="line">    csrr    a0, mstatus  <span class="comment">// 读控制状态寄存器，写入 a0，并返回到 psr 返回值中,psr 是外部定义的一个变量，恢复时会使用</span></span><br><span class="line">    csrc    mstatus, <span class="number">8</span>  <span class="comment">// 将控制状态寄存器清零。清零对应的标志位，该语句即为清除 MIE ，即禁止全局中断使能。就是禁用中断</span></span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.global cpu_intrpt_restore</span><br><span class="line">.type cpu_intrpt_restore, %function</span><br><span class="line">cpu_intrpt_restore:</span><br><span class="line">    csrw    mstatus, a0   <span class="comment">// a0 是传进来的参数，即上一次保存的控制状态寄存器的值，对于 a0 中每一个为 1 的位，把 mstatus 中对应的位进行置位</span></span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.global cpu_task_switch</span><br><span class="line">.type cpu_task_switch, %function</span><br><span class="line">cpu_task_switch:                <span class="comment">// 主动任务切换调度</span></span><br><span class="line">    la     a0, g_intrpt_level_1 <span class="comment">// g_intrpt_level_1 是一个全局变量，用于保存当前中断嵌套的层级；这里是将其地址加载到 a0 中</span></span><br><span class="line">    lb     a0, (a0)             <span class="comment">//  将 a0 地址的数据加载到 a0 中</span></span><br><span class="line">    beqz   a0, __task_switch    <span class="comment">// beqz 是对于零时的分支指令，如果等于零，就执行 __task_switch 函数，也就是意味着当前没有中断嵌套</span></span><br><span class="line"></span><br><span class="line">    la     a0, pxCurrentTCB      <span class="comment">// 如果不等于零，即有中断嵌套，就进行下面的操作；加载 pxCurrentTCB 的地址到 a0,即获取当前任务指针</span></span><br><span class="line">    la     a1, g_ReadyTasksLists <span class="comment">// 加载 g_ReadyTasksLists 的地址到 a1，即获取当前最高优先级的就绪任务指针</span></span><br><span class="line">    lw     a2, (a1)  <span class="comment">// 加载就绪任务指针到 a2  (lw 指令读取一个字，即4个字节的数据 到 a2</span></span><br><span class="line">    sw     a2, (a0)  <span class="comment">// 将 a2 的低4个字节存储到 a0（即将就绪任务指针放到当前任务）</span></span><br><span class="line"></span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.global cpu_intrpt_switch</span><br><span class="line">.type cpu_intrpt_switch, %function</span><br><span class="line">cpu_intrpt_switch:   <span class="comment">// 中断中的任务切换 操作和上面类似</span></span><br><span class="line">    la     a0, pxCurrentTCB</span><br><span class="line">    la     a1, g_ReadyTasksLists</span><br><span class="line">    lw     a2, (a1)</span><br><span class="line">    sw     a2, (a0)</span><br><span class="line"></span><br><span class="line">    ret</span><br><span class="line"></span><br><span class="line">.global cpu_first_task_start</span><br><span class="line">.type cpu_first_task_start, %function</span><br><span class="line">cpu_first_task_start:      <span class="comment">// 第一次进入任务时是不用返回的</span></span><br><span class="line">    j       __task_switch_nosave</span><br><span class="line"></span><br><span class="line">.type __task_switch, %function</span><br><span class="line">__task_switch:    <span class="comment">// 任务切换函数 </span></span><br><span class="line">    addi    sp, sp, <span class="number">-60</span>  <span class="comment">// 规划保存数据需要的栈帧大小</span></span><br><span class="line"><span class="comment">// 保存现场，将寄存器的数据保存到栈帧中</span></span><br><span class="line">    sw      x1, <span class="number">0</span>(sp)</span><br><span class="line">    sw      x3, <span class="number">4</span>(sp)</span><br><span class="line">    sw      x4, <span class="number">8</span>(sp)</span><br><span class="line">    sw      x5, <span class="number">12</span>(sp)</span><br><span class="line">    sw      x6, <span class="number">16</span>(sp)</span><br><span class="line">    sw      x7, <span class="number">20</span>(sp)</span><br><span class="line">    sw      x8, <span class="number">24</span>(sp)</span><br><span class="line">    sw      x9, <span class="number">28</span>(sp)</span><br><span class="line">    sw      x10, <span class="number">32</span>(sp)</span><br><span class="line">    sw      x11, <span class="number">36</span>(sp)</span><br><span class="line">    sw      x12, <span class="number">40</span>(sp)</span><br><span class="line">    sw      x13, <span class="number">44</span>(sp)</span><br><span class="line">    sw      x14, <span class="number">48</span>(sp)</span><br><span class="line">    sw      x15, <span class="number">52</span>(sp)</span><br><span class="line"></span><br><span class="line">    sw      ra, <span class="number">56</span>(sp)</span><br><span class="line"></span><br><span class="line">    la      a1, pxCurrentTCB <span class="comment">// 将当前任务控制块指针地址，加载到 a1</span></span><br><span class="line">    lw      a1, (a1)         <span class="comment">// 将任务控制块指针地址加载到 a1</span></span><br><span class="line">    sw      sp, (a1)         <span class="comment">// 将栈指针加载到当前任务控制块指针地址</span></span><br><span class="line"></span><br><span class="line">__task_switch_nosave:        <span class="comment">// 第一次进入任务入口，接下来切换任务指针</span></span><br><span class="line">    la      a0, g_ReadyTasksLists</span><br><span class="line">    la      a1, pxCurrentTCB</span><br><span class="line">    lw      a2, (a0)</span><br><span class="line">    sw      a2, (a1)</span><br><span class="line"></span><br><span class="line">    lw      sp, (a2)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Run in machine mode */</span></span><br><span class="line">    li      t0, MSTATUS_PRV1</span><br><span class="line">    csrs    mstatus, t0  <span class="comment">// 将对于 t0 对应为 1 的每一位置位，即 mpp 设置为 11，machine mode 运行；mpie 置位，用于保存发生异常时 mie 的值；即切换到 M-mode</span></span><br><span class="line"></span><br><span class="line">    lw      t0, <span class="number">56</span>(sp)   <span class="comment">// 将 56(sp) 低 4个字节的数据加载到 t0，即返回地址</span></span><br><span class="line">    csrw    mepc, t0     <span class="comment">// 将 t0 写入 mepc  这里需要注意的是，栈区的数据，在任务初始化的时候就要初始化好，包括第一次启动</span></span><br><span class="line"><span class="comment">// 加载栈帧数据</span></span><br><span class="line">    lw      x1, <span class="number">0</span>(sp)</span><br><span class="line">    lw      x3, <span class="number">4</span>(sp)</span><br><span class="line">    lw      x4, <span class="number">8</span>(sp)</span><br><span class="line">    lw      x5, <span class="number">12</span>(sp)</span><br><span class="line">    lw      x6, <span class="number">16</span>(sp)</span><br><span class="line">    lw      x7, <span class="number">20</span>(sp)</span><br><span class="line">    lw      x8, <span class="number">24</span>(sp)</span><br><span class="line">    lw      x9, <span class="number">28</span>(sp)</span><br><span class="line">    lw      x10, <span class="number">32</span>(sp)</span><br><span class="line">    lw      x11, <span class="number">36</span>(sp)</span><br><span class="line">    lw      x12, <span class="number">40</span>(sp)</span><br><span class="line">    lw      x13, <span class="number">44</span>(sp)</span><br><span class="line">    lw      x14, <span class="number">48</span>(sp)</span><br><span class="line">    lw      x15, <span class="number">52</span>(sp)</span><br><span class="line"></span><br><span class="line">    addi    sp, sp, <span class="number">60</span></span><br><span class="line">    mret   <span class="comment">// M-mode 特有指令，返回时将 PC 指针设置为 mepc,将 mpie 复制到 mie 恢复之前的中断设置，并将特权模式设置为 mpp 中的值；这里就可以完成特权模式的切换(M-U or U-M) </span></span><br><span class="line"></span><br><span class="line">.global Default_IRQHandler</span><br><span class="line">.type   Default_IRQHandler, %function</span><br><span class="line">Default_IRQHandler:    <span class="comment">// 异常、中断处理，这里也需要保存现场，处理类似</span></span><br><span class="line">    addi    sp, sp, <span class="number">-60</span></span><br><span class="line"></span><br><span class="line">    sw      x1, <span class="number">0</span>(sp)</span><br><span class="line">    sw      x3, <span class="number">4</span>(sp)</span><br><span class="line">    sw      x4, <span class="number">8</span>(sp)</span><br><span class="line">    sw      x5, <span class="number">12</span>(sp)</span><br><span class="line">    sw      x6, <span class="number">16</span>(sp)</span><br><span class="line">    sw      x7, <span class="number">20</span>(sp)</span><br><span class="line">    sw      x8, <span class="number">24</span>(sp)</span><br><span class="line">    sw      x9, <span class="number">28</span>(sp)</span><br><span class="line">    sw      x10, <span class="number">32</span>(sp)</span><br><span class="line">    sw      x11, <span class="number">36</span>(sp)</span><br><span class="line">    sw      x12, <span class="number">40</span>(sp)</span><br><span class="line">    sw      x13, <span class="number">44</span>(sp)</span><br><span class="line">    sw      x14, <span class="number">48</span>(sp)</span><br><span class="line">    sw      x15, <span class="number">52</span>(sp)</span><br><span class="line"></span><br><span class="line">    csrr    t0, mepc</span><br><span class="line">    sw      t0, <span class="number">56</span>(sp)</span><br><span class="line"></span><br><span class="line">    la      a0, pxCurrentTCB</span><br><span class="line">    lw      a0, (a0)</span><br><span class="line">    sw      sp, (a0)</span><br><span class="line"></span><br><span class="line">    la      sp, g_top_irqstack</span><br><span class="line"></span><br><span class="line">    csrr    a0, mcause     <span class="comment">// 读取异常类型</span></span><br><span class="line">    andi    a0, a0, <span class="number">0x3FF</span></span><br><span class="line">    slli    a0, a0, <span class="number">2</span></span><br><span class="line"><span class="comment">// 处理异常</span></span><br><span class="line">    la      a1, g_irqvector</span><br><span class="line">    add     a1, a1, a0</span><br><span class="line">    lw      a2, (a1)</span><br><span class="line">    jalr    a2</span><br><span class="line"><span class="comment">// 退出异常，恢复</span></span><br><span class="line">    la      a0, pxCurrentTCB</span><br><span class="line">    lw      a0, (a0)</span><br><span class="line">    lw      sp, (a0)</span><br><span class="line"></span><br><span class="line">    csrr    a0, mcause</span><br><span class="line">    andi    a0, a0, <span class="number">0x3FF</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* clear pending */</span><span class="comment">//清除挂起的异常</span></span><br><span class="line">    li      a2, <span class="number">0xE000E100</span></span><br><span class="line">    add     a2, a2, a0</span><br><span class="line">    lb      a3, <span class="number">0</span>(a2)</span><br><span class="line">    li      a4, <span class="number">1</span></span><br><span class="line">    <span class="keyword">not</span>     a4, a4</span><br><span class="line">    <span class="keyword">and</span>     a5, a4, a3</span><br><span class="line">    sb      a5, <span class="number">0</span>(a2)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Run in machine mode */</span></span><br><span class="line">    li      t0, MSTATUS_PRV1</span><br><span class="line">    csrs    mstatus, t0</span><br><span class="line"></span><br><span class="line">    lw      t0, <span class="number">56</span>(sp)</span><br><span class="line">    csrw    mepc, t0</span><br><span class="line"></span><br><span class="line">    lw      x1, <span class="number">0</span>(sp)</span><br><span class="line">    lw      x3, <span class="number">4</span>(sp)</span><br><span class="line">    lw      x4, <span class="number">8</span>(sp)</span><br><span class="line">    lw      x5, <span class="number">12</span>(sp)</span><br><span class="line">    lw      x6, <span class="number">16</span>(sp)</span><br><span class="line">    lw      x7, <span class="number">20</span>(sp)</span><br><span class="line">    lw      x8, <span class="number">24</span>(sp)</span><br><span class="line">    lw      x9, <span class="number">28</span>(sp)</span><br><span class="line">    lw      x10, <span class="number">32</span>(sp)</span><br><span class="line">    lw      x11, <span class="number">36</span>(sp)</span><br><span class="line">    lw      x12, <span class="number">40</span>(sp)</span><br><span class="line">    lw      x13, <span class="number">44</span>(sp)</span><br><span class="line">    lw      x14, <span class="number">48</span>(sp)</span><br><span class="line">    lw      x15, <span class="number">52</span>(sp)</span><br><span class="line"></span><br><span class="line">    addi    sp, sp, <span class="number">60</span></span><br><span class="line">    mret</span><br></pre></td></tr></table></figure>
+
+<p><strong>除了上面的汇编部分，还有几个主要函数如下，代码工程我后面整理好会上传到我的 Github 上。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TaskSwitching_example</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    prvInitTaskLists();</span><br><span class="line">    </span><br><span class="line">    Task1_Handle = xTaskCreateStatic(  Task1_Entry,</span><br><span class="line">                                       <span class="string">"Task1_Entry"</span>,</span><br><span class="line">                                       TASK1_STACK_SIZE,</span><br><span class="line">                                       <span class="literal">NULL</span>,</span><br><span class="line">									                     <span class="number">1</span>,</span><br><span class="line">                                       Task1Stack,</span><br><span class="line">                                       &amp;Task1TCB );</span><br><span class="line">    <span class="comment">// 核心就是插入函数 vListInsert, 将任务插入到就绪列表中</span></span><br><span class="line">    vListInsert(&amp;pxReadyTasksLists[<span class="number">1</span>], &amp;Task1TCB.xStateListNode);   </span><br><span class="line">    </span><br><span class="line">    Task2_Handle = xTaskCreateStatic(  Task2_Entry,</span><br><span class="line">                                       <span class="string">"Task2_Entry"</span>,</span><br><span class="line">                                       TASK2_STACK_SIZE,</span><br><span class="line">                                       <span class="literal">NULL</span>,</span><br><span class="line">									                     <span class="number">2</span>,</span><br><span class="line">                                       Task2Stack,</span><br><span class="line">                                       &amp;Task2TCB );</span><br><span class="line">    vListInsert(&amp;pxReadyTasksLists[<span class="number">2</span>], &amp;Task2TCB.xStateListNode);	</span><br><span class="line">    vTaskStartScheduler();  <span class="comment">//去启动第一个任务</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vTaskSwitchContext</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 轮流切换两个任务，我这里任务暂时是手动切换的，没使用优先级</span></span><br><span class="line">    <span class="keyword">if</span>( pxCurrentTCB == &amp;Task1TCB)</span><br><span class="line">    &#123;</span><br><span class="line">        g_ReadyTasksLists[<span class="number">0</span>] =&amp; Task2TCB;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        g_ReadyTasksLists[<span class="number">0</span>] =&amp; Task1TCB;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wjYIELD</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	PSRC_ALL();</span><br><span class="line">	portDISABLE_INTERRUPTS();</span><br><span class="line">	vTaskSwitchContext();</span><br><span class="line">	cpu_task_switch();</span><br><span class="line">	portENABLE_INTERRUPTS();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个任务函数 Task1 入口函数 ；task2 和 task1 一样</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Task1_Entry</span><span class="params">(<span class="keyword">void</span> *p_arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;;)</span><br><span class="line">    &#123;</span><br><span class="line">        flag1 = <span class="number">1</span>;</span><br><span class="line">		    <span class="built_in">printf</span>(<span class="string">"flag1 = %d \n"</span>, flag1);</span><br><span class="line">        delay( <span class="number">100</span> );</span><br><span class="line"><span class="comment">//        vTaskDelay( 20 );</span></span><br><span class="line">        flag1 = <span class="number">0</span>;</span><br><span class="line">		    <span class="built_in">printf</span>(<span class="string">"flag1 = %d \n"</span>, flag1);</span><br><span class="line">        delay( <span class="number">100</span> );</span><br><span class="line"><span class="comment">//        vTaskDelay( 20 );</span></span><br><span class="line">		    wjYIELD(); <span class="comment">// 注意，这里是手动切换任务</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TaskSwitching_example();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了，差不多就这些了。<br><img src="https://s1.ax1x.com/2020/04/09/G53CV0.jpg" alt="wujian_CamelOS"></p>
+<h2 id="踩坑总结"><a href="#踩坑总结" class="headerlink" title="踩坑总结"></a>踩坑总结</h2><p>通过这次研究，明白了 ARM 和 RISC-V 架构上的异同，加深了自己对两种架构的理解，相信对以后的学习也更加有帮助。<br>还有就是 wujian100 的开源资料中并没有提供特权架构的相关文档，异常和中断向量表规划也没有具体的说明文档，目前有限的文档中只介绍了外设 IP 的说明，所以在后续的软件开发增加了很多障碍。只有去扒他们提供的 SDK 中的源代码，通过源码来了解他们的架构，还有一点就是他们提供的代码及资料和阿里体系的东西相对耦合或者说兼容。跟开源社区现有的资料和体系不能很好融合。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li>《RISC-V-Reader-Chinese-v2p1》</li>
+<li>《riscv-spec-20191213》</li>
+<li>《riscv-privileged-20190608-1》</li>
+<li>《Cortex-M3权威指南》</li>
+<li>《computer organization and design》</li>
+<li><a href="https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/master/portable/GCC/RISC-V" target="_blank" rel="noopener">https://github.com/FreeRTOS/FreeRTOS-Kernel/tree/master/portable/GCC/RISC-V</a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>IC Design</category>
+        <category>RISC-V</category>
+        <category>嵌入式</category>
+      </categories>
+      <tags>
+        <tag>IC Design</tag>
+        <tag>RISC-V</tag>
+        <tag>wujian100</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用 vivado 综合 wujian100 生成 bitstream 文件</title>
     <url>//posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html</url>
     <content><![CDATA[<h2 id="综合环境"><a href="#综合环境" class="headerlink" title="综合环境"></a>综合环境</h2><p>上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。</p>
@@ -42,11 +275,11 @@
         <category>RISC-V</category>
       </categories>
       <tags>
+        <tag>Verilog</tag>
+        <tag>IC Design</tag>
         <tag>RISC-V</tag>
         <tag>平头哥</tag>
         <tag>wujian100</tag>
-        <tag>Verilog</tag>
-        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>
@@ -96,11 +329,11 @@
         <category>RISC-V</category>
       </categories>
       <tags>
+        <tag>Verilog</tag>
+        <tag>IC Design</tag>
         <tag>RISC-V</tag>
         <tag>平头哥</tag>
         <tag>wujian100</tag>
-        <tag>Verilog</tag>
-        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>
@@ -145,10 +378,10 @@
         <category>其他</category>
       </categories>
       <tags>
-        <tag>Verilog</tag>
-        <tag>IC Design</tag>
         <tag>数字图像处理</tag>
         <tag>FPGA仿真</tag>
+        <tag>Verilog</tag>
+        <tag>IC Design</tag>
       </tags>
   </entry>
   <entry>
