@@ -38,11 +38,11 @@
       <category term="嵌入式" scheme="https://blog.strongwong.top/categories/IC-Design/RISC-V/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
     
     
-      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
-    
       <category term="RISC-V" scheme="https://blog.strongwong.top/tags/RISC-V/"/>
     
       <category term="wujian100" scheme="https://blog.strongwong.top/tags/wujian100/"/>
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
     
   </entry>
   
@@ -70,15 +70,15 @@
       <category term="RISC-V" scheme="https://blog.strongwong.top/categories/IC-Design/RISC-V/"/>
     
     
-      <category term="Verilog" scheme="https://blog.strongwong.top/tags/Verilog/"/>
-    
-      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
-    
       <category term="RISC-V" scheme="https://blog.strongwong.top/tags/RISC-V/"/>
     
       <category term="平头哥" scheme="https://blog.strongwong.top/tags/%E5%B9%B3%E5%A4%B4%E5%93%A5/"/>
     
       <category term="wujian100" scheme="https://blog.strongwong.top/tags/wujian100/"/>
+    
+      <category term="Verilog" scheme="https://blog.strongwong.top/tags/Verilog/"/>
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
     
   </entry>
   
@@ -102,15 +102,15 @@
       <category term="RISC-V" scheme="https://blog.strongwong.top/categories/IC-Design/RISC-V/"/>
     
     
-      <category term="Verilog" scheme="https://blog.strongwong.top/tags/Verilog/"/>
-    
-      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
-    
       <category term="RISC-V" scheme="https://blog.strongwong.top/tags/RISC-V/"/>
     
       <category term="平头哥" scheme="https://blog.strongwong.top/tags/%E5%B9%B3%E5%A4%B4%E5%93%A5/"/>
     
       <category term="wujian100" scheme="https://blog.strongwong.top/tags/wujian100/"/>
+    
+      <category term="Verilog" scheme="https://blog.strongwong.top/tags/Verilog/"/>
+    
+      <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
     
   </entry>
   
@@ -134,13 +134,13 @@
       <category term="其他" scheme="https://blog.strongwong.top/categories/IC-Design/%E5%85%B6%E4%BB%96/"/>
     
     
-      <category term="数字图像处理" scheme="https://blog.strongwong.top/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    
-      <category term="FPGA仿真" scheme="https://blog.strongwong.top/tags/FPGA%E4%BB%BF%E7%9C%9F/"/>
-    
       <category term="Verilog" scheme="https://blog.strongwong.top/tags/Verilog/"/>
     
       <category term="IC Design" scheme="https://blog.strongwong.top/tags/IC-Design/"/>
+    
+      <category term="数字图像处理" scheme="https://blog.strongwong.top/tags/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="FPGA仿真" scheme="https://blog.strongwong.top/tags/FPGA%E4%BB%BF%E7%9C%9F/"/>
     
   </entry>
   
