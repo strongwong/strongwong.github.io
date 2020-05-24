@@ -31,7 +31,7 @@
 <li>Update_jb_$(cd mnt &amp;&amp; cd us &amp;&amp; sh jb.sh).bin</li>
 </ul>
 <p>把这些文件拷贝到 Kindle 根目录，安全弹出磁盘。在 Kindle 中依次点击『 <code>首页 -&gt; 菜单（屏幕右上角）-&gt; 设置 -&gt; 菜单（屏幕右上角）-&gt; 更新您的 Kindle</code>』。点击菜单后系统不会重启也不会有其它任何反应，在这期间不要有任何操作，直到屏幕下方出现 『 <strong>** JAILBREAK **</strong> 』的字样时，表示越狱已成功。</p>
-<p><img src="https://s1.ax1x.com/2020/05/24/tSZXV0.png" alt="越狱"></p>
+<p><img src="https://s1.ax1x.com/2020/05/24/tS3hOU.jpg" alt="越狱"></p>
 <h3 id="2-3-升级固件"><a href="#2-3-升级固件" class="headerlink" title="2.3 升级固件"></a>2.3 升级固件</h3><p>最后前往书伴的 『<a href="https://bookfere.com/update" target="_blank" rel="noopener">固件大全</a>』下载最新的 5.6.1.1 版本固件，将固件文件放到 Kindle 根目录，依次点击菜单『 <code>首页 -&gt; 菜单（屏幕右上角）-&gt; 设置 -&gt; 菜单（屏幕右上角）-&gt; 更新您的 Kindle</code>』。等待更新完毕，便得到一个有着最新版本固件的越狱了的 Kindle 系统，你可以进行安装MRPI、KUAL、kterm 、USBNetwork 等插件来完成接下来的操作。</p>
 <h2 id="三、安装插件"><a href="#三、安装插件" class="headerlink" title="三、安装插件"></a>三、安装插件</h2><h3 id="3-1-安装-MobileRead-Package-Installer-MRPI-——-插件安装器"><a href="#3-1-安装-MobileRead-Package-Installer-MRPI-——-插件安装器" class="headerlink" title="3.1 安装 MobileRead Package Installer (MRPI) —— 插件安装器"></a>3.1 安装 MobileRead Package Installer (MRPI) —— 插件安装器</h3><ul>
 <li>下载 MRPI：<a href="https://pan.baidu.com/s/1H3Df7hh9yptXgtS28uzv1Q" target="_blank" rel="noopener">百度网盘</a>【提取码：xwbg】</li>
@@ -1721,8 +1721,8 @@
         <category>毕业设计</category>
       </categories>
       <tags>
-        <tag>Jetson TX2</tag>
         <tag>ROS</tag>
+        <tag>Jetson TX2</tag>
       </tags>
   </entry>
   <entry>
