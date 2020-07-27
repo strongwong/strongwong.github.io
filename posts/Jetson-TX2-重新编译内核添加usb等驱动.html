@@ -113,19 +113,26 @@
 
 
   <meta name="description" content="Jetson TX2 重新编译内核添加usb驱动上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。本文这里就简单介绍一下，添加驱动并重新编译镜像。在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetson">
-<meta name="keywords" content="Jetson TX2,Nvidia,内核编译,驱动">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jetson TX2 重新编译内核添加usb等驱动">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;Jetson-TX2-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8%E6%B7%BB%E5%8A%A0usb%E7%AD%89%E9%A9%B1%E5%8A%A8.html">
+<meta property="og:url" content="https://blog.strongwong.top/posts/Jetson-TX2-%E9%87%8D%E6%96%B0%E7%BC%96%E8%AF%91%E5%86%85%E6%A0%B8%E6%B7%BB%E5%8A%A0usb%E7%AD%89%E9%A9%B1%E5%8A%A8.html">
 <meta property="og:site_name" content="StrongWong">
 <meta property="og:description" content="Jetson TX2 重新编译内核添加usb驱动上一篇我们已经简单说明了怎么给 Jetson TX2 刷机，Jetson TX2 虽然已经成功完成刷机了，但是 Nvidia 的默认配置是禁用了一些驱动的，比如说板子上的 UART 串口就不可以用，需要用户自己安装，重新编译新的镜像。本文这里就简单介绍一下，添加驱动并重新编译镜像。在 GitHub 上有别人开源的编译新镜像的脚本文件，在 Jetson">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;photo.ishield.cn&#x2F;pic&#x2F;5b8269849dc6d6533b592669">
-<meta property="og:image" content="https:&#x2F;&#x2F;photo.ishield.cn&#x2F;pic&#x2F;5b826b089dc6d6533b59266f">
-<meta property="og:updated_time" content="2019-11-21T14:06:56.748Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b8269849dc6d6533b592669">
+<meta property="og:image" content="https://photo.ishield.cn/pic/5b826b089dc6d6533b59266f">
+<meta property="article:published_time" content="2018-08-20T10:55:00.000Z">
+<meta property="article:modified_time" content="2019-11-21T14:06:56.748Z">
+<meta property="article:author" content="strongwong">
+<meta property="article:tag" content="Jetson TX2">
+<meta property="article:tag" content="Nvidia">
+<meta property="article:tag" content="内核编译">
+<meta property="article:tag" content="驱动">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;photo.ishield.cn&#x2F;pic&#x2F;5b8269849dc6d6533b592669">
+<meta name="twitter:image" content="https://photo.ishield.cn/pic/5b8269849dc6d6533b592669">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="StrongWong" type="application/atom+xml" />
@@ -190,7 +197,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -297,7 +304,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
@@ -874,6 +881,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://edwin-zzp.github.io" title="Edwin" target="_blank">Edwin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hcatek.com" title="Salieri" target="_blank">Salieri</a>
                   </li>
                 
               </ul>

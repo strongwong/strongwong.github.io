@@ -113,31 +113,35 @@
 
 
   <meta name="description" content="环境要求软件环境 IDE: GNU MCU Eclipse IDE for C&#x2F;C++ Developers IDE 插件: GNU MCU Eclipse plug-ins GCC&#x2F;GDB 工具: GNU MCU Eclipse RISC-V Embedded GCC 调试工具: GNU MCU Eclipse OpenOCD make 工具: GNU MCU Eclipse Windows B">
-<meta name="keywords" content="RISC-V">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows10 环境下搭建 RISC-V 调试环境">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;Windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-RISC-V-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html">
+<meta property="og:url" content="https://blog.strongwong.top/posts/Windows10-%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%90%AD%E5%BB%BA-RISC-V-%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83.html">
 <meta property="og:site_name" content="StrongWong">
 <meta property="og:description" content="环境要求软件环境 IDE: GNU MCU Eclipse IDE for C&#x2F;C++ Developers IDE 插件: GNU MCU Eclipse plug-ins GCC&#x2F;GDB 工具: GNU MCU Eclipse RISC-V Embedded GCC 调试工具: GNU MCU Eclipse OpenOCD make 工具: GNU MCU Eclipse Windows B">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7540a7474bf.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c754155033e4.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7542f86b719.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7543a17226b.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7544fd07eb8.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c75487c1f6cf.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7548ff7b8fb.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7549557f2eb.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7549be00c12.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c754a785cc2d.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c754ad5a9b74.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c754b533251d.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c754c158df6a.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c754c158df6a.png">
-<meta property="og:updated_time" content="2019-12-02T06:58:07.644Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7540a7474bf.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754155033e4.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7542f86b719.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7543a17226b.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7544fd07eb8.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c75487c1f6cf.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7548ff7b8fb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7549557f2eb.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c7549be00c12.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754a785cc2d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754ad5a9b74.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754b533251d.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754c158df6a.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/26/5c754c158df6a.png">
+<meta property="article:published_time" content="2019-03-11T02:32:02.000Z">
+<meta property="article:modified_time" content="2019-12-02T06:58:07.644Z">
+<meta property="article:author" content="strongwong">
+<meta property="article:tag" content="RISC-V">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;i.loli.net&#x2F;2019&#x2F;02&#x2F;26&#x2F;5c7540a7474bf.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/26/5c7540a7474bf.png">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="StrongWong" type="application/atom+xml" />
@@ -202,7 +206,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -309,7 +313,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
@@ -906,6 +910,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://edwin-zzp.github.io" title="Edwin" target="_blank">Edwin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hcatek.com" title="Salieri" target="_blank">Salieri</a>
                   </li>
                 
               </ul>

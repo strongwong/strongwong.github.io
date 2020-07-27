@@ -113,21 +113,27 @@
 
 
   <meta name="description" content="总线—— SoC 内部的主干道开坑！从今天开始来聊一点数字 IC 的一些知识！首先来看一看总线平日里我们都在讲总线总线，连接各模块的公共线，那它在 ARM 芯片中起到了啥木作用，来胡乱绉一通。">
-<meta name="keywords" content="IC Design,SoC,AMBA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="总线- SoC 内部的主干道">
-<meta property="og:url" content="https:&#x2F;&#x2F;blog.strongwong.top&#x2F;posts&#x2F;%E6%80%BB%E7%BA%BF-SoC-%E5%86%85%E9%83%A8%E7%9A%84%E4%B8%BB%E5%B9%B2%E9%81%93.html">
+<meta property="og:url" content="https://blog.strongwong.top/posts/%E6%80%BB%E7%BA%BF-SoC-%E5%86%85%E9%83%A8%E7%9A%84%E4%B8%BB%E5%B9%B2%E9%81%93.html">
 <meta property="og:site_name" content="StrongWong">
 <meta property="og:description" content="总线—— SoC 内部的主干道开坑！从今天开始来聊一点数字 IC 的一些知识！首先来看一看总线平日里我们都在讲总线总线，连接各模块的公共线，那它在 ARM 芯片中起到了啥木作用，来胡乱绉一通。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;USB.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;amba.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;hclk_pclk.jpg">
-<meta property="og:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;ambaclk.png">
-<meta property="og:updated_time" content="2019-11-21T14:06:56.913Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/USB.png">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/amba.png">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/hclk_pclk.jpg">
+<meta property="og:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/ambaclk.png">
+<meta property="article:published_time" content="2018-11-12T03:35:18.000Z">
+<meta property="article:modified_time" content="2019-11-21T14:06:56.913Z">
+<meta property="article:author" content="strongwong">
+<meta property="article:tag" content="IC Design">
+<meta property="article:tag" content="SoC">
+<meta property="article:tag" content="AMBA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;mytu-1252671182.cos.ap-shanghai.myqcloud.com&#x2F;hexo&#x2F;USB.png">
+<meta name="twitter:image" content="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/USB.png">
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="StrongWong" type="application/atom+xml" />
@@ -192,7 +198,7 @@
   </style>
 </noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -299,7 +305,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" target="_blank" rel="noopener" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
@@ -878,6 +884,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://edwin-zzp.github.io" title="Edwin" target="_blank">Edwin</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.hcatek.com" title="Salieri" target="_blank">Salieri</a>
                   </li>
                 
               </ul>
