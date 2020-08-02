@@ -28,13 +28,13 @@
     <summary type="html">
     
       &lt;h2 id=&quot;PWM-波形发生器实验结果&quot;&gt;&lt;a href=&quot;#PWM-波形发生器实验结果&quot; class=&quot;headerlink&quot; title=&quot;PWM 波形发生器实验结果&quot;&gt;&lt;/a&gt;PWM 波形发生器实验结果&lt;/h2&gt;&lt;p&gt;在 wujian100 的样例程序代码如下：&lt;/p&gt;
-&lt;!--�0--&gt;
+&lt;!--�19--&gt;
 
 &lt;p&gt;其中有两句配置函数&lt;/p&gt;
-&lt;!--�1--&gt;
+&lt;!--�20--&gt;
 
 &lt;p&gt;这两句都是用来配置 pwm 周期的，是实际测试中 pwm 周期和占空比都没有问题。但是如果设置 pwm 周期为 5ms 时，需要修改这句话为：&lt;/p&gt;
-&lt;!--�2--&gt;
+&lt;!--�21--&gt;
 
 &lt;p&gt;在实际测试过程中会发现，他的周期实际是 2.5ms 并不是预期的 5ms，如果设置为 100ms 会发现 pwm 的实际输出周期是 2.5ms。实际输出是有问题的。&lt;/p&gt;
     
