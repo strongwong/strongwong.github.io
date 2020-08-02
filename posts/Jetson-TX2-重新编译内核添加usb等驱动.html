@@ -505,18 +505,18 @@
 <a id="more"></a>
 
 <h3 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h3><p>首先从 GitHub 上下载编译脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/jetsonhacks/buildJetsonTX2Kernel.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:&#x2F;&#x2F;github.com&#x2F;jetsonhacks&#x2F;buildJetsonTX2Kernel.git</span><br></pre></td></tr></table></figure>
 <p>如果你是 JetPack3.2.1 版本，直接使用 git 下载的话没有问题，因为目前他更新到的最新版本是 JetPack 3.2.1 内核版本为 28.2.1 (2018-8-20)。但是我安装的是 JetPack 3.1 对应的内核版本是 28.1 所以是不能直接使用的。因此需要下载对应的内核版本的脚本才可以使用。<br>JetPack 3.1 版本的话就需要下载这个。<br><code>https://github.com/jetsonhacks/buildJetsonTX2Kernel/archive/vL4T28.1.tar.gz</code></p>
 <h3 id="解压，获取源码"><a href="#解压，获取源码" class="headerlink" title="解压，获取源码"></a>解压，获取源码</h3><p>下载好之后，解压缩，进入解压出来的文件夹，打开 Terminal 运行 getKernelSources.sh 脚本获取内核源码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./getKernelSources.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;getKernelSources.sh</span><br></pre></td></tr></table></figure>
 <h3 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h3><p>下载完成之后就会打开一个 xconfig 配置界面。<br>设置你的镜像名称。打开设置 Genral Setup-&gt;Local version - append to kernel release，双击 Local version - append to kernel release<br>在文本框中输入名字，如我这里为 -jetsonbot-v0.1 ， 回车；如下图所示：<br><img src="https://photo.ishield.cn/pic/5b8269849dc6d6533b592669" alt=""></p>
 <p>在 xconfig 中按 Ctrl+F ，会弹出一个搜索框，输入你想要添加的设备驱动，比如可以添加 USB ACM， CH341 和 cp210x 串口驱动等，在搜索结果中选择对应的驱动，选中框打上勾即可。<br>我这里搜索的是 ACM 驱动，如下图所示：<br><img src="https://photo.ishield.cn/pic/5b826b089dc6d6533b59266f" alt=""></p>
 <p>设置好了之后，一定要保存你的设置， File-&gt;Save</p>
 <h3 id="编译新内核"><a href="#编译新内核" class="headerlink" title="编译新内核"></a>编译新内核</h3><p>保存好设置，关闭 xconfig 配置窗口，准备开始编译内核，编译过程大约需要 20 分钟。<br>运行 makeKernel.sh 脚本，开始编译新的内核。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./makeKernel.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;makeKernel.sh</span><br></pre></td></tr></table></figure>
 
 <h3 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h3><p>编译过程中，你可以去喝杯 coffee 放松一下，等待编译完成。<br>编译结束后，运行 copyImage.sh 脚本，将新编译的镜像文件拷贝到  /boot 目录下。拷贝完成重启 TX2 即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./copyImage.sh</span><br><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;copyImage.sh</span><br><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
 
 <h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>至此，我们添加有 USB 串口相关驱动的镜像就在 TX2 上被安装好了，这样就可以愉快的使用串口了。快使用新镜像进行开发吧！</p>
 
@@ -694,7 +694,7 @@
                   
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

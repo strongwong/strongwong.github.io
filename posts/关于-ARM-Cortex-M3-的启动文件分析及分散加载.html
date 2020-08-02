@@ -537,7 +537,7 @@
 <p>补充一下，其中 DCD 相当于 C 语言当中的 &amp;，定义地址。</p>
 <h2 id="堆栈以及堆的初始化"><a href="#堆栈以及堆的初始化" class="headerlink" title="堆栈以及堆的初始化"></a>堆栈以及堆的初始化</h2><h3 id="堆栈的初始化"><a href="#堆栈的初始化" class="headerlink" title="堆栈的初始化"></a>堆栈的初始化</h3><p><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6%E5%A0%86%E6%A0%88%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%A3%E7%A0%81.jpg" alt="Startup_xxx.s 中的堆栈初始化代码"></p>
 <p><code>Stack_Size  EQU  0x00000400</code><br>这个语句相当于 Stack_Size 这个标号（标号：链接器的术语，下文中提到的所有“标号”，指的都是指的链接器中的标号）等于 0x00000400 相当于 C 语言中的 <code>#define  Stack_Size  0x00000400</code> ，也就是说此语句只是一个声明，并未分配地址。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AREA    STACK, NOINIT, READWRITE, ALIGN=3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AREA    STACK, NOINIT, READWRITE, ALIGN&#x3D;3</span><br></pre></td></tr></table></figure>
 <p>此语句定义了一个叫 STACK 的代码段，并指明 8 字节对齐（ALIGN = 3）。其中 NOINIT 表示未初始化，READWRITE 表示可读可写，ALIGN = 3，即表示 2^3 = 8，八字节对齐。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stack_Mem    SPACE   Stack_Size</span><br></pre></td></tr></table></figure>
 <p>这里是为 Stack_Mem 分配 Stack_Size 大小的一块内存区域，注意这里分配的是 RAM ，即分配了大小为 1KB 的内存空间（0x00000400 = 1024）。</p>
@@ -573,7 +573,7 @@
 <p>在离开复位状态后， CM3 做的第一件事就是读取下列两个 32 位整数的值：</p>
 <ul>
 <li>1.从地址 0x0000 0000 处取出 MSP 的初始值。</li>
-<li>2.从地址 0x0000 0004 处取出 PC 的初始值，这个值是复位向量， LSB 必须是 1 。 然后从这个值所对应的地址处取指。<br>硬件自动从 0x0000 0000 位置处读取数据赋给栈指针 sp，然后从 0x0000 0004 位置处读取数据赋给 pc 指针，完成复位，结果为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SP = 0x2000 1068 </span><br><span class="line">PC = 0x0000 011D</span><br></pre></td></tr></table></figure>
+<li>2.从地址 0x0000 0004 处取出 PC 的初始值，这个值是复位向量， LSB 必须是 1 。 然后从这个值所对应的地址处取指。<br>硬件自动从 0x0000 0000 位置处读取数据赋给栈指针 sp，然后从 0x0000 0004 位置处读取数据赋给 pc 指针，完成复位，结果为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SP &#x3D; 0x2000 1068 </span><br><span class="line">PC &#x3D; 0x0000 011D</span><br></pre></td></tr></table></figure>
 <img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/reset%E5%90%AF%E5%8A%A8.jpg" alt=""></li>
 </ul>
 <p>这与传统的 ARM 架构不同——其实也和绝大多数的其它单片机不同。传统的 ARM 架构总是从 0 地址开始执行第一条指令。它们的 0 地址处总是一条跳转指令。在 CM3 中，在 0 地址处提供 MSP 的初始值，然后紧跟着就是向量表。向量表中的数值是 32 位的地址，而不是跳转指令。向量表的第一个条目指向复位后应执行的第一条指令，就是我们上面分析的 Reset_Handler 这个函数。</p>
@@ -640,7 +640,7 @@
 <p>加载时域的描述<br>sct 文件<br><img src="https://mytu-1252671182.cos.ap-shanghai.myqcloud.com/hexo/sct%E6%96%87%E4%BB%B6.jpg" alt=".sct文件"></p>
 <p>LR_IROM1 加载区域名，用于“ Linker ”区别不同的加载区域，最多 31 个字符；用来保存永久性数据（程序和只读变量）的区域；<br>ER_IROM1 执行区域名；程序执行时，从加载区域将数据复制到相应执行区后才能被正确执行；</p>
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LR_IROM1 0x00000000  0x00040000  &#123;    ; load region size_region</span><br><span class="line">  ER_IROM1 0x00000000  0x00010000  &#123;  ; load address = execution address</span><br><span class="line">   *.o (RESET, +First)</span><br><span class="line">   *(InRoot$$Sections)</span><br><span class="line">   .ANY (+RO)</span><br><span class="line">  &#125;</span><br><span class="line">  RW_IRAM1 0x20010000  0x00010000  &#123;  ; RW data</span><br><span class="line">   .ANY (+RW +ZI)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LR_IROM1 0x00000000  0x00040000  &#123;    ; load region size_region</span><br><span class="line">  ER_IROM1 0x00000000  0x00010000  &#123;  ; load address &#x3D; execution address</span><br><span class="line">   *.o (RESET, +First)</span><br><span class="line">   *(InRoot$$Sections)</span><br><span class="line">   .ANY (+RO)</span><br><span class="line">  &#125;</span><br><span class="line">  RW_IRAM1 0x20010000  0x00010000  &#123;  ; RW data</span><br><span class="line">   .ANY (+RW +ZI)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>LR_IROM1 0x00000000 0x00040000<br>定义一个加载时域，域基址：0x00000000，域大小为 0x00040000，对应实际 Flash 的大小<br>ER_IROM1 0x00000000 0x00010000<br>定义一个运行时域，第一个运行时域必须和加载时域起始地址相同，否则库不能加载到该时域的错误，其域大小一般也和加载时域大小相同，但是我们这里没有 flash ，只有 128k 的 RAM ，这里分配 64k 作为程序存储器，所以这里是 0x00010000 大小。</p>
 <p>*.o (RESET, +First)<br>将 RESET 段最先加载到本域的起始地址外，即 RESET 的起始地址为 0，RESET 存储的是向量表</p>
@@ -827,7 +827,7 @@
                   
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

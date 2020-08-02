@@ -373,6 +373,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="strongwong">
+      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
+      <meta itemprop="image" content="/uploads/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StrongWong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html" itemprop="url">
+                  wujian100 的 PWM 周期问题
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-08-02 08:56:18" itemprop="dateCreated datePublished" datetime="2020-08-02T08:56:18+08:00">2020-08-02</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/" itemprop="url" rel="index"><span itemprop="name">IC Design</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/RISC-V/" itemprop="url" rel="index"><span itemprop="name">RISC-V</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html" class="leancloud_visitors" data-flag-title="wujian100 的 PWM 周期问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="PWM-波形发生器实验结果"><a href="#PWM-波形发生器实验结果" class="headerlink" title="PWM 波形发生器实验结果"></a>PWM 波形发生器实验结果</h2><p>在 wujian100 的样例程序代码如下：</p>
+<!--�0-->
+
+<p>其中有两句配置函数</p>
+<!--�1-->
+
+<p>这两句都是用来配置 pwm 周期的，是实际测试中 pwm 周期和占空比都没有问题。但是如果设置 pwm 周期为 5ms 时，需要修改这句话为：</p>
+<!--�2-->
+
+<p>在实际测试过程中会发现，他的周期实际是 2.5ms 并不是预期的 5ms，如果设置为 100ms 会发现 pwm 的实际输出周期是 2.5ms。实际输出是有问题的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E7%94%A8-Kindle-%E5%81%9A%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E6%98%BE%E7%A4%BA%E5%B1%8F.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2042,192 +2237,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="strongwong">
-      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
-      <meta itemprop="image" content="/uploads/toux.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StrongWong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html" itemprop="url">
-                  数字 IC 设计流程
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-13 18:41:35" itemprop="dateCreated datePublished" datetime="2019-01-13T18:41:35+08:00">2019-01-13</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/" itemprop="url" rel="index"><span itemprop="name">IC Design</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/IC-Design/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html" class="leancloud_visitors" data-flag-title="数字 IC 设计流程">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="0x00"><a href="#0x00" class="headerlink" title="0x00"></a>0x00</h2><p>最近即将开始要带着学弟们入门数字 IC 的设计，但很多学弟对于接下来要做什么是迷茫的，很多练就了各式各样的基本功却不知道如何施展，因此这里简单介绍一下数字 IC 设计的全过程及相关的设计工具及涉及到的相关职位，如果有写的不合适或者不正确的地方还请各位提出~</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2293,7 +2302,7 @@
                   
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

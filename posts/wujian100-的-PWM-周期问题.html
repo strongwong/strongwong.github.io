@@ -112,29 +112,37 @@
 
 
 
-  <meta name="description" content="综合环境上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。 首先，说明一下我的综合环境，我是在 WSL 下安装的 vivado 2018.3 版本，然后是完全 vivado 环境下综合生成 bitstream 文件，因为没有安装 synplify，所以就没有使用官方推荐的 s">
+  <meta name="description" content="PWM 波形发生器实验结果在 wujian100 的样例程序代码如下：   其中有两句配置函数   这两句都是用来配置 pwm 周期的，是实际测试中 pwm 周期和占空比都没有问题。但是如果设置 pwm 周期为 5ms 时，需要修改这句话为：   在实际测试过程中会发现，他的周期实际是 2.5ms 并不是预期的 5ms，如果设置为 100ms 会发现 pwm 的实际输出周期是 2.5ms。实际输出">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 vivado 综合 wujian100 生成 bitstream 文件">
-<meta property="og:url" content="https://blog.strongwong.top/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html">
+<meta property="og:title" content="wujian100 的 PWM 周期问题">
+<meta property="og:url" content="https://blog.strongwong.top/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html">
 <meta property="og:site_name" content="StrongWong">
-<meta property="og:description" content="综合环境上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。 首先，说明一下我的综合环境，我是在 WSL 下安装的 vivado 2018.3 版本，然后是完全 vivado 环境下综合生成 bitstream 文件，因为没有安装 synplify，所以就没有使用官方推荐的 s">
+<meta property="og:description" content="PWM 波形发生器实验结果在 wujian100 的样例程序代码如下：   其中有两句配置函数   这两句都是用来配置 pwm 周期的，是实际测试中 pwm 周期和占空比都没有问题。但是如果设置 pwm 周期为 5ms 时，需要修改这句话为：   在实际测试过程中会发现，他的周期实际是 2.5ms 并不是预期的 5ms，如果设置为 100ms 会发现 pwm 的实际输出周期是 2.5ms。实际输出">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QeXyMn.md.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QejBTK.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QexDRe.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QexvJU.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmFW80.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/12/01/QmM4H0.png">
-<meta property="article:published_time" content="2019-11-24T10:49:52.000Z">
-<meta property="article:modified_time" content="2020-03-07T05:55:31.258Z">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/drATAcOLiI.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/paS1BXFlZo.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/1upWxy2aYy.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/I1AGOAB2Pp.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/uAD9prEoAg.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/b4JYC9MGas.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/tlqqmNBeeZ.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/TUl7lfX16U.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/2WyAXpAnmE.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/28/48/5Z0ZnHCJkP.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/28/48/TKowhWEMnu.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/28/48/8FjG7fLa9J.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/28/48/LRN8UJPFgJ.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/28/48/1czH3wBd8y.png">
+<meta property="og:image" content="https://verimake.com/uploads/images/202007/27/48/TUl7lfX16U.png">
+<meta property="article:published_time" content="2020-08-02T00:56:18.000Z">
+<meta property="article:modified_time" content="2020-08-02T03:11:20.206Z">
 <meta property="article:author" content="strongwong">
 <meta property="article:tag" content="Verilog">
 <meta property="article:tag" content="IC Design">
 <meta property="article:tag" content="RISC-V">
-<meta property="article:tag" content="平头哥">
 <meta property="article:tag" content="wujian100">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/01/QeXyMn.md.png">
+<meta name="twitter:image" content="https://verimake.com/uploads/images/202007/27/48/drATAcOLiI.png">
 
 
   
@@ -145,7 +153,7 @@
 
 
 
-  <link rel="canonical" href="https://blog.strongwong.top/posts/使用-vivado-综合-wujian100-生成-bitstream-文件.html"/>
+  <link rel="canonical" href="https://blog.strongwong.top/posts/wujian100-的-PWM-周期问题.html"/>
 
 
 
@@ -155,7 +163,7 @@
   };
 </script>
 
-  <title>使用 vivado 综合 wujian100 生成 bitstream 文件 | StrongWong</title>
+  <title>wujian100 的 PWM 周期问题 | StrongWong</title>
   
 
 
@@ -384,7 +392,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="strongwong">
@@ -401,7 +409,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">使用 vivado 综合 wujian100 生成 bitstream 文件
+          <h2 class="post-title" itemprop="name headline">wujian100 的 PWM 周期问题
               
             
           </h2>
@@ -426,7 +434,7 @@
                 
               
 
-              <time title="创建时间：2019-11-24 18:49:52" itemprop="dateCreated datePublished" datetime="2019-11-24T18:49:52+08:00">2019-11-24</time>
+              <time title="创建时间：2020-08-02 08:56:18" itemprop="dateCreated datePublished" datetime="2020-08-02T08:56:18+08:00">2020-08-02</time>
             
 
             
@@ -466,8 +474,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html" itemprop="commentCount"></span>
+                <a href="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -475,7 +483,7 @@
 
           
           
-             <span id="/posts/%E4%BD%BF%E7%94%A8-vivado-%E7%BB%BC%E5%90%88-wujian100-%E7%94%9F%E6%88%90-bitstream-%E6%96%87%E4%BB%B6.html" class="leancloud_visitors" data-flag-title="使用 vivado 综合 wujian100 生成 bitstream 文件">
+             <span id="/posts/wujian100-%E7%9A%84-PWM-%E5%91%A8%E6%9C%9F%E9%97%AE%E9%A2%98.html" class="leancloud_visitors" data-flag-title="wujian100 的 PWM 周期问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -506,39 +514,75 @@
       
 
       
-        <h2 id="综合环境"><a href="#综合环境" class="headerlink" title="综合环境"></a>综合环境</h2><p>上一篇 blog 呢，我记录一下运行 wujian100 的一些仿真过程，这篇 blog 我将简单介绍一下使用 vivado 来综合 wujian100 需要注意的一些地方。</p>
-<p>首先，说明一下我的综合环境，我是在 WSL 下安装的 vivado 2018.3 版本，然后是完全 vivado 环境下综合生成 bitstream 文件，因为没有安装 synplify，所以就没有使用官方推荐的 synplify 进行综合。</p>
-<blockquote>
-<p>系统：Windows 10 ， WSL Ubuntu 18.04<br>软件: vivado 2018.3</p>
-</blockquote>
+        <h2 id="PWM-波形发生器实验结果"><a href="#PWM-波形发生器实验结果" class="headerlink" title="PWM 波形发生器实验结果"></a>PWM 波形发生器实验结果</h2><p>在 wujian100 的样例程序代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int32_t</span>  <span class="title">pwm_signal_test</span><span class="params">(<span class="keyword">uint32_t</span> pwm_idx, <span class="keyword">uint8_t</span> pwm_ch)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int32_t</span> ret;</span><br><span class="line">    <span class="keyword">pwm_handle_t</span> pwm_handle;</span><br><span class="line"></span><br><span class="line">    example_pin_pwm_init();</span><br><span class="line"></span><br><span class="line">    pwm_handle = csi_pwm_initialize(pwm_idx);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pwm_handle == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"csi_pwm_initialize error\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ret = csi_pwm_config(pwm_handle, pwm_ch, <span class="number">3000</span>, <span class="number">1500</span>); <span class="comment">//设置pwm周期3ms</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"csi_pwm_config error\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    csi_pwm_start(pwm_handle, pwm_ch);</span><br><span class="line">    mdelay(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">    ret = csi_pwm_config(pwm_handle, pwm_ch, <span class="number">200</span>, <span class="number">150</span>); <span class="comment">//设置pwm周期200us</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"csi_pwm_config error\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mdelay(<span class="number">20</span>);</span><br><span class="line">    csi_pwm_stop(pwm_handle, pwm_ch);</span><br><span class="line"></span><br><span class="line">    csi_pwm_uninitialize(pwm_handle);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中有两句配置函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ret = csi_pwm_config(pwm_handle, pwm_ch, <span class="number">3000</span>, <span class="number">1500</span>); <span class="comment">//设置pwm周期3ms，占空比1500/3000</span></span><br><span class="line">ret = csi_pwm_config(pwm_handle, pwm_ch, <span class="number">200</span>, <span class="number">150</span>); <span class="comment">//设置pwm周期200us占空比50/200</span></span><br></pre></td></tr></table></figure>
+
+<p>这两句都是用来配置 pwm 周期的，是实际测试中 pwm 周期和占空比都没有问题。但是如果设置 pwm 周期为 5ms 时，需要修改这句话为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ret = csi_pwm_config(pwm_handle, pwm_ch, <span class="number">5000</span>, <span class="number">2500</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在实际测试过程中会发现，他的周期实际是 2.5ms 并不是预期的 5ms，如果设置为 100ms 会发现 pwm 的实际输出周期是 2.5ms。实际输出是有问题的。</p>
 <a id="more"></a>
 
-<h2 id="安装-vivado"><a href="#安装-vivado" class="headerlink" title="安装 vivado"></a>安装 vivado</h2><p>首先，你如果没有安装 vivado 就先安装一下 vivado，在命令行下自己运行 <code>./xsetup</code> 即可，安装完成后记得设置一下环境变量，具体的安装方法，我这里就不做详细介绍了，请自行搜索。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./xsetup</span><br></pre></td></tr></table></figure>
+<h2 id="查找问题"><a href="#查找问题" class="headerlink" title="查找问题"></a>查找问题</h2><h3 id="检查软件问题"><a href="#检查软件问题" class="headerlink" title="检查软件问题"></a>检查软件问题</h3><p>跟踪 <code>csi_pwm_config</code>  函数，发现在函数中会根据设置的周期进行时钟配置：<br><code>drv_pwm_config_clockdiv(handle, channel, cnt_div[count_div]);</code> 由于 pwm 计数器是 16 位，所以软件会根据设置的周期值计算出要配置的数值，如果该数值超过 0xffff，就会设置分频系数，直到需要计数的值小于 0xffff 为止。</p>
+<p>继续跟踪<br><code>drv_pwm_config_clockdiv(handle, channel, cnt_div[count_div]);</code><br>我们可以看到</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">drv_pwm_config_clockdiv</span><span class="params">(<span class="keyword">pwm_handle_t</span> handle, <span class="keyword">uint8_t</span> channel, <span class="keyword">uint32_t</span> div)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PWM_NULL_PARAM_CHK_NORETVAL(handle);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">wj_pwm_priv_t</span> *pwm_priv = handle;</span><br><span class="line">    <span class="keyword">wj_pwm_reg_t</span> *addr = (<span class="keyword">wj_pwm_reg_t</span> *)(pwm_priv-&gt;base);</span><br><span class="line">    addr-&gt;PWMCFG &amp;= ~(<span class="number">7</span> &lt;&lt; <span class="number">24</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (div) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            addr-&gt;PWMCFG &amp;= ~(PWM_CFG_CNTDIV_EN);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">            addr-&gt;PWMCFG |= PWM_CFG_CNTDIV_EN | PWM_CFG_CNTDIV_2;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">            addr-&gt;PWMCFG |= PWM_CFG_CNTDIV_EN | PWM_CFG_CNTDIV_5;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    ........</span><br></pre></td></tr></table></figure>
 
-<h2 id="打开-vivado-新建工程"><a href="#打开-vivado-新建工程" class="headerlink" title="打开 vivado 新建工程"></a>打开 vivado 新建工程</h2><p>接下来，我们进入到 wujian100_open 的 fpga-&gt;vivado 目录下，在命令行下输入 <code>vivado</code> ，启动 vivado。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vivado</span><br></pre></td></tr></table></figure>
+<p>这个函数会对寄存器 PWMCFG 的第 25 位到第 27 位进行了赋值操作，查找数据手册发现</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/drATAcOLiI.png" alt="PWMCFG"></p>
+<p>第 28 位是分频使能，第 26 到 24 位是分频系数设置。</p>
+<p>在 csi 库里提供了一个函数可以读取这几位的值来查看分频的设置：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  \brief       get pwm clock division.</span></span><br><span class="line"><span class="comment">  \param[in]   handle   pwm handle to operate.</span></span><br><span class="line"><span class="comment">  \param[in]   channel  channel num.</span></span><br><span class="line"><span class="comment">  \return      div      clock div.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">uint33_t</span> <span class="title">drv_pwm_get_clockdiv</span><span class="params">(<span class="keyword">pwm_handle_t</span> handle, <span class="keyword">uint8_t</span> channel)</span></span></span><br></pre></td></tr></table></figure>
 
-<p><img src="https://s2.ax1x.com/2019/12/01/QeXyMn.md.png" alt="start_vivado.png"></p>
-<p>vivado 启动完成之后，我们来创建应该新工程，点击 <code>Create project</code> ，Next-&gt;填写工程名称，Next-&gt; 选择 RTL Project，Next-&gt; 选择 wujian100 这个开发板对应的 FPGA 型号 <code>xc7a200tfbg484-1</code>，最后 Finish 即可，工程创建结束。</p>
-<p><img src="https://s2.ax1x.com/2019/12/01/QejBTK.png" alt="QejBTK.png"><br><img src="https://s2.ax1x.com/2019/12/01/QexDRe.png" alt="QexDRe.png"><br><img src="https://s2.ax1x.com/2019/12/01/QexvJU.png" alt="QexvJU.png"></p>
-<h2 id="添加源码综合"><a href="#添加源码综合" class="headerlink" title="添加源码综合"></a>添加源码综合</h2><p>工程创建完了之后我们添加 wujian100 的源码来进行综合。这里需要注意的是源码中有两个 top 文件，我们这里添加 wujian100_open_fpga_top.v 文件。然后添加 <code>soc</code>目录下的源码，都添加完成之后，vivado 会自动分析，这时我们会看到有错误，这是因为这四个文件是头文件，我们需要手动更改一下文件格式。</p>
-<p><img src="https://s2.ax1x.com/2019/12/01/QmFW80.png" alt="QmFW80.png"></p>
-<p>接下来我们继续添加约束文件，这里的管脚约束文件，我们就是所以官方提供的这个即可，时序约束文件这里使用一位群友提供的即可。把这个时序约束文件和官方的 xdc 放在一个目录下就可以了，添加完成之后，我们进行综合即可。但是在综合之前我们需要更改一下官方的 xdc，有一个地方在 vivado 下进行综合会报错，就是第 33 行这句， 把 <code>_c</code> 去掉即可。还有一个地方需要注意的是把 wujian100_open_fpga_top.v 的优先级调一下。</p>
-<p>时序约束文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">create_clock -name &#123;EHS&#125; [get_ports PIN_EHS] -period 50 -waveform &#123;0 25&#125;</span><br><span class="line">create_clock  -name &#123;JTAG_CLK&#125; [get_ports PAD_JTAG_TCLK] -period 1000 -waveform &#123;0 500&#125;</span><br><span class="line"></span><br><span class="line">set_clock_groups -asynchronous -name &#123;clkgroup_1&#125; -group [get_clocks &#123;EHS JTAG_CLK&#125;]</span><br><span class="line"></span><br><span class="line">set_false_path -through [get_ports PIN_EHS]</span><br><span class="line"></span><br><span class="line"><span class="comment">#set_clock_groups -name &#123;Inferred_clkgroup_0&#125; -asynchronous -group [get_clocks &#123;wujian100_open_top|PAD_JTAG_TCLK&#125;]</span></span><br><span class="line"></span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/pclk_load_sync2_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/rtc_load_sync2_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/pclk_load_sync1_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_aou_top/x_rtc0_sec_top/x_rtc_pdu_top/x_rtc_clr_sync/rtc_load_sync1_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A74/A10b_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A74/A18597_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A1862d/A10b_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A1862d/A18597_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A75/A10b_reg&#125;]</span><br><span class="line">set_property ASYNC_REG TRUE [get_cells &#123;x_cpu_top/CPU/x_cr_had_top/A15d/A75/A18597_reg&#125;]</span><br></pre></td></tr></table></figure>
+<p>通过这个函数可以得到 PWMCFG 寄存器里的分频系数 cntdiv 的值。通过实验我们发现分频系数的值配置到寄存器里了，并且读回来的值也是配置的值。</p>
+<p><strong>总结：所以软件上对于 pwm 的配置是没有问题的，配置 pwm 周期不是预期值不是软件问题。</strong></p>
+<h3 id="检查硬件问题"><a href="#检查硬件问题" class="headerlink" title="检查硬件问题"></a>检查硬件问题</h3><p>排除软件问题，那么出现 pwm 周期非预期值他的问题就只可能是 pwm 外设在设计时的硬件问题了。我们查找 wujian100 内部设计的问题，为了方便查看我们使用 verdi 来查看跟踪模块设计，这样效率高。</p>
+<p>首先第一步配置 wujian100 工作路径：在 linux 系统中利用 source 将 wujian100 工作目录添加到系统环境变量。</p>
+<p>第二步 tb 目录下的 tb_file.list 文件，这个文件里加载的顶层文件是 wujian100_open_top.v，并不是我们生成bit文件时的 wujian100_open_fpga_top.v 文件（该文件在 fpga 目录下），我们首先赋值 fpga 目录下的 wujian100_open_fpga_top.v 到 soc 目录下。修改文件 tb_file.list 里的第 3 行，将 wujian100_open_top.v 替换为 wujian100_open_fpga_top.v</p>
+<p>第三步进入 tb 目录。使用 verdi -f tb_file.list 打开软件 verdi 并加载 tb_file.list 里列出的文件。（前提是你的 linux 系统安装了 verdi 软件）。</p>
+<p>以上三步正确就会打开 wujian100 设计的模块图。</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/paS1BXFlZo.png" alt="wujian100 top"></p>
+<p>查看选中打开该文件，查看文件名是不是wujian100_open_fpga_top.v</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/1upWxy2aYy.png" alt="wujian100_open_fpga_top.v"></p>
+<p>然后打开原理图。点击如图按钮：</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/I1AGOAB2Pp.png" alt="原理图">))</p>
+<p>打开 wujian100 的设计如图：</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/uAD9prEoAg.png" alt="wujian100"></p>
+<p>接下来可以按文件查找相应模块，也可以双击原理图上的模块一层一层进入。</p>
+<p>pwm 模块位于 PDU 下的 ahb1 上。一层一层进入查看下，定位到 pwm：</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/b4JYC9MGas.png" alt="pwm_sec_top"></p>
+<p>继续进入 pwm_sec_top ,再进入 pwm 就是 pwm 外设的内部了。</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/tlqqmNBeeZ.png" alt="pwm_ctrl &amp; pwm_aphif"></p>
+<p>在这里有两部分，一个是 aphif 负责总线，ctrl 就是 pwm 的实际实现了。<br>进入 pwm_ctrl:</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/TUl7lfX16U.png" alt="pwm_ctrl"></p>
+<p>我们发现有六个 pwm_gen。和数据手册上介绍的一样。</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/2WyAXpAnmE.png" alt="6 pwm_gen"></p>
+<p>我们现在定位到左下角，放大看，这部分就是pwm的时钟部分：</p>
+<p><img src="https://verimake.com/uploads/images/202007/28/48/5Z0ZnHCJkP.png" alt="pwm_gen"><br>我们在 view 菜单下打开端口名称显示和模块内部端口名称显示。在图上我们可以看到 cntdiv[3:0] 控制了分频系数，分频系数会通过分频器（图上的 f）对 pclk 系统时钟进行分频，然后通过 gated_clk_cell 控制时钟的通过然后通过 clk_mux2 选择器送到后续的 pwm 发生器上作为发生器的时钟。我们双击模块就能够查看各自对应的 verilog 代码。我们在逐个查找时发现 gated_clk_cell（如下图）它的结构有问题：</p>
+<p><img src="https://verimake.com/uploads/images/202007/28/48/TKowhWEMnu.png" alt="gated_clk_cell"></p>
+<p>双击它，查看它内部结构：</p>
+<p><img src="https://verimake.com/uploads/images/202007/28/48/8FjG7fLa9J.png" alt="gated_clk_cell"></p>
+<p>如图这样一个很奇怪的结构，<strong>直接就是 clk_in 输入，直接送到 clk_out 输出上去了</strong>。结合上一张图我们可以看出 clk_in 就是 pclk 系统时钟，这样导致前面的分频没有任何作用，pclk 将会直接送到 pwm 发生器上作为 pwm 的时钟。这样不论你有没有设置分频，pwm 就只有系统时钟 pclk（21M)。这样 pwm 的信号周期无法修改。</p>
+<p>反过来推到下，我们之前的实验设置周期 6ms 是得到的结果是 2.5ms，其实我们的分频系数是 2，由于时钟没有分频，导致我们的输出周期是 2.5ms，如果分频成功我们的周期就会是 2.5*2=5ms，同理，10ms 时的分频系数是 4。有兴趣的可以根据 sdk 提供的代码推到下，也可以用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">uint33_t</span> <span class="title">drv_pwm_get_clockdiv</span><span class="params">(<span class="keyword">pwm_handle_t</span> handle, <span class="keyword">uint8_t</span> channel)</span></span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets PAD_JTAG_TCLK_c]</span></span><br><span class="line"><span class="comment"># 改成下面的</span></span><br><span class="line">set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets PAD_JTAG_TCLK]</span><br></pre></td></tr></table></figure>
+<p>这个函数查看分频系数，然后分析下。</p>
+<p>我们直到了问题出在模块 gated_clk_cell 上了，我们定位到模块对应的 verilog 文件，查找到代码位于 pwm.v 文件的 4186 行例化了一个叫做 gated_clk_cell 的模块，我们双击 gated_clk_cell 进入内部，双击模块定位到了 common.v 文件的 66 行，代码如下：</p>
+<figure class="highlight v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="meta-keyword">ifdef</span> FPGA</span></span><br><span class="line"><span class="keyword">assign</span> clk_out = clk_in;</span><br><span class="line"><span class="meta">`<span class="meta-keyword">else</span></span></span><br><span class="line">Standard_Cell_CLK_GATE x_gated_clk_cell(</span><br><span class="line">             <span class="variable">.CK</span>  (clk_in),</span><br><span class="line">             <span class="variable">.SE</span>  (SE),</span><br><span class="line">             <span class="variable">.EN</span>   (clk_en_bf_latch),</span><br><span class="line">             <span class="variable">.Q</span>   (clk_out)</span><br><span class="line">             );</span><br><span class="line"><span class="meta">`<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 
-<h2 id="综合完成生成-bit-文件"><a href="#综合完成生成-bit-文件" class="headerlink" title="综合完成生成 bit 文件"></a>综合完成生成 bit 文件</h2><p><img src="https://s2.ax1x.com/2019/12/01/QmM4H0.png" alt="QmM4H0.png"></p>
-<p>综合完成之后呢，我们可以看到啊，这个时序约束都是符合要求的，接下来，我们就可以输出比特流文件上 FPGA 做实验了。</p>
-<h2 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h2><h3 id="vivado-综合"><a href="#vivado-综合" class="headerlink" title="vivado 综合"></a>vivado 综合</h3><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=77962964&cid=133377281&page=1"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-<h3 id="上-FPGA-测试"><a href="#上-FPGA-测试" class="headerlink" title="上 FPGA 测试"></a>上 FPGA 测试</h3><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=79137613&cid=135422810&page=1"  scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
+<p>这下一目了然了，由于定义了 FPGA 这个量，导致 assign clk_out=clk_in; 而下面的模块没有实现，所以最主要原因就是定义了 FPGA 这个量，这个量在哪里定义的呢，就是在 wujian100_open_fpga_top.v 这个文件的最开头定义的（第 37 行）：</p>
+<p><img src="https://verimake.com/uploads/images/202007/28/48/LRN8UJPFgJ.png" alt="wujian100_open_fpga_top.v"></p>
+<p>将这行用 // 注释，然后在 verdi 中点击 file 下选择 reload 设计，重新加载文件，我们再查看 geted_clk_cell 模块，得到如下图：</p>
+<p><img src="https://verimake.com/uploads/images/202007/28/48/1czH3wBd8y.png" alt="geted_clk_cell 改"></p>
+<p>这样 clk_in 不会直接送到 clk_out 输出了。</p>
+<p>修改后用 vivado 重新分析综合生成 bit，下载到开发板上，我们发现输出的 pwm 的周期输出正确了。6ms，10ms 的周期也能生成了。</p>
+<p>这里有一点注意，修改后源码用 vivado 建立工程，用 vivado 去 Synthesis，不要用官方方法，用 Synplify_pro 去 Synthesis。不然生成的 bit 下载开发板，输出的 pwm 周期会小一半。例如 11ms 周期只能输出 5ms。有兴趣的可以试下。</p>
+<h2 id="后续问题"><a href="#后续问题" class="headerlink" title="后续问题"></a>后续问题</h2><p>查看这张结构图</p>
+<p><img src="https://verimake.com/uploads/images/202007/27/48/TUl7lfX16U.png" alt="PWM"></p>
+<p>仔细查看，不难发现，它的六个 pwm_gen 都是用的一个时钟源，都是 pclk 通过分频之后的时钟直接连接在了每一个 pwn_gen 的时钟上，六个时钟都是一个源，那么就会造成一个问题，他的六组 pwm 发生器只能同时产生一个频率（周期）的信号，例如 ch1 产生了 5ms，那个这时 ch2 也只能产生 5ms，没法产生 10ms 周期的 pwm，所有通道的周期都会被最后那个设置改成同一个频率，就是因为他们的时钟是同一个。这将怎么解决，有一个思路，就是每一个 pwm_gen 有各自的分频模块。怎么解决下一篇介绍。</p>
+<p>本文转自 Verimake 论坛：<br><a href="https://verimake.com/topics/122" target="_blank" rel="noopener">https://verimake.com/topics/122</a></p>
 
       
     </div>
@@ -598,9 +642,6 @@
             <a href="/tags/RISC-V/" rel="tag"><i class="fa fa-fw fa-tag"></i> RISC-V&nbsp;</a>
           
             
-            <a href="/tags/%E5%B9%B3%E5%A4%B4%E5%93%A5/" rel="tag"><i class="fa fa-fw fa-tag"></i> 平头哥&nbsp;</a>
-          
-            
             <a href="/tags/wujian100/" rel="tag"><i class="fa fa-fw fa-tag"></i> wujian100&nbsp;</a>
           
         </div>
@@ -614,8 +655,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/Windows-%E4%B8%8B%E5%AD%A6%E4%B9%A0%E9%98%BF%E9%87%8C%E5%B9%B3%E5%A4%B4%E5%93%A5-RISC-V-%E8%8A%AF%E7%89%87%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0-wujian100.html" rel="next" title="Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100">
-                <i class="fa fa-chevron-left"></i> Windows 下学习阿里平头哥 RISC-V 芯片开发平台 wujian100
+              <a href="/posts/%E7%94%A8-Kindle-%E5%81%9A%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E6%98%BE%E7%A4%BA%E5%B1%8F.html" rel="next" title="用 Kindle 做树莓派的显示屏">
+                <i class="fa fa-chevron-left"></i> 用 Kindle 做树莓派的显示屏
               </a>
             
           </div>
@@ -623,10 +664,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/%E5%85%B3%E4%BA%8E-RISC-V-%E6%9E%B6%E6%9E%84%E4%B8%8B-RTOS-%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86.html" rel="prev" title="关于 RISC-V 架构下 RTOS 的一些知识">
-                关于 RISC-V 架构下 RTOS 的一些知识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -932,7 +969,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#综合环境"><span class="nav-number">1.</span> <span class="nav-text">综合环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-vivado"><span class="nav-number">2.</span> <span class="nav-text">安装 vivado</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开-vivado-新建工程"><span class="nav-number">3.</span> <span class="nav-text">打开 vivado 新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加源码综合"><span class="nav-number">4.</span> <span class="nav-text">添加源码综合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合完成生成-bit-文件"><span class="nav-number">5.</span> <span class="nav-text">综合完成生成 bit 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视频教程"><span class="nav-number">6.</span> <span class="nav-text">视频教程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vivado-综合"><span class="nav-number">6.1.</span> <span class="nav-text">vivado 综合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上-FPGA-测试"><span class="nav-number">6.2.</span> <span class="nav-text">上 FPGA 测试</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PWM-波形发生器实验结果"><span class="nav-number">1.</span> <span class="nav-text">PWM 波形发生器实验结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找问题"><span class="nav-number">2.</span> <span class="nav-text">查找问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查软件问题"><span class="nav-number">2.1.</span> <span class="nav-text">检查软件问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查硬件问题"><span class="nav-number">2.2.</span> <span class="nav-text">检查硬件问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后续问题"><span class="nav-number">3.</span> <span class="nav-text">后续问题</span></a></li></ol></div>
             
 
           </div>
