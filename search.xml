@@ -1421,7 +1421,7 @@
 <a id="more"></a>
 
 <p>简单来说，我的毕设就是做一个可以进行室内 SLAM 建图的移动机器人。首先呢，我把我的机器人分为上层和底层两个部分。上层为决策层，主要是在 Jetson TX2 开发板上，运行 ROS 机器人操作系统以及 SLAM 算法。通过激光雷达或者深度相机获取深度数据，进行机器人的同时定位与地图构建。底层为具体的控制层，主要是 STM32 通过串口通讯与上层进行通信，接收决策层的速度控制指令，以及进行电机速度控制。机器人的系统框架如下图所示。</p>
-<p><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fugcmx4e46j30m90d8mys" alt=""><br><img src="https://ww3.sinaimg.cn/large/005YhI8igy1fugcnqpd93j30rk0g2ju9" alt=""></p>
+<p><img src="https://imgchr.com/i/BVUJfK" alt=""><br><img src="https://imgchr.com/i/BVU26g" alt=""></p>
 <p>各部分的具体介绍，将在后面我有空的时候慢慢更新，哈哈哈~~</p>
 ]]></content>
       <categories>
