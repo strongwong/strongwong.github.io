@@ -373,6 +373,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="strongwong">
+      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
+      <meta itemprop="image" content="/uploads/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StrongWong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html" itemprop="url">
+                  使用汇编实现 pc 和 sp 的保存及恢复操作
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-13 19:32:27" itemprop="dateCreated datePublished" datetime="2019-01-13T19:32:27+08:00">2019-01-13</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%AD%A6%E4%B9%A0/%E5%B5%8C%E5%85%A5%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">嵌入式</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html" class="leancloud_visitors" data-flag-title="使用汇编实现 pc 和 sp 的保存及恢复操作">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 ARM Cortex 系列的芯片中本来就有一套保护现场的机制，例如当产生了一个中断时，会自动将当前寄存器的值入栈，并在 lr（r14） 寄存器中保存将要返回的 pc 值，在中断服务程序执行完成后将 pc 恢复到之前的位置。如果在执行中断服务程序的时候又发生了优先级更高的中断，也就是说发生了中断嵌套，这是将再次进行现场保护，同时 lr 值会被压栈（上一次的 pc ），新的 lr 生成。</p>
+<p>但是在一些场景下，这样的机制就不太好用了，比如说要进入 sleep 模式 cpu 掉电了，想要恢复到掉电前的状态。这样的话就需要我们自己实现保护现场了，下面就来简单介绍一下我的实现。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/%E4%BD%BF%E7%94%A8%E6%B1%87%E7%BC%96%E5%AE%9E%E7%8E%B0-pc-%E5%92%8C-sp-%E7%9A%84%E4%BF%9D%E5%AD%98%E5%8F%8A%E6%81%A2%E5%A4%8D%E6%93%8D%E4%BD%9C.html" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%95%B0%E5%AD%97-IC-%E8%AE%BE%E8%AE%A1%E6%B5%81%E7%A8%8B.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2032,193 +2219,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="strongwong">
-      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
-      <meta itemprop="image" content="/uploads/toux.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StrongWong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99.html" itemprop="url">
-                  make 命令及 makefile 文件编写
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-09-03 16:56:52" itemprop="dateCreated datePublished" datetime="2018-09-03T16:56:52+08:00">2018-09-03</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/posts/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99.html" class="leancloud_visitors" data-flag-title="make 命令及 makefile 文件编写">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前段时间因为工作需要简单学习了一下 make 命令以及 makefile 文件的编写，这里整理一篇在网上看到的比较简洁明了的教程。</p>
-<blockquote>
-<p>代码变成可执行文件，叫做 <a href="http://www.ruanyifeng.com/blog/2014/11/compiler.html" target="_blank" rel="noopener">编译</a>（ compile ）；先编译这个，还是先编译那个（即编译的安排），叫做 <a href="https://en.wikipedia.org/wiki/Software_build" target="_blank" rel="noopener">构建</a>（ build ）。</p>
-<p><a href="https://en.wikipedia.org/wiki/Make_%28software%29" target="_blank" rel="noopener">Make</a> 是最常用的构建工具，诞生于 1977 年，主要用于 C 语言的项目。但是实际上 ，任何只要某个文件有变化，就要重新构建的项目，都可以用 Make 构建。</p>
-<p>本文介绍 Make 命令的用法，从简单的讲起，不需要任何基础，只要会使用命令行，就能看懂。我的参考资料主要是 Isaac Schlueter 的<a href="https://gist.github.com/isaacs/62a2d1825d04437c6f08" target="_blank" rel="noopener">《 Makefile 文件教程》</a>和<a href="https://www.gnu.org/software/make/manual/make.html" target="_blank" rel="noopener">《 GNU Make 手册》</a>。</p>
-<blockquote>
-<p>来源： <a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a><br>作者： 阮一峰</p>
-</blockquote>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/make-%E5%91%BD%E4%BB%A4%E5%8F%8A-makefile-%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2284,7 +2284,7 @@
                   
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2325,7 +2325,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2426,7 +2428,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">44</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2503,7 +2509,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heart"></i>
   </span>
