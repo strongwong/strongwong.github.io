@@ -2727,7 +2727,10 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir nuttxWS</span><br><span class="line"><span class="built_in">cd</span> nuttxWS</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/apache/incubator-nuttx.git nuttx</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/apache/incubator-nuttx-apps apps</span><br><span class="line">git <span class="built_in">clone</span> https://bitbucket.org/nuttx/tools.git tools</span><br></pre></td></tr></table></figure>
 
 <p>安装 kconfig ，构建工具。注意：低于 ubuntu20 版本的安装要少许麻烦一些</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> apt install kconfig-frontends</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">查看 nuttx 支持的板卡</span><br><span class="line">```bash</span><br><span class="line">$ <span class="built_in">cd</span> nuttxWS</span><br><span class="line">$ ./tools/configure.sh -L | less</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ apt install kconfig-frontends</span><br></pre></td></tr></table></figure>
+
+<p>查看 nuttx 支持的板卡</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> nuttxWS</span><br><span class="line">$ ./tools/configure.sh -L | less</span><br></pre></td></tr></table></figure>
 
 <p>选择相应的板卡及其支持的应用程序进行配置</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> nuttxWS</span><br><span class="line">$ ./tools/configure.sh -l &lt;board-name&gt;:&lt;config-dir&gt;</span><br><span class="line"><span class="comment"># for instance:</span></span><br><span class="line">$ ./tools/configure.sh -l stm32f103-minimum:nsh</span><br></pre></td></tr></table></figure>

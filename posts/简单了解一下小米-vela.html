@@ -120,7 +120,7 @@
 <meta property="og:description" content="0x00 小米 vela前段时间小米推出了 vela 物联网平台，vela 就是基于 NuttX 打造的物联网开发平台。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-12T07:12:11.000Z">
-<meta property="article:modified_time" content="2021-01-12T07:41:08.143Z">
+<meta property="article:modified_time" content="2021-01-14T14:01:51.429Z">
 <meta property="article:author" content="strongwong">
 <meta property="article:tag" content="vela">
 <meta property="article:tag" content="NuttX">
@@ -524,7 +524,10 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir nuttxWS</span><br><span class="line"><span class="built_in">cd</span> nuttxWS</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/apache/incubator-nuttx.git nuttx</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/apache/incubator-nuttx-apps apps</span><br><span class="line">git <span class="built_in">clone</span> https://bitbucket.org/nuttx/tools.git tools</span><br></pre></td></tr></table></figure>
 
 <p>安装 kconfig ，构建工具。注意：低于 ubuntu20 版本的安装要少许麻烦一些</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> apt install kconfig-frontends</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">查看 nuttx 支持的板卡</span><br><span class="line">```bash</span><br><span class="line">$ <span class="built_in">cd</span> nuttxWS</span><br><span class="line">$ ./tools/configure.sh -L | less</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt install kconfig-frontends</span><br></pre></td></tr></table></figure>
+
+<p>查看 nuttx 支持的板卡</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> nuttxWS</span><br><span class="line">$ ./tools/configure.sh -L | less</span><br></pre></td></tr></table></figure>
 
 <p>选择相应的板卡及其支持的应用程序进行配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> nuttxWS</span><br><span class="line">$ ./tools/configure.sh -l &lt;board-name&gt;:&lt;config-dir&gt;</span><br><span class="line"><span class="comment"># for instance:</span></span><br><span class="line">$ ./tools/configure.sh -l stm32f103-minimum:nsh</span><br></pre></td></tr></table></figure>
