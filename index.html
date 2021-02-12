@@ -373,6 +373,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="strongwong">
+      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
+      <meta itemprop="image" content="/uploads/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StrongWong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html" itemprop="url">
+                  浅谈 RISC-V 软件开发生态之 IDE
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-02-12 21:56:38" itemprop="dateCreated datePublished" datetime="2021-02-12T21:56:38+08:00">2021-02-12</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RISC-V/" itemprop="url" rel="index"><span itemprop="name">RISC-V</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/RISC-V/%E5%B5%8C%E5%85%A5%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">嵌入式</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html" class="leancloud_visitors" data-flag-title="浅谈 RISC-V 软件开发生态之 IDE">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>今天简单谈一些关于 RISC-V 开发的软件生态相关，主要是关于 RISC-V 的开发 IDE，就是集成开发环境。集成开发环境（IDE，Integrated Development Environment ）是用于提供程序开发环境的应用程序，一般包括代码编辑器、编译器、调试器和图形用户界面等工具。集成了代码编写功能、分析功能、编译功能、调试功能等一体化的软件开发服务套（组）。</p>
+<p>目前来看，RISC-V 的硬件生态已经在蓬勃发展，而 RISC-V 相关的软件生态还在日趋完善的过程中，这里就来浅谈一点我的个人认识，如有不对，请批评指正。</p>
+<p>目前，RISC-V 的软件开发 IDE ，主要是有以下几种解决方案。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E5%B0%8F%E7%B1%B3-vela.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2058,187 +2246,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="strongwong">
-      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
-      <meta itemprop="image" content="/uploads/toux.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StrongWong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html" itemprop="url">
-                  拆解某宝上热销的一款蓝牙耳机
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-28 21:52:27" itemprop="dateCreated datePublished" datetime="2019-08-28T21:52:27+08:00">2019-08-28</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8B%86%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">拆机</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html" class="leancloud_visitors" data-flag-title="拆解某宝上热销的一款蓝牙耳机">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://s2.ax1x.com/2019/08/28/mHGnqP.png" alt="mHGnqP.png"></p>
-<p>前些天在某宝上购买了一个蓝牙耳机，想着跑步的时候可以听听音乐。我对耳机的要求也不高，听个响就行。于是，就下单了这个在某宝上热销的(10w+)超便宜的蓝牙耳机，只要 <code>￥19.9</code> 还包邮！</p>
-<p>用了几天，这个耳机对于只是听个响的我来说绝对 ok！也是对的起它这个价位了。但是没用几天，因为我的疏忽，没有将耳机从口袋拿出来，所以就跟着衣服一起在洗衣机里搅了 40 分钟……</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/%E6%8B%86%E8%A7%A3%E6%9F%90%E5%AE%9D%E4%B8%8A%E7%83%AD%E9%94%80%E7%9A%84%E4%B8%80%E6%AC%BE%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2304,7 +2311,7 @@
                   
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2351,7 +2358,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2462,7 +2471,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
