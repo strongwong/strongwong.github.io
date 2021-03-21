@@ -373,6 +373,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E4%BD%8E%E5%8A%9F%E8%80%97%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E2%80%94%E2%80%94ULPMark-Benchmark.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="strongwong">
+      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
+      <meta itemprop="image" content="/uploads/toux.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="StrongWong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E4%BD%8E%E5%8A%9F%E8%80%97%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E2%80%94%E2%80%94ULPMark-Benchmark.html" itemprop="url">
+                  什么是超低功耗基准测试——ULPMark Benchmark
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-03-20 15:13:46" itemprop="dateCreated datePublished" datetime="2021-03-20T15:13:46+08:00">2021-03-20</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/EEMBC/" itemprop="url" rel="index"><span itemprop="name">EEMBC</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/EEMBC/%E5%B5%8C%E5%85%A5%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">嵌入式</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E4%BD%8E%E5%8A%9F%E8%80%97%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E2%80%94%E2%80%94ULPMark-Benchmark.html#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E4%BD%8E%E5%8A%9F%E8%80%97%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E2%80%94%E2%80%94ULPMark-Benchmark.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E4%BD%8E%E5%8A%9F%E8%80%97%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E2%80%94%E2%80%94ULPMark-Benchmark.html" class="leancloud_visitors" data-flag-title="什么是超低功耗基准测试——ULPMark Benchmark">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>说起嵌入式领域的一些基准测试，大家可能更了解的是 Coremark Benchmark，也就是大家常说的 CPU (中央处理器)性能基准测试。ULPMark Benchmark 也和 Coremark 类似，ULPMark 即<code>“Ultra-Low Power Mark”</code> 超低功耗评分；二者都是由 EEMBC (嵌入式微处理器基准测试联盟)开发的一套用 C 语言编写的、易于移植的标准测试程序。略有不同的是 Coremark 是专门为测试处理器核心性能而设计的，而 ULPMark 是为了评价一款 MCU 的低功耗性能而设计的。在嵌入式领域中对一款芯片的评价一般来说都会非常关心两个指标，一个就是性能，另一个就是功耗。所以性能就看 Coremark 评分，低功耗就看 ULPMark 评分。Coremark 网上资料有很多，这里我就不做过多介绍了，那么低功耗性能测试为什么是 ULPMark 呢？</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/%E4%BB%80%E4%B9%88%E6%98%AF%E8%B6%85%E4%BD%8E%E5%8A%9F%E8%80%97%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95%E2%80%94%E2%80%94ULPMark-Benchmark.html" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%B5%85%E8%B0%88-RISC-V-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%94%9F%E6%80%81%E4%B9%8B-IDE.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2066,186 +2252,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blog.strongwong.top/posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="strongwong">
-      <meta itemprop="description" content="悟已往之不谏，知来者之可追！">
-      <meta itemprop="image" content="/uploads/toux.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="StrongWong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html" itemprop="url">
-                  拆解一个很有意思的开关
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-30 20:54:54" itemprop="dateCreated datePublished" datetime="2019-08-30T20:54:54+08:00">2019-08-30</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8B%86%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">拆机</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html" class="leancloud_visitors" data-flag-title="拆解一个很有意思的开关">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://s2.ax1x.com/2019/08/30/mjONAf.jpg" alt="linptech-sw"></p>
-<p>最近公司买了一个很有意思的开关，说是叫无源无线开关。无线嘛，就是没有电线连接，是无线的，好像是 433 无线模块通讯的。所谓无源就是没有电池或者其他直接的电源供电了，是一个自发电的开关。就是上图这个东东，我很是好奇，很想知道他这个自发电的开关内部是个什么样子，那我们拆开看看吧~ 嘿嘿~~</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/%E6%8B%86%E8%A7%A3%E4%B8%80%E4%B8%AA%E5%BE%88%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E5%BC%80%E5%85%B3.html" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2311,7 +2317,7 @@
                   
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2360,7 +2366,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2475,7 +2485,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
