@@ -18,7 +18,7 @@ title = "StrongWong"
 [params]
   color = 'linen'  # linen, wheat, gray, light
 
-  twitter = 'strongwong'
+  twitter = 'strongwong_'
   github = 'strongwong'
 
   # instagram = 'YOUR_INSTAGRAM_ID'           # instagram.com/YOUR_INSTAGRAM_ID
@@ -112,3 +112,9 @@ series = "series"
 
   [services.twitter]
     disableInlineCSS = true
+
+
+[module]
+  [[module.imports]]
+    path = "hugo-paper"
+
