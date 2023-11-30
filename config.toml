@@ -1,0 +1,114 @@
+baseURL = "https://blog.strongwong.top/"
+# title = "Hugo Themes"
+author = "BH6BAO"
+copyright = "Copyright © 2018–2023, BH6BAO; all rights reserved."
+paginate = 7
+languageCode = "en"
+DefaultContentLanguage = "en"
+enableInlineShortcodes = true
+# prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
+# See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
+ignoreErrors = ["error-remote-getjson"]
+
+# ------------------------------
+theme = "hugo-paper"
+title = "StrongWong"
+
+
+[params]
+  color = 'linen'  # linen, wheat, gray, light
+
+  twitter = 'strongwong'
+  github = 'strongwong'
+
+  # instagram = 'YOUR_INSTAGRAM_ID'           # instagram.com/YOUR_INSTAGRAM_ID
+  # linkedin = 'YOUR_LINKEDIN_ID'             # linkedin.com/in/YOUR_LINKEDIN_ID
+  # mastodon = 'YOUR_MASTODON_LINK'           # e.g. 'https://mastodon.instance/@xxx'
+  rss = true                                # show rss icon
+
+  # home page profile
+  avatar = 'strongwong003@gmail.com'
+  name = 'BH6BAO'
+  bio = 'Embedded Software Engineer. Blogging about tech and life.'
+# ------------------------------
+
+  # misc
+  disableHLJS = true                        # disable highlight.js
+  disablePostNavigation = true              # disable post navigation
+  monoDarkIcon = true                       # show monochrome dark mode icon
+  # gravatarCdn = 'GRAVATAR_CDN_LINK'         # e.g. 'https://cdn.v2ex.com/gravatar/'
+  # graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
+  math = true                               # enable KaTeX math typesetting globally
+
+  # giscus
+[params.giscus]
+  repo = 'strongwong/strongwong.github.io'                 # see https://giscus.app for more details
+  repoId = 'MDEwOlJlcG9zaXRvcnkxNDI2NjUxODQ='
+  category = 'Announcements'
+  categoryId = 'DIC_kwDOCIDl4M4CbZjF'
+  mapping = 'pathname'
+  theme = 'preferred_color_scheme'
+  lang = 'zh-CN'
+
+# needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+#  [markup.highlight]
+#    lineNos = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 10
+#  [[menu.main]]
+#    identifier = "archives"
+#    name = "Archives"
+#    url = "/archives/"
+#    weight = 10
+  [[menu.main]]
+    identifier = "tools"
+    name = "Tools"
+    url = "/tools/"
+    weight = 10
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+[privacy]
+
+  [privacy.vimeo]
+    disabled = false
+    simple = true
+
+  [privacy.twitter]
+    disabled = false
+    enableDNT = true
+    simple = true
+
+  [privacy.instagram]
+    disabled = false
+    simple = true
+
+  [privacy.youtube]
+    disabled = false
+    privacyEnhanced = true
+
+[services]
+
+  [services.instagram]
+    disableInlineCSS = true
+
+  [services.twitter]
+    disableInlineCSS = true
