@@ -1,7 +1,7 @@
 ---
-title: 做了一个 SerialBot，补上 AI 嵌入式开发的验证闭环
+title: 做了一个 SerialBot，面向 AI 时代的嵌入式开发串口助手
 date: 2026-11-20T20:00:00+08:00
-draft: true
+draft: false
 slug: serialbot-agent-embedded-verification
 description: 最近做了一个开源串口工具 SerialBot。受 poteto 关于 Agent 验证的分享启发，想让 AI 不只是写固件，也能直接观察设备、执行测试，用板子上的实际结果验证自己的修改。
 tags:
